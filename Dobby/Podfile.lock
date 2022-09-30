@@ -1,0 +1,60 @@
+PODS:
+  - Differentiator (5.0.0)
+  - lottie-ios (3.4.3)
+  - RxCocoa (6.5.0):
+    - RxRelay (= 6.5.0)
+    - RxSwift (= 6.5.0)
+  - RxDataSources (5.0.0):
+    - Differentiator (~> 5.0)
+    - RxCocoa (~> 6.0)
+    - RxSwift (~> 6.0)
+  - RxOptional (5.0.2):
+    - RxCocoa (~> 6.0)
+    - RxSwift (~> 6.0)
+  - RxRelay (6.5.0):
+    - RxSwift (= 6.5.0)
+  - RxSwift (6.5.0)
+  - RxViewController (2.0.0):
+    - RxCocoa (~> 6.0)
+    - RxSwift (~> 6.0)
+  - SnapKit (5.6.0)
+  - SwiftyBeaver (1.9.6)
+
+DEPENDENCIES:
+  - lottie-ios
+  - RxCocoa
+  - RxDataSources
+  - RxOptional
+  - RxSwift
+  - RxViewController
+  - SnapKit
+  - SwiftyBeaver
+
+SPEC REPOS:
+  trunk:
+    - Differentiator
+    - lottie-ios
+    - RxCocoa
+    - RxDataSources
+    - RxOptional
+    - RxRelay
+    - RxSwift
+    - RxViewController
+    - SnapKit
+    - SwiftyBeaver
+
+SPEC CHECKSUMS:
+  Differentiator: e8497ceab83c1b10ca233716d547b9af21b9344d
+  lottie-ios: 9ae750cdc7820fecbd3c2f0cfc493038208fcdc4
+  RxCocoa: 94f817b71c07517321eb4f9ad299112ca8af743b
+  RxDataSources: aa47cc1ed6c500fa0dfecac5c979b723542d79cf
+  RxOptional: 3664964c96b69dd20c9cf78bdfe546615e26eca8
+  RxRelay: 1de1523e604c72b6c68feadedd1af3b1b4d0ecbd
+  RxSwift: 5710a9e6b17f3c3d6e40d6e559b9fa1e813b2ef8
+  RxViewController: 56486fa0afd629a1d6b5ba077f3b8cd9dc31b5d2
+  SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
+  SwiftyBeaver: c8241b4745aa269a78ca5a022532c6915e948536
+
+PODFILE CHECKSUM: 349d9697304e1cba641690476cd0b64c0c69ef68
+
+COCOAPODS: 1.11.3

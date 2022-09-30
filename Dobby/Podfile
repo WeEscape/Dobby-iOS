@@ -1,0 +1,30 @@
+# Uncomment the next line to define a global platform for your project
+
+target 'Dobby' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Reactive X
+  pod 'RxCocoa'
+  pod 'RxDataSources'
+  pod 'RxOptional'
+  pod 'RxSwift'
+  pod 'RxViewController'
+
+  # UI
+  pod 'SnapKit'
+  pod 'lottie-ios'
+  
+  # Logging
+  pod 'SwiftyBeaver'
+
+  target 'DobbyTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+  target 'DobbyUITests' do
+    # Pods for testing
+  end
+
+end
