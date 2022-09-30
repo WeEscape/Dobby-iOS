@@ -169,9 +169,10 @@
 		A13C534028E7175000C72215 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				A13C531028E7129D00C72215 /* AppDelegate.swift */,
-				A13C531228E7129D00C72215 /* SceneDelegate.swift */,
-				A13C531428E7129D00C72215 /* ViewController.swift */,
+				A13C534528E720BA00C72215 /* App */,
+				A13C534828E7213B00C72215 /* Data */,
+				A13C534728E7213100C72215 /* Domain */,
+				A13C534628E720E600C72215 /* Presentation */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -184,6 +185,37 @@
 				A13C531B28E7129E00C72215 /* LaunchScreen.storyboard */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		A13C534528E720BA00C72215 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				A13C531028E7129D00C72215 /* AppDelegate.swift */,
+				A13C531228E7129D00C72215 /* SceneDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		A13C534628E720E600C72215 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				A13C531428E7129D00C72215 /* ViewController.swift */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		A13C534728E7213100C72215 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		A13C534828E7213B00C72215 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
