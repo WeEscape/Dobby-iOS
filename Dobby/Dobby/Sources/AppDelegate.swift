@@ -6,6 +6,9 @@
 //
 
 import UIKit
+import SwiftyBeaver
+
+let BeaverLog = SwiftyBeaver.self
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -14,7 +17,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
-        // Override point for customization after application launch.
+        
+        // SwiftyBeaver log to Xcode Console
+        let console = ConsoleDestination()
+        console.format = "$Dyyyy-MM-dd HH:mm:ss.SSS$d $C$L$c $N.$F:$l - $M $X"
+        BeaverLog.addDestination(console)
+        
         return true
     }
 
