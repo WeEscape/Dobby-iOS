@@ -18,6 +18,7 @@
 		A13C532828E7129E00C72215 /* DobbyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13C532728E7129E00C72215 /* DobbyTests.swift */; };
 		A13C533228E7129F00C72215 /* DobbyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13C533128E7129F00C72215 /* DobbyUITests.swift */; };
 		A13C533428E7129F00C72215 /* DobbyUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13C533328E7129F00C72215 /* DobbyUITestsLaunchTests.swift */; };
+		A13C534428E71C0800C72215 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = A13C534328E71C0800C72215 /* .swiftlint.yml */; };
 		A6398B2B9E529BE803AE32DF /* Pods_Dobby_DobbyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DD0D072DEA44EC34394AC4C /* Pods_Dobby_DobbyUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -58,6 +59,7 @@
 		A13C532D28E7129F00C72215 /* DobbyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DobbyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A13C533128E7129F00C72215 /* DobbyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DobbyUITests.swift; sourceTree = "<group>"; };
 		A13C533328E7129F00C72215 /* DobbyUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DobbyUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		A13C534328E71C0800C72215 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		B009706BDB37DEA736AD6D98 /* Pods-DobbyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DobbyTests.debug.xcconfig"; path = "Target Support Files/Pods-DobbyTests/Pods-DobbyTests.debug.xcconfig"; sourceTree = "<group>"; };
 		CD5638528747BA4F0C91F248 /* Pods-DobbyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DobbyTests.release.xcconfig"; path = "Target Support Files/Pods-DobbyTests/Pods-DobbyTests.release.xcconfig"; sourceTree = "<group>"; };
 		E74A368873741D6EC352DD28 /* Pods_Dobby.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Dobby.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -117,6 +119,7 @@
 		A13C530428E7129D00C72215 = {
 			isa = PBXGroup;
 			children = (
+				A13C534328E71C0800C72215 /* .swiftlint.yml */,
 				A13C530F28E7129D00C72215 /* Dobby */,
 				A13C532628E7129E00C72215 /* DobbyTests */,
 				A13C533028E7129F00C72215 /* DobbyUITests */,
@@ -195,6 +198,7 @@
 				A13C530A28E7129D00C72215 /* Frameworks */,
 				A13C530B28E7129D00C72215 /* Resources */,
 				967F0F03AA076076C6C6C6E3 /* [CP] Embed Pods Frameworks */,
+				A13C534228E71AED00C72215 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -292,6 +296,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A13C534428E71C0800C72215 /* .swiftlint.yml in Resources */,
 				A13C531D28E7129E00C72215 /* LaunchScreen.storyboard in Resources */,
 				A13C531A28E7129E00C72215 /* Assets.xcassets in Resources */,
 				A13C531828E7129D00C72215 /* Main.storyboard in Resources */,
@@ -415,6 +420,23 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Dobby/Pods-Dobby-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		A13C534228E71AED00C72215 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "${PODS_ROOT}/SwiftLint/swiftlint\n\n";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -530,7 +552,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -584,7 +606,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

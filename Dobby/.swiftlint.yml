@@ -1,0 +1,31 @@
+# 기본 활성화된 룰 중에 비활성화할 룰들을 지정
+disabled_rules:
+  - trailing_whitespace
+  - trailing_comma
+  - identifier_name
+  - closure_parameter_position
+  
+# 기본 룰이 아닌 룰들을 활성화
+opt_in_rules:
+  - empty_count
+
+# 린트 과정에 포함할 파일 경로
+included:
+
+# 린트 과정에서 무시할 파일 경로
+excluded:
+- Pods
+
+# Customized Configurable Rules
+force_cast: warning
+force_try: warning
+line_length: 99
+type_body_length:
+  warning: 300
+  error: 400
+file_length:
+  warning: 500
+  error: 1200
+function_body_length:
+  warning: 80
+  error: 100
