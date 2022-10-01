@@ -19,6 +19,13 @@
 		A13C533228E7129F00C72215 /* DobbyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13C533128E7129F00C72215 /* DobbyUITests.swift */; };
 		A13C533428E7129F00C72215 /* DobbyUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13C533328E7129F00C72215 /* DobbyUITestsLaunchTests.swift */; };
 		A13C534428E71C0800C72215 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = A13C534328E71C0800C72215 /* .swiftlint.yml */; };
+		A13C534B28E816B800C72215 /* RootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13C534A28E816B800C72215 /* RootCoordinator.swift */; };
+		A13C535228E817F800C72215 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13C535128E817F800C72215 /* Coordinator.swift */; };
+		A13C535528E81D4B00C72215 /* AuthenticationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13C535428E81D4B00C72215 /* AuthenticationRepository.swift */; };
+		A13C535728E8231100C72215 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13C535628E8231100C72215 /* BaseViewController.swift */; };
+		A13C535A28E8288300C72215 /* SplashCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13C535928E8288300C72215 /* SplashCoordinator.swift */; };
+		A13C535C28E8288A00C72215 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13C535B28E8288A00C72215 /* SplashViewController.swift */; };
+		A13C535E28E8289200C72215 /* SplashViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13C535D28E8289200C72215 /* SplashViewModel.swift */; };
 		A6398B2B9E529BE803AE32DF /* Pods_Dobby_DobbyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DD0D072DEA44EC34394AC4C /* Pods_Dobby_DobbyUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -60,6 +67,13 @@
 		A13C533128E7129F00C72215 /* DobbyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DobbyUITests.swift; sourceTree = "<group>"; };
 		A13C533328E7129F00C72215 /* DobbyUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DobbyUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		A13C534328E71C0800C72215 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		A13C534A28E816B800C72215 /* RootCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootCoordinator.swift; sourceTree = "<group>"; };
+		A13C535128E817F800C72215 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		A13C535428E81D4B00C72215 /* AuthenticationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationRepository.swift; sourceTree = "<group>"; };
+		A13C535628E8231100C72215 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		A13C535928E8288300C72215 /* SplashCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashCoordinator.swift; sourceTree = "<group>"; };
+		A13C535B28E8288A00C72215 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		A13C535D28E8289200C72215 /* SplashViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewModel.swift; sourceTree = "<group>"; };
 		B009706BDB37DEA736AD6D98 /* Pods-DobbyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DobbyTests.debug.xcconfig"; path = "Target Support Files/Pods-DobbyTests/Pods-DobbyTests.debug.xcconfig"; sourceTree = "<group>"; };
 		CD5638528747BA4F0C91F248 /* Pods-DobbyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DobbyTests.release.xcconfig"; path = "Target Support Files/Pods-DobbyTests/Pods-DobbyTests.release.xcconfig"; sourceTree = "<group>"; };
 		E74A368873741D6EC352DD28 /* Pods_Dobby.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Dobby.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -199,6 +213,9 @@
 		A13C534628E720E600C72215 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				A13C535828E8286600C72215 /* Splash */,
+				A13C534928E815EE00C72215 /* Root */,
+				A13C535028E817EE00C72215 /* Common */,
 				A13C531428E7129D00C72215 /* ViewController.swift */,
 			);
 			path = Presentation;
@@ -207,6 +224,7 @@
 		A13C534728E7213100C72215 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				A13C535328E81D3F00C72215 /* Auth */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -216,6 +234,41 @@
 			children = (
 			);
 			path = Data;
+			sourceTree = "<group>";
+		};
+		A13C534928E815EE00C72215 /* Root */ = {
+			isa = PBXGroup;
+			children = (
+				A13C534A28E816B800C72215 /* RootCoordinator.swift */,
+			);
+			path = Root;
+			sourceTree = "<group>";
+		};
+		A13C535028E817EE00C72215 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				A13C535128E817F800C72215 /* Coordinator.swift */,
+				A13C535628E8231100C72215 /* BaseViewController.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		A13C535328E81D3F00C72215 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				A13C535428E81D4B00C72215 /* AuthenticationRepository.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		A13C535828E8286600C72215 /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				A13C535928E8288300C72215 /* SplashCoordinator.swift */,
+				A13C535B28E8288A00C72215 /* SplashViewController.swift */,
+				A13C535D28E8289200C72215 /* SplashViewModel.swift */,
+			);
+			path = Splash;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -476,9 +529,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A13C535528E81D4B00C72215 /* AuthenticationRepository.swift in Sources */,
 				A13C531528E7129D00C72215 /* ViewController.swift in Sources */,
+				A13C535E28E8289200C72215 /* SplashViewModel.swift in Sources */,
+				A13C534B28E816B800C72215 /* RootCoordinator.swift in Sources */,
+				A13C535728E8231100C72215 /* BaseViewController.swift in Sources */,
 				A13C531128E7129D00C72215 /* AppDelegate.swift in Sources */,
 				A13C531328E7129D00C72215 /* SceneDelegate.swift in Sources */,
+				A13C535228E817F800C72215 /* Coordinator.swift in Sources */,
+				A13C535A28E8288300C72215 /* SplashCoordinator.swift in Sources */,
+				A13C535C28E8288A00C72215 /* SplashViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
