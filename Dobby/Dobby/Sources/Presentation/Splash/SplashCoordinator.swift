@@ -21,7 +21,7 @@ final class SplashCoordinator: Coordinator {
         let splashViewModel = SplashViewModel(
             authUseCase: AuthUseCaseImpl(
                 authenticationRepository: AuthenticationRepositoryImpl(
-                    network: NetworkServiceImpl(),
+                    network: NetworkServiceImpl.shared,
                     localStorage: UserDefaults.standard
                 )
             )
@@ -34,19 +34,14 @@ final class SplashCoordinator: Coordinator {
         window?.makeKeyAndVisible()
     }
     
-    func didFinish() {
-        //
+    func presentMainTab(viewContorller: UIViewController) {
+        
     }
     
-    func childDidFinish(child: Coordinator) {
-        //
-    }
-    
-    func presentMainTab() {
-        print("debug : presentMainTab  ")
-    }
-    
-    func presentWelcome() {
-        print("debug : presentWelcome  ")
+    func presentWelcome(viewContorller: UIViewController) {
+        let welcomeCoordinator = WelcomeCoordinator()
+        welcomeCoordinator.parentCoordinator = self
+        childCoordinators += [welcomeCoordinator]
+        welcomeCoordinator.start(window: nil, viewController: viewContorller)
     }
 }

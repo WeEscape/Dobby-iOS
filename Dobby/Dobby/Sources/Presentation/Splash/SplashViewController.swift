@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxRelay
 import RxViewController
 
 final class SplashViewController: BaseViewController {
@@ -43,14 +45,15 @@ final class SplashViewController: BaseViewController {
     }
     
     func bindState() {
-        splashViewModel.isSignIn
-            .subscribe { [weak self] result in
+        self.splashViewModel.isSignIn
+            .subscribe(onNext: { [weak self] result in
+                guard let self = self else {return}
                 if result {
-                    self?.splashCoordinator?.presentMainTab()
+                    self.splashCoordinator?.presentMainTab(viewContorller: self)
                 } else {
-                    self?.splashCoordinator?.presentWelcome()
+                    self.splashCoordinator?.presentWelcome(viewContorller: self)
                 }
-            }.disposed(by: self.disposeBag)
+            }).disposed(by: self.disposeBag)
     }
     
     func bindAction() {
