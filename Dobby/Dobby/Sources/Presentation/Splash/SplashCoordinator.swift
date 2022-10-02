@@ -18,16 +18,30 @@ final class SplashCoordinator: Coordinator {
     }
     
     func start(window: UIWindow?, viewController: UIViewController?) {
-        <#code#>
+        let splashViewModel = SplashViewModel(
+            authenticationRepository: AuthenticationRepositoryImpl()
+        )
+        let splashViewController = SplashViewController(
+            splashViewModel: splashViewModel,
+            splashCoordinator: self
+        )
+        window?.rootViewController = splashViewController
+        window?.makeKeyAndVisible()
     }
     
     func didFinish() {
-        <#code#>
+        //
     }
     
     func childDidFinish(child: Coordinator) {
-        <#code#>
+        //
     }
     
+    func presentMainTab() {
+        print("debug : presentMainTab  ")
+    }
     
+    func presentWelcome() {
+        print("debug : SplashViewModel  ")
+    }
 }
