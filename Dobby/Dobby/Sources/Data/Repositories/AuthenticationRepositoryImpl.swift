@@ -10,31 +10,49 @@ import RxSwift
 
 final class AuthenticationRepositoryImpl: AuthenticationRepository {
     
-    func kakaoAuthorize() -> RxSwift.Observable<Authentication> {
+    let network: NetworkService
+    let localStorage: LocalTokenStorageService
+    
+    init(network: NetworkService, localStorage: LocalTokenStorageService) {
+        self.network = network
+        self.localStorage = localStorage
+    }
+    
+    func kakaoAuthorize() -> Observable<Authentication> {
         return .empty()
     }
     
-    func appleAuthorize() -> RxSwift.Observable<Authentication> {
+    func appleAuthorize() -> Observable<Authentication> {
         return .empty()
     }
     
-    func logout() -> RxSwift.Observable<Void> {
+    func logout() -> Observable<Void> {
         return .empty()
     }
     
-    func resign() -> RxSwift.Observable<Void> {
+    func resign() -> Observable<Void> {
         return .empty()
     }
     
-    func readToken(tokenOption: AuthTokenOption) -> RxSwift.Observable<Authentication> {
+    func readToken(tokenOption: AuthTokenOption) -> Observable<Authentication> {
+        var tokenList: [String?] = []
+        if tokenOption.contains(.accessToken)  {
+            tokenList.append(self.localStorage.read(key: .accessToken))
+        }
+        if tokenOption.contains(.refreshToken) {
+            tokenList.append(self.localStorage.read(key: .refreshToken))
+        }
+        return Observable.just(Authentication(
+            accessToken: tokenList[safe: 0] ?? nil,
+            refreshToken: tokenList[safe: 1] ?? nil
+        ))
+    }
+    
+    func writeToken(authentication: Authentication) -> Observable<Void> {
         return .empty()
     }
     
-    func writeToken(authentication: Authentication) -> RxSwift.Observable<Void> {
-        return .empty()
-    }
-    
-    func removeToken(tokenOption: AuthTokenOption) -> RxSwift.Observable<Void> {
+    func removeToken(tokenOption: AuthTokenOption) -> Observable<Void> {
         return .empty()
     }
 }
