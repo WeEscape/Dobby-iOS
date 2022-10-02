@@ -6,7 +6,17 @@
 //
 
 import Foundation
+import RxSwift
 
-protocol AuthenticationRepository: AnyObject {
+protocol AuthenticationRepository {
+    // oauth
+    func kakaoAuthorize() -> Observable<Authentication>
+    func appleAuthorize() -> Observable<Authentication>
+    func logout() -> Observable<Void>
+    func resign() -> Observable<Void>
     
+    // authToken
+    func readToken(tokenOption: AuthTokenOption) -> Observable<Authentication>
+    func writeToken(authentication: Authentication) -> Observable<Void>
+    func removeToken(tokenOption: AuthTokenOption) -> Observable<Void>
 }
