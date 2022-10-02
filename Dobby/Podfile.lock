@@ -1,6 +1,37 @@
 PODS:
+  - Alamofire (5.6.2)
   - Differentiator (5.0.0)
+  - KakaoSDKAuth (2.11.1):
+    - KakaoSDKCommon (= 2.11.1)
+  - KakaoSDKCommon (2.11.1):
+    - KakaoSDKCommon/Common (= 2.11.1)
+    - KakaoSDKCommon/Network (= 2.11.1)
+  - KakaoSDKCommon/Common (2.11.1)
+  - KakaoSDKCommon/Network (2.11.1):
+    - Alamofire (~> 5.1)
+    - KakaoSDKCommon/Common (= 2.11.1)
+  - KakaoSDKFriend (2.11.1):
+    - KakaoSDKUser (= 2.11.1)
+  - KakaoSDKNavi (2.11.1):
+    - KakaoSDKCommon/Common (= 2.11.1)
+  - KakaoSDKShare (2.11.1):
+    - KakaoSDKCommon (= 2.11.1)
+    - KakaoSDKTemplate (= 2.11.1)
+  - KakaoSDKStory (2.11.1):
+    - KakaoSDKUser (= 2.11.1)
+  - KakaoSDKTalk (2.11.1):
+    - KakaoSDKTemplate (= 2.11.1)
+    - KakaoSDKUser (= 2.11.1)
+  - KakaoSDKTemplate (2.11.1):
+    - KakaoSDKCommon/Common (= 2.11.1)
+  - KakaoSDKUser (2.11.1):
+    - KakaoSDKAuth (= 2.11.1)
   - lottie-ios (3.4.3)
+  - RxAlamofire (6.1.1):
+    - RxAlamofire/Core (= 6.1.1)
+  - RxAlamofire/Core (6.1.1):
+    - Alamofire (~> 5.4)
+    - RxSwift (~> 6.0)
   - RxCocoa (6.5.0):
     - RxRelay (= 6.5.0)
     - RxSwift (= 6.5.0)
@@ -11,6 +42,46 @@ PODS:
   - RxGesture (4.0.4):
     - RxCocoa (~> 6.0)
     - RxSwift (~> 6.0)
+  - RxKakaoSDK (2.11.1):
+    - KakaoSDKNavi (= 2.11.1)
+    - KakaoSDKTemplate (= 2.11.1)
+    - RxKakaoSDKAuth (= 2.11.1)
+    - RxKakaoSDKCommon (= 2.11.1)
+    - RxKakaoSDKFriend (= 2.11.1)
+    - RxKakaoSDKShare (= 2.11.1)
+    - RxKakaoSDKStory (= 2.11.1)
+    - RxKakaoSDKTalk (= 2.11.1)
+    - RxKakaoSDKUser (= 2.11.1)
+  - RxKakaoSDKAuth (2.11.1):
+    - KakaoSDKAuth (= 2.11.1)
+    - RxKakaoSDKCommon (= 2.11.1)
+  - RxKakaoSDKCommon (2.11.1):
+    - RxKakaoSDKCommon/Common (= 2.11.1)
+    - RxKakaoSDKCommon/Network (= 2.11.1)
+  - RxKakaoSDKCommon/Common (2.11.1):
+    - KakaoSDKCommon/Common (= 2.11.1)
+    - RxCocoa
+    - RxSwift (~> 6.0)
+  - RxKakaoSDKCommon/Network (2.11.1):
+    - KakaoSDKCommon/Network (= 2.11.1)
+    - RxAlamofire (~> 6.0)
+    - RxKakaoSDKCommon/Common (= 2.11.1)
+  - RxKakaoSDKFriend (2.11.1):
+    - KakaoSDKFriend (= 2.11.1)
+    - RxKakaoSDKUser (= 2.11.1)
+  - RxKakaoSDKShare (2.11.1):
+    - KakaoSDKShare (= 2.11.1)
+    - RxKakaoSDKCommon (= 2.11.1)
+  - RxKakaoSDKStory (2.11.1):
+    - KakaoSDKStory (= 2.11.1)
+    - RxKakaoSDKUser (= 2.11.1)
+  - RxKakaoSDKTalk (2.11.1):
+    - KakaoSDKTalk (= 2.11.1)
+    - KakaoSDKTemplate (= 2.11.1)
+    - RxKakaoSDKUser (= 2.11.1)
+  - RxKakaoSDKUser (2.11.1):
+    - KakaoSDKUser (= 2.11.1)
+    - RxKakaoSDKAuth (= 2.11.1)
   - RxOptional (5.0.2):
     - RxCocoa (~> 6.0)
     - RxSwift (~> 6.0)
@@ -29,6 +100,7 @@ DEPENDENCIES:
   - RxCocoa
   - RxDataSources
   - RxGesture
+  - RxKakaoSDK
   - RxOptional
   - RxSwift
   - RxViewController
@@ -38,11 +110,30 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
+    - Alamofire
     - Differentiator
+    - KakaoSDKAuth
+    - KakaoSDKCommon
+    - KakaoSDKFriend
+    - KakaoSDKNavi
+    - KakaoSDKShare
+    - KakaoSDKStory
+    - KakaoSDKTalk
+    - KakaoSDKTemplate
+    - KakaoSDKUser
     - lottie-ios
+    - RxAlamofire
     - RxCocoa
     - RxDataSources
     - RxGesture
+    - RxKakaoSDK
+    - RxKakaoSDKAuth
+    - RxKakaoSDKCommon
+    - RxKakaoSDKFriend
+    - RxKakaoSDKShare
+    - RxKakaoSDKStory
+    - RxKakaoSDKTalk
+    - RxKakaoSDKUser
     - RxOptional
     - RxRelay
     - RxSwift
@@ -52,11 +143,30 @@ SPEC REPOS:
     - SwiftyBeaver
 
 SPEC CHECKSUMS:
+  Alamofire: d368e1ff8a298e6dde360e35a3e68e6c610e7204
   Differentiator: e8497ceab83c1b10ca233716d547b9af21b9344d
+  KakaoSDKAuth: bb2dfa7be30daa8403c9cfc8001aa6fde7a5b779
+  KakaoSDKCommon: 555e1bb46595b842ded01cf7888cc17bbae4e113
+  KakaoSDKFriend: 51b432245bfd77006df4594efd6cb606c8970e86
+  KakaoSDKNavi: 695360dc4a673c1fc4e893c6afe9922e0accc8bd
+  KakaoSDKShare: 9752730ce3339536f9d7812eb70eccb87643e9a6
+  KakaoSDKStory: 0ea94b212c07579c12f2a4c64722667cef6ace84
+  KakaoSDKTalk: 504872e5b49e5ff104c65e37d54d2a8f04c606d3
+  KakaoSDKTemplate: f8ee0b33f649e436c1aaf2a3a6bd6aa3dcae2451
+  KakaoSDKUser: 08c0a4f40bebdebdf948a9e3d0e44ed5c2754f99
   lottie-ios: 9ae750cdc7820fecbd3c2f0cfc493038208fcdc4
+  RxAlamofire: beb75a1c452d0de225651db4903f5d29d034a620
   RxCocoa: 94f817b71c07517321eb4f9ad299112ca8af743b
   RxDataSources: aa47cc1ed6c500fa0dfecac5c979b723542d79cf
   RxGesture: f3efb47ed2d26a8082f7b660d4a59970e275a7f8
+  RxKakaoSDK: e5a2c8c367fc249b4b1111494a46129d954702c1
+  RxKakaoSDKAuth: 7a484692e63d1318db249ee04efd74c57a94daad
+  RxKakaoSDKCommon: f71c4ca447ee3fd71688aa17f8c0cc6be913071d
+  RxKakaoSDKFriend: bbec2e5628b33854b6f00f309121da3375640faa
+  RxKakaoSDKShare: ecb82b259d1903b2b256dababcd37238925fe5b2
+  RxKakaoSDKStory: af20f47b98d81d9b37f4a7a3bfff89cf010e60ad
+  RxKakaoSDKTalk: c97bb3167ba2218c6727015e8f6d56196539ed4b
+  RxKakaoSDKUser: 81a8735e0df352003d22a1bf3ad5a45bce9b471b
   RxOptional: 3664964c96b69dd20c9cf78bdfe546615e26eca8
   RxRelay: 1de1523e604c72b6c68feadedd1af3b1b4d0ecbd
   RxSwift: 5710a9e6b17f3c3d6e40d6e559b9fa1e813b2ef8
@@ -65,6 +175,6 @@ SPEC CHECKSUMS:
   SwiftLint: 32ee33ded0636d0905ef6911b2b67bbaeeedafa5
   SwiftyBeaver: c8241b4745aa269a78ca5a022532c6915e948536
 
-PODFILE CHECKSUM: 47785516645c4a35bc0486c008804538cbfb84dd
+PODFILE CHECKSUM: 2b09185f44b624853c7ff7480223790d1b2b17bf
 
 COCOAPODS: 1.11.3

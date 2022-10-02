@@ -19,6 +19,9 @@ target 'Dobby' do
   
   # Link
   pod 'SwiftLint'
+  
+  # KakaoSDK
+  pod 'RxKakaoSDK'
 
   target 'DobbyTests' do
     inherit! :search_paths
