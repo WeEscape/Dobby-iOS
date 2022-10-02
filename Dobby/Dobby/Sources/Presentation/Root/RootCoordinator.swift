@@ -23,17 +23,4 @@ final class RootCoordinator: Coordinator {
         childCoordinators += [splashCoordinator]
         splashCoordinator.start(window: window, viewController: viewController)
     }
-    
-    func didFinish() {
-        childCoordinators.removeAll()
-    }
-    
-    func childDidFinish(child: Coordinator) {
-        for (index, coordinator) in childCoordinators.enumerated() {
-            if coordinator === child {
-                childCoordinators.remove(at: index)
-                break
-            }
-        }
-    }
 }
