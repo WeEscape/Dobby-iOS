@@ -17,16 +17,20 @@ final class WelcomeCoordinator: Coordinator {
     }
     
     func start(window: UIWindow?, viewController: UIViewController?) {
-        print("debug :  WelcomeCoordinator start")
+        let welcomeViewModel = WelcomeViewModel(
+            authUseCase: AuthUseCaseImpl(
+                authenticationRepository: AuthenticationRepositoryImpl(
+                    network: NetworkServiceImpl.shared,
+                    localStorage: UserDefaults.standard
+                )
+            )
+        )
+        let welcomeViewController = WelcomeViewController(
+            welcomeViewModel: welcomeViewModel,
+            welcomeCoordinator: self
+        )
+        welcomeViewController.modalPresentationStyle = .fullScreen
+        welcomeViewController.modalTransitionStyle = .coverVertical
+        viewController?.present(welcomeViewController, animated: true)
     }
-    
-    func didFinish() {
-        
-    }
-    
-    func childDidFinish(child: Coordinator) {
-        
-    }
-    
-    
 }

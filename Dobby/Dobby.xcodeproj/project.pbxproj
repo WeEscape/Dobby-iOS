@@ -34,6 +34,7 @@
 		A13C537728E9786900C72215 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13C537628E9786900C72215 /* WelcomeViewController.swift */; };
 		A13C537928E9789200C72215 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13C537828E9789200C72215 /* MainTabBarController.swift */; };
 		A13C537B28E97EF600C72215 /* WelcomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13C537A28E97EF600C72215 /* WelcomeCoordinator.swift */; };
+		A13C537D28E98FD500C72215 /* WelcomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13C537C28E98FD500C72215 /* WelcomeViewModel.swift */; };
 		A6398B2B9E529BE803AE32DF /* Pods_Dobby_DobbyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DD0D072DEA44EC34394AC4C /* Pods_Dobby_DobbyUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -90,6 +91,7 @@
 		A13C537628E9786900C72215 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		A13C537828E9789200C72215 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		A13C537A28E97EF600C72215 /* WelcomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeCoordinator.swift; sourceTree = "<group>"; };
+		A13C537C28E98FD500C72215 /* WelcomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewModel.swift; sourceTree = "<group>"; };
 		B009706BDB37DEA736AD6D98 /* Pods-DobbyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DobbyTests.debug.xcconfig"; path = "Target Support Files/Pods-DobbyTests/Pods-DobbyTests.debug.xcconfig"; sourceTree = "<group>"; };
 		CD5638528747BA4F0C91F248 /* Pods-DobbyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DobbyTests.release.xcconfig"; path = "Target Support Files/Pods-DobbyTests/Pods-DobbyTests.release.xcconfig"; sourceTree = "<group>"; };
 		E74A368873741D6EC352DD28 /* Pods_Dobby.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Dobby.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -347,6 +349,7 @@
 			children = (
 				A13C537A28E97EF600C72215 /* WelcomeCoordinator.swift */,
 				A13C537628E9786900C72215 /* WelcomeViewController.swift */,
+				A13C537C28E98FD500C72215 /* WelcomeViewModel.swift */,
 			);
 			path = Welcome;
 			sourceTree = "<group>";
@@ -626,6 +629,7 @@
 				A13C536F28E94D0500C72215 /* LocalTokenStorageService.swift in Sources */,
 				A13C536D28E94CA200C72215 /* NetworkService.swift in Sources */,
 				A13C536528E91BB800C72215 /* Authentication.swift in Sources */,
+				A13C537D28E98FD500C72215 /* WelcomeViewModel.swift in Sources */,
 				A13C537928E9789200C72215 /* MainTabBarController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
