@@ -8,7 +8,8 @@ target 'Dobby' do
   pod 'RxOptional'
   pod 'RxSwift'
   pod 'RxViewController'
-
+  pod 'RxGesture'
+  
   # UI
   pod 'SnapKit'
   pod 'lottie-ios'
