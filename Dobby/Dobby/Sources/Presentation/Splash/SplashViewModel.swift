@@ -13,14 +13,17 @@ class SplashViewModel {
     
     var disposBag: DisposeBag = .init()
     let isSignIn: PublishRelay<Bool> = .init()
-    let authenticationRepository: AuthenticationRepository
+    let authUseCase: AuthUseCase
     
-    init(authenticationRepository: AuthenticationRepository) {
-        self.authenticationRepository = authenticationRepository
+    init(authUseCase: AuthUseCase) {
+        self.authUseCase = authUseCase
     }
     
     func loadAccessToken() {
-        print("debug : SplashViewModel loadAccessToken ")
+        self.authUseCase.readToken(tokenOption: [.accessToken, .refreshToken])
+            .subscribe(onNext: { auth in
+                
+            }).disposed(by: self.disposBag)
     }
     
 }
