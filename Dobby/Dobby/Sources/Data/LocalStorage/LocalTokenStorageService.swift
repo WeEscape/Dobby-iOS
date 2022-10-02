@@ -21,16 +21,16 @@ protocol LocalTokenStorageService {
 
 extension UserDefaults: LocalTokenStorageService {
     func read(key: TokenKey) -> String? {
-        return self.object(forKey: key.rawValue) as? String
+        return Self.standard.object(forKey: key.rawValue) as? String
     }
     
     func write(key: TokenKey, value: String) {
-        self.setValue(value, forKey: key.rawValue)
-        self.synchronize()
+        Self.standard.setValue(value, forKey: key.rawValue)
+        Self.standard.synchronize()
     }
     
     func delete(key: TokenKey) {
-        self.removeObject(forKey: key.rawValue)
-        self.synchronize()
+        Self.standard.removeObject(forKey: key.rawValue)
+        Self.standard.synchronize()
     }
 }
