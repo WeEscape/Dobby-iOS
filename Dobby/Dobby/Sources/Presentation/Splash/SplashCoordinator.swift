@@ -19,7 +19,9 @@ final class SplashCoordinator: Coordinator {
     
     func start(window: UIWindow?, viewController: UIViewController?) {
         let splashViewModel = SplashViewModel(
-            authenticationRepository: AuthenticationRepositoryImpl()
+            authUseCase: AuthUseCaseImpl(
+                authenticationRepository: AuthenticationRepositoryImpl()
+            )
         )
         let splashViewController = SplashViewController(
             splashViewModel: splashViewModel,
