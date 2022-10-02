@@ -28,6 +28,9 @@
 		A13C536328E9173900C72215 /* AuthenticationRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13C536228E9173900C72215 /* AuthenticationRepositoryImpl.swift */; };
 		A13C536528E91BB800C72215 /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13C536428E91BB700C72215 /* Authentication.swift */; };
 		A13C536728E91D9C00C72215 /* AuthUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13C536628E91D9C00C72215 /* AuthUseCase.swift */; };
+		A13C536D28E94CA200C72215 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13C536C28E94CA200C72215 /* NetworkService.swift */; };
+		A13C536F28E94D0500C72215 /* LocalTokenStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13C536E28E94D0500C72215 /* LocalTokenStorageService.swift */; };
+		A13C537328E958DF00C72215 /* Array+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13C537228E958DF00C72215 /* Array+.swift */; };
 		A6398B2B9E529BE803AE32DF /* Pods_Dobby_DobbyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DD0D072DEA44EC34394AC4C /* Pods_Dobby_DobbyUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -78,6 +81,9 @@
 		A13C536228E9173900C72215 /* AuthenticationRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationRepositoryImpl.swift; sourceTree = "<group>"; };
 		A13C536428E91BB700C72215 /* Authentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authentication.swift; sourceTree = "<group>"; };
 		A13C536628E91D9C00C72215 /* AuthUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthUseCase.swift; sourceTree = "<group>"; };
+		A13C536C28E94CA200C72215 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		A13C536E28E94D0500C72215 /* LocalTokenStorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalTokenStorageService.swift; sourceTree = "<group>"; };
+		A13C537228E958DF00C72215 /* Array+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+.swift"; sourceTree = "<group>"; };
 		B009706BDB37DEA736AD6D98 /* Pods-DobbyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DobbyTests.debug.xcconfig"; path = "Target Support Files/Pods-DobbyTests/Pods-DobbyTests.debug.xcconfig"; sourceTree = "<group>"; };
 		CD5638528747BA4F0C91F248 /* Pods-DobbyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DobbyTests.release.xcconfig"; path = "Target Support Files/Pods-DobbyTests/Pods-DobbyTests.release.xcconfig"; sourceTree = "<group>"; };
 		E74A368873741D6EC352DD28 /* Pods_Dobby.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Dobby.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -187,6 +193,7 @@
 		A13C534028E7175000C72215 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				A13C537028E958CD00C72215 /* Common */,
 				A13C534528E720BA00C72215 /* App */,
 				A13C534828E7213B00C72215 /* Data */,
 				A13C534728E7213100C72215 /* Domain */,
@@ -235,6 +242,8 @@
 		A13C534828E7213B00C72215 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				A13C536B28E94C7400C72215 /* LocalStorage */,
+				A13C536A28E94C6C00C72215 /* Network */,
 				A13C536128E9172000C72215 /* Repositories */,
 			);
 			path = Data;
@@ -283,6 +292,38 @@
 				A13C536228E9173900C72215 /* AuthenticationRepositoryImpl.swift */,
 			);
 			path = Repositories;
+			sourceTree = "<group>";
+		};
+		A13C536A28E94C6C00C72215 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				A13C536C28E94CA200C72215 /* NetworkService.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		A13C536B28E94C7400C72215 /* LocalStorage */ = {
+			isa = PBXGroup;
+			children = (
+				A13C536E28E94D0500C72215 /* LocalTokenStorageService.swift */,
+			);
+			path = LocalStorage;
+			sourceTree = "<group>";
+		};
+		A13C537028E958CD00C72215 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				A13C537128E958D200C72215 /* Extensions */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		A13C537128E958D200C72215 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				A13C537228E958DF00C72215 /* Array+.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -547,6 +588,7 @@
 				A13C534B28E816B800C72215 /* RootCoordinator.swift in Sources */,
 				A13C535728E8231100C72215 /* BaseViewController.swift in Sources */,
 				A13C536028E8942900C72215 /* AuthenticationRepository.swift in Sources */,
+				A13C537328E958DF00C72215 /* Array+.swift in Sources */,
 				A13C531128E7129D00C72215 /* AppDelegate.swift in Sources */,
 				A13C536328E9173900C72215 /* AuthenticationRepositoryImpl.swift in Sources */,
 				A13C531328E7129D00C72215 /* SceneDelegate.swift in Sources */,
@@ -554,6 +596,8 @@
 				A13C535228E817F800C72215 /* Coordinator.swift in Sources */,
 				A13C535A28E8288300C72215 /* SplashCoordinator.swift in Sources */,
 				A13C535C28E8288A00C72215 /* SplashViewController.swift in Sources */,
+				A13C536F28E94D0500C72215 /* LocalTokenStorageService.swift in Sources */,
+				A13C536D28E94CA200C72215 /* NetworkService.swift in Sources */,
 				A13C536528E91BB800C72215 /* Authentication.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
