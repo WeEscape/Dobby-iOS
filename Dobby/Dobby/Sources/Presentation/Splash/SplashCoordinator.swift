@@ -20,7 +20,10 @@ final class SplashCoordinator: Coordinator {
     func start(window: UIWindow?, viewController: UIViewController?) {
         let splashViewModel = SplashViewModel(
             authUseCase: AuthUseCaseImpl(
-                authenticationRepository: AuthenticationRepositoryImpl()
+                authenticationRepository: AuthenticationRepositoryImpl(
+                    network: NetworkServiceImpl(),
+                    localStorage: UserDefaults.standard
+                )
             )
         )
         let splashViewController = SplashViewController(
@@ -44,6 +47,6 @@ final class SplashCoordinator: Coordinator {
     }
     
     func presentWelcome() {
-        print("debug : SplashViewModel  ")
+        print("debug : presentWelcome  ")
     }
 }
