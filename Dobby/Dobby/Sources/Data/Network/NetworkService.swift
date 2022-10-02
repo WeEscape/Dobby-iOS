@@ -13,4 +13,5 @@ protocol NetworkService {
 
 final class NetworkServiceImpl: NetworkService {
     
+    static let shared = NetworkServiceImpl()
 }
