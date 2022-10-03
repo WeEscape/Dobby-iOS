@@ -7,6 +7,8 @@
 
 import UIKit
 import SwiftyBeaver
+import KakaoSDKCommon
+import KakaoSDKAuth
 
 let BeaverLog = SwiftyBeaver.self
 
@@ -23,6 +25,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         console.format = "$Dyyyy-MM-dd HH:mm:ss.SSS$d $C$L$c $N.$F:$l - $M $X"
         BeaverLog.addDestination(console)
         
+        // kakao init
+        KakaoSDK.initSDK(appKey: KakaoAppKey.nativeAppKey)
         return true
     }
 
@@ -46,5 +50,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         didDiscardSceneSessions sceneSessions: Set<UISceneSession>
     ) {
         
+    }
+    
+    func application(_ app: UIApplication,
+                     open url: URL,
+                     options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        if AuthApi.isKakaoTalkLoginUrl(url) {
+            return AuthController.handleOpenUrl(url: url)
+        }
+        return false
     }
 }

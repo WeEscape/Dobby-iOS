@@ -35,6 +35,7 @@
 		A13C537928E9789200C72215 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13C537828E9789200C72215 /* MainTabBarController.swift */; };
 		A13C537B28E97EF600C72215 /* WelcomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13C537A28E97EF600C72215 /* WelcomeCoordinator.swift */; };
 		A13C537D28E98FD500C72215 /* WelcomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13C537C28E98FD500C72215 /* WelcomeViewModel.swift */; };
+		A13C537F28EA9C0000C72215 /* AppKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13C537E28EA9C0000C72215 /* AppKey.swift */; };
 		CF500B1222303C7291A42D9D /* Pods_Dobby.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B3D52E48C3A5CD46EE09F86 /* Pods_Dobby.framework */; };
 /* End PBXBuildFile section */
 
@@ -90,6 +91,7 @@
 		A13C537828E9789200C72215 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		A13C537A28E97EF600C72215 /* WelcomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeCoordinator.swift; sourceTree = "<group>"; };
 		A13C537C28E98FD500C72215 /* WelcomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewModel.swift; sourceTree = "<group>"; };
+		A13C537E28EA9C0000C72215 /* AppKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppKey.swift; sourceTree = "<group>"; };
 		A27AD429C92AD79AA1937D21 /* Pods-Dobby-DobbyUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dobby-DobbyUITests.debug.xcconfig"; path = "Target Support Files/Pods-Dobby-DobbyUITests/Pods-Dobby-DobbyUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		C982B09DA7374C7C9EBFB0F5 /* Pods-Dobby.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dobby.debug.xcconfig"; path = "Target Support Files/Pods-Dobby/Pods-Dobby.debug.xcconfig"; sourceTree = "<group>"; };
 		E2065A457FB7E9D5ABB5819A /* Pods-Dobby.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dobby.release.xcconfig"; path = "Target Support Files/Pods-Dobby/Pods-Dobby.release.xcconfig"; sourceTree = "<group>"; };
@@ -225,6 +227,7 @@
 			children = (
 				A13C531028E7129D00C72215 /* AppDelegate.swift */,
 				A13C531228E7129D00C72215 /* SceneDelegate.swift */,
+				A13C537E28EA9C0000C72215 /* AppKey.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -621,6 +624,7 @@
 				A13C537328E958DF00C72215 /* Array+.swift in Sources */,
 				A13C531128E7129D00C72215 /* AppDelegate.swift in Sources */,
 				A13C536328E9173900C72215 /* AuthenticationRepositoryImpl.swift in Sources */,
+				A13C537F28EA9C0000C72215 /* AppKey.swift in Sources */,
 				A13C531328E7129D00C72215 /* SceneDelegate.swift in Sources */,
 				A13C536728E91D9C00C72215 /* AuthUseCase.swift in Sources */,
 				A13C535228E817F800C72215 /* Coordinator.swift in Sources */,
