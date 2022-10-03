@@ -92,7 +92,7 @@ final class WelcomeViewController: BaseViewController {
             .when(.recognized)
             .asDriver { _ in .empty() }
             .drive(onNext: { [weak self] _ in
-                self?.welcomeViewModel.kakaoAuthorize()
+                self?.welcomeViewModel.authorize(provider: .kakao)
             })
             .disposed(by: self.disposeBag)
     }

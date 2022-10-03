@@ -17,3 +17,8 @@ struct AuthTokenOption: OptionSet {
     static let accessToken =  AuthTokenOption(rawValue: 1 << 0)
     static let refreshToken = AuthTokenOption(rawValue: 1 << 1)
 }
+
+enum AuthenticationProvider: Int {
+    case kakao
+    case apple
+}
