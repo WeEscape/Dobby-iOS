@@ -4,6 +4,8 @@ disabled_rules:
   - trailing_comma
   - identifier_name
   - closure_parameter_position
+  - unused_capture_list
+  - redundant_string_enum_value
   
 # 기본 룰이 아닌 룰들을 활성화
 opt_in_rules:
