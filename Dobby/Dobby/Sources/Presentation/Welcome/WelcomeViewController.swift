@@ -95,5 +95,13 @@ final class WelcomeViewController: BaseViewController {
                 self?.welcomeViewModel.authorize(provider: .kakao)
             })
             .disposed(by: self.disposeBag)
+        
+        self.appleBtn.rx.tapGesture()
+            .when(.recognized)
+            .asDriver { _ in .empty() }
+            .drive(onNext: { [weak self] _ in
+                self?.welcomeViewModel.authorize(provider: .apple)
+            })
+            .disposed(by: self.disposeBag)
     }
 }
