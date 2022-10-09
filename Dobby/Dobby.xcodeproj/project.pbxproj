@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		673DCE1865C0C69E6AB20565 /* Pods_Dobby_DobbyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F6B63D74F7D466272A7C257 /* Pods_Dobby_DobbyUITests.framework */; };
 		7D7F9A1E30FFA768D555A0C2 /* Pods_DobbyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23D3CB2517F333D289463533 /* Pods_DobbyTests.framework */; };
+		A12095E928F2A198008CE410 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12095E828F2A198008CE410 /* NetworkError.swift */; };
 		A13C531128E7129D00C72215 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13C531028E7129D00C72215 /* AppDelegate.swift */; };
 		A13C531328E7129D00C72215 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13C531228E7129D00C72215 /* SceneDelegate.swift */; };
 		A13C531828E7129D00C72215 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A13C531628E7129D00C72215 /* Main.storyboard */; };
@@ -38,6 +39,10 @@
 		A13C537F28EA9C0000C72215 /* AppKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13C537E28EA9C0000C72215 /* AppKey.swift */; };
 		A174B16F28EC6F0300F80112 /* ASAuthorizationController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A174B16E28EC6F0300F80112 /* ASAuthorizationController+.swift */; };
 		A174B17128EC701900F80112 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = A174B17028EC701900F80112 /* Error.swift */; };
+		A174B17428EF002000F80112 /* BaseAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A174B17328EF002000F80112 /* BaseAPI.swift */; };
+		A174B17628EF007100F80112 /* LoginAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A174B17528EF007100F80112 /* LoginAPI.swift */; };
+		A174B17928EF010100F80112 /* AuthenticationDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = A174B17828EF010100F80112 /* AuthenticationDTO.swift */; };
+		A174B17C28EF034100F80112 /* NetworkLoggerPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = A174B17B28EF034100F80112 /* NetworkLoggerPlugin.swift */; };
 		CF500B1222303C7291A42D9D /* Pods_Dobby.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B3D52E48C3A5CD46EE09F86 /* Pods_Dobby.framework */; };
 /* End PBXBuildFile section */
 
@@ -63,6 +68,7 @@
 		2F6B63D74F7D466272A7C257 /* Pods_Dobby_DobbyUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Dobby_DobbyUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		66911DBB73814A1FFAEFD850 /* Pods-DobbyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DobbyTests.release.xcconfig"; path = "Target Support Files/Pods-DobbyTests/Pods-DobbyTests.release.xcconfig"; sourceTree = "<group>"; };
 		8B3D52E48C3A5CD46EE09F86 /* Pods_Dobby.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Dobby.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A12095E828F2A198008CE410 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		A13C530D28E7129D00C72215 /* Dobby.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dobby.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A13C531028E7129D00C72215 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A13C531228E7129D00C72215 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -96,6 +102,10 @@
 		A13C537E28EA9C0000C72215 /* AppKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppKey.swift; sourceTree = "<group>"; };
 		A174B16E28EC6F0300F80112 /* ASAuthorizationController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ASAuthorizationController+.swift"; sourceTree = "<group>"; };
 		A174B17028EC701900F80112 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
+		A174B17328EF002000F80112 /* BaseAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseAPI.swift; sourceTree = "<group>"; };
+		A174B17528EF007100F80112 /* LoginAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAPI.swift; sourceTree = "<group>"; };
+		A174B17828EF010100F80112 /* AuthenticationDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationDTO.swift; sourceTree = "<group>"; };
+		A174B17B28EF034100F80112 /* NetworkLoggerPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLoggerPlugin.swift; sourceTree = "<group>"; };
 		A27AD429C92AD79AA1937D21 /* Pods-Dobby-DobbyUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dobby-DobbyUITests.debug.xcconfig"; path = "Target Support Files/Pods-Dobby-DobbyUITests/Pods-Dobby-DobbyUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		C982B09DA7374C7C9EBFB0F5 /* Pods-Dobby.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dobby.debug.xcconfig"; path = "Target Support Files/Pods-Dobby/Pods-Dobby.debug.xcconfig"; sourceTree = "<group>"; };
 		E2065A457FB7E9D5ABB5819A /* Pods-Dobby.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dobby.release.xcconfig"; path = "Target Support Files/Pods-Dobby/Pods-Dobby.release.xcconfig"; sourceTree = "<group>"; };
@@ -261,6 +271,7 @@
 			children = (
 				A13C536B28E94C7400C72215 /* LocalStorage */,
 				A13C536A28E94C6C00C72215 /* Network */,
+				A174B17728EF009600F80112 /* DTO */,
 				A13C536128E9172000C72215 /* Repositories */,
 			);
 			path = Data;
@@ -315,6 +326,9 @@
 			isa = PBXGroup;
 			children = (
 				A13C536C28E94CA200C72215 /* NetworkService.swift */,
+				A12095E828F2A198008CE410 /* NetworkError.swift */,
+				A174B17228EF000B00F80112 /* APIs */,
+				A174B17A28EF031700F80112 /* Plugins */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -369,6 +383,31 @@
 				A174B16E28EC6F0300F80112 /* ASAuthorizationController+.swift */,
 			);
 			path = Rx;
+			sourceTree = "<group>";
+		};
+		A174B17228EF000B00F80112 /* APIs */ = {
+			isa = PBXGroup;
+			children = (
+				A174B17328EF002000F80112 /* BaseAPI.swift */,
+				A174B17528EF007100F80112 /* LoginAPI.swift */,
+			);
+			path = APIs;
+			sourceTree = "<group>";
+		};
+		A174B17728EF009600F80112 /* DTO */ = {
+			isa = PBXGroup;
+			children = (
+				A174B17828EF010100F80112 /* AuthenticationDTO.swift */,
+			);
+			path = DTO;
+			sourceTree = "<group>";
+		};
+		A174B17A28EF031700F80112 /* Plugins */ = {
+			isa = PBXGroup;
+			children = (
+				A174B17B28EF034100F80112 /* NetworkLoggerPlugin.swift */,
+			);
+			path = Plugins;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -630,13 +669,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				A13C535E28E8289200C72215 /* SplashViewModel.swift in Sources */,
+				A174B17C28EF034100F80112 /* NetworkLoggerPlugin.swift in Sources */,
 				A13C537728E9786900C72215 /* WelcomeViewController.swift in Sources */,
 				A13C534B28E816B800C72215 /* RootCoordinator.swift in Sources */,
 				A13C535728E8231100C72215 /* BaseViewController.swift in Sources */,
+				A174B17628EF007100F80112 /* LoginAPI.swift in Sources */,
+				A12095E928F2A198008CE410 /* NetworkError.swift in Sources */,
 				A13C536028E8942900C72215 /* AuthenticationRepository.swift in Sources */,
+				A174B17928EF010100F80112 /* AuthenticationDTO.swift in Sources */,
 				A13C537B28E97EF600C72215 /* WelcomeCoordinator.swift in Sources */,
 				A13C537328E958DF00C72215 /* Array+.swift in Sources */,
 				A13C531128E7129D00C72215 /* AppDelegate.swift in Sources */,
+				A174B17428EF002000F80112 /* BaseAPI.swift in Sources */,
 				A13C536328E9173900C72215 /* AuthenticationRepositoryImpl.swift in Sources */,
 				A13C537F28EA9C0000C72215 /* AppKey.swift in Sources */,
 				A174B16F28EC6F0300F80112 /* ASAuthorizationController+.swift in Sources */,
