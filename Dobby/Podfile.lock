@@ -27,6 +27,11 @@ PODS:
   - KakaoSDKUser (2.11.1):
     - KakaoSDKAuth (= 2.11.1)
   - lottie-ios (3.4.3)
+  - Moya/Core (15.0.0):
+    - Alamofire (~> 5.0)
+  - Moya/RxSwift (15.0.0):
+    - Moya/Core
+    - RxSwift (~> 6.0)
   - RxAlamofire (6.1.1):
     - RxAlamofire/Core (= 6.1.1)
   - RxAlamofire/Core (6.1.1):
@@ -97,6 +102,7 @@ PODS:
 
 DEPENDENCIES:
   - lottie-ios
+  - Moya/RxSwift
   - RxCocoa
   - RxDataSources
   - RxGesture
@@ -122,6 +128,7 @@ SPEC REPOS:
     - KakaoSDKTemplate
     - KakaoSDKUser
     - lottie-ios
+    - Moya
     - RxAlamofire
     - RxCocoa
     - RxDataSources
@@ -155,6 +162,7 @@ SPEC CHECKSUMS:
   KakaoSDKTemplate: f8ee0b33f649e436c1aaf2a3a6bd6aa3dcae2451
   KakaoSDKUser: 08c0a4f40bebdebdf948a9e3d0e44ed5c2754f99
   lottie-ios: 9ae750cdc7820fecbd3c2f0cfc493038208fcdc4
+  Moya: 138f0573e53411fb3dc17016add0b748dfbd78ee
   RxAlamofire: beb75a1c452d0de225651db4903f5d29d034a620
   RxCocoa: 94f817b71c07517321eb4f9ad299112ca8af743b
   RxDataSources: aa47cc1ed6c500fa0dfecac5c979b723542d79cf
@@ -175,6 +183,6 @@ SPEC CHECKSUMS:
   SwiftLint: 32ee33ded0636d0905ef6911b2b67bbaeeedafa5
   SwiftyBeaver: c8241b4745aa269a78ca5a022532c6915e948536
 
-PODFILE CHECKSUM: 693c46785b7ff46807cc9ebd9cacaae5bdcfa6bd
+PODFILE CHECKSUM: 9034d1a3246f254f78d8952a1c0d888957ad4e0d
 
 COCOAPODS: 1.11.3
