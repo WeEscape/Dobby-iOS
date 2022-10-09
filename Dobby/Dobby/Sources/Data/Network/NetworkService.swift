@@ -37,7 +37,7 @@ final class NetworkServiceImpl: NetworkService {
     }
     
     func request<API>(api: API) -> Single<API.Response> where API: BaseAPI {
-        return self.requestPreprocess(api: api)
+        return self._request(api: api)
             .catch({ [weak self] err -> Single<Response> in
                 if let urlErr = err as? URLError,
                    (urlErr.code == .timedOut || urlErr.code == .notConnectedToInternet) {
@@ -55,7 +55,7 @@ final class NetworkServiceImpl: NetworkService {
                             self.localStorage?.write(key: .accessToken, value: newAccessToken)
                         }).flatMap({ _ -> Single<Response> in
                             BeaverLog.verbose("resend api with new Access Token")
-                            return self.requestPreprocess(api: api)
+                            return self._request(api: api)
                         }).catch { err in
                             BeaverLog.verbose("invalidate RefreshToken! -> logout")
                             self.localStorage?.delete(key: .accessToken)
@@ -77,7 +77,7 @@ final class NetworkServiceImpl: NetworkService {
             }
     }
     
-    private func requestPreprocess<API>(api: API) -> Single<Response> where API: BaseAPI {
+    private func _request<API>(api: API) -> Single<Response> where API: BaseAPI {
         let endpoint = MultiTarget.target(api)
         return self.provider.rx.request(endpoint)
             .map { res -> Response in
@@ -96,7 +96,7 @@ final class NetworkServiceImpl: NetworkService {
             BeaverLog.verbose("device doesn't have refreshToken")
             return .error(NetworkError.invalidateRefreshToken)
         }
-        return requestPreprocess(api: AuthRefreshAPI(refreshToken: refreshToken))
+        return self._request(api: AuthRefreshAPI(refreshToken: refreshToken))
             .map { res in
                 let statusCode = res.statusCode
                 guard !(statusCode == 401) else { throw NetworkError.invalidateRefreshToken }
