@@ -6,32 +6,31 @@
 //
 
 import Foundation
-import Moya
 
-enum NetworkError : Swift.Error {
-    case invalidateRefreshToken
+enum NetworkError: Error {
     case invalidateAccessToken
-    case denyAuthentication
+    case invalidateRefreshToken
     case client
     case server
+    case decoding
     case unknown
 }
 
 extension NetworkError: LocalizedError {
     var errorDescription: String? {
         switch self {
-        case .invalidateRefreshToken:
-            return ""
         case .invalidateAccessToken:
-            return ""
-        case .denyAuthentication:
-            return ""
+            return "Network error : 유효하지 않은 access token"
+        case .invalidateRefreshToken:
+            return "Network error : 유효하지 않은 refresh token"
         case .client:
-            return ""
+            return "Network error : 클라이언트 잘못된 요청"
         case .server:
-            return ""
+            return "Network error : 서버 내부 에러"
+        case .decoding:
+            return "Network error : 디코딩 에러"
         case .unknown:
-            return ""
+            return "Network error : 알수없는 에러"
         }
     }
 }
