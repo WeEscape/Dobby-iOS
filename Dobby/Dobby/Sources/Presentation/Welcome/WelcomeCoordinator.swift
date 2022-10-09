@@ -7,16 +7,11 @@
 
 import UIKit
 
-final class WelcomeCoordinator: Coordinator {
+final class WelcomeCoordinator: BaseCoordinator {
     
     weak var parentCoordinator: Coordinator?
-    var childCoordinators: [Coordinator]
     
-    init(childCoordinators: [Coordinator] = []) {
-        self.childCoordinators = childCoordinators
-    }
-    
-    func start(window: UIWindow?, viewController: UIViewController?) {
+    override func start(window: UIWindow?, viewController: UIViewController?) {
         let welcomeViewModel = WelcomeViewModel(
             authUseCase: AuthUseCaseImpl(
                 authenticationRepository: AuthenticationRepositoryImpl(

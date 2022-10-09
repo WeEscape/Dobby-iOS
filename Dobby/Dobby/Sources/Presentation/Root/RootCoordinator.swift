@@ -7,20 +7,19 @@
 
 import UIKit
 
-final class RootCoordinator: Coordinator {
+final class RootCoordinator: BaseCoordinator {
     
-    var childCoordinators: [Coordinator]
+    var window: UIWindow?
     
-    init(
-        childCoordinators: [Coordinator] = []
-    ) {
-        self.childCoordinators = childCoordinators
+    override func start(window: UIWindow?, viewController: UIViewController? = nil) {
+        self.window = window
+        self.startSplash()
     }
-
-    func start(window: UIWindow?, viewController: UIViewController?) {
+    
+    func startSplash() {
         let splashCoordinator = SplashCoordinator()
         splashCoordinator.parentCoordinator = self
         childCoordinators += [splashCoordinator]
-        splashCoordinator.start(window: window, viewController: viewController)
+        splashCoordinator.start(window: self.window, viewController: nil)
     }
 }

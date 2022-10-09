@@ -7,17 +7,11 @@
 
 import UIKit
 
-final class SplashCoordinator: Coordinator {
+final class SplashCoordinator: BaseCoordinator {
     
     weak var parentCoordinator: Coordinator?
-    var childCoordinators: [Coordinator]
     
-    init(parentCoordinator: Coordinator? = nil, childCoordinators: [Coordinator] = []) {
-        self.parentCoordinator = parentCoordinator
-        self.childCoordinators = childCoordinators
-    }
-    
-    func start(window: UIWindow?, viewController: UIViewController?) {
+     override func start(window: UIWindow?, viewController: UIViewController?) {
         let splashViewModel = SplashViewModel(
             authUseCase: AuthUseCaseImpl(
                 authenticationRepository: AuthenticationRepositoryImpl(

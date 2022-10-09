@@ -9,13 +9,25 @@ import UIKit
 
 protocol Coordinator: AnyObject {
     var childCoordinators: [Coordinator] { get set }
-    
     func start(window: UIWindow?, viewController: UIViewController?)
     func didFinish()
-    func childDidFinish(child: Coordinator)
+    func childDidFinish(child: Coordinator) 
 }
 
-extension Coordinator {
+class BaseCoordinator: Coordinator {
+    
+    var childCoordinators: [Coordinator]
+    
+    init(childCoordinators: [Coordinator] = []) {
+        self.childCoordinators = childCoordinators
+    }
+    
+    deinit {
+        self.didFinish()
+    }
+    
+    func start(window: UIWindow?, viewController: UIViewController?) { }
+
     func didFinish() {
         childCoordinators.removeAll()
     }
