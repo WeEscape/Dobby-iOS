@@ -10,8 +10,8 @@ import RxSwift
 import Moya
 
 protocol NetworkService {
-    var provider:  MoyaProvider<MultiTarget> { get }
-//    func request<API>(api: API) -> Single<API.Response> where API : BaseAPI
+    var provider: MoyaProvider<MultiTarget> { get }
+    func request<API>(api: API) -> Single<API.Response> where API: BaseAPI
 }
 
 final class NetworkServiceImpl: NetworkService {
@@ -36,39 +36,44 @@ final class NetworkServiceImpl: NetworkService {
         )
     }
     
-    func request<API>(api: API) -> Single<API.Response> where API : BaseAPI {
-        let endpoint = MultiTarget.target(api)
+    func request<API>(api: API) -> Single<API.Response> where API: BaseAPI {
         return self.requestPreprocess(api: api)
-            .map { res in
-                let response = try JSONDecoder().decode(API.Response.self, from: res.data)
-                return response
-            }
-            .catch { [weak self] err in
+            .catch({ [weak self] err -> Single<Response> in
                 if let urlErr = err as? URLError,
                    (urlErr.code == .timedOut || urlErr.code == .notConnectedToInternet) {
+                    BeaverLog.verbose("unstable internet connection")
                     return .error(urlErr)
                 }
                 if let networkErr = err as? NetworkError,
-                   networkErr == .invalidateAccessToken
-                {
-                    BeaverLog.debug("invalidate AccessToken!")
-                    guard let self = self else {return}
+                   networkErr == .invalidateAccessToken {
+                    BeaverLog.verbose("invalidate AccessToken!")
+                    guard let self = self else { return .error(networkErr) }
                     return self.refreshAccessToken()
                         .do(onSuccess: { auth in
                             guard let newAccessToken = auth.accessToken else { return }
                             BeaverLog.verbose("new access token : \(newAccessToken)")
                             self.localStorage?.write(key: .accessToken, value: newAccessToken)
-                        }).flatMap({ auth -> Single<API.Response> in
+                        }).flatMap({ _ -> Single<Response> in
                             BeaverLog.verbose("resend api with new Access Token")
                             return self.requestPreprocess(api: api)
                         }).catch { err in
-                            BeaverLog.debug("invalidate RefreshToken! -> logout")
+                            BeaverLog.verbose("invalidate RefreshToken! -> logout")
                             self.localStorage?.delete(key: .accessToken)
                             self.localStorage?.delete(key: .refreshToken)
+                            let appDelegate = UIApplication.shared.delegate as? AppDelegate
+                            appDelegate?.rootCoordinator?.didFinish()
+                            appDelegate?.rootCoordinator?.startSplash()
                             return .error(err)
                         }
                 }
                 return .error(err)
+            }).map { res in
+                let response = try JSONDecoder().decode(API.Response.self, from: res.data)
+                return response
+            }
+            .catch { _ in
+                BeaverLog.verbose("NetworkError decoding")
+                return .error(NetworkError.decoding)
             }
     }
     
@@ -95,7 +100,10 @@ final class NetworkServiceImpl: NetworkService {
             .map { res in
                 let statusCode = res.statusCode
                 guard !(statusCode == 401) else { throw NetworkError.invalidateRefreshToken }
-                let resData = try JSONDecoder().decode(AuthRefreshAPI.Response.self, from: res.data)
+                let resData = try JSONDecoder().decode(
+                    AuthRefreshAPI.Response.self,
+                    from: res.data
+                )
                 return .init(
                     accessToken: resData.aceessToken,
                     refreshToken: resData.refreshToken
