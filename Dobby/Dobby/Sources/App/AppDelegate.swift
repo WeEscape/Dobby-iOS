@@ -15,10 +15,15 @@ let BeaverLog = SwiftyBeaver.self
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+    var rootCoordinator: RootCoordinator?
+    
     func application(
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
+        
+        // root coordinator
+        rootCoordinator = RootCoordinator()
         
         // SwiftyBeaver log to Xcode Console
         let console = ConsoleDestination()
@@ -27,6 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // kakao init
         KakaoSDK.initSDK(appKey: KakaoAppKey.nativeAppKey)
+        
         return true
     }
 

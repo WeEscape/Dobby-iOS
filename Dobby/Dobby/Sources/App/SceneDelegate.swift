@@ -10,7 +10,6 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-    let rootCoordinator = RootCoordinator()
 
     func scene(
         _ scene: UIScene,
@@ -21,7 +20,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // root view controller
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
-        rootCoordinator.start(window: window, viewController: nil)
+        let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        appDelegate?.rootCoordinator?.start(window: window, viewController: nil)
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
