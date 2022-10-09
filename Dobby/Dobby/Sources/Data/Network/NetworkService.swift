@@ -15,17 +15,24 @@ protocol NetworkService {
 }
 
 final class NetworkServiceImpl: NetworkService {
-    var provider: MoyaProvider<MultiTarget>
-    static let shared = NetworkServiceImpl(
-        provider: MoyaProvider<MultiTarget>(
-            plugins: [NetworkLoggerPlugin()]
-        )
-    )
     
-    private init(provider: MoyaProvider<MultiTarget>) {
-        self.provider = provider
+    var provider: MoyaProvider<MultiTarget>
+    static let shared = NetworkServiceImpl()
+    
+    private init() {
+        self.provider = Self.createProvider()
     }
     
+    private static func createProvider() -> MoyaProvider<MultiTarget> {
+        let configuration = URLSessionConfiguration.default
+        configuration.timeoutIntervalForRequest = 30
+        configuration.urlCredentialStorage = nil
+        let session = Session(configuration: configuration)
+        return MoyaProvider<MultiTarget>(
+            session: session,
+            plugins: [NetworkLoggerPlugin()]
+        )
+    }
     
     func request<API>(api: API) -> Single<Result<API.Response, Error>> where API : BaseAPI {
         let endpoint = MultiTarget.target(api)
@@ -35,8 +42,14 @@ final class NetworkServiceImpl: NetworkService {
                 return .success(response)
             }
             .catch { err in
-                if let urlErr = err as? URLError {
+                if let urlErr = err as? URLError,
+                   (urlErr.code == .timedOut || urlErr.code == .notConnectedToInternet) {
                     return .just(.failure(urlErr))
+                }
+                if let networkErr = err as? NetworkError,
+                   networkErr == .invalidateAccessToken
+                {
+                    
                 }
                 return .just(.failure(err))
             }
@@ -47,7 +60,7 @@ final class NetworkServiceImpl: NetworkService {
         return self.provider.rx.request(endpoint)
             .map { res -> Response in
                 let statusCode = res.statusCode
-                BeaverLog.debug("Network response status code : \(statusCode)")
+                BeaverLog.verbose("Network response status code : \(statusCode)")
                 guard !(statusCode == 401) else { throw NetworkError.invalidateAccessToken }
                 guard !(400..<500 ~= statusCode) else { throw NetworkError.client }
                 guard !(500..<600 ~= statusCode) else { throw NetworkError.server }

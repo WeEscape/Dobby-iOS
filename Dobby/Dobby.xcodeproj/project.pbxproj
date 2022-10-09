@@ -325,8 +325,8 @@
 			children = (
 				A13C536C28E94CA200C72215 /* NetworkService.swift */,
 				A12095E828F2A198008CE410 /* NetworkError.swift */,
-				A174B17228EF000B00F80112 /* APIs */,
 				A174B17A28EF031700F80112 /* Plugins */,
+				A174B17228EF000B00F80112 /* APIs */,
 			);
 			path = Network;
 			sourceTree = "<group>";
