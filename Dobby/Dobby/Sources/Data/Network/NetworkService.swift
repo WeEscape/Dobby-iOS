@@ -11,16 +11,18 @@ import Moya
 
 protocol NetworkService {
     var provider:  MoyaProvider<MultiTarget> { get }
-    func request<API>(api: API) -> Single<Result<API.Response, Error>> where API : BaseAPI
+//    func request<API>(api: API) -> Single<API.Response> where API : BaseAPI
 }
 
 final class NetworkServiceImpl: NetworkService {
     
     var provider: MoyaProvider<MultiTarget>
+    weak var localStorage: LocalTokenStorageService?
     static let shared = NetworkServiceImpl()
     
     private init() {
         self.provider = Self.createProvider()
+        self.localStorage = UserDefaults.standard
     }
     
     private static func createProvider() -> MoyaProvider<MultiTarget> {
@@ -34,24 +36,39 @@ final class NetworkServiceImpl: NetworkService {
         )
     }
     
-    func request<API>(api: API) -> Single<Result<API.Response, Error>> where API : BaseAPI {
+    func request<API>(api: API) -> Single<API.Response> where API : BaseAPI {
         let endpoint = MultiTarget.target(api)
         return self.requestPreprocess(api: api)
             .map { res in
                 let response = try JSONDecoder().decode(API.Response.self, from: res.data)
-                return .success(response)
+                return response
             }
-            .catch { err in
+            .catch { [weak self] err in
                 if let urlErr = err as? URLError,
                    (urlErr.code == .timedOut || urlErr.code == .notConnectedToInternet) {
-                    return .just(.failure(urlErr))
+                    return .error(urlErr)
                 }
                 if let networkErr = err as? NetworkError,
                    networkErr == .invalidateAccessToken
                 {
-                    
+                    BeaverLog.debug("invalidate AccessToken!")
+                    guard let self = self else {return}
+                    return self.refreshAccessToken()
+                        .do(onSuccess: { auth in
+                            guard let newAccessToken = auth.accessToken else { return }
+                            BeaverLog.verbose("new access token : \(newAccessToken)")
+                            self.localStorage?.write(key: .accessToken, value: newAccessToken)
+                        }).flatMap({ auth -> Single<API.Response> in
+                            BeaverLog.verbose("resend api with new Access Token")
+                            return self.requestPreprocess(api: api)
+                        }).catch { err in
+                            BeaverLog.debug("invalidate RefreshToken! -> logout")
+                            self.localStorage?.delete(key: .accessToken)
+                            self.localStorage?.delete(key: .refreshToken)
+                            return .error(err)
+                        }
                 }
-                return .just(.failure(err))
+                return .error(err)
             }
     }
     
@@ -65,6 +82,24 @@ final class NetworkServiceImpl: NetworkService {
                 guard !(400..<500 ~= statusCode) else { throw NetworkError.client }
                 guard !(500..<600 ~= statusCode) else { throw NetworkError.server }
                 return res
+            }
+    }
+    
+    private func refreshAccessToken() -> Single<Authentication> {
+        BeaverLog.verbose("start refresh AccessToken")
+        guard let refreshToken = self.localStorage?.read(key: .refreshToken) else {
+            BeaverLog.verbose("device doesn't have refreshToken")
+            return .error(NetworkError.invalidateRefreshToken)
+        }
+        return requestPreprocess(api: AuthRefreshAPI(refreshToken: refreshToken))
+            .map { res in
+                let statusCode = res.statusCode
+                guard !(statusCode == 401) else { throw NetworkError.invalidateRefreshToken }
+                let resData = try JSONDecoder().decode(AuthRefreshAPI.Response.self, from: res.data)
+                return .init(
+                    accessToken: resData.aceessToken,
+                    refreshToken: resData.refreshToken
+                )
             }
     }
 }

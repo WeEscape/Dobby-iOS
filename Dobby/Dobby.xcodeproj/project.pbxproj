@@ -10,6 +10,7 @@
 		673DCE1865C0C69E6AB20565 /* Pods_Dobby_DobbyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F6B63D74F7D466272A7C257 /* Pods_Dobby_DobbyUITests.framework */; };
 		7D7F9A1E30FFA768D555A0C2 /* Pods_DobbyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23D3CB2517F333D289463533 /* Pods_DobbyTests.framework */; };
 		A12095E928F2A198008CE410 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12095E828F2A198008CE410 /* NetworkError.swift */; };
+		A12095EB28F2E010008CE410 /* RefreshAuthAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12095EA28F2E010008CE410 /* RefreshAuthAPI.swift */; };
 		A13C531128E7129D00C72215 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13C531028E7129D00C72215 /* AppDelegate.swift */; };
 		A13C531328E7129D00C72215 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13C531228E7129D00C72215 /* SceneDelegate.swift */; };
 		A13C531828E7129D00C72215 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A13C531628E7129D00C72215 /* Main.storyboard */; };
@@ -68,6 +69,7 @@
 		66911DBB73814A1FFAEFD850 /* Pods-DobbyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DobbyTests.release.xcconfig"; path = "Target Support Files/Pods-DobbyTests/Pods-DobbyTests.release.xcconfig"; sourceTree = "<group>"; };
 		8B3D52E48C3A5CD46EE09F86 /* Pods_Dobby.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Dobby.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A12095E828F2A198008CE410 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		A12095EA28F2E010008CE410 /* RefreshAuthAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshAuthAPI.swift; sourceTree = "<group>"; };
 		A13C530D28E7129D00C72215 /* Dobby.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dobby.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A13C531028E7129D00C72215 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A13C531228E7129D00C72215 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -387,6 +389,7 @@
 			children = (
 				A174B17328EF002000F80112 /* BaseAPI.swift */,
 				A174B17528EF007100F80112 /* LoginAPI.swift */,
+				A12095EA28F2E010008CE410 /* RefreshAuthAPI.swift */,
 			);
 			path = APIs;
 			sourceTree = "<group>";
@@ -680,6 +683,7 @@
 				A174B17428EF002000F80112 /* BaseAPI.swift in Sources */,
 				A13C536328E9173900C72215 /* AuthenticationRepositoryImpl.swift in Sources */,
 				A13C537F28EA9C0000C72215 /* AppKey.swift in Sources */,
+				A12095EB28F2E010008CE410 /* RefreshAuthAPI.swift in Sources */,
 				A174B16F28EC6F0300F80112 /* ASAuthorizationController+.swift in Sources */,
 				A13C531328E7129D00C72215 /* SceneDelegate.swift in Sources */,
 				A13C536728E91D9C00C72215 /* AuthUseCase.swift in Sources */,

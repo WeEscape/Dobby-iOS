@@ -6,7 +6,16 @@
 //
 
 import Foundation
+import Moya
 
 struct LoginAPI: BaseAPI {
+    typealias Response = AuthenticationDTO
+    
+    var path: String
+    
+    var method: Moya.Method
+    
+    var task: Moya.Task
+    
     
 }

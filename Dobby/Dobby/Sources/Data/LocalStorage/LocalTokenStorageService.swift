@@ -13,7 +13,7 @@ enum TokenKey: String {
     case refreshToken = "refreshToken"
 }
 
-protocol LocalTokenStorageService {
+protocol LocalTokenStorageService: AnyObject {
     func read(key: TokenKey) -> String?
     func write(key: TokenKey, value: String)
     func delete(key: TokenKey)
