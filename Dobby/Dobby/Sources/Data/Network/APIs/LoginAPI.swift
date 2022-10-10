@@ -14,9 +14,9 @@ struct LoginAPI: BaseAPI {
     var path: String {
         switch provider {
         case .kakao:
-            return "/kakaoLogin"
+            return "/oauth/kakaoLogin"
         case .apple:
-            return "/appleLogin"
+            return "/oauth/appleLogin"
         }
     }
     var method: Moya.Method { .post }
