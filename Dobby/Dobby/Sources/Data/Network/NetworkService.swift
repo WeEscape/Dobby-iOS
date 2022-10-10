@@ -11,7 +11,7 @@ import Moya
 
 protocol NetworkService {
     var provider: MoyaProvider<MultiTarget> { get }
-    func request<API>(api: API) -> Single<API.Response> where API: BaseAPI
+    func request<API>(api: API) -> Observable<API.Response> where API: BaseAPI
 }
 
 final class NetworkServiceImpl: NetworkService {
@@ -36,9 +36,9 @@ final class NetworkServiceImpl: NetworkService {
         )
     }
     
-    func request<API>(api: API) -> Single<API.Response> where API: BaseAPI {
+    func request<API>(api: API) -> Observable<API.Response> where API: BaseAPI {
         return self._request(api: api)
-            .catch({ [weak self] err -> Single<Response> in
+            .catch { [weak self] err -> Observable<Response>  in
                 if let urlErr = err as? URLError,
                    (urlErr.code == .timedOut || urlErr.code == .notConnectedToInternet) {
                     BeaverLog.verbose("unstable internet connection")
@@ -47,27 +47,29 @@ final class NetworkServiceImpl: NetworkService {
                 if let networkErr = err as? NetworkError,
                    networkErr == .invalidateAccessToken {
                     BeaverLog.verbose("invalidate AccessToken!")
-                    guard let self = self else { return .error(networkErr) }
+                    guard let self = self else { return .error(NetworkError.unknown)}
                     return self.refreshAccessToken()
-                        .do(onSuccess: { auth in
-                            guard let newAccessToken = auth.accessToken else { return }
+                        .flatMap { auth -> Observable<Response> in
+                            guard let newAccessToken = auth.accessToken else {
+                                return .error(NetworkError.invalidateAccessToken)
+                            }
                             BeaverLog.verbose("new access token : \(newAccessToken)")
                             self.localStorage?.write(key: .accessToken, value: newAccessToken)
-                        }).flatMap({ _ -> Single<Response> in
-                            BeaverLog.verbose("resend api with new Access Token")
                             return self._request(api: api)
-                        }).catch { err in
+                        }
+                        .catch { err in
                             BeaverLog.verbose("invalidate RefreshToken! -> logout")
                             self.localStorage?.delete(key: .accessToken)
                             self.localStorage?.delete(key: .refreshToken)
                             let appDelegate = UIApplication.shared.delegate as? AppDelegate
                             appDelegate?.rootCoordinator?.didFinish()
                             appDelegate?.rootCoordinator?.startSplash()
-                            return .error(err)
+                            return .empty()
                         }
                 }
                 return .error(err)
-            }).map { res in
+            }
+            .map { res -> API.Response in
                 let response = try JSONDecoder().decode(API.Response.self, from: res.data)
                 return response
             }
@@ -77,9 +79,10 @@ final class NetworkServiceImpl: NetworkService {
             }
     }
     
-    private func _request<API>(api: API) -> Single<Response> where API: BaseAPI {
+    private func _request<API>(api: API) -> Observable<Response> where API: BaseAPI {
         let endpoint = MultiTarget.target(api)
         return self.provider.rx.request(endpoint)
+            .asObservable()
             .map { res -> Response in
                 let statusCode = res.statusCode
                 BeaverLog.verbose("Network response status code : \(statusCode)")
@@ -90,7 +93,7 @@ final class NetworkServiceImpl: NetworkService {
             }
     }
     
-    private func refreshAccessToken() -> Single<Authentication> {
+    private func refreshAccessToken() -> Observable<Authentication> {
         BeaverLog.verbose("start refresh AccessToken")
         guard let refreshToken = self.localStorage?.read(key: .refreshToken) else {
             BeaverLog.verbose("device doesn't have refreshToken")
