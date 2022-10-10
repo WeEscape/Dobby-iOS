@@ -11,7 +11,7 @@ import Moya
 protocol BaseAPI: TargetType {
     associatedtype Response: Codable
     var baseURL: URL { get }
-    var headers: [String : String]? { get }
+    var headers: [String: String]? { get }
     var path: String { get }
     var method: Moya.Method { get }
     var task: Task { get }
@@ -19,12 +19,12 @@ protocol BaseAPI: TargetType {
 
 extension BaseAPI {
     var baseURL: URL {
-        return URL(string: "http://118.67.128.228:8000/")!
+        return URL(string: "http://118.67.128.228:8000/api")!
     }
     
-    var headers: [String : String]? {
+    var headers: [String: String]? {
         return [
-            "Content-Type" : "application/json;charset=UTF-8",
+            "Content-Type": "application/json;charset=UTF-8",
         ]
     }
 }
