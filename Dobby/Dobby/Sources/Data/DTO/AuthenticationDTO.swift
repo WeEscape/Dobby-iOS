@@ -7,10 +7,9 @@
 
 import Foundation
 
-
-struct AuthenticationDTO : Codable {
-    var aceessToken : String?
-    var refreshToken : String?
+struct AuthenticationDTO: Codable {
+    var aceessToken: String?
+    var refreshToken: String?
     
     func toDomain() -> Authentication {
         return .init(

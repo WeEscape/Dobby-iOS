@@ -17,11 +17,9 @@ struct AuthRefreshAPI: BaseAPI {
     var task: Moya.Task {
         .requestPlain
     }
-    var refreshToken : String
+    var refreshToken: String
     
     init(refreshToken: String) {
         self.refreshToken = refreshToken
     }
-    
-    
 }

@@ -16,6 +16,4 @@ struct LoginAPI: BaseAPI {
     var method: Moya.Method
     
     var task: Moya.Task
-    
-    
 }
