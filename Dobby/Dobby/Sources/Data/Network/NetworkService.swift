@@ -10,13 +10,12 @@ import RxSwift
 import Moya
 
 protocol NetworkService {
-    var provider: MoyaProvider<MultiTarget> { get }
     func request<API>(api: API) -> Observable<API.Response> where API: BaseAPI
 }
 
 final class NetworkServiceImpl: NetworkService {
     
-    var provider: MoyaProvider<MultiTarget>
+    private let provider: MoyaProvider<MultiTarget>
     weak var localStorage: LocalTokenStorageService?
     static let shared = NetworkServiceImpl()
     
