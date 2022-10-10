@@ -56,6 +56,17 @@ final class AuthenticationRepositoryImpl: AuthenticationRepository {
             }
     }
     
+    func login(
+        provider: AuthenticationProvider,
+        accessToken: String
+    ) -> Observable<Authentication> {
+        
+        return self.network.request(api: LoginAPI(provider: provider,accessToken: accessToken))
+            .map { authDTO in
+                return authDTO.toDomain()
+            }
+    }
+    
     func logout() -> Observable<Void> {
         return .empty()
     }
