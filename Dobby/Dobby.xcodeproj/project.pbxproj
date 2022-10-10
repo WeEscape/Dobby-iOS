@@ -11,6 +11,7 @@
 		7D7F9A1E30FFA768D555A0C2 /* Pods_DobbyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23D3CB2517F333D289463533 /* Pods_DobbyTests.framework */; };
 		A12095E928F2A198008CE410 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12095E828F2A198008CE410 /* NetworkError.swift */; };
 		A12095EB28F2E010008CE410 /* RefreshAuthAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12095EA28F2E010008CE410 /* RefreshAuthAPI.swift */; };
+		A12095EE28F3FCF0008CE410 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A12095ED28F3FCF0008CE410 /* GoogleService-Info.plist */; };
 		A13C531128E7129D00C72215 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13C531028E7129D00C72215 /* AppDelegate.swift */; };
 		A13C531328E7129D00C72215 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13C531228E7129D00C72215 /* SceneDelegate.swift */; };
 		A13C531A28E7129E00C72215 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A13C531928E7129E00C72215 /* Assets.xcassets */; };
@@ -70,6 +71,7 @@
 		A12095E828F2A198008CE410 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		A12095EA28F2E010008CE410 /* RefreshAuthAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshAuthAPI.swift; sourceTree = "<group>"; };
 		A12095EC28F3F1B5008CE410 /* Dobby.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Dobby.entitlements; sourceTree = "<group>"; };
+		A12095ED28F3FCF0008CE410 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A13C530D28E7129D00C72215 /* Dobby.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dobby.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A13C531028E7129D00C72215 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A13C531228E7129D00C72215 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -189,6 +191,7 @@
 		A13C530F28E7129D00C72215 /* Dobby */ = {
 			isa = PBXGroup;
 			children = (
+				A12095ED28F3FCF0008CE410 /* GoogleService-Info.plist */,
 				A12095EC28F3F1B5008CE410 /* Dobby.entitlements */,
 				A13C534128E7175700C72215 /* Resources */,
 				A13C534028E7175000C72215 /* Sources */,
@@ -422,6 +425,7 @@
 				A13C530B28E7129D00C72215 /* Resources */,
 				A13C534228E71AED00C72215 /* ShellScript */,
 				830676097FF3CFCE70E99C6A /* [CP] Embed Pods Frameworks */,
+				A12095EF28F3FFAC008CE410 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -520,6 +524,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A13C534428E71C0800C72215 /* .swiftlint.yml in Resources */,
+				A12095EE28F3FCF0008CE410 /* GoogleService-Info.plist in Resources */,
 				A13C531D28E7129E00C72215 /* LaunchScreen.storyboard in Resources */,
 				A13C531A28E7129E00C72215 /* Assets.xcassets in Resources */,
 			);
@@ -624,6 +629,25 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
+		};
+		A12095EF28F3FFAC008CE410 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}",
+				"$(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/FirebaseCrashlytics/run\"\n";
 		};
 		A13C534228E71AED00C72215 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -863,6 +887,7 @@
 				CODE_SIGN_ENTITLEMENTS = Dobby/Dobby.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = YB8GA5MLV5;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Dobby/Info.plist;

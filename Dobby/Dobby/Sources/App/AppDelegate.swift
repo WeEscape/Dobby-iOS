@@ -9,6 +9,7 @@ import UIKit
 import SwiftyBeaver
 import KakaoSDKCommon
 import KakaoSDKAuth
+import FirebaseCore
 
 let BeaverLog = SwiftyBeaver.self
 
@@ -32,6 +33,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // kakao init
         KakaoSDK.initSDK(appKey: KakaoAppKey.nativeAppKey)
+        
+        // Firebase
+        FirebaseApp.configure()
         
         return true
     }
