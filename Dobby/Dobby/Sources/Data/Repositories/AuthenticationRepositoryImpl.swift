@@ -5,8 +5,12 @@
 //  Created by yongmin lee on 10/2/22.
 //
 
-import Foundation
+import UIKit
 import RxSwift
+import KakaoSDKAuth
+import KakaoSDKUser
+import AuthenticationServices
+import RxOptional
 
 final class AuthenticationRepositoryImpl: AuthenticationRepository {
     
@@ -19,11 +23,37 @@ final class AuthenticationRepositoryImpl: AuthenticationRepository {
     }
     
     func kakaoAuthorize() -> Observable<Authentication> {
+        if UserApi.isKakaoTalkLoginAvailable() {
+            UserApi.shared.loginWithKakaoTalk { respone, error in
+                if let err = error {
+                    
+                } else {
+                    
+                }
+            }
+        } else {
+            UserApi.shared.loginWithKakaoAccount { respone, error in
+                if let err = error {
+                    
+                } else {
+                
+                }
+            }
+        }
         return .empty()
     }
     
     func appleAuthorize() -> Observable<Authentication> {
-        return .empty()
+        let request = ASAuthorizationAppleIDProvider().createRequest()
+        request.requestedScopes = [.fullName, .email]
+        let controller = ASAuthorizationController(authorizationRequests: [request])
+        controller.performRequests()
+        
+        return controller.rx.didCompleteAuthorization
+            .filterNil()
+            .map { identityToken in
+                return Authentication(accessToken: identityToken, refreshToken: nil)
+            }
     }
     
     func logout() -> Observable<Void> {
@@ -36,7 +66,7 @@ final class AuthenticationRepositoryImpl: AuthenticationRepository {
     
     func readToken(tokenOption: AuthTokenOption) -> Observable<Authentication> {
         var tokenList: [String?] = []
-        if tokenOption.contains(.accessToken)  {
+        if tokenOption.contains(.accessToken) {
             tokenList.append(self.localStorage.read(key: .accessToken))
         }
         if tokenOption.contains(.refreshToken) {
