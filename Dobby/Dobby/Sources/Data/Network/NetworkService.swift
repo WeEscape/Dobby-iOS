@@ -8,6 +8,7 @@
 import Foundation
 import RxSwift
 import Moya
+import FirebaseCrashlytics
 
 protocol NetworkService {
     func request<API>(api: API) -> Observable<API.Response> where API: BaseAPI
@@ -56,14 +57,14 @@ final class NetworkServiceImpl: NetworkService {
                             self.localStorage?.write(key: .accessToken, value: newAccessToken)
                             return self._request(api: api)
                         }
-                        .catch { err in
+                        .catch { _ in
                             BeaverLog.verbose("invalidate RefreshToken! -> logout")
                             self.localStorage?.delete(key: .accessToken)
                             self.localStorage?.delete(key: .refreshToken)
                             let appDelegate = UIApplication.shared.delegate as? AppDelegate
                             appDelegate?.rootCoordinator?.didFinish()
                             appDelegate?.rootCoordinator?.startSplash()
-                            return .empty()
+                            return .error(NetworkError.invalidateRefreshToken)
                         }
                 }
                 return .error(err)
@@ -72,9 +73,10 @@ final class NetworkServiceImpl: NetworkService {
                 let response = try JSONDecoder().decode(API.Response.self, from: res.data)
                 return response
             }
-            .catch { _ in
-                BeaverLog.verbose("NetworkError decoding")
-                return .error(NetworkError.decoding)
+            .catch { err in
+                BeaverLog.debug(err.localizedDescription)
+                Crashlytics.crashlytics().record(error: err)
+                return .empty()
             }
     }
     
