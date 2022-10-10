@@ -10,7 +10,7 @@ import RxSwift
 
 protocol AuthUseCase {
     // oauth
-    func authorize(provider: AuthenticationProvider) -> Observable<Authentication>
+    func login(provider: AuthenticationProvider) -> Observable<Authentication>
     func logout() -> Observable<Void>
     func resign() -> Observable<Void>
     
@@ -28,13 +28,23 @@ final class AuthUseCaseImpl: AuthUseCase {
         self.authenticationRepository = authenticationRepository
     }
     
-    func authorize(provider: AuthenticationProvider) -> Observable<Authentication> {
+    func login(provider: AuthenticationProvider) -> Observable<Authentication> {
+        var snsAuthorize : Observable<Authentication>
         switch provider {
         case .kakao:
-            return self.authenticationRepository.kakaoAuthorize()
+            snsAuthorize = self.authenticationRepository.kakaoAuthorize()
         case .apple:
-            return self.authenticationRepository.appleAuthorize()
+            snsAuthorize = self.authenticationRepository.appleAuthorize()
         }
+        return snsAuthorize
+            .flatMapLatest { [weak self] auth -> Observable<Authentication> in
+                guard let self = self else {return .empty()}
+                guard let accessToken = auth.accessToken else {return .empty()}
+                return self.authenticationRepository.login(
+                    provider: provider,
+                    accessToken: accessToken
+                )
+            }
     }
     
     func logout() -> Observable<Void> {
