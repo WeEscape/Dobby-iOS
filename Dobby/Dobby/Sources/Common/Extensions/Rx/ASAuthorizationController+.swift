@@ -38,15 +38,23 @@ extension Reactive where Base: ASAuthorizationController {
         RxASAuthorizationControllerDelegateProxy.proxy(for: base)
     }
     
-    var didCompleteAuthorization: Observable<String?> {
+    var didCompleteAuthorization: Observable<Authentication?> {
         delegate
             .methodInvoked(#selector(ASAuthorizationControllerDelegate.authorizationController(controller:didCompleteWithAuthorization:)))
             .map { parameters in
                 guard let authorization = parameters[1] as? ASAuthorization,
                       let credential = authorization.credential as? ASAuthorizationAppleIDCredential,
-                      let identityToken = credential.identityToken
+                      let identityTokenData = credential.identityToken,
+                      let authorizationCodeData = credential.authorizationCode,
+                      let identityToken = String(data: identityTokenData, encoding: .utf8),
+                      let authorizationCode = String(data: authorizationCodeData, encoding: .utf8)
                 else { return nil }
-                return String(data: identityToken, encoding: .utf8)
+                return .init(
+                    accessToken: nil,
+                    refreshToken: nil,
+                    identityToken: identityToken,
+                    authorizeCode: authorizationCode
+                )
             }
     }
 }

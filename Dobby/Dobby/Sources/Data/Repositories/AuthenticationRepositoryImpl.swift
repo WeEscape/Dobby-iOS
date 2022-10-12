@@ -51,9 +51,6 @@ final class AuthenticationRepositoryImpl: AuthenticationRepository {
         
         return controller.rx.didCompleteAuthorization
             .filterNil()
-            .map { identityToken in
-                return Authentication(accessToken: identityToken, refreshToken: nil)
-            }
     }
     
     func login(
