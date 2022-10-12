@@ -54,13 +54,13 @@ final class NetworkServiceImpl: NetworkService {
                                 return .error(NetworkError.invalidateAccessToken)
                             }
                             BeaverLog.verbose("new access token : \(newAccessToken)")
-                            self.localStorage?.write(key: .accessToken, value: newAccessToken)
+                            self.localStorage?.write(key: .jwtAccessToken, value: newAccessToken)
                             return self._request(api: api)
                         }
                         .catch { _ in
                             BeaverLog.verbose("invalidate RefreshToken! -> logout")
-                            self.localStorage?.delete(key: .accessToken)
-                            self.localStorage?.delete(key: .refreshToken)
+                            self.localStorage?.delete(key: .jwtAccessToken)
+                            self.localStorage?.delete(key: .jwtRefreshToken)
                             let appDelegate = UIApplication.shared.delegate as? AppDelegate
                             appDelegate?.rootCoordinator?.didFinish()
                             appDelegate?.rootCoordinator?.startSplash()
@@ -94,9 +94,9 @@ final class NetworkServiceImpl: NetworkService {
             }
     }
     
-    private func refreshAccessToken() -> Observable<Authentication> {
+    private func refreshAccessToken() -> Observable<JWTAuthentication> {
         BeaverLog.verbose("start refresh AccessToken")
-        guard let refreshToken = self.localStorage?.read(key: .refreshToken) else {
+        guard let refreshToken = self.localStorage?.read(key: .jwtRefreshToken) else {
             BeaverLog.verbose("device doesn't have refreshToken")
             return .error(NetworkError.invalidateRefreshToken)
         }

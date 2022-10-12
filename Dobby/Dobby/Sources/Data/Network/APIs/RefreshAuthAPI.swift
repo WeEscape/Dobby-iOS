@@ -9,7 +9,7 @@ import Foundation
 import Moya
 
 struct AuthRefreshAPI: BaseAPI {
-    typealias Response = AuthenticationDTO
+    typealias Response = JWTAuthenticationDTO
     var path: String = ""
     var method: Moya.Method {
         .get

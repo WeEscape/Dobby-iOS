@@ -9,8 +9,8 @@ import Foundation
 import RxSwift
 
 enum TokenKey: String {
-    case accessToken = "accessToken"
-    case refreshToken = "refreshToken"
+    case jwtAccessToken = "jwtAccessToken"
+    case jwtRefreshToken = "jwtRefreshToken"
 }
 
 protocol LocalTokenStorageService: AnyObject {

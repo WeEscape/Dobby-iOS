@@ -12,12 +12,15 @@ protocol AuthenticationRepository {
     // oauth
     func kakaoAuthorize() -> Observable<Authentication>
     func appleAuthorize() -> Observable<Authentication>
-    func login(provider: AuthenticationProvider, accessToken: String) -> Observable<Authentication>
     func logout() -> Observable<Void>
     func resign() -> Observable<Void>
+    func login(
+        provider: AuthenticationProvider,
+        authentication: Authentication
+    ) -> Observable<JWTAuthentication>
     
     // authToken
-    func readToken(tokenOption: AuthTokenOption) -> Observable<Authentication>
-    func writeToken(authentication: Authentication) -> Observable<Void>
-    func removeToken(tokenOption: AuthTokenOption) -> Observable<Void>
+    func readToken(tokenOption: JWTOption) -> Observable<JWTAuthentication>
+    func writeToken(authentication: JWTAuthentication) -> Observable<Void>
+    func removeToken(tokenOption: JWTOption) -> Observable<Void>
 }

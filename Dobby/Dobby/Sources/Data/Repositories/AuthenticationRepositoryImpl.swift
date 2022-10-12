@@ -55,13 +55,16 @@ final class AuthenticationRepositoryImpl: AuthenticationRepository {
     
     func login(
         provider: AuthenticationProvider,
-        accessToken: String
-    ) -> Observable<Authentication> {
-        
-        return self.network.request(api: LoginAPI(provider: provider,accessToken: accessToken))
-            .map { authDTO in
-                return authDTO.toDomain()
-            }
+        authentication: Authentication
+    ) -> Observable<JWTAuthentication> {
+        return self.network.request(api: LoginAPI(
+            provider: provider,
+            accessToken: authentication.accessToken,
+            identityToken: authentication.identityToken,
+            authorizeCode: authentication.authorizeCode
+        )).map { authDTO in
+            return authDTO.toDomain()
+        }
     }
     
     func logout() -> Observable<Void> {
@@ -72,25 +75,25 @@ final class AuthenticationRepositoryImpl: AuthenticationRepository {
         return .empty()
     }
     
-    func readToken(tokenOption: AuthTokenOption) -> Observable<Authentication> {
+    func readToken(tokenOption: JWTOption) -> Observable<JWTAuthentication> {
         var tokenList: [String?] = []
         if tokenOption.contains(.accessToken) {
-            tokenList.append(self.localStorage.read(key: .accessToken))
+            tokenList.append(self.localStorage.read(key: .jwtAccessToken))
         }
         if tokenOption.contains(.refreshToken) {
-            tokenList.append(self.localStorage.read(key: .refreshToken))
+            tokenList.append(self.localStorage.read(key: .jwtRefreshToken))
         }
-        return Observable.just(Authentication(
+        return Observable.just(JWTAuthentication(
             accessToken: tokenList[safe: 0] ?? nil,
             refreshToken: tokenList[safe: 1] ?? nil
         ))
     }
     
-    func writeToken(authentication: Authentication) -> Observable<Void> {
+    func writeToken(authentication: JWTAuthentication) -> Observable<Void> {
         return .empty()
     }
     
-    func removeToken(tokenOption: AuthTokenOption) -> Observable<Void> {
+    func removeToken(tokenOption: JWTOption) -> Observable<Void> {
         return .empty()
     }
 }

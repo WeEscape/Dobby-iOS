@@ -10,14 +10,14 @@ import RxSwift
 
 protocol AuthUseCase {
     // oauth
-    func login(provider: AuthenticationProvider) -> Observable<Authentication>
+    func login(provider: AuthenticationProvider) -> Observable<JWTAuthentication>
     func logout() -> Observable<Void>
     func resign() -> Observable<Void>
     
     // authToken
-    func readToken(tokenOption: AuthTokenOption) -> Observable<Authentication>
-    func writeToken(authentication: Authentication) -> Observable<Void>
-    func removeToken(tokenOption: AuthTokenOption) -> Observable<Void>
+    func readToken(tokenOption: JWTOption) -> Observable<JWTAuthentication>
+    func writeToken(authentication: JWTAuthentication) -> Observable<Void>
+    func removeToken(tokenOption: JWTOption) -> Observable<Void>
 }
 
 final class AuthUseCaseImpl: AuthUseCase {
@@ -28,8 +28,8 @@ final class AuthUseCaseImpl: AuthUseCase {
         self.authenticationRepository = authenticationRepository
     }
     
-    func login(provider: AuthenticationProvider) -> Observable<Authentication> {
-        var snsAuthorize : Observable<Authentication>
+    func login(provider: AuthenticationProvider) -> Observable<JWTAuthentication> {
+        var snsAuthorize: Observable<Authentication>
         switch provider {
         case .kakao:
             snsAuthorize = self.authenticationRepository.kakaoAuthorize()
@@ -37,12 +37,11 @@ final class AuthUseCaseImpl: AuthUseCase {
             snsAuthorize = self.authenticationRepository.appleAuthorize()
         }
         return snsAuthorize
-            .flatMapLatest { [weak self] auth -> Observable<Authentication> in
+            .flatMapLatest { [weak self] auth -> Observable<JWTAuthentication> in
                 guard let self = self else {return .empty()}
-                guard let accessToken = auth.accessToken else {return .empty()}
                 return self.authenticationRepository.login(
                     provider: provider,
-                    accessToken: accessToken
+                    authentication: auth
                 )
             }
     }
@@ -55,15 +54,15 @@ final class AuthUseCaseImpl: AuthUseCase {
         return self.authenticationRepository.resign()
     }
     
-    func readToken(tokenOption: AuthTokenOption) -> Observable<Authentication> {
+    func readToken(tokenOption: JWTOption) -> Observable<JWTAuthentication> {
         return self.authenticationRepository.readToken(tokenOption: tokenOption)
     }
     
-    func writeToken(authentication: Authentication) -> Observable<Void> {
+    func writeToken(authentication: JWTAuthentication) -> Observable<Void> {
         return self.authenticationRepository.writeToken(authentication: authentication)
     }
     
-    func removeToken(tokenOption: AuthTokenOption) -> Observable<Void> {
+    func removeToken(tokenOption: JWTOption) -> Observable<Void> {
         return self.authenticationRepository.removeToken(tokenOption: tokenOption)
     }
 }

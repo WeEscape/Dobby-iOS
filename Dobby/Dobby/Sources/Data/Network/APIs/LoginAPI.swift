@@ -9,8 +9,8 @@ import Foundation
 import Moya
 
 struct LoginAPI: BaseAPI {
-    typealias Response = AuthenticationDTO
-
+    typealias Response = JWTAuthenticationDTO
+    
     var path: String {
         switch provider {
         case .kakao:
@@ -21,20 +21,39 @@ struct LoginAPI: BaseAPI {
     }
     var method: Moya.Method { .post }
     var task: Moya.Task {
-        return .requestParameters(
-            parameters: [
-                "accessToken": accessToken
-            ],
-            encoding: JSONEncoding.default
-        )
+        switch provider {
+        case .kakao:
+            return .requestParameters(
+                parameters: [
+                    "accessToken": accessToken
+                ],
+                encoding: JSONEncoding.default
+            )
+        case .apple:
+            return .requestParameters(
+                parameters: [
+                    "identityToken": identityToken,
+                    "authorizeCode": authorizeCode
+                ],
+                encoding: JSONEncoding.default
+            )
+        }
     }
-
+    
     let provider: AuthenticationProvider
     let accessToken: String
+    let identityToken: String
+    let authorizeCode: String
     
-    init(provider: AuthenticationProvider, accessToken: String) {
+    init(provider: AuthenticationProvider,
+         accessToken: String?,
+         identityToken: String?,
+         authorizeCode: String?
+    ) {
         self.provider = provider
-        self.accessToken = accessToken
+        self.accessToken = accessToken ?? ""
+        self.identityToken = identityToken ?? ""
+        self.authorizeCode = authorizeCode ?? ""
     }
-    
+
 }
