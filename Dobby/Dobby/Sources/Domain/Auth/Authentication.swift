@@ -9,7 +9,9 @@ import Foundation
 
 struct Authentication: Decodable {
     let accessToken: String?
-    let refreshToken: String?   
+    let refreshToken: String?
+    let identityToken: String?
+    let authorizeCode: String?
 }
 
 struct AuthTokenOption: OptionSet {
