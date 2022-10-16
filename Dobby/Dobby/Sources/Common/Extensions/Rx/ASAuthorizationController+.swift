@@ -8,6 +8,7 @@
 import RxCocoa
 import RxSwift
 import AuthenticationServices
+import FirebaseCrashlytics
 
 
 final class RxASAuthorizationControllerDelegateProxy:
@@ -48,7 +49,12 @@ extension Reactive where Base: ASAuthorizationController {
                       let authorizationCodeData = credential.authorizationCode,
                       let identityToken = String(data: identityTokenData, encoding: .utf8),
                       let authorizationCode = String(data: authorizationCodeData, encoding: .utf8)
-                else {return nil }
+                else {
+                    Crashlytics.crashlytics().record(
+                        error: CustomError(memo: "didCompleteWithAuthorization with nil")
+                    )
+                    return nil
+                }
                 
                 // 첫번째 회원가입 성공이후 부터 애플로그인시에는 빈값으로 넘어옴
                 let givenName = credential.fullName?.givenName ?? ""

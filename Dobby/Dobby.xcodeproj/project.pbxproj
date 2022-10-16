@@ -13,6 +13,7 @@
 		A12095EB28F2E010008CE410 /* RefreshAuthAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12095EA28F2E010008CE410 /* RefreshAuthAPI.swift */; };
 		A12095EE28F3FCF0008CE410 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A12095ED28F3FCF0008CE410 /* GoogleService-Info.plist */; };
 		A12095F128F6D78A008CE410 /* JWTAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12095F028F6D78A008CE410 /* JWTAuthentication.swift */; };
+		A12095F328FBDFDC008CE410 /* CustomError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12095F228FBDFDC008CE410 /* CustomError.swift */; };
 		A13C531128E7129D00C72215 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13C531028E7129D00C72215 /* AppDelegate.swift */; };
 		A13C531328E7129D00C72215 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13C531228E7129D00C72215 /* SceneDelegate.swift */; };
 		A13C531A28E7129E00C72215 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A13C531928E7129E00C72215 /* Assets.xcassets */; };
@@ -74,6 +75,7 @@
 		A12095EC28F3F1B5008CE410 /* Dobby.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Dobby.entitlements; sourceTree = "<group>"; };
 		A12095ED28F3FCF0008CE410 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A12095F028F6D78A008CE410 /* JWTAuthentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JWTAuthentication.swift; sourceTree = "<group>"; };
+		A12095F228FBDFDC008CE410 /* CustomError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomError.swift; sourceTree = "<group>"; };
 		A13C530D28E7129D00C72215 /* Dobby.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dobby.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A13C531028E7129D00C72215 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A13C531228E7129D00C72215 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -350,6 +352,7 @@
 			isa = PBXGroup;
 			children = (
 				A13C537128E958D200C72215 /* Extensions */,
+				A12095F228FBDFDC008CE410 /* CustomError.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -714,6 +717,7 @@
 				A13C536728E91D9C00C72215 /* AuthUseCase.swift in Sources */,
 				A13C535228E817F800C72215 /* Coordinator.swift in Sources */,
 				A13C535A28E8288300C72215 /* SplashCoordinator.swift in Sources */,
+				A12095F328FBDFDC008CE410 /* CustomError.swift in Sources */,
 				A13C535C28E8288A00C72215 /* SplashViewController.swift in Sources */,
 				A13C536F28E94D0500C72215 /* LocalTokenStorageService.swift in Sources */,
 				A12095F128F6D78A008CE410 /* JWTAuthentication.swift in Sources */,
