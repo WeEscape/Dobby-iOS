@@ -12,6 +12,9 @@ struct Authentication: Decodable {
     let refreshToken: String?
     let identityToken: String?
     let authorizeCode: String?
+    let snsUserName: String?
+    let snsUserEmail: String?
+    let snsUserId: String?
 }
 
 enum AuthenticationProvider: Int {

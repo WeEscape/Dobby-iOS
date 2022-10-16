@@ -60,6 +60,9 @@ final class AuthenticationRepositoryImpl: AuthenticationRepository {
         return self.network.request(api: LoginAPI(
             provider: provider,
             accessToken: authentication.accessToken,
+            snsUserName: authentication.snsUserName,
+            snsUserEmail: authentication.snsUserEmail,
+            snsUserId: authentication.snsUserId,
             identityToken: authentication.identityToken,
             authorizeCode: authentication.authorizeCode
         )).map { authDTO in

@@ -32,6 +32,9 @@ struct LoginAPI: BaseAPI {
         case .apple:
             return .requestParameters(
                 parameters: [
+                    "snsUserName": snsUserName,
+                    "snsUserEmail": snsUserEmail,
+                    "snsUserId": snsUserId,
                     "identityToken": identityToken,
                     "authorizeCode": authorizeCode
                 ],
@@ -44,14 +47,23 @@ struct LoginAPI: BaseAPI {
     let accessToken: String
     let identityToken: String
     let authorizeCode: String
+    let snsUserName: String
+    let snsUserEmail: String
+    let snsUserId: String
     
     init(provider: AuthenticationProvider,
          accessToken: String?,
+         snsUserName: String?,
+         snsUserEmail: String?,
+         snsUserId: String?,
          identityToken: String?,
          authorizeCode: String?
     ) {
         self.provider = provider
         self.accessToken = accessToken ?? ""
+        self.snsUserName = snsUserName ?? ""
+        self.snsUserEmail = snsUserEmail ?? ""
+        self.snsUserId = snsUserId ?? ""
         self.identityToken = identityToken ?? ""
         self.authorizeCode = authorizeCode ?? ""
     }

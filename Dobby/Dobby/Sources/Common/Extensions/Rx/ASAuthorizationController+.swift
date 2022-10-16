@@ -48,12 +48,20 @@ extension Reactive where Base: ASAuthorizationController {
                       let authorizationCodeData = credential.authorizationCode,
                       let identityToken = String(data: identityTokenData, encoding: .utf8),
                       let authorizationCode = String(data: authorizationCodeData, encoding: .utf8)
-                else { return nil }
+                else {return nil }
+                
+                // 첫번째 회원가입 성공이후 부터 애플로그인시에는 빈값으로 넘어옴
+                let givenName = credential.fullName?.givenName ?? ""
+                let userEmail = credential.email ?? ""
+                
                 return .init(
                     accessToken: nil,
                     refreshToken: nil,
                     identityToken: identityToken,
-                    authorizeCode: authorizationCode
+                    authorizeCode: authorizationCode,
+                    snsUserName: givenName,
+                    snsUserEmail: userEmail,
+                    snsUserId: credential.user
                 )
             }
     }
