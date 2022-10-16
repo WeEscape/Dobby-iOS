@@ -14,11 +14,11 @@ class BaseViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        BeaverLog.debug("\(String(describing: self)) viewDidLoad")
+        BeaverLog.verbose("\(String(describing: self)) viewDidLoad")
     }
     
     deinit {
-        BeaverLog.debug("\(String(describing: self)) deinit")
+        BeaverLog.verbose("\(String(describing: self)) deinit")
     }
     
 }
