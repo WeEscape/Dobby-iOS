@@ -25,7 +25,8 @@ struct LoginAPI: BaseAPI {
         case .kakao:
             return .requestParameters(
                 parameters: [
-                    "accessToken": accessToken
+                    "accessToken": accessToken,
+                    "refreshToken": refreshToken
                 ],
                 encoding: JSONEncoding.default
             )
@@ -45,6 +46,7 @@ struct LoginAPI: BaseAPI {
     
     let provider: AuthenticationProvider
     let accessToken: String
+    let refreshToken: String
     let identityToken: String
     let authorizeCode: String
     let snsUserName: String
@@ -53,6 +55,7 @@ struct LoginAPI: BaseAPI {
     
     init(provider: AuthenticationProvider,
          accessToken: String?,
+         refreshToken: String?,
          snsUserName: String?,
          snsUserEmail: String?,
          snsUserId: String?,
@@ -61,6 +64,7 @@ struct LoginAPI: BaseAPI {
     ) {
         self.provider = provider
         self.accessToken = accessToken ?? ""
+        self.refreshToken = refreshToken ?? ""
         self.snsUserName = snsUserName ?? ""
         self.snsUserEmail = snsUserEmail ?? ""
         self.snsUserId = snsUserId ?? ""

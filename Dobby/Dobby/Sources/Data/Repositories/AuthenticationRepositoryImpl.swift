@@ -23,24 +23,46 @@ final class AuthenticationRepositoryImpl: AuthenticationRepository {
     }
     
     func kakaoAuthorize() -> Observable<Authentication> {
-        if UserApi.isKakaoTalkLoginAvailable() {
-            UserApi.shared.loginWithKakaoTalk { respone, error in
-                if let err = error {
-                    
-                } else {
-                    
+        return Observable<Authentication>.create { observer in
+            if UserApi.isKakaoTalkLoginAvailable() {
+                UserApi.shared.loginWithKakaoTalk { respone, error in
+                    if let err = error {
+                        BeaverLog.debug(err.localizedDescription)
+                        observer.on(.error(err))
+                    } else {
+                        observer.on(.next(.init(
+                            accessToken: respone?.accessToken,
+                            refreshToken: respone?.refreshToken,
+                            identityToken: nil,
+                            authorizeCode: nil,
+                            snsUserName: nil,
+                            snsUserEmail: nil,
+                            snsUserId: nil
+                        )))
+                        observer.onCompleted()
+                    }
+                }
+            } else {
+                UserApi.shared.loginWithKakaoAccount { respone, error in
+                    if let err = error {
+                        BeaverLog.debug(err.localizedDescription)
+                        observer.on(.error(err))
+                    } else {
+                        observer.on(.next(.init(
+                            accessToken: respone?.accessToken,
+                            refreshToken: respone?.refreshToken,
+                            identityToken: nil,
+                            authorizeCode: nil,
+                            snsUserName: nil,
+                            snsUserEmail: nil,
+                            snsUserId: nil
+                        )))
+                        observer.onCompleted()
+                    }
                 }
             }
-        } else {
-            UserApi.shared.loginWithKakaoAccount { respone, error in
-                if let err = error {
-                    
-                } else {
-                
-                }
-            }
+            return Disposables.create()
         }
-        return .empty()
     }
     
     func appleAuthorize() -> Observable<Authentication> {
@@ -51,6 +73,9 @@ final class AuthenticationRepositoryImpl: AuthenticationRepository {
         
         return controller.rx.didCompleteAuthorization
             .filterNil()
+            .first()
+            .asObservable()
+            .filterNil()
     }
     
     func login(
@@ -60,6 +85,7 @@ final class AuthenticationRepositoryImpl: AuthenticationRepository {
         return self.network.request(api: LoginAPI(
             provider: provider,
             accessToken: authentication.accessToken,
+            refreshToken: authentication.refreshToken,
             snsUserName: authentication.snsUserName,
             snsUserEmail: authentication.snsUserEmail,
             snsUserId: authentication.snsUserId,
