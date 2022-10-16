@@ -76,7 +76,7 @@ final class NetworkServiceImpl: NetworkService {
             .catch { err in
                 BeaverLog.debug(err.localizedDescription)
                 Crashlytics.crashlytics().record(error: err)
-                return .empty()
+                return .error(err)
             }
     }
     
