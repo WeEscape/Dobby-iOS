@@ -19,7 +19,7 @@ protocol BaseAPI: TargetType {
 
 extension BaseAPI {
     var baseURL: URL {
-        return URL(string: "http://118.67.128.228:8000")!
+        return URL(string: "http://118.67.128.228:3000")!
     }
     
     var headers: [String: String]? {
