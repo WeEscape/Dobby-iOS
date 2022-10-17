@@ -22,6 +22,9 @@ target 'Dobby' do
   pod 'SnapKit'
   pod 'lottie-ios'
   
+  # Toast
+  pod 'Toast-Swift'
+  
   # Network
   pod 'Moya/RxSwift'
   
