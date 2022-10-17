@@ -118,11 +118,21 @@ final class AuthenticationRepositoryImpl: AuthenticationRepository {
         ))
     }
     
-    func writeToken(authentication: JWTAuthentication) -> Observable<Void> {
-        return .empty()
+    func writeToken(authentication: JWTAuthentication) {
+        if let accessToken = authentication.accessToken {
+            self.localStorage.write(key: .jwtAccessToken, value: accessToken)
+        }
+        if let refreshToken = authentication.refreshToken {
+            self.localStorage.write(key: .jwtRefreshToken, value: refreshToken)
+        }
     }
     
-    func removeToken(tokenOption: JWTOption) -> Observable<Void> {
-        return .empty()
+    func removeToken(tokenOption: JWTOption) {
+        if tokenOption.contains(.accessToken) {
+            self.localStorage.delete(key: .jwtAccessToken)
+        }
+        if tokenOption.contains(.refreshToken) {
+            self.localStorage.delete(key: .jwtRefreshToken)
+        }
     }
 }

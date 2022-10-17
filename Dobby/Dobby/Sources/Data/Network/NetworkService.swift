@@ -17,7 +17,7 @@ protocol NetworkService {
 final class NetworkServiceImpl: NetworkService {
     
     private let provider: MoyaProvider<MultiTarget>
-    weak var localStorage: LocalTokenStorageService?
+    let localStorage: LocalTokenStorageService
     static let shared = NetworkServiceImpl()
     
     private init() {
@@ -54,13 +54,13 @@ final class NetworkServiceImpl: NetworkService {
                                 return .error(NetworkError.invalidateAccessToken)
                             }
                             BeaverLog.verbose("new access token : \(newAccessToken)")
-                            self.localStorage?.write(key: .jwtAccessToken, value: newAccessToken)
+                            self.localStorage.write(key: .jwtAccessToken, value: newAccessToken)
                             return self._request(api: api)
                         }
                         .catch { _ in
                             BeaverLog.verbose("invalidate RefreshToken! -> logout")
-                            self.localStorage?.delete(key: .jwtAccessToken)
-                            self.localStorage?.delete(key: .jwtRefreshToken)
+                            self.localStorage.delete(key: .jwtAccessToken)
+                            self.localStorage.delete(key: .jwtRefreshToken)
                             let appDelegate = UIApplication.shared.delegate as? AppDelegate
                             appDelegate?.rootCoordinator?.didFinish()
                             appDelegate?.rootCoordinator?.startSplash()
@@ -96,7 +96,7 @@ final class NetworkServiceImpl: NetworkService {
     
     private func refreshAccessToken() -> Observable<JWTAuthentication> {
         BeaverLog.verbose("start refresh AccessToken")
-        guard let refreshToken = self.localStorage?.read(key: .jwtRefreshToken) else {
+        guard let refreshToken = self.localStorage.read(key: .jwtRefreshToken) else {
             BeaverLog.verbose("device doesn't have refreshToken")
             return .error(NetworkError.invalidateRefreshToken)
         }

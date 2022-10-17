@@ -13,26 +13,23 @@ class WelcomeViewModel {
     
     var disposBag: DisposeBag = .init()
     let authUseCase: AuthUseCase
+    let loginResult: PublishRelay<Bool>
     
     init(authUseCase: AuthUseCase) {
         self.authUseCase = authUseCase
+        self.loginResult = .init()
     }
     
-    func authorize(provider: AuthenticationProvider) {
-        self.authUseCase.authorize(provider: provider )
+    func login(provider: AuthenticationProvider) {
+        self.authUseCase.login(provider: provider )
             .subscribe(
                 onNext: { [weak self] auth in
-                    // 1. write token
                     self?.authUseCase.writeToken(authentication: auth)
-                    // 2. 완료 이벤트 방출
-                    
-                }, onError: { _ in
-                    //
+                    self?.loginResult.accept(true)
+                }, onError: { [weak self]  _ in
+                    self?.authUseCase.removeToken(tokenOption: [.accessToken, .refreshToken])
+                    self?.loginResult.accept(false)
                 }
             ).disposed(by: self.disposBag)
-    }
-    
-    func appleAuthorize() {
-        print("debug : appleAuthorize ")
     }
 }
