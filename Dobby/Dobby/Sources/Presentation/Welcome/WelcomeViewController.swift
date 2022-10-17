@@ -11,6 +11,7 @@ import RxCocoa
 import SnapKit
 import RxGesture
 import RxRelay
+import Toast_Swift
 
 final class WelcomeViewController: BaseViewController {
     
@@ -48,7 +49,6 @@ final class WelcomeViewController: BaseViewController {
         self.welcomeViewModel = welcomeViewModel
         self.welcomeCoordinator = welcomeCoordinator
         super.init(nibName: nil, bundle: nil)
-        BeaverLog.debug("\(String(describing: self)) init")
     }
     
     required init?(coder: NSCoder) {
@@ -75,7 +75,7 @@ final class WelcomeViewController: BaseViewController {
         }
         
         stackView.addArrangedSubview(kakaoView)
-        stackView.addArrangedSubview(appleBtn)   
+        stackView.addArrangedSubview(appleBtn)
     }
     
     func bind() {
@@ -84,7 +84,15 @@ final class WelcomeViewController: BaseViewController {
     }
     
     func bindState() {
-        
+        self.welcomeViewModel.loginResult
+            .subscribe(onNext: { [weak self] islogin in
+                guard let self = self else {return}
+                if islogin {
+                    self.welcomeCoordinator?.presentMainTab(viewContorller: self)
+                } else {
+                    self.view.makeToast("로그인 실패!\n잠시후 다시 시도해주세요", duration: 3.0, position: .bottom)
+                }
+            }).disposed(by: self.disposeBag)
     }
     
     func bindAction() {
@@ -92,7 +100,7 @@ final class WelcomeViewController: BaseViewController {
             .when(.recognized)
             .asDriver { _ in .empty() }
             .drive(onNext: { [weak self] _ in
-                self?.welcomeViewModel.authorize(provider: .kakao)
+                self?.welcomeViewModel.login(provider: .kakao)
             })
             .disposed(by: self.disposeBag)
         
@@ -100,7 +108,7 @@ final class WelcomeViewController: BaseViewController {
             .when(.recognized)
             .asDriver { _ in .empty() }
             .drive(onNext: { [weak self] _ in
-                self?.welcomeViewModel.authorize(provider: .apple)
+                self?.welcomeViewModel.login(provider: .apple)
             })
             .disposed(by: self.disposeBag)
     }

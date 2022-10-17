@@ -22,7 +22,6 @@ final class SplashViewController: BaseViewController {
         self.splashViewModel = splashViewModel
         self.splashCoordinator = splashCoordinator
         super.init(nibName: nil, bundle: nil)
-        BeaverLog.verbose("\(String(describing: self)) init")
     }
     
     required init?(coder: NSCoder) {
