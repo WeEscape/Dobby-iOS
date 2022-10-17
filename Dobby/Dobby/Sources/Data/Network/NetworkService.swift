@@ -109,7 +109,7 @@ final class NetworkServiceImpl: NetworkService {
                     from: res.data
                 )
                 return .init(
-                    accessToken: resData.aceessToken,
+                    accessToken: resData.accessToken,
                     refreshToken: resData.refreshToken
                 )
             }

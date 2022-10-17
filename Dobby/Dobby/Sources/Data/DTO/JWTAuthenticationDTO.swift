@@ -8,12 +8,12 @@
 import Foundation
 
 struct JWTAuthenticationDTO: Codable {
-    var aceessToken: String?
+    var accessToken: String?
     var refreshToken: String?
     
     func toDomain() -> JWTAuthentication {
         return .init(
-            accessToken: self.aceessToken,
+            accessToken: self.accessToken,
             refreshToken: self.refreshToken
         )
     }
