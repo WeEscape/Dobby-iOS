@@ -28,4 +28,11 @@ final class WelcomeCoordinator: BaseCoordinator {
         welcomeViewController.modalTransitionStyle = .coverVertical
         viewController?.present(welcomeViewController, animated: true)
     }
+    
+    func presentMainTab(viewContorller: UIViewController) {
+        let mainTabBarCoordinator = MainTabBarCoordinator()
+        mainTabBarCoordinator.parentCoordinator = self
+        childCoordinators += [mainTabBarCoordinator]
+        mainTabBarCoordinator.start(window: nil, viewController: viewContorller)
+    }
 }

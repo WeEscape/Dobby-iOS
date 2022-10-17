@@ -29,7 +29,10 @@ final class SplashCoordinator: BaseCoordinator {
     }
     
     func presentMainTab(viewContorller: UIViewController) {
-        
+        let mainTabBarCoordinator = MainTabBarCoordinator()
+        mainTabBarCoordinator.parentCoordinator = self
+        childCoordinators += [mainTabBarCoordinator]
+        mainTabBarCoordinator.start(window: nil, viewController: viewContorller)
     }
     
     func presentWelcome(viewContorller: UIViewController) {
