@@ -23,15 +23,31 @@ final class WelcomeViewController: BaseViewController {
         stack.axis = .vertical
         stack.distribution = .fillEqually
         stack.spacing = 10
-        stack.translatesAutoresizingMaskIntoConstraints = false
         return stack
     }()
     
     private let kakaoView: UIView = {
         let kakao = UIView()
-        kakao.backgroundColor = .yellow
+        kakao.backgroundColor = Palette.yellow1
         kakao.layer.cornerRadius = 10
         return kakao
+    }()
+    
+    private let kakaoLabel: UILabel = {
+       let lbl = UILabel()
+        lbl.font = DobbyFont.appleSDGothicNeoMedium(size: 20).getFont
+        lbl.text = "kakao로 로그인"
+        lbl.setContentHuggingPriority(.defaultLow, for: .horizontal)
+        lbl.textColor = Palette.black1
+        return lbl
+    }()
+    
+    private let kakaologo: UIImageView = {
+        let iv = UIImageView(frame: .init(origin: .zero, size: .init(width: 20, height: 20)))
+        iv.contentMode = .scaleAspectFit
+        iv.backgroundColor = .clear
+        iv.image = UIImage(named: "kakaologo")
+        return iv
     }()
     
     private let appleBtn: ASAuthorizationAppleIDButton = {
@@ -40,6 +56,30 @@ final class WelcomeViewController: BaseViewController {
             authorizationButtonStyle: .black
         )
         return btn
+    }()
+    
+    private let welcomeTitle: UILabel = {
+        let lbl = UILabel()
+        lbl.font = DobbyFont.avenirBlack(size: 44).getFont
+        lbl.text = "DOBBY"
+        lbl.textColor = Palette.black1
+        return lbl
+    }()
+    
+    private let welcomeSubTitle: UILabel = {
+        let lbl = UILabel()
+        lbl.font = DobbyFont.avenirMedium(size: 16).getFont
+        lbl.text = "가사분담에서 해방하다"
+        lbl.textColor = Palette.black1
+        return lbl
+    }()
+    
+    private let logoImageView: UIImageView = {
+        let iv = UIImageView()
+        iv.contentMode = .scaleAspectFit
+        iv.backgroundColor = .clear
+        iv.image = UIImage(named: "dobbylogo")
+        return iv
     }()
     
     init(
@@ -70,12 +110,43 @@ final class WelcomeViewController: BaseViewController {
             $0.leading.equalTo(view.safeAreaLayoutGuide.snp.leading).inset(45)
             $0.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing).inset(45)
             $0.height.equalTo(110)
-            $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).inset(128)
+            $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).inset(100)
+            $0.centerX.equalToSuperview()
+        }
+        stackView.addArrangedSubview(kakaoView)
+        stackView.addArrangedSubview(appleBtn)
+        
+        kakaoView.addSubview(kakaoLabel)
+        kakaoLabel.snp.makeConstraints {
+            $0.centerX.equalToSuperview().offset(13)
+            $0.centerY.equalToSuperview()
+        }
+        
+        kakaoView.addSubview(kakaologo)
+        kakaologo.snp.makeConstraints {
+            $0.centerY.equalToSuperview()
+            $0.right.equalTo(kakaoLabel.snp.left).offset(-6)
+        }
+        
+        self.view.addSubview(welcomeSubTitle)
+        welcomeSubTitle.snp.makeConstraints {
+            $0.centerY.equalToSuperview()
             $0.centerX.equalToSuperview()
         }
         
-        stackView.addArrangedSubview(kakaoView)
-        stackView.addArrangedSubview(appleBtn)
+        self.view.addSubview(welcomeTitle)
+        welcomeTitle.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.top.equalTo(welcomeSubTitle.snp.bottom)
+        }
+        
+        self.view.addSubview(logoImageView)
+        logoImageView.snp.makeConstraints {
+            $0.width.equalTo(34)
+            $0.height.equalTo(68)
+            $0.centerX.equalToSuperview()
+            $0.bottom.equalTo(welcomeSubTitle.snp.top).offset(-10)
+        }
     }
     
     func bind() {
