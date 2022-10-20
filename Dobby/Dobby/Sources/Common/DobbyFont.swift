@@ -12,6 +12,7 @@ enum DobbyFont {
     case avenirBlack(size: CGFloat)
     case avenirMedium(size: CGFloat)
     case avenirLight(size: CGFloat)
+    case appleSDGothicNeoMedium(size:CGFloat)
     
     var getFont: UIFont? {
         switch self {
@@ -21,6 +22,8 @@ enum DobbyFont {
             return UIFont(name: "Avenir-Medium", size: size)
         case .avenirLight(let size):
             return UIFont(name: "Avenir-Light", size: size)
+        case .appleSDGothicNeoMedium(let size):
+            return UIFont(name: "AppleSDGothicNeo-Medium", size: size)
         }
     }
 }
