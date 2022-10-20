@@ -9,11 +9,33 @@ import UIKit
 import RxSwift
 import RxRelay
 import RxViewController
+import Lottie
+import SnapKit
 
 final class SplashViewController: BaseViewController {
     
     var splashViewModel: SplashViewModel
     weak var splashCoordinator: SplashCoordinator?
+    
+    private let splashView: AnimationView = {
+        let splash = AnimationView()
+        splash.animation = Animation.named("splash")
+        splash.loopMode = .loop
+        splash.contentMode = .scaleAspectFit
+        splash.backgroundColor = .clear
+        splash.translatesAutoresizingMaskIntoConstraints = false
+        splash.play()
+        return splash
+    }()
+    
+    private let dobbyLabel: UILabel = {
+        let lbl = UILabel()
+        lbl.font = DobbyFont.avenirBlack(size: 30).getFont
+        lbl.text = "DOBBY"
+        lbl.textColor = Palette.blue1
+        lbl.translatesAutoresizingMaskIntoConstraints = false
+        return lbl
+    }()
     
     init(
         splashViewModel: SplashViewModel,
@@ -35,7 +57,21 @@ final class SplashViewController: BaseViewController {
     }
     
     func setupUI() {
-        view.backgroundColor = .green
+        view.backgroundColor = .white
+        
+        self.view.addSubview(splashView)
+        splashView.snp.makeConstraints { 
+            $0.width.equalTo(300)
+            $0.height.equalTo(600)
+            $0.centerX.equalToSuperview()
+            $0.centerY.equalToSuperview()
+        }
+        
+        self.view.addSubview(dobbyLabel)
+        dobbyLabel.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).inset(100)
+        }
     }
     
     func bind() {
@@ -59,7 +95,7 @@ final class SplashViewController: BaseViewController {
      
         self.rx.viewDidAppear
             .subscribe { _ in
-                let splashDuration: DispatchTimeInterval = .seconds(2)
+                let splashDuration: DispatchTimeInterval = .seconds(3)
                 DispatchQueue.main.asyncAfter(deadline: .now() + splashDuration) { [weak self] in
                     self?.splashViewModel.loadAccessToken()
                 }

@@ -17,6 +17,9 @@
 		A12095F528FD9427008CE410 /* MainTabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12095F428FD9427008CE410 /* MainTabBarCoordinator.swift */; };
 		A12095F728FD9532008CE410 /* MainTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12095F628FD9532008CE410 /* MainTab.swift */; };
 		A12095F928FD953E008CE410 /* MainTabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12095F828FD953E008CE410 /* MainTabViewModel.swift */; };
+		A12095FB29016034008CE410 /* splash.json in Resources */ = {isa = PBXBuildFile; fileRef = A12095FA29016034008CE410 /* splash.json */; };
+		A12095FD2901669B008CE410 /* Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12095FC2901669B008CE410 /* Palette.swift */; };
+		A12095FF2901680F008CE410 /* DobbyFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12095FE2901680F008CE410 /* DobbyFont.swift */; };
 		A13C531128E7129D00C72215 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13C531028E7129D00C72215 /* AppDelegate.swift */; };
 		A13C531328E7129D00C72215 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13C531228E7129D00C72215 /* SceneDelegate.swift */; };
 		A13C531A28E7129E00C72215 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A13C531928E7129E00C72215 /* Assets.xcassets */; };
@@ -82,6 +85,9 @@
 		A12095F428FD9427008CE410 /* MainTabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarCoordinator.swift; sourceTree = "<group>"; };
 		A12095F628FD9532008CE410 /* MainTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTab.swift; sourceTree = "<group>"; };
 		A12095F828FD953E008CE410 /* MainTabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabViewModel.swift; sourceTree = "<group>"; };
+		A12095FA29016034008CE410 /* splash.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = splash.json; sourceTree = "<group>"; };
+		A12095FC2901669B008CE410 /* Palette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Palette.swift; sourceTree = "<group>"; };
+		A12095FE2901680F008CE410 /* DobbyFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DobbyFont.swift; sourceTree = "<group>"; };
 		A13C530D28E7129D00C72215 /* Dobby.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dobby.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A13C531028E7129D00C72215 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A13C531228E7129D00C72215 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -244,6 +250,7 @@
 			children = (
 				A13C531928E7129E00C72215 /* Assets.xcassets */,
 				A13C531B28E7129E00C72215 /* LaunchScreen.storyboard */,
+				A12095FA29016034008CE410 /* splash.json */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -359,6 +366,8 @@
 			children = (
 				A13C537128E958D200C72215 /* Extensions */,
 				A12095F228FBDFDC008CE410 /* CustomError.swift */,
+				A12095FC2901669B008CE410 /* Palette.swift */,
+				A12095FE2901680F008CE410 /* DobbyFont.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -376,9 +385,9 @@
 			isa = PBXGroup;
 			children = (
 				A12095F428FD9427008CE410 /* MainTabBarCoordinator.swift */,
-				A13C537828E9789200C72215 /* MainTabBarController.swift */,
 				A12095F628FD9532008CE410 /* MainTab.swift */,
 				A12095F828FD953E008CE410 /* MainTabViewModel.swift */,
+				A13C537828E9789200C72215 /* MainTabBarController.swift */,
 			);
 			path = MainTab;
 			sourceTree = "<group>";
@@ -542,6 +551,7 @@
 				A12095EE28F3FCF0008CE410 /* GoogleService-Info.plist in Resources */,
 				A13C531D28E7129E00C72215 /* LaunchScreen.storyboard in Resources */,
 				A13C531A28E7129E00C72215 /* Assets.xcassets in Resources */,
+				A12095FB29016034008CE410 /* splash.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -717,6 +727,8 @@
 				A12095F728FD9532008CE410 /* MainTab.swift in Sources */,
 				A13C537B28E97EF600C72215 /* WelcomeCoordinator.swift in Sources */,
 				A13C537328E958DF00C72215 /* Array+.swift in Sources */,
+				A12095FF2901680F008CE410 /* DobbyFont.swift in Sources */,
+				A12095FD2901669B008CE410 /* Palette.swift in Sources */,
 				A13C531128E7129D00C72215 /* AppDelegate.swift in Sources */,
 				A174B17428EF002000F80112 /* BaseAPI.swift in Sources */,
 				A13C536328E9173900C72215 /* AuthenticationRepositoryImpl.swift in Sources */,
