@@ -95,7 +95,7 @@ final class SplashViewController: BaseViewController {
      
         self.rx.viewDidAppear
             .subscribe { _ in
-                let splashDuration: DispatchTimeInterval = .seconds(3)
+                let splashDuration: DispatchTimeInterval = .seconds(2)
                 DispatchQueue.main.asyncAfter(deadline: .now() + splashDuration) { [weak self] in
                     self?.splashViewModel.loadAccessToken()
                 }
