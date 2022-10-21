@@ -14,8 +14,17 @@ import SnapKit
 
 final class SplashViewController: BaseViewController {
     
+    // MARK: property
     var splashViewModel: SplashViewModel
     weak var splashCoordinator: SplashCoordinator?
+    
+    // MARK: UI
+    struct Metric {
+        static let dobbyLabelFontSize: CGFloat = 30
+        static let splashImageWidth: CGFloat = 300
+        static let splashImageHeight: CGFloat = 600
+        static let dobbyLabelBottomInset: CGFloat = 100
+    }
     
     private let splashView: AnimationView = {
         let splash = AnimationView()
@@ -23,20 +32,19 @@ final class SplashViewController: BaseViewController {
         splash.loopMode = .loop
         splash.contentMode = .scaleAspectFit
         splash.backgroundColor = .clear
-        splash.translatesAutoresizingMaskIntoConstraints = false
         splash.play()
         return splash
     }()
     
     private let dobbyLabel: UILabel = {
         let lbl = UILabel()
-        lbl.font = DobbyFont.avenirBlack(size: 30).getFont
+        lbl.font = DobbyFont.avenirBlack(size: Metric.dobbyLabelFontSize).getFont
         lbl.text = "DOBBY"
         lbl.textColor = Palette.blue1
-        lbl.translatesAutoresizingMaskIntoConstraints = false
         return lbl
     }()
     
+    // MARK: init
     init(
         splashViewModel: SplashViewModel,
         splashCoordinator: SplashCoordinator
@@ -50,19 +58,21 @@ final class SplashViewController: BaseViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
         bind()
     }
     
+    // MARK: method
     func setupUI() {
         view.backgroundColor = .white
         
         self.view.addSubview(splashView)
         splashView.snp.makeConstraints { 
-            $0.width.equalTo(300)
-            $0.height.equalTo(600)
+            $0.width.equalTo(Metric.splashImageWidth)
+            $0.height.equalTo(Metric.splashImageHeight)
             $0.centerX.equalToSuperview()
             $0.centerY.equalToSuperview()
         }
@@ -70,10 +80,12 @@ final class SplashViewController: BaseViewController {
         self.view.addSubview(dobbyLabel)
         dobbyLabel.snp.makeConstraints {
             $0.centerX.equalToSuperview()
-            $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).inset(100)
+            $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+                .inset(Metric.dobbyLabelBottomInset)
         }
     }
     
+    // MARK: Rx bind
     func bind() {
         bindState()
         bindAction()
