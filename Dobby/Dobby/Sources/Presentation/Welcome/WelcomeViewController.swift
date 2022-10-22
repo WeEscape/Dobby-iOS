@@ -15,8 +15,24 @@ import Toast_Swift
 
 final class WelcomeViewController: BaseViewController {
     
+    // MARK: property
     let welcomeViewModel: WelcomeViewModel
     weak var welcomeCoordinator: WelcomeCoordinator?
+    
+    // MARK: UI
+    struct Metric {
+        static let kakaoLabelFontSize: CGFloat = 20
+        static let kakaoLogoWidth: CGFloat = 20
+        static let kakaoLogoHeight: CGFloat = 20
+        static let welcomeTitleFontSize: CGFloat = 44
+        static let welcomeSubTitleFontSize: CGFloat = 16
+        static let stackViewLeftRightInset: CGFloat = 45
+        static let stackViewBottomInset: CGFloat = 100
+        static let kakaoLogoLabelInterval: CGFloat = 6
+        static let dobbyLogoWidth: CGFloat = 34
+        static let dobbyLogoHeight: CGFloat = 68
+        static let dobbyLogoBottomMargin: CGFloat = -10
+    }
     
     private let stackView: UIStackView = {
         let stack = UIStackView()
@@ -35,7 +51,7 @@ final class WelcomeViewController: BaseViewController {
     
     private let kakaoLabel: UILabel = {
        let lbl = UILabel()
-        lbl.font = DobbyFont.appleSDGothicNeoMedium(size: 20).getFont
+        lbl.font = DobbyFont.appleSDGothicNeoMedium(size: Metric.kakaoLabelFontSize).getFont
         lbl.text = "kakao로 로그인"
         lbl.setContentHuggingPriority(.defaultLow, for: .horizontal)
         lbl.textColor = Palette.black1
@@ -43,7 +59,10 @@ final class WelcomeViewController: BaseViewController {
     }()
     
     private let kakaologo: UIImageView = {
-        let iv = UIImageView(frame: .init(origin: .zero, size: .init(width: 20, height: 20)))
+        let iv = UIImageView(frame: .init(
+            origin: .zero,
+            size: .init(width: Metric.kakaoLogoWidth, height: Metric.kakaoLogoHeight)
+        ))
         iv.contentMode = .scaleAspectFit
         iv.backgroundColor = .clear
         iv.image = UIImage(named: "kakaologo")
@@ -60,7 +79,7 @@ final class WelcomeViewController: BaseViewController {
     
     private let welcomeTitle: UILabel = {
         let lbl = UILabel()
-        lbl.font = DobbyFont.avenirBlack(size: 44).getFont
+        lbl.font = DobbyFont.avenirBlack(size: Metric.welcomeTitleFontSize).getFont
         lbl.text = "DOBBY"
         lbl.textColor = Palette.black1
         return lbl
@@ -68,7 +87,7 @@ final class WelcomeViewController: BaseViewController {
     
     private let welcomeSubTitle: UILabel = {
         let lbl = UILabel()
-        lbl.font = DobbyFont.avenirMedium(size: 16).getFont
+        lbl.font = DobbyFont.avenirMedium(size: Metric.welcomeSubTitleFontSize).getFont
         lbl.text = "가사분담에서 해방하다"
         lbl.textColor = Palette.black1
         return lbl
@@ -82,6 +101,7 @@ final class WelcomeViewController: BaseViewController {
         return iv
     }()
     
+    // MARK: init
     init(
         welcomeViewModel: WelcomeViewModel,
         welcomeCoordinator: WelcomeCoordinator
@@ -95,22 +115,27 @@ final class WelcomeViewController: BaseViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
         bind()
     }
     
+    // MARK: method
     func setupUI() {
         view.backgroundColor = .white
         
         // button stackView
         self.view.addSubview(stackView)
         stackView.snp.makeConstraints {
-            $0.leading.equalTo(view.safeAreaLayoutGuide.snp.leading).inset(45)
-            $0.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing).inset(45)
+            $0.leading.equalTo(view.safeAreaLayoutGuide.snp.leading)
+                .inset(Metric.stackViewLeftRightInset)
+            $0.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing)
+                .inset(Metric.stackViewLeftRightInset)
             $0.height.equalTo(110)
-            $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).inset(100)
+            $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+                .inset(Metric.stackViewBottomInset)
             $0.centerX.equalToSuperview()
         }
         stackView.addArrangedSubview(kakaoView)
@@ -118,14 +143,15 @@ final class WelcomeViewController: BaseViewController {
         
         kakaoView.addSubview(kakaoLabel)
         kakaoLabel.snp.makeConstraints {
-            $0.centerX.equalToSuperview().offset(13)
+            $0.centerX.equalToSuperview()
+                .offset((Metric.kakaoLogoWidth + Metric.kakaoLogoLabelInterval) / 2)
             $0.centerY.equalToSuperview()
         }
         
         kakaoView.addSubview(kakaologo)
         kakaologo.snp.makeConstraints {
             $0.centerY.equalToSuperview()
-            $0.right.equalTo(kakaoLabel.snp.left).offset(-6)
+            $0.right.equalTo(kakaoLabel.snp.left).offset(-Metric.kakaoLogoLabelInterval)
         }
         
         self.view.addSubview(welcomeSubTitle)
@@ -142,13 +168,14 @@ final class WelcomeViewController: BaseViewController {
         
         self.view.addSubview(logoImageView)
         logoImageView.snp.makeConstraints {
-            $0.width.equalTo(34)
-            $0.height.equalTo(68)
+            $0.width.equalTo(Metric.dobbyLogoWidth)
+            $0.height.equalTo(Metric.dobbyLogoHeight)
             $0.centerX.equalToSuperview()
-            $0.bottom.equalTo(welcomeSubTitle.snp.top).offset(-10)
+            $0.bottom.equalTo(welcomeSubTitle.snp.top).offset(Metric.dobbyLogoBottomMargin)
         }
     }
     
+    // MARK: Rx bind
     func bind() {
         bindState()
         bindAction()
