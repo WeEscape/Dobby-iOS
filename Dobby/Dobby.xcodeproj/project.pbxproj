@@ -51,6 +51,16 @@
 		A174B17628EF007100F80112 /* LoginAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A174B17528EF007100F80112 /* LoginAPI.swift */; };
 		A174B17928EF010100F80112 /* JWTAuthenticationDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = A174B17828EF010100F80112 /* JWTAuthenticationDTO.swift */; };
 		A174B17C28EF034100F80112 /* NetworkLoggerPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = A174B17B28EF034100F80112 /* NetworkLoggerPlugin.swift */; };
+		A19E97E52904D7DE004A8861 /* DailyTaskCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E97E42904D7DE004A8861 /* DailyTaskCoordinator.swift */; };
+		A19E97E72904D7E6004A8861 /* WeeklyTaskCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E97E62904D7E6004A8861 /* WeeklyTaskCoordinator.swift */; };
+		A19E97E92904D7EF004A8861 /* MonthlyTaskCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E97E82904D7EF004A8861 /* MonthlyTaskCoordinator.swift */; };
+		A19E97EB2904D7F7004A8861 /* AddTaskCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E97EA2904D7F7004A8861 /* AddTaskCoordinator.swift */; };
+		A19E97ED2904D803004A8861 /* MyPageCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E97EC2904D803004A8861 /* MyPageCoordinator.swift */; };
+		A19E97EF2904D826004A8861 /* DailyTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E97EE2904D826004A8861 /* DailyTaskViewController.swift */; };
+		A19E97F12904D82F004A8861 /* WeeklyTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E97F02904D82F004A8861 /* WeeklyTaskViewController.swift */; };
+		A19E97F32904D837004A8861 /* MonthlyTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E97F22904D837004A8861 /* MonthlyTaskViewController.swift */; };
+		A19E97F52904D83E004A8861 /* AddTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E97F42904D83E004A8861 /* AddTaskViewController.swift */; };
+		A19E97F72904D845004A8861 /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E97F62904D845004A8861 /* MyPageViewController.swift */; };
 		CF500B1222303C7291A42D9D /* Pods_Dobby.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B3D52E48C3A5CD46EE09F86 /* Pods_Dobby.framework */; };
 /* End PBXBuildFile section */
 
@@ -123,6 +133,16 @@
 		A174B17528EF007100F80112 /* LoginAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAPI.swift; sourceTree = "<group>"; };
 		A174B17828EF010100F80112 /* JWTAuthenticationDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JWTAuthenticationDTO.swift; sourceTree = "<group>"; };
 		A174B17B28EF034100F80112 /* NetworkLoggerPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLoggerPlugin.swift; sourceTree = "<group>"; };
+		A19E97E42904D7DE004A8861 /* DailyTaskCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyTaskCoordinator.swift; sourceTree = "<group>"; };
+		A19E97E62904D7E6004A8861 /* WeeklyTaskCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyTaskCoordinator.swift; sourceTree = "<group>"; };
+		A19E97E82904D7EF004A8861 /* MonthlyTaskCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyTaskCoordinator.swift; sourceTree = "<group>"; };
+		A19E97EA2904D7F7004A8861 /* AddTaskCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskCoordinator.swift; sourceTree = "<group>"; };
+		A19E97EC2904D803004A8861 /* MyPageCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageCoordinator.swift; sourceTree = "<group>"; };
+		A19E97EE2904D826004A8861 /* DailyTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyTaskViewController.swift; sourceTree = "<group>"; };
+		A19E97F02904D82F004A8861 /* WeeklyTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyTaskViewController.swift; sourceTree = "<group>"; };
+		A19E97F22904D837004A8861 /* MonthlyTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyTaskViewController.swift; sourceTree = "<group>"; };
+		A19E97F42904D83E004A8861 /* AddTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskViewController.swift; sourceTree = "<group>"; };
+		A19E97F62904D845004A8861 /* MyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
 		A27AD429C92AD79AA1937D21 /* Pods-Dobby-DobbyUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dobby-DobbyUITests.debug.xcconfig"; path = "Target Support Files/Pods-Dobby-DobbyUITests/Pods-Dobby-DobbyUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		C982B09DA7374C7C9EBFB0F5 /* Pods-Dobby.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dobby.debug.xcconfig"; path = "Target Support Files/Pods-Dobby/Pods-Dobby.debug.xcconfig"; sourceTree = "<group>"; };
 		E2065A457FB7E9D5ABB5819A /* Pods-Dobby.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dobby.release.xcconfig"; path = "Target Support Files/Pods-Dobby/Pods-Dobby.release.xcconfig"; sourceTree = "<group>"; };
@@ -268,6 +288,11 @@
 		A13C534628E720E600C72215 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				A19E97E32904D7AB004A8861 /* MyPage */,
+				A19E97E22904D78E004A8861 /* AddTask */,
+				A19E97E12904D77B004A8861 /* MonthlyTask */,
+				A19E97E02904D775004A8861 /* WeeklyTask */,
+				A19E97DF2904D761004A8861 /* DailyTask */,
 				A13C537428E9783500C72215 /* MainTab */,
 				A13C537528E9784300C72215 /* Welcome */,
 				A13C535828E8286600C72215 /* Splash */,
@@ -434,6 +459,51 @@
 				A174B17B28EF034100F80112 /* NetworkLoggerPlugin.swift */,
 			);
 			path = Plugins;
+			sourceTree = "<group>";
+		};
+		A19E97DF2904D761004A8861 /* DailyTask */ = {
+			isa = PBXGroup;
+			children = (
+				A19E97E42904D7DE004A8861 /* DailyTaskCoordinator.swift */,
+				A19E97EE2904D826004A8861 /* DailyTaskViewController.swift */,
+			);
+			path = DailyTask;
+			sourceTree = "<group>";
+		};
+		A19E97E02904D775004A8861 /* WeeklyTask */ = {
+			isa = PBXGroup;
+			children = (
+				A19E97E62904D7E6004A8861 /* WeeklyTaskCoordinator.swift */,
+				A19E97F02904D82F004A8861 /* WeeklyTaskViewController.swift */,
+			);
+			path = WeeklyTask;
+			sourceTree = "<group>";
+		};
+		A19E97E12904D77B004A8861 /* MonthlyTask */ = {
+			isa = PBXGroup;
+			children = (
+				A19E97E82904D7EF004A8861 /* MonthlyTaskCoordinator.swift */,
+				A19E97F22904D837004A8861 /* MonthlyTaskViewController.swift */,
+			);
+			path = MonthlyTask;
+			sourceTree = "<group>";
+		};
+		A19E97E22904D78E004A8861 /* AddTask */ = {
+			isa = PBXGroup;
+			children = (
+				A19E97EA2904D7F7004A8861 /* AddTaskCoordinator.swift */,
+				A19E97F42904D83E004A8861 /* AddTaskViewController.swift */,
+			);
+			path = AddTask;
+			sourceTree = "<group>";
+		};
+		A19E97E32904D7AB004A8861 /* MyPage */ = {
+			isa = PBXGroup;
+			children = (
+				A19E97EC2904D803004A8861 /* MyPageCoordinator.swift */,
+				A19E97F62904D845004A8861 /* MyPageViewController.swift */,
+			);
+			path = MyPage;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -716,26 +786,34 @@
 			buildActionMask = 2147483647;
 			files = (
 				A13C535E28E8289200C72215 /* SplashViewModel.swift in Sources */,
+				A19E97F32904D837004A8861 /* MonthlyTaskViewController.swift in Sources */,
 				A174B17C28EF034100F80112 /* NetworkLoggerPlugin.swift in Sources */,
 				A13C537728E9786900C72215 /* WelcomeViewController.swift in Sources */,
 				A13C534B28E816B800C72215 /* RootCoordinator.swift in Sources */,
+				A19E97ED2904D803004A8861 /* MyPageCoordinator.swift in Sources */,
 				A13C535728E8231100C72215 /* BaseViewController.swift in Sources */,
 				A174B17628EF007100F80112 /* LoginAPI.swift in Sources */,
 				A12095E928F2A198008CE410 /* NetworkError.swift in Sources */,
 				A13C536028E8942900C72215 /* AuthenticationRepository.swift in Sources */,
+				A19E97E52904D7DE004A8861 /* DailyTaskCoordinator.swift in Sources */,
 				A174B17928EF010100F80112 /* JWTAuthenticationDTO.swift in Sources */,
+				A19E97F12904D82F004A8861 /* WeeklyTaskViewController.swift in Sources */,
 				A12095F728FD9532008CE410 /* MainTab.swift in Sources */,
 				A13C537B28E97EF600C72215 /* WelcomeCoordinator.swift in Sources */,
+				A19E97EF2904D826004A8861 /* DailyTaskViewController.swift in Sources */,
+				A19E97F52904D83E004A8861 /* AddTaskViewController.swift in Sources */,
 				A13C537328E958DF00C72215 /* Array+.swift in Sources */,
 				A12095FF2901680F008CE410 /* DobbyFont.swift in Sources */,
 				A12095FD2901669B008CE410 /* Palette.swift in Sources */,
 				A13C531128E7129D00C72215 /* AppDelegate.swift in Sources */,
 				A174B17428EF002000F80112 /* BaseAPI.swift in Sources */,
+				A19E97E92904D7EF004A8861 /* MonthlyTaskCoordinator.swift in Sources */,
 				A13C536328E9173900C72215 /* AuthenticationRepositoryImpl.swift in Sources */,
 				A13C537F28EA9C0000C72215 /* AppKey.swift in Sources */,
 				A12095F528FD9427008CE410 /* MainTabBarCoordinator.swift in Sources */,
 				A12095EB28F2E010008CE410 /* RefreshAuthAPI.swift in Sources */,
 				A174B16F28EC6F0300F80112 /* ASAuthorizationController+.swift in Sources */,
+				A19E97E72904D7E6004A8861 /* WeeklyTaskCoordinator.swift in Sources */,
 				A13C531328E7129D00C72215 /* SceneDelegate.swift in Sources */,
 				A13C536728E91D9C00C72215 /* AuthUseCase.swift in Sources */,
 				A13C535228E817F800C72215 /* Coordinator.swift in Sources */,
@@ -746,7 +824,9 @@
 				A13C536F28E94D0500C72215 /* LocalTokenStorageService.swift in Sources */,
 				A12095F128F6D78A008CE410 /* JWTAuthentication.swift in Sources */,
 				A13C536D28E94CA200C72215 /* NetworkService.swift in Sources */,
+				A19E97F72904D845004A8861 /* MyPageViewController.swift in Sources */,
 				A13C536528E91BB800C72215 /* Authentication.swift in Sources */,
+				A19E97EB2904D7F7004A8861 /* AddTaskCoordinator.swift in Sources */,
 				A13C537D28E98FD500C72215 /* WelcomeViewModel.swift in Sources */,
 				A13C537928E9789200C72215 /* MainTabBarController.swift in Sources */,
 			);
