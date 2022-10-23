@@ -11,6 +11,6 @@ final class MonthlyTaskViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .yellow
+        view.backgroundColor = .white
     }
 }
