@@ -41,4 +41,8 @@ class Coordinator {
             break
         }
     }
+    
+    func getViewController() -> UIViewController? {
+        return self.viewController
+    }
 }
