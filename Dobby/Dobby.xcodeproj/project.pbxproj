@@ -61,6 +61,7 @@
 		A19E97F32904D837004A8861 /* MonthlyTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E97F22904D837004A8861 /* MonthlyTaskViewController.swift */; };
 		A19E97F52904D83E004A8861 /* AddTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E97F42904D83E004A8861 /* AddTaskViewController.swift */; };
 		A19E97F72904D845004A8861 /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E97F62904D845004A8861 /* MyPageViewController.swift */; };
+		A19E97FB29052A2A004A8861 /* CALayer+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E97FA29052A2A004A8861 /* CALayer+.swift */; };
 		CF500B1222303C7291A42D9D /* Pods_Dobby.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B3D52E48C3A5CD46EE09F86 /* Pods_Dobby.framework */; };
 /* End PBXBuildFile section */
 
@@ -143,6 +144,7 @@
 		A19E97F22904D837004A8861 /* MonthlyTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyTaskViewController.swift; sourceTree = "<group>"; };
 		A19E97F42904D83E004A8861 /* AddTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskViewController.swift; sourceTree = "<group>"; };
 		A19E97F62904D845004A8861 /* MyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
+		A19E97FA29052A2A004A8861 /* CALayer+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+.swift"; sourceTree = "<group>"; };
 		A27AD429C92AD79AA1937D21 /* Pods-Dobby-DobbyUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dobby-DobbyUITests.debug.xcconfig"; path = "Target Support Files/Pods-Dobby-DobbyUITests/Pods-Dobby-DobbyUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		C982B09DA7374C7C9EBFB0F5 /* Pods-Dobby.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dobby.debug.xcconfig"; path = "Target Support Files/Pods-Dobby/Pods-Dobby.debug.xcconfig"; sourceTree = "<group>"; };
 		E2065A457FB7E9D5ABB5819A /* Pods-Dobby.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dobby.release.xcconfig"; path = "Target Support Files/Pods-Dobby/Pods-Dobby.release.xcconfig"; sourceTree = "<group>"; };
@@ -400,6 +402,7 @@
 		A13C537128E958D200C72215 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				A19E97FA29052A2A004A8861 /* CALayer+.swift */,
 				A13C537228E958DF00C72215 /* Array+.swift */,
 				A174B16D28EC6ECE00F80112 /* Rx */,
 			);
@@ -828,6 +831,7 @@
 				A13C536528E91BB800C72215 /* Authentication.swift in Sources */,
 				A19E97EB2904D7F7004A8861 /* AddTaskCoordinator.swift in Sources */,
 				A13C537D28E98FD500C72215 /* WelcomeViewModel.swift in Sources */,
+				A19E97FB29052A2A004A8861 /* CALayer+.swift in Sources */,
 				A13C537928E9789200C72215 /* MainTabBarController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
