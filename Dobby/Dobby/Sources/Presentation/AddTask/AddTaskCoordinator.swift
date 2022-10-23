@@ -18,7 +18,9 @@ final class AddTaskCoordinator: Coordinator {
     }
     
     override func getViewController() -> UIViewController? {
-        let addTaskViewModel = AddTaskViewModel()
+        let addTaskViewModel = AddTaskViewModel(
+            taskUseCase: TaskUseCaseImpl()
+        )
         let newViewController = AddTaskViewController(
             addTaskViewModel: addTaskViewModel
         )

@@ -11,8 +11,12 @@ import RxSwift
 class AddTaskViewModel {
     
     var disposeBag: DisposeBag = .init()
+    let taskUseCase: TaskUseCase
     
-    init() {
+    init(
+        taskUseCase: TaskUseCase
+    ) {
+        self.taskUseCase = taskUseCase
         BeaverLog.debug("\(String(describing: self)) init")
     }
     
