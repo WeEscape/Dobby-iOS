@@ -27,6 +27,7 @@ class BaseViewController: UIViewController {
     }
     
     deinit {
+        self.disposeBag = .init()
         BeaverLog.debug("\(String(describing: self)) deinit")
     }
     
