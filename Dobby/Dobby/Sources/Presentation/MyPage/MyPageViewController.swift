@@ -8,5 +8,9 @@
 import UIKit
 
 final class MyPageViewController: BaseViewController {
-    
+ 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = .blue
+    }
 }

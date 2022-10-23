@@ -9,5 +9,8 @@ import UIKit
 
 final class MonthlyTaskViewController: BaseViewController {
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = .yellow
+    }
 }
-

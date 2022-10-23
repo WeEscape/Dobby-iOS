@@ -9,5 +9,8 @@ import UIKit
 
 final class AddTaskViewController: BaseViewController {
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = .green
+    }
 }
-

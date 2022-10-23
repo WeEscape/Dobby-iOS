@@ -9,4 +9,8 @@ import UIKit
 
 final class WeeklyTaskViewController: BaseViewController {
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = .orange
+    }
 }
