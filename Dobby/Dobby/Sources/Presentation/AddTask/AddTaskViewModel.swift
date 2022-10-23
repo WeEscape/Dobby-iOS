@@ -24,4 +24,8 @@ class AddTaskViewModel {
         self.disposeBag = .init()
         BeaverLog.debug("\(String(describing: self)) deinit")
     }
+    
+    func didTapAddBtn() {
+        print("AddTaskViewModel didTapAddBtn ")
+    }
 }
