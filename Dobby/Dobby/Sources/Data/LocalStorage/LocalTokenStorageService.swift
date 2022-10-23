@@ -30,7 +30,7 @@ extension UserDefaults: LocalTokenStorageService {
     }
     
     func delete(key: TokenKey) {
-        Self.standard.removeObject(forKey: key.rawValue)
+        Self.standard.setValue(nil, forKey: key.rawValue)
         Self.standard.synchronize()
     }
 }
