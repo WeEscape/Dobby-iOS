@@ -9,11 +9,11 @@ import Foundation
 import RxSwift
 
 protocol TaskUseCase {
-    func register(task: Task) -> Observable<Void>
+    func register(task: DobbyTask) -> Observable<Void>
 }
 
 final class TaskUseCaseImpl: TaskUseCase {
-    func register(task: Task) -> RxSwift.Observable<Void> {
+    func register(task: DobbyTask) -> Observable<Void> {
         return .empty()
     }
 }

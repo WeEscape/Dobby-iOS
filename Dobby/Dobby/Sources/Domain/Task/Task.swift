@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Task {
+struct DobbyTask {
     var title: String?
     var registerDate: Date?
     var ownerId: String?
