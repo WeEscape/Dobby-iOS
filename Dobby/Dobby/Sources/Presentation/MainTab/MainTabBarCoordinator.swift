@@ -56,10 +56,10 @@ final class MainTabBarCoordinator: Coordinator {
     
     func pushToAddTask() {
         guard let navigation = self.viewController as? UINavigationController else {return}
-        guard let addTaskCoordinator = self.childCoordinators.filter ({ child in
+        guard let addTaskCoordinator = self.childCoordinators.filter({ child in
             return child is AddTaskCoordinator
         }).first else {return}
         guard let newAddTaskViewController = addTaskCoordinator.getViewController() else {return}
-        navigation.pushViewController(newAddTaskViewController,animated: true)
+        navigation.pushViewController(newAddTaskViewController, animated: true)
     }
 }

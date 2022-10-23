@@ -12,7 +12,7 @@ enum DobbyFont {
     case avenirBlack(size: CGFloat)
     case avenirMedium(size: CGFloat)
     case avenirLight(size: CGFloat)
-    case appleSDGothicNeoMedium(size:CGFloat)
+    case appleSDGothicNeoMedium(size: CGFloat)
     
     var getFont: UIFont? {
         switch self {

@@ -10,12 +10,11 @@ import RxSwift
 import AuthenticationServices
 import FirebaseCrashlytics
 
-
 final class RxASAuthorizationControllerDelegateProxy:
     DelegateProxy<ASAuthorizationController, ASAuthorizationControllerDelegate>,
     DelegateProxyType,
-    ASAuthorizationControllerDelegate
-{
+    ASAuthorizationControllerDelegate {
+    
     static func registerKnownImplementations() {
         self.register {
             RxASAuthorizationControllerDelegateProxy(
@@ -25,26 +24,33 @@ final class RxASAuthorizationControllerDelegateProxy:
         }
     }
     
-    static func currentDelegate(for object: ASAuthorizationController) -> ASAuthorizationControllerDelegate? {
+    static func currentDelegate(
+        for object: ASAuthorizationController
+    ) -> ASAuthorizationControllerDelegate? {
         object.delegate
     }
     
-    static func setCurrentDelegate(_ delegate: ASAuthorizationControllerDelegate?, to object: ASAuthorizationController) {
+    static func setCurrentDelegate(
+        _ delegate: ASAuthorizationControllerDelegate?,
+        to object: ASAuthorizationController
+    ) {
         object.delegate = delegate
     }
 }
 
 extension Reactive where Base: ASAuthorizationController {
+    
     var delegate: DelegateProxy<ASAuthorizationController, ASAuthorizationControllerDelegate> {
         RxASAuthorizationControllerDelegateProxy.proxy(for: base)
     }
     
     var didCompleteAuthorization: Observable<Authentication?> {
         delegate
-            .methodInvoked(#selector(ASAuthorizationControllerDelegate.authorizationController(controller:didCompleteWithAuthorization:)))
+            .methodInvoked(#selector(ASAuthorizationControllerDelegate
+                .authorizationController(controller:didCompleteWithAuthorization:)))
             .map { parameters in
-                guard let authorization = parameters[1] as? ASAuthorization,
-                      let credential = authorization.credential as? ASAuthorizationAppleIDCredential,
+                guard let asAuth = parameters[1] as? ASAuthorization,
+                      let credential = asAuth.credential as? ASAuthorizationAppleIDCredential,
                       let identityTokenData = credential.identityToken,
                       let authorizationCodeData = credential.authorizationCode,
                       let identityToken = String(data: identityTokenData, encoding: .utf8),

@@ -22,7 +22,8 @@ class SplashViewModel {
     func loadAccessToken() {
         self.authUseCase.readToken(tokenOption: [.accessToken, .refreshToken])
             .subscribe(onNext: { [weak self] auth in
-                if let _ = auth.accessToken, let _ = auth.refreshToken {
+                if auth.accessToken != nil,
+                   auth.refreshToken != nil {
                     self?.isSignIn.accept(true)
                 } else {
                     self?.isSignIn.accept(false)
