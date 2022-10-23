@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class RootCoordinator: BaseCoordinator {
+final class RootCoordinator: Coordinator {
     
     var window: UIWindow?
     
@@ -17,8 +17,9 @@ final class RootCoordinator: BaseCoordinator {
     }
     
     func startSplash() {
-        let splashCoordinator = SplashCoordinator()
-        splashCoordinator.parentCoordinator = self
+        let splashCoordinator = SplashCoordinator(
+            parentCoordinator: self
+        )
         childCoordinators += [splashCoordinator]
         splashCoordinator.start(window: self.window, viewController: nil)
     }

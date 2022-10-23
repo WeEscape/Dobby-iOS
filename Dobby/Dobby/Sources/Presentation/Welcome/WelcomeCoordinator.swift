@@ -7,9 +7,7 @@
 
 import UIKit
 
-final class WelcomeCoordinator: BaseCoordinator {
-    
-    weak var parentCoordinator: Coordinator?
+final class WelcomeCoordinator: Coordinator {
     
     override func start(window: UIWindow?, viewController: UIViewController?) {
         let welcomeViewModel = WelcomeViewModel(
@@ -30,8 +28,10 @@ final class WelcomeCoordinator: BaseCoordinator {
     }
     
     func presentMainTab(viewContorller: UIViewController) {
-        let mainTabBarCoordinator = MainTabBarCoordinator()
-        mainTabBarCoordinator.parentCoordinator = self
+        let mainTabBarCoordinator = MainTabBarCoordinator(
+            parentCoordinator: self,
+            childCoordinators: MainTabBarCoordinator.defaultChildCoordinators()
+        )
         childCoordinators += [mainTabBarCoordinator]
         mainTabBarCoordinator.start(window: nil, viewController: viewContorller)
     }

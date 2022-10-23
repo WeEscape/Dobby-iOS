@@ -7,14 +7,22 @@
 
 import UIKit
 
-final class MainTabBarCoordinator: BaseCoordinator {
-    
-    weak var parentCoordinator: Coordinator?
+final class MainTabBarCoordinator: Coordinator {
     
     override func start(window: UIWindow?, viewController: UIViewController?) {
         let mainTabBarController = MainTabBarController()
         mainTabBarController.modalPresentationStyle = .fullScreen
         mainTabBarController.modalTransitionStyle = .crossDissolve
         viewController?.present(mainTabBarController, animated: false)
+    }
+    
+    static func defaultChildCoordinators() ->  [Coordinator] {
+        return [
+            DailyTaskCoordinator(),
+            WeeklyTaskCoordinator(),
+            AddTaskCoordinator(),
+            MonthlyTaskCoordinator(),
+            MyPageCoordinator()
+        ]
     }
 }

@@ -7,11 +7,9 @@
 
 import UIKit
 
-final class SplashCoordinator: BaseCoordinator {
+final class SplashCoordinator: Coordinator {
     
-    weak var parentCoordinator: Coordinator?
-    
-     override func start(window: UIWindow?, viewController: UIViewController?) {
+    override func start(window: UIWindow?, viewController: UIViewController?) {
         let splashViewModel = SplashViewModel(
             authUseCase: AuthUseCaseImpl(
                 authenticationRepository: AuthenticationRepositoryImpl(
@@ -29,15 +27,18 @@ final class SplashCoordinator: BaseCoordinator {
     }
     
     func presentMainTab(viewContorller: UIViewController) {
-        let mainTabBarCoordinator = MainTabBarCoordinator()
-        mainTabBarCoordinator.parentCoordinator = self
+        let mainTabBarCoordinator = MainTabBarCoordinator(
+            parentCoordinator: self,
+            childCoordinators: MainTabBarCoordinator.defaultChildCoordinators()
+        )
         childCoordinators += [mainTabBarCoordinator]
         mainTabBarCoordinator.start(window: nil, viewController: viewContorller)
     }
     
     func presentWelcome(viewContorller: UIViewController) {
-        let welcomeCoordinator = WelcomeCoordinator()
-        welcomeCoordinator.parentCoordinator = self
+        let welcomeCoordinator = WelcomeCoordinator(
+            parentCoordinator: self
+        )
         childCoordinators += [welcomeCoordinator]
         welcomeCoordinator.start(window: nil, viewController: viewContorller)
     }

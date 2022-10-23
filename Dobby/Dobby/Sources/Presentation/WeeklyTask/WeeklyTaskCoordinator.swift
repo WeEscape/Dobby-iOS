@@ -5,4 +5,6 @@
 //  Created by yongmin lee on 10/23/22.
 //
 
-import Foundation
+final class WeeklyTaskCoordinator: Coordinator {
+    
+}

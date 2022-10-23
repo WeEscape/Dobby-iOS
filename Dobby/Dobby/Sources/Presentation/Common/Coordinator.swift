@@ -7,19 +7,21 @@
 
 import UIKit
 
-protocol Coordinator: AnyObject {
-    var childCoordinators: [Coordinator] { get set }
-    func start(window: UIWindow?, viewController: UIViewController?)
-    func didFinish()
-    func childDidFinish(child: Coordinator)
-}
-
-class BaseCoordinator: Coordinator {
+class Coordinator {
     
     var childCoordinators: [Coordinator]
+    weak var parentCoordinator: Coordinator?
     
-    init(childCoordinators: [Coordinator] = []) {
+    init(
+        parentCoordinator: Coordinator? = nil,
+        childCoordinators: [Coordinator] = []
+    ) {
+        self.parentCoordinator = parentCoordinator
         self.childCoordinators = childCoordinators
+        
+        childCoordinators.forEach { child in
+            child.parentCoordinator = self
+        }
     }
     
     deinit {
