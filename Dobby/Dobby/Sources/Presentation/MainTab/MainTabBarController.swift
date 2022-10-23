@@ -37,8 +37,16 @@ final class MainTabBarController: UITabBarController {
     // MARK: Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        setupUI()
         bind()
+    }
+    
+    // MARK: method
+    func setupUI() {
+        view.backgroundColor = .white
+        tabBar.tintColor = Palette.blue1
+        tabBar.backgroundColor = .white
+        tabBar.layer.makeShadow()
     }
     
     // MARK: Rx bind
