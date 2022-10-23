@@ -96,9 +96,9 @@ final class SplashViewController: BaseViewController {
             .subscribe(onNext: { [weak self] result in
                 guard let self = self else {return}
                 if result {
-                    self.splashCoordinator?.presentMainTab(viewContorller: self)
+                    self.splashCoordinator?.presentMainTab()
                 } else {
-                    self.splashCoordinator?.presentWelcome(viewContorller: self)
+                    self.splashCoordinator?.presentWelcome()
                 }
             }).disposed(by: self.disposeBag)
     }

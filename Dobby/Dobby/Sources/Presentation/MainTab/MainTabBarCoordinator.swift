@@ -11,6 +11,7 @@ final class MainTabBarCoordinator: Coordinator {
     
     override func start(window: UIWindow?, viewController: UIViewController?) {
         let mainTabBarController = MainTabBarController()
+        self.viewController = mainTabBarController
         mainTabBarController.modalPresentationStyle = .fullScreen
         mainTabBarController.modalTransitionStyle = .crossDissolve
         viewController?.present(mainTabBarController, animated: false)

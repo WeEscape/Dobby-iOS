@@ -22,17 +22,18 @@ final class WelcomeCoordinator: Coordinator {
             welcomeViewModel: welcomeViewModel,
             welcomeCoordinator: self
         )
+        self.viewController = welcomeViewController
         welcomeViewController.modalPresentationStyle = .fullScreen
         welcomeViewController.modalTransitionStyle = .coverVertical
         viewController?.present(welcomeViewController, animated: true)
     }
     
-    func presentMainTab(viewContorller: UIViewController) {
+    func presentMainTab() {
         let mainTabBarCoordinator = MainTabBarCoordinator(
             parentCoordinator: self,
             childCoordinators: MainTabBarCoordinator.defaultChildCoordinators()
         )
         childCoordinators += [mainTabBarCoordinator]
-        mainTabBarCoordinator.start(window: nil, viewController: viewContorller)
+        mainTabBarCoordinator.start(window: nil, viewController: self.viewController)
     }
 }

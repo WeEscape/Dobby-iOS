@@ -22,24 +22,25 @@ final class SplashCoordinator: Coordinator {
             splashViewModel: splashViewModel,
             splashCoordinator: self
         )
+        self.viewController = splashViewController
         window?.rootViewController = splashViewController
         window?.makeKeyAndVisible()
     }
     
-    func presentMainTab(viewContorller: UIViewController) {
+    func presentMainTab() {
         let mainTabBarCoordinator = MainTabBarCoordinator(
             parentCoordinator: self,
             childCoordinators: MainTabBarCoordinator.defaultChildCoordinators()
         )
         childCoordinators += [mainTabBarCoordinator]
-        mainTabBarCoordinator.start(window: nil, viewController: viewContorller)
+        mainTabBarCoordinator.start(window: nil, viewController: self.viewController)
     }
     
-    func presentWelcome(viewContorller: UIViewController) {
+    func presentWelcome() {
         let welcomeCoordinator = WelcomeCoordinator(
             parentCoordinator: self
         )
         childCoordinators += [welcomeCoordinator]
-        welcomeCoordinator.start(window: nil, viewController: viewContorller)
+        welcomeCoordinator.start(window: nil, viewController: self.viewController)
     }
 }

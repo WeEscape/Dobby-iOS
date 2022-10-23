@@ -11,6 +11,7 @@ class Coordinator {
     
     var childCoordinators: [Coordinator]
     weak var parentCoordinator: Coordinator?
+    var viewController: UIViewController?
     
     init(
         parentCoordinator: Coordinator? = nil,

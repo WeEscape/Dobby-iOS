@@ -186,7 +186,7 @@ final class WelcomeViewController: BaseViewController {
             .subscribe(onNext: { [weak self] islogin in
                 guard let self = self else {return}
                 if islogin {
-                    self.welcomeCoordinator?.presentMainTab(viewContorller: self)
+                    self.welcomeCoordinator?.presentMainTab()
                 } else {
                     self.view.makeToast("로그인 실패!\n잠시후 다시 시도해주세요", duration: 3.0, position: .bottom)
                 }
