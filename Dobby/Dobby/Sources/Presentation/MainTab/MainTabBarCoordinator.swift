@@ -38,16 +38,16 @@ final class MainTabBarCoordinator: Coordinator {
         let vc: UIViewController?
         switch mainTab {
         case .dailyTask:
-            vc = self.childCoordinators[mainTab.rawValue].getViewController()
+            vc = self.childCoordinators[mainTab.rawValue].viewController
         case .weeklyTask:
-            vc = self.childCoordinators[mainTab.rawValue].getViewController()
+            vc = self.childCoordinators[mainTab.rawValue].viewController
         case .addTask:
-            vc = self.childCoordinators[mainTab.rawValue].getViewController()
+            vc = self.childCoordinators[mainTab.rawValue].viewController
         case .monthlyTask:
-            vc = self.childCoordinators[mainTab.rawValue].getViewController()
+            vc = self.childCoordinators[mainTab.rawValue].viewController
         case .mypage:
             vc = UINavigationController(
-                rootViewController: self.childCoordinators[mainTab.rawValue].getViewController()!
+                rootViewController: self.childCoordinators[mainTab.rawValue].viewController!
             )
         }
         vc?.tabBarItem = mainTab.getTabBarItem()
