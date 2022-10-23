@@ -40,7 +40,7 @@ extension MainTab {
         case .weeklyTask:
             return UIImage(systemName: "pause")
         case .addTask:
-            return UIImage(systemName: "stop")
+            return UIImage(named: "icon_add")?.withRenderingMode(.alwaysOriginal)
         case .monthlyTask:
             return UIImage(systemName: "cloud")
         case .mypage:
@@ -55,7 +55,7 @@ extension MainTab {
         case .weeklyTask:
             return UIImage(systemName: "pause.fill")
         case .addTask:
-            return UIImage(systemName: "stop.fill")
+            return UIImage(named: "icon_add")?.withRenderingMode(.alwaysOriginal)
         case .monthlyTask:
             return UIImage(systemName: "cloud.fill")
         case .mypage:
