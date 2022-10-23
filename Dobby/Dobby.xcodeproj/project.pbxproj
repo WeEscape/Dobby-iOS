@@ -63,6 +63,8 @@
 		A19E97F72904D845004A8861 /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E97F62904D845004A8861 /* MyPageViewController.swift */; };
 		A19E97FB29052A2A004A8861 /* CALayer+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E97FA29052A2A004A8861 /* CALayer+.swift */; };
 		A19E97FD29053621004A8861 /* AddTaskViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E97FC29053621004A8861 /* AddTaskViewModel.swift */; };
+		A19E980029053B32004A8861 /* TaskUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E97FF29053B32004A8861 /* TaskUseCase.swift */; };
+		A19E980229053B60004A8861 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E980129053B60004A8861 /* Task.swift */; };
 		CF500B1222303C7291A42D9D /* Pods_Dobby.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B3D52E48C3A5CD46EE09F86 /* Pods_Dobby.framework */; };
 /* End PBXBuildFile section */
 
@@ -147,6 +149,8 @@
 		A19E97F62904D845004A8861 /* MyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
 		A19E97FA29052A2A004A8861 /* CALayer+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+.swift"; sourceTree = "<group>"; };
 		A19E97FC29053621004A8861 /* AddTaskViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskViewModel.swift; sourceTree = "<group>"; };
+		A19E97FF29053B32004A8861 /* TaskUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskUseCase.swift; sourceTree = "<group>"; };
+		A19E980129053B60004A8861 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		A27AD429C92AD79AA1937D21 /* Pods-Dobby-DobbyUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dobby-DobbyUITests.debug.xcconfig"; path = "Target Support Files/Pods-Dobby-DobbyUITests/Pods-Dobby-DobbyUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		C982B09DA7374C7C9EBFB0F5 /* Pods-Dobby.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dobby.debug.xcconfig"; path = "Target Support Files/Pods-Dobby/Pods-Dobby.debug.xcconfig"; sourceTree = "<group>"; };
 		E2065A457FB7E9D5ABB5819A /* Pods-Dobby.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dobby.release.xcconfig"; path = "Target Support Files/Pods-Dobby/Pods-Dobby.release.xcconfig"; sourceTree = "<group>"; };
@@ -309,6 +313,7 @@
 		A13C534728E7213100C72215 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				A19E97FE29053B28004A8861 /* Task */,
 				A13C535328E81D3F00C72215 /* Auth */,
 			);
 			path = Domain;
@@ -510,6 +515,15 @@
 				A19E97F62904D845004A8861 /* MyPageViewController.swift */,
 			);
 			path = MyPage;
+			sourceTree = "<group>";
+		};
+		A19E97FE29053B28004A8861 /* Task */ = {
+			isa = PBXGroup;
+			children = (
+				A19E97FF29053B32004A8861 /* TaskUseCase.swift */,
+				A19E980129053B60004A8861 /* Task.swift */,
+			);
+			path = Task;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -817,6 +831,7 @@
 				A19E97E92904D7EF004A8861 /* MonthlyTaskCoordinator.swift in Sources */,
 				A13C536328E9173900C72215 /* AuthenticationRepositoryImpl.swift in Sources */,
 				A13C537F28EA9C0000C72215 /* AppKey.swift in Sources */,
+				A19E980029053B32004A8861 /* TaskUseCase.swift in Sources */,
 				A12095F528FD9427008CE410 /* MainTabBarCoordinator.swift in Sources */,
 				A12095EB28F2E010008CE410 /* RefreshAuthAPI.swift in Sources */,
 				A174B16F28EC6F0300F80112 /* ASAuthorizationController+.swift in Sources */,
@@ -830,6 +845,7 @@
 				A12095F928FD953E008CE410 /* MainTabViewModel.swift in Sources */,
 				A13C536F28E94D0500C72215 /* LocalTokenStorageService.swift in Sources */,
 				A12095F128F6D78A008CE410 /* JWTAuthentication.swift in Sources */,
+				A19E980229053B60004A8861 /* Task.swift in Sources */,
 				A13C536D28E94CA200C72215 /* NetworkService.swift in Sources */,
 				A19E97F72904D845004A8861 /* MyPageViewController.swift in Sources */,
 				A13C536528E91BB800C72215 /* Authentication.swift in Sources */,
