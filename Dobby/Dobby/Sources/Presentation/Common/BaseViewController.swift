@@ -17,8 +17,17 @@ class BaseViewController: UIViewController {
         BeaverLog.verbose("\(String(describing: self)) viewDidLoad")
     }
     
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        BeaverLog.debug("\(String(describing: self)) init")
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     deinit {
-        BeaverLog.verbose("\(String(describing: self)) deinit")
+        BeaverLog.debug("\(String(describing: self)) deinit")
     }
     
 }
