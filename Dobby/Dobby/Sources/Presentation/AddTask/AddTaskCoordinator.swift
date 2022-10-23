@@ -11,6 +11,12 @@ final class AddTaskCoordinator: Coordinator {
 
     override init(parentCoordinator: Coordinator? = nil, childCoordinators: [Coordinator] = []) {
         super.init(parentCoordinator: parentCoordinator, childCoordinators: childCoordinators)
-        self.viewController = AddTaskViewController()
+        let dummyViewController = AddTaskViewController()
+        self.viewController = dummyViewController
+    }
+    
+    override func getViewController() -> UIViewController? {
+        let newViewController = AddTaskViewController()
+        return newViewController
     }
 }
