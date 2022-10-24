@@ -72,9 +72,9 @@ final class MainTabBarController: UITabBarController {
                 self?.selectedIndex = selectedIndex
             }).disposed(by: self.disposeBag)
         
-        mainTabViewModel.pushAddTaskTab
+        mainTabViewModel.pushAddChoreTab
             .subscribe(onNext: { [weak self] _ in
-                self?.mainTabBarCoordinator?.pushToAddTask()
+                self?.mainTabBarCoordinator?.pushToAddChore()
             })
             .disposed(by: self.disposeBag)
     }

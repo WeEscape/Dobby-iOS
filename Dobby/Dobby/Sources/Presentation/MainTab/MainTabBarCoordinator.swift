@@ -28,7 +28,7 @@ final class MainTabBarCoordinator: Coordinator {
         return [
             DailyTaskCoordinator(),
             WeeklyTaskCoordinator(),
-            AddTaskCoordinator(),
+            AddChoreCoordinator(),
             MonthlyTaskCoordinator(),
             MyPageCoordinator()
         ]
@@ -41,7 +41,7 @@ final class MainTabBarCoordinator: Coordinator {
             vc = self.childCoordinators[mainTab.rawValue].viewController
         case .weeklyTask:
             vc = self.childCoordinators[mainTab.rawValue].viewController
-        case .addTask:
+        case .addChore:
             vc = self.childCoordinators[mainTab.rawValue].viewController
         case .monthlyTask:
             vc = self.childCoordinators[mainTab.rawValue].viewController
@@ -54,12 +54,12 @@ final class MainTabBarCoordinator: Coordinator {
         return vc
     }
     
-    func pushToAddTask() {
+    func pushToAddChore() {
         guard let navigation = self.viewController as? UINavigationController else {return}
-        guard let addTaskCoordinator = self.childCoordinators.filter({ child in
-            return child is AddTaskCoordinator
+        guard let addChoreCoordinator = self.childCoordinators.filter({ child in
+            return child is AddChoreCoordinator
         }).first else {return}
-        guard let newAddTaskViewController = addTaskCoordinator.getViewController() else {return}
-        navigation.pushViewController(newAddTaskViewController, animated: true)
+        guard let newAddChoreViewController = addChoreCoordinator.getViewController() else {return}
+        navigation.pushViewController(newAddChoreViewController, animated: true)
     }
 }

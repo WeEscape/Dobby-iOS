@@ -10,7 +10,7 @@ import UIKit
 enum MainTab: Int, CaseIterable {
     case dailyTask
     case weeklyTask
-    case addTask
+    case addChore
     case monthlyTask
     case mypage
 }
@@ -22,7 +22,7 @@ extension MainTab: CustomStringConvertible {
             return "일간"
         case .weeklyTask:
             return "주간"
-        case .addTask:
+        case .addChore:
             return "등록"
         case .monthlyTask:
             return "월간"
@@ -39,7 +39,7 @@ extension MainTab {
             return UIImage(systemName: "play")
         case .weeklyTask:
             return UIImage(systemName: "pause")
-        case .addTask:
+        case .addChore:
             return UIImage(named: "icon_add")?.withRenderingMode(.alwaysOriginal)
         case .monthlyTask:
             return UIImage(systemName: "cloud")
@@ -54,7 +54,7 @@ extension MainTab {
             return UIImage(systemName: "play.fill")
         case .weeklyTask:
             return UIImage(systemName: "pause.fill")
-        case .addTask:
+        case .addChore:
             return UIImage(named: "icon_add")?.withRenderingMode(.alwaysOriginal)
         case .monthlyTask:
             return UIImage(systemName: "cloud.fill")
