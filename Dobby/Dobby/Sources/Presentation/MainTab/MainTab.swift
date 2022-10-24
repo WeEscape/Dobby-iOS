@@ -27,7 +27,7 @@ extension MainTab: CustomStringConvertible {
         case .monthlyChore:
             return "월간"
         case .mypage:
-            return "마이페이지"
+            return "더보기"
         }
     }
 }
@@ -36,30 +36,30 @@ extension MainTab {
     var icon: UIImage? {
         switch self {
         case .dailyChore:
-            return UIImage(systemName: "play")
+            return UIImage(named: "daily_chore")?.withRenderingMode(.alwaysOriginal)
         case .weeklyChore:
-            return UIImage(systemName: "pause")
+            return UIImage(named: "weekly_chore")?.withRenderingMode(.alwaysOriginal)
         case .addChore:
             return UIImage(named: "icon_add")?.withRenderingMode(.alwaysOriginal)
         case .monthlyChore:
-            return UIImage(systemName: "cloud")
+            return UIImage(named: "monthly_chore")?.withRenderingMode(.alwaysOriginal)
         case .mypage:
-            return UIImage(systemName: "person")
+            return UIImage(named: "icon_ ellipsis")?.withRenderingMode(.alwaysOriginal)
         }
     }
     
     var selectedIcon: UIImage? {
         switch self {
         case .dailyChore:
-            return UIImage(systemName: "play.fill")
+            return UIImage(named: "daily_chore_active")?.withRenderingMode(.alwaysOriginal)
         case .weeklyChore:
-            return UIImage(systemName: "pause.fill")
+            return UIImage(named: "weekly_chore_active")?.withRenderingMode(.alwaysOriginal)
         case .addChore:
             return UIImage(named: "icon_add")?.withRenderingMode(.alwaysOriginal)
         case .monthlyChore:
-            return UIImage(systemName: "cloud.fill")
+            return UIImage(named: "monthly_chore_active")?.withRenderingMode(.alwaysOriginal)
         case .mypage:
-            return UIImage(systemName: "person.fill")
+            return UIImage(named: "icon_ ellipsis_active")?.withRenderingMode(.alwaysOriginal)
         }
     }
 }
