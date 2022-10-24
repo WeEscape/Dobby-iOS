@@ -14,7 +14,7 @@ protocol BaseAPI: TargetType {
     var headers: [String: String]? { get }
     var path: String { get }
     var method: Moya.Method { get }
-    var task: Task { get }
+    var task: Moya.Task { get }
 }
 
 extension BaseAPI {
