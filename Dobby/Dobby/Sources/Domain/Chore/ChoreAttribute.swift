@@ -1,0 +1,50 @@
+//
+//  ChoreAttribute.swift
+//  Dobby
+//
+//  Created by yongmin lee on 10/24/22.
+//
+
+import UIKit
+
+enum ChoreAttribute: Int, CaseIterable {
+    case date
+    case repeatCycle
+    case owner
+    case category
+    case memo
+}
+
+extension ChoreAttribute: CustomStringConvertible {
+    var description: String {
+        switch self {
+        case .date:
+            return "날짜"
+        case .repeatCycle:
+            return "반복"
+        case .owner:
+            return "담당자"
+        case .category:
+            return "카테고리"
+        case .memo:
+            return "메모"
+        }
+    }
+}
+
+extension ChoreAttribute {
+    var icon: UIImage? {
+        switch self {
+        case .date:
+            return UIImage(named: "weekly_chore_active")?.withRenderingMode(.alwaysOriginal)
+        case .repeatCycle:
+            return UIImage(named: "icon_recycle")?.withRenderingMode(.alwaysOriginal)
+        case .owner:
+            return UIImage(named: "icon_profile")?.withRenderingMode(.alwaysOriginal)
+        case .category:
+            return UIImage(named: "icon_hamburger")?.withRenderingMode(.alwaysOriginal)
+        case .memo:
+            return nil
+        }
+    }
+}
