@@ -9,13 +9,12 @@ import Foundation
 import RxSwift
 
 protocol ChoreUseCase {
-    func register(task: Chore) -> Observable<Void>
+    func register(chore: Chore) -> Observable<Void>
 }
 
 final class ChoreUseCaseImpl: ChoreUseCase {
-    func register(task: Chore) -> Observable<Void> {
+    func register(chore: Chore) -> Observable<Void> {
         return .empty()
 
-    
     }
 }

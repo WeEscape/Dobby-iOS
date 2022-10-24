@@ -26,10 +26,10 @@ final class MainTabBarCoordinator: Coordinator {
     
     static func defaultChildCoordinators() -> [Coordinator] {
         return [
-            DailyTaskCoordinator(),
-            WeeklyTaskCoordinator(),
+            DailyChoreCoordinator(),
+            WeeklyChoreCoordinator(),
             AddChoreCoordinator(),
-            MonthlyTaskCoordinator(),
+            MonthlyChoreCoordinator(),
             MyPageCoordinator()
         ]
     }
@@ -37,13 +37,13 @@ final class MainTabBarCoordinator: Coordinator {
     func tabBarViewControllerFactory(mainTab: MainTab) -> UIViewController? {
         let vc: UIViewController?
         switch mainTab {
-        case .dailyTask:
+        case .dailyChore:
             vc = self.childCoordinators[mainTab.rawValue].viewController
-        case .weeklyTask:
+        case .weeklyChore:
             vc = self.childCoordinators[mainTab.rawValue].viewController
         case .addChore:
             vc = self.childCoordinators[mainTab.rawValue].viewController
-        case .monthlyTask:
+        case .monthlyChore:
             vc = self.childCoordinators[mainTab.rawValue].viewController
         case .mypage:
             vc = UINavigationController(

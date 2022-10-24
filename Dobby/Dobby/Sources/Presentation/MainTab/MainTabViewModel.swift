@@ -11,7 +11,7 @@ import RxSwift
 
 class MainTabViewModel {
     let tabItems = BehaviorRelay<[MainTab]>(value: MainTab.allCases)
-    let selectedTab = BehaviorRelay<MainTab>(value: .dailyTask)
+    let selectedTab = BehaviorRelay<MainTab>(value: .dailyChore)
     let pushAddChoreTab = PublishRelay<Void>()
     
     func didSelect(selectIdx: Int) {

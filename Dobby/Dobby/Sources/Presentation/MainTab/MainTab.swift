@@ -8,23 +8,23 @@
 import UIKit
 
 enum MainTab: Int, CaseIterable {
-    case dailyTask
-    case weeklyTask
+    case dailyChore
+    case weeklyChore
     case addChore
-    case monthlyTask
+    case monthlyChore
     case mypage
 }
 
 extension MainTab: CustomStringConvertible {
     var description: String {
         switch self {
-        case .dailyTask:
+        case .dailyChore:
             return "일간"
-        case .weeklyTask:
+        case .weeklyChore:
             return "주간"
         case .addChore:
             return "등록"
-        case .monthlyTask:
+        case .monthlyChore:
             return "월간"
         case .mypage:
             return "마이페이지"
@@ -35,13 +35,13 @@ extension MainTab: CustomStringConvertible {
 extension MainTab {
     var icon: UIImage? {
         switch self {
-        case .dailyTask:
+        case .dailyChore:
             return UIImage(systemName: "play")
-        case .weeklyTask:
+        case .weeklyChore:
             return UIImage(systemName: "pause")
         case .addChore:
             return UIImage(named: "icon_add")?.withRenderingMode(.alwaysOriginal)
-        case .monthlyTask:
+        case .monthlyChore:
             return UIImage(systemName: "cloud")
         case .mypage:
             return UIImage(systemName: "person")
@@ -50,13 +50,13 @@ extension MainTab {
     
     var selectedIcon: UIImage? {
         switch self {
-        case .dailyTask:
+        case .dailyChore:
             return UIImage(systemName: "play.fill")
-        case .weeklyTask:
+        case .weeklyChore:
             return UIImage(systemName: "pause.fill")
         case .addChore:
             return UIImage(named: "icon_add")?.withRenderingMode(.alwaysOriginal)
-        case .monthlyTask:
+        case .monthlyChore:
             return UIImage(systemName: "cloud.fill")
         case .mypage:
             return UIImage(systemName: "person.fill")
