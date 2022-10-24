@@ -38,16 +38,31 @@ final class MainTabBarCoordinator: Coordinator {
         let vc: UIViewController?
         switch mainTab {
         case .dailyChore:
-            vc = self.childCoordinators[mainTab.rawValue].viewController
+            guard let coordinator = self.childCoordinators.filter({ child in
+                return child is DailyChoreCoordinator
+            }).first else {return nil}
+            vc = coordinator.viewController
         case .weeklyChore:
-            vc = self.childCoordinators[mainTab.rawValue].viewController
+            guard let coordinator = self.childCoordinators.filter({ child in
+                return child is WeeklyChoreCoordinator
+            }).first else {return nil}
+            vc = coordinator.viewController
         case .addChore:
-            vc = self.childCoordinators[mainTab.rawValue].viewController
+            guard let coordinator = self.childCoordinators.filter({ child in
+                return child is AddChoreCoordinator
+            }).first else {return nil}
+            vc = coordinator.viewController
         case .monthlyChore:
-            vc = self.childCoordinators[mainTab.rawValue].viewController
+            guard let coordinator = self.childCoordinators.filter({ child in
+                return child is MonthlyChoreCoordinator
+            }).first else {return nil}
+            vc = coordinator.viewController
         case .mypage:
+            guard let coordinator = self.childCoordinators.filter({ child in
+                return child is MyPageCoordinator
+            }).first else {return nil}
             vc = UINavigationController(
-                rootViewController: self.childCoordinators[mainTab.rawValue].viewController!
+                rootViewController: coordinator.viewController!
             )
         }
         vc?.tabBarItem = mainTab.getTabBarItem()

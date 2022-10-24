@@ -15,7 +15,7 @@ class MainTabViewModel {
     let pushAddChoreTab = PublishRelay<Void>()
     
     func didSelect(selectIdx: Int) {
-        guard let selectedTab = MainTab(rawValue: selectIdx) else { return }
+        guard let selectedTab = tabItems.value[safe: selectIdx] else { return }
         if selectedTab == .addChore {
             let lastIndex = self.selectedTab.value
             self.selectedTab.accept(lastIndex)
