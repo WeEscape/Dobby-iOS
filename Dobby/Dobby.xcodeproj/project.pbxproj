@@ -67,6 +67,13 @@
 		A19E980229053B60004A8861 /* Chore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E980129053B60004A8861 /* Chore.swift */; };
 		A19E980529054640004A8861 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E980429054640004A8861 /* LoadingView.swift */; };
 		A19E980729054764004A8861 /* loading.json in Resources */ = {isa = PBXBuildFile; fileRef = A19E980629054764004A8861 /* loading.json */; };
+		A19E98092906B22B004A8861 /* ChoreAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E98082906B22B004A8861 /* ChoreAttribute.swift */; };
+		A19E980C2906CB52004A8861 /* AddChoreAttributeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E980B2906CB52004A8861 /* AddChoreAttributeView.swift */; };
+		A19E980E2906CCF2004A8861 /* ChoreDateAttributeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E980D2906CCF2004A8861 /* ChoreDateAttributeView.swift */; };
+		A19E98102906CD09004A8861 /* ChoreRepeatCycleAttributeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E980F2906CD09004A8861 /* ChoreRepeatCycleAttributeView.swift */; };
+		A19E98122906CD18004A8861 /* ChoreOwnerAttributeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E98112906CD18004A8861 /* ChoreOwnerAttributeView.swift */; };
+		A19E98142906CD2C004A8861 /* ChoreCategoryAttributeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E98132906CD2C004A8861 /* ChoreCategoryAttributeView.swift */; };
+		A19E98162906CE85004A8861 /* ChoreMemoAttributeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E98152906CE85004A8861 /* ChoreMemoAttributeView.swift */; };
 		CF500B1222303C7291A42D9D /* Pods_Dobby.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B3D52E48C3A5CD46EE09F86 /* Pods_Dobby.framework */; };
 /* End PBXBuildFile section */
 
@@ -155,6 +162,13 @@
 		A19E980129053B60004A8861 /* Chore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chore.swift; sourceTree = "<group>"; };
 		A19E980429054640004A8861 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		A19E980629054764004A8861 /* loading.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = loading.json; sourceTree = "<group>"; };
+		A19E98082906B22B004A8861 /* ChoreAttribute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoreAttribute.swift; sourceTree = "<group>"; };
+		A19E980B2906CB52004A8861 /* AddChoreAttributeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddChoreAttributeView.swift; sourceTree = "<group>"; };
+		A19E980D2906CCF2004A8861 /* ChoreDateAttributeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoreDateAttributeView.swift; sourceTree = "<group>"; };
+		A19E980F2906CD09004A8861 /* ChoreRepeatCycleAttributeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoreRepeatCycleAttributeView.swift; sourceTree = "<group>"; };
+		A19E98112906CD18004A8861 /* ChoreOwnerAttributeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoreOwnerAttributeView.swift; sourceTree = "<group>"; };
+		A19E98132906CD2C004A8861 /* ChoreCategoryAttributeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoreCategoryAttributeView.swift; sourceTree = "<group>"; };
+		A19E98152906CE85004A8861 /* ChoreMemoAttributeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoreMemoAttributeView.swift; sourceTree = "<group>"; };
 		A27AD429C92AD79AA1937D21 /* Pods-Dobby-DobbyUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dobby-DobbyUITests.debug.xcconfig"; path = "Target Support Files/Pods-Dobby-DobbyUITests/Pods-Dobby-DobbyUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		C982B09DA7374C7C9EBFB0F5 /* Pods-Dobby.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dobby.debug.xcconfig"; path = "Target Support Files/Pods-Dobby/Pods-Dobby.debug.xcconfig"; sourceTree = "<group>"; };
 		E2065A457FB7E9D5ABB5819A /* Pods-Dobby.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dobby.release.xcconfig"; path = "Target Support Files/Pods-Dobby/Pods-Dobby.release.xcconfig"; sourceTree = "<group>"; };
@@ -510,6 +524,7 @@
 				A19E97EA2904D7F7004A8861 /* AddChoreCoordinator.swift */,
 				A19E97F42904D83E004A8861 /* AddChoreViewController.swift */,
 				A19E97FC29053621004A8861 /* AddChoreViewModel.swift */,
+				A19E980A2906CAF4004A8861 /* AddChoreAttribute */,
 			);
 			path = AddChore;
 			sourceTree = "<group>";
@@ -528,8 +543,22 @@
 			children = (
 				A19E97FF29053B32004A8861 /* ChoreUseCase.swift */,
 				A19E980129053B60004A8861 /* Chore.swift */,
+				A19E98082906B22B004A8861 /* ChoreAttribute.swift */,
 			);
 			path = Chore;
+			sourceTree = "<group>";
+		};
+		A19E980A2906CAF4004A8861 /* AddChoreAttribute */ = {
+			isa = PBXGroup;
+			children = (
+				A19E980B2906CB52004A8861 /* AddChoreAttributeView.swift */,
+				A19E980D2906CCF2004A8861 /* ChoreDateAttributeView.swift */,
+				A19E980F2906CD09004A8861 /* ChoreRepeatCycleAttributeView.swift */,
+				A19E98112906CD18004A8861 /* ChoreOwnerAttributeView.swift */,
+				A19E98132906CD2C004A8861 /* ChoreCategoryAttributeView.swift */,
+				A19E98152906CE85004A8861 /* ChoreMemoAttributeView.swift */,
+			);
+			path = AddChoreAttribute;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -817,8 +846,11 @@
 				A174B17C28EF034100F80112 /* NetworkLoggerPlugin.swift in Sources */,
 				A13C537728E9786900C72215 /* WelcomeViewController.swift in Sources */,
 				A13C534B28E816B800C72215 /* RootCoordinator.swift in Sources */,
+				A19E98162906CE85004A8861 /* ChoreMemoAttributeView.swift in Sources */,
 				A19E97ED2904D803004A8861 /* MyPageCoordinator.swift in Sources */,
+				A19E980C2906CB52004A8861 /* AddChoreAttributeView.swift in Sources */,
 				A13C535728E8231100C72215 /* BaseViewController.swift in Sources */,
+				A19E98102906CD09004A8861 /* ChoreRepeatCycleAttributeView.swift in Sources */,
 				A174B17628EF007100F80112 /* LoginAPI.swift in Sources */,
 				A12095E928F2A198008CE410 /* NetworkError.swift in Sources */,
 				A19E97FD29053621004A8861 /* AddChoreViewModel.swift in Sources */,
@@ -833,6 +865,7 @@
 				A19E97F52904D83E004A8861 /* AddChoreViewController.swift in Sources */,
 				A13C537328E958DF00C72215 /* Array+.swift in Sources */,
 				A12095FF2901680F008CE410 /* DobbyFont.swift in Sources */,
+				A19E98122906CD18004A8861 /* ChoreOwnerAttributeView.swift in Sources */,
 				A12095FD2901669B008CE410 /* Palette.swift in Sources */,
 				A13C531128E7129D00C72215 /* AppDelegate.swift in Sources */,
 				A174B17428EF002000F80112 /* BaseAPI.swift in Sources */,
@@ -841,6 +874,7 @@
 				A13C537F28EA9C0000C72215 /* AppKey.swift in Sources */,
 				A19E980029053B32004A8861 /* ChoreUseCase.swift in Sources */,
 				A12095F528FD9427008CE410 /* MainTabBarCoordinator.swift in Sources */,
+				A19E98142906CD2C004A8861 /* ChoreCategoryAttributeView.swift in Sources */,
 				A12095EB28F2E010008CE410 /* RefreshAuthAPI.swift in Sources */,
 				A174B16F28EC6F0300F80112 /* ASAuthorizationController+.swift in Sources */,
 				A19E97E72904D7E6004A8861 /* WeeklyChoreCoordinator.swift in Sources */,
@@ -854,7 +888,9 @@
 				A13C536F28E94D0500C72215 /* LocalTokenStorageService.swift in Sources */,
 				A12095F128F6D78A008CE410 /* JWTAuthentication.swift in Sources */,
 				A19E980229053B60004A8861 /* Chore.swift in Sources */,
+				A19E98092906B22B004A8861 /* ChoreAttribute.swift in Sources */,
 				A13C536D28E94CA200C72215 /* NetworkService.swift in Sources */,
+				A19E980E2906CCF2004A8861 /* ChoreDateAttributeView.swift in Sources */,
 				A19E97F72904D845004A8861 /* MyPageViewController.swift in Sources */,
 				A13C536528E91BB800C72215 /* Authentication.swift in Sources */,
 				A19E97EB2904D7F7004A8861 /* AddChoreCoordinator.swift in Sources */,
