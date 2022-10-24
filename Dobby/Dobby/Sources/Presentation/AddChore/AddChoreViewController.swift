@@ -13,6 +13,7 @@ final class AddChoreViewController: BaseViewController {
     
     // MARK: property
     let addChoreViewModel: AddChoreViewModel!
+    let addChoreAttributeFactory: (ChoreAttribute) -> AddChoreAttributeView?
     
     // MARK: UI
     struct Metric {
@@ -28,11 +29,14 @@ final class AddChoreViewController: BaseViewController {
         return btn
     }()
     
+    
     // MARK: init
     init(
-        addChoreViewModel: AddChoreViewModel?
+        addChoreViewModel: AddChoreViewModel?,
+        addChoreAttributeFactory: @escaping (ChoreAttribute) -> AddChoreAttributeView?
     ) {
         self.addChoreViewModel = addChoreViewModel
+        self.addChoreAttributeFactory = addChoreAttributeFactory
         super.init(nibName: nil, bundle: nil)
     }
     
