@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>991512239362-vt67hg3cpqi9pfhhn0c2rdhc2u9efg9o.apps.googleusercontent.com</string>
+	<string>986150367867-tn4q2gvoijob0ijicsvnbn6q3u99cvmk.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.991512239362-vt67hg3cpqi9pfhhn0c2rdhc2u9efg9o</string>
+	<string>com.googleusercontent.apps.986150367867-tn4q2gvoijob0ijicsvnbn6q3u99cvmk</string>
 	<key>API_KEY</key>
-	<string>AIzaSyBhfKpvrIfU-i2rWO3Vb8FK7AcYXeYfdts</string>
+	<string>AIzaSyCoWHtvCQHTDbsVjQQ0Wg6ill2kIk0s0V8</string>
 	<key>GCM_SENDER_ID</key>
-	<string>991512239362</string>
+	<string>986150367867</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>yongmin.Dobby</string>
 	<key>PROJECT_ID</key>
-	<string>dobby-89dda</string>
+	<string>dobbyios</string>
 	<key>STORAGE_BUCKET</key>
-	<string>dobby-89dda.appspot.com</string>
+	<string>dobbyios.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,6 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:991512239362:ios:70b98e98c9f4a8b59eb61b</string>
+	<string>1:986150367867:ios:3626a0dd58c1b6335da8de</string>
 </dict>
 </plist>
