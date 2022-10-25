@@ -12,8 +12,8 @@ struct JWTAuthentication: Decodable {
     let refreshToken: String?
 }
 
-struct JWTOption: OptionSet {
+struct TokenOption: OptionSet {
     let rawValue: Int
-    static let accessToken =  JWTOption(rawValue: 1 << 0)
-    static let refreshToken = JWTOption(rawValue: 1 << 1)
+    static let accessToken =  TokenOption(rawValue: 1 << 0)
+    static let refreshToken = TokenOption(rawValue: 1 << 1)
 }

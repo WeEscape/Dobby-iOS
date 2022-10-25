@@ -15,9 +15,9 @@ protocol AuthUseCase {
     func resign() -> Observable<Void>
     
     // authToken
-    func readToken(tokenOption: JWTOption) -> Observable<JWTAuthentication>
+    func readToken(tokenOption: TokenOption) -> Observable<JWTAuthentication>
     func writeToken(authentication: JWTAuthentication)
-    func removeToken(tokenOption: JWTOption)
+    func removeToken(tokenOption: TokenOption)
 }
 
 final class AuthUseCaseImpl: AuthUseCase {
@@ -54,7 +54,7 @@ final class AuthUseCaseImpl: AuthUseCase {
         return self.authenticationRepository.resign()
     }
     
-    func readToken(tokenOption: JWTOption) -> Observable<JWTAuthentication> {
+    func readToken(tokenOption: TokenOption) -> Observable<JWTAuthentication> {
         return self.authenticationRepository.readToken(tokenOption: tokenOption)
     }
     
@@ -62,7 +62,7 @@ final class AuthUseCaseImpl: AuthUseCase {
         return self.authenticationRepository.writeToken(authentication: authentication)
     }
     
-    func removeToken(tokenOption: JWTOption) {
+    func removeToken(tokenOption: TokenOption) {
         return self.authenticationRepository.removeToken(tokenOption: tokenOption)
     }
 }

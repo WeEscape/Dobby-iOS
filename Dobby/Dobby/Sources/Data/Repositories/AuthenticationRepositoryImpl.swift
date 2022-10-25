@@ -104,7 +104,7 @@ final class AuthenticationRepositoryImpl: AuthenticationRepository {
         return .empty()
     }
     
-    func readToken(tokenOption: JWTOption) -> Observable<JWTAuthentication> {
+    func readToken(tokenOption: TokenOption) -> Observable<JWTAuthentication> {
         var tokenList: [String?] = []
         if tokenOption.contains(.accessToken) {
             tokenList.append(self.localStorage.read(key: .jwtAccessToken))
@@ -127,7 +127,7 @@ final class AuthenticationRepositoryImpl: AuthenticationRepository {
         }
     }
     
-    func removeToken(tokenOption: JWTOption) {
+    func removeToken(tokenOption: TokenOption) {
         if tokenOption.contains(.accessToken) {
             self.localStorage.delete(key: .jwtAccessToken)
         }

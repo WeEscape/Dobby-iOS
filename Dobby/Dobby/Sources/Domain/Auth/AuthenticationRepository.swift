@@ -20,7 +20,7 @@ protocol AuthenticationRepository {
     ) -> Observable<JWTAuthentication>
     
     // authToken
-    func readToken(tokenOption: JWTOption) -> Observable<JWTAuthentication>
+    func readToken(tokenOption: TokenOption) -> Observable<JWTAuthentication>
     func writeToken(authentication: JWTAuthentication)
-    func removeToken(tokenOption: JWTOption)
+    func removeToken(tokenOption: TokenOption)
 }
