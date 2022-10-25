@@ -12,7 +12,6 @@
 		8A2C023E51967F7CE6E7BB59 /* Pods_Dobby_DobbyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73DDA743A982F06E1D5193E0 /* Pods_Dobby_DobbyUITests.framework */; };
 		A12095E928F2A198008CE410 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12095E828F2A198008CE410 /* NetworkError.swift */; };
 		A12095EB28F2E010008CE410 /* RefreshAuthAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12095EA28F2E010008CE410 /* RefreshAuthAPI.swift */; };
-		A12095F128F6D78A008CE410 /* JWTAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12095F028F6D78A008CE410 /* JWTAuthentication.swift */; };
 		A12095F328FBDFDC008CE410 /* CustomError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12095F228FBDFDC008CE410 /* CustomError.swift */; };
 		A12095F528FD9427008CE410 /* MainTabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12095F428FD9427008CE410 /* MainTabBarCoordinator.swift */; };
 		A12095F728FD9532008CE410 /* MainTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12095F628FD9532008CE410 /* MainTab.swift */; };
@@ -49,7 +48,7 @@
 		A174B16F28EC6F0300F80112 /* ASAuthorizationController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A174B16E28EC6F0300F80112 /* ASAuthorizationController+.swift */; };
 		A174B17428EF002000F80112 /* BaseAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A174B17328EF002000F80112 /* BaseAPI.swift */; };
 		A174B17628EF007100F80112 /* LoginAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A174B17528EF007100F80112 /* LoginAPI.swift */; };
-		A174B17928EF010100F80112 /* JWTAuthenticationDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = A174B17828EF010100F80112 /* JWTAuthenticationDTO.swift */; };
+		A174B17928EF010100F80112 /* AuthenticationDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = A174B17828EF010100F80112 /* AuthenticationDTO.swift */; };
 		A174B17C28EF034100F80112 /* NetworkLoggerPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = A174B17B28EF034100F80112 /* NetworkLoggerPlugin.swift */; };
 		A19E97E52904D7DE004A8861 /* DailyChoreCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E97E42904D7DE004A8861 /* DailyChoreCoordinator.swift */; };
 		A19E97E72904D7E6004A8861 /* WeeklyChoreCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E97E62904D7E6004A8861 /* WeeklyChoreCoordinator.swift */; };
@@ -106,7 +105,6 @@
 		A12095E828F2A198008CE410 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		A12095EA28F2E010008CE410 /* RefreshAuthAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshAuthAPI.swift; sourceTree = "<group>"; };
 		A12095EC28F3F1B5008CE410 /* Dobby.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Dobby.entitlements; sourceTree = "<group>"; };
-		A12095F028F6D78A008CE410 /* JWTAuthentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JWTAuthentication.swift; sourceTree = "<group>"; };
 		A12095F228FBDFDC008CE410 /* CustomError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomError.swift; sourceTree = "<group>"; };
 		A12095F428FD9427008CE410 /* MainTabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarCoordinator.swift; sourceTree = "<group>"; };
 		A12095F628FD9532008CE410 /* MainTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTab.swift; sourceTree = "<group>"; };
@@ -147,7 +145,7 @@
 		A174B16E28EC6F0300F80112 /* ASAuthorizationController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ASAuthorizationController+.swift"; sourceTree = "<group>"; };
 		A174B17328EF002000F80112 /* BaseAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseAPI.swift; sourceTree = "<group>"; };
 		A174B17528EF007100F80112 /* LoginAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAPI.swift; sourceTree = "<group>"; };
-		A174B17828EF010100F80112 /* JWTAuthenticationDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JWTAuthenticationDTO.swift; sourceTree = "<group>"; };
+		A174B17828EF010100F80112 /* AuthenticationDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationDTO.swift; sourceTree = "<group>"; };
 		A174B17B28EF034100F80112 /* NetworkLoggerPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLoggerPlugin.swift; sourceTree = "<group>"; };
 		A19E97E42904D7DE004A8861 /* DailyChoreCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyChoreCoordinator.swift; sourceTree = "<group>"; };
 		A19E97E62904D7E6004A8861 /* WeeklyChoreCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyChoreCoordinator.swift; sourceTree = "<group>"; };
@@ -367,7 +365,6 @@
 				A13C536628E91D9C00C72215 /* AuthUseCase.swift */,
 				A13C535F28E8942900C72215 /* AuthenticationRepository.swift */,
 				A13C536428E91BB700C72215 /* Authentication.swift */,
-				A12095F028F6D78A008CE410 /* JWTAuthentication.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -472,7 +469,7 @@
 		A174B17728EF009600F80112 /* DTO */ = {
 			isa = PBXGroup;
 			children = (
-				A174B17828EF010100F80112 /* JWTAuthenticationDTO.swift */,
+				A174B17828EF010100F80112 /* AuthenticationDTO.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -868,7 +865,7 @@
 				A13C536028E8942900C72215 /* AuthenticationRepository.swift in Sources */,
 				A19E97E52904D7DE004A8861 /* DailyChoreCoordinator.swift in Sources */,
 				A19E980529054640004A8861 /* LoadingView.swift in Sources */,
-				A174B17928EF010100F80112 /* JWTAuthenticationDTO.swift in Sources */,
+				A174B17928EF010100F80112 /* AuthenticationDTO.swift in Sources */,
 				A19E97F12904D82F004A8861 /* WeeklyChoreViewController.swift in Sources */,
 				A12095F728FD9532008CE410 /* MainTab.swift in Sources */,
 				A13C537B28E97EF600C72215 /* WelcomeCoordinator.swift in Sources */,
@@ -897,7 +894,6 @@
 				A13C535C28E8288A00C72215 /* SplashViewController.swift in Sources */,
 				A12095F928FD953E008CE410 /* MainTabViewModel.swift in Sources */,
 				A13C536F28E94D0500C72215 /* LocalTokenStorageService.swift in Sources */,
-				A12095F128F6D78A008CE410 /* JWTAuthentication.swift in Sources */,
 				A19E980229053B60004A8861 /* Chore.swift in Sources */,
 				A19E98092906B22B004A8861 /* ChoreAttribute.swift in Sources */,
 				A13C536D28E94CA200C72215 /* NetworkService.swift in Sources */,

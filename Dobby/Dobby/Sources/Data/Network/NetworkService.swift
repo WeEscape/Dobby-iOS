@@ -94,7 +94,7 @@ final class NetworkServiceImpl: NetworkService {
             }
     }
     
-    private func refreshAccessToken() -> Observable<JWTAuthentication> {
+    private func refreshAccessToken() -> Observable<Authentication> {
         BeaverLog.verbose("start refresh AccessToken")
         guard let refreshToken = self.localStorage.read(key: .jwtRefreshToken) else {
             BeaverLog.verbose("device doesn't have refreshToken")

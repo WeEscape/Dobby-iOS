@@ -10,13 +10,13 @@ import RxSwift
 
 protocol AuthUseCase {
     // oauth
-    func login(provider: AuthenticationProvider) -> Observable<JWTAuthentication>
+    func login(provider: AuthenticationProvider) -> Observable<Authentication>
     func logout() -> Observable<Void>
     func resign() -> Observable<Void>
     
     // authToken
-    func readToken(tokenOption: TokenOption) -> Observable<JWTAuthentication>
-    func writeToken(authentication: JWTAuthentication)
+    func readToken(tokenOption: TokenOption) -> Observable<Authentication>
+    func writeToken(authentication: Authentication)
     func removeToken(tokenOption: TokenOption)
 }
 
@@ -28,7 +28,7 @@ final class AuthUseCaseImpl: AuthUseCase {
         self.authenticationRepository = authenticationRepository
     }
     
-    func login(provider: AuthenticationProvider) -> Observable<JWTAuthentication> {
+    func login(provider: AuthenticationProvider) -> Observable<Authentication> {
         var snsAuthorize: Observable<Authentication>
         switch provider {
         case .kakao:
@@ -37,7 +37,7 @@ final class AuthUseCaseImpl: AuthUseCase {
             snsAuthorize = self.authenticationRepository.appleAuthorize()
         }
         return snsAuthorize
-            .flatMapLatest { [weak self] auth -> Observable<JWTAuthentication> in
+            .flatMapLatest { [weak self] auth -> Observable<Authentication> in
                 guard let self = self else {return .empty()}
                 return self.authenticationRepository.login(
                     provider: provider,
@@ -54,11 +54,11 @@ final class AuthUseCaseImpl: AuthUseCase {
         return self.authenticationRepository.resign()
     }
     
-    func readToken(tokenOption: TokenOption) -> Observable<JWTAuthentication> {
+    func readToken(tokenOption: TokenOption) -> Observable<Authentication> {
         return self.authenticationRepository.readToken(tokenOption: tokenOption)
     }
     
-    func writeToken(authentication: JWTAuthentication) {
+    func writeToken(authentication: Authentication) {
         return self.authenticationRepository.writeToken(authentication: authentication)
     }
     

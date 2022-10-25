@@ -17,10 +17,10 @@ protocol AuthenticationRepository {
     func login(
         provider: AuthenticationProvider,
         authentication: Authentication
-    ) -> Observable<JWTAuthentication>
+    ) -> Observable<Authentication>
     
     // authToken
-    func readToken(tokenOption: TokenOption) -> Observable<JWTAuthentication>
-    func writeToken(authentication: JWTAuthentication)
+    func readToken(tokenOption: TokenOption) -> Observable<Authentication>
+    func writeToken(authentication: Authentication)
     func removeToken(tokenOption: TokenOption)
 }

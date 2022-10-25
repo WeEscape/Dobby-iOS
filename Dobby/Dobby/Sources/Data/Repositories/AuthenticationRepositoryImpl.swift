@@ -81,7 +81,7 @@ final class AuthenticationRepositoryImpl: AuthenticationRepository {
     func login(
         provider: AuthenticationProvider,
         authentication: Authentication
-    ) -> Observable<JWTAuthentication> {
+    ) -> Observable<Authentication> {
         return self.network.request(api: LoginAPI(
             provider: provider,
             accessToken: authentication.accessToken,
@@ -104,7 +104,7 @@ final class AuthenticationRepositoryImpl: AuthenticationRepository {
         return .empty()
     }
     
-    func readToken(tokenOption: TokenOption) -> Observable<JWTAuthentication> {
+    func readToken(tokenOption: TokenOption) -> Observable<Authentication> {
         var tokenList: [String?] = []
         if tokenOption.contains(.accessToken) {
             tokenList.append(self.localStorage.read(key: .jwtAccessToken))
@@ -112,13 +112,13 @@ final class AuthenticationRepositoryImpl: AuthenticationRepository {
         if tokenOption.contains(.refreshToken) {
             tokenList.append(self.localStorage.read(key: .jwtRefreshToken))
         }
-        return Observable.just(JWTAuthentication(
+        return Observable.just(Authentication(
             accessToken: tokenList[safe: 0] ?? nil,
             refreshToken: tokenList[safe: 1] ?? nil
         ))
     }
     
-    func writeToken(authentication: JWTAuthentication) {
+    func writeToken(authentication: Authentication) {
         if let accessToken = authentication.accessToken {
             self.localStorage.write(key: .jwtAccessToken, value: accessToken)
         }

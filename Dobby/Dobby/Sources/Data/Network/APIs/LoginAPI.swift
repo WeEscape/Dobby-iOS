@@ -9,7 +9,7 @@ import Foundation
 import Moya
 
 struct LoginAPI: BaseAPI {
-    typealias Response = JWTAuthenticationDTO
+    typealias Response = AuthenticationDTO
     
     var path: String {
         switch provider {
