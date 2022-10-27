@@ -40,6 +40,7 @@ final class AddChoreViewController: BaseViewController {
             fontSize: Metric.titleFontSize,
             textColor: Palette.textBlack1
         )
+        tf.returnKeyType = .done
         tf.keyboardType = .default
         tf.autocorrectionType = .no
         return tf
@@ -148,6 +149,12 @@ final class AddChoreViewController: BaseViewController {
             .throttle(.seconds(1), latest: false)
             .drive(onNext: { [weak self] _ in
                 self?.addChoreViewModel.didTapAddBtn()
-            }).disposed(by: self.disposeBag)   
+            }).disposed(by: self.disposeBag)
+        
+        choreTitleTextField.rx.controlEvent(.editingDidEndOnExit)
+            .asDriver()
+            .drive(onNext: { [weak self] _ in
+                self?.view.endEditing(true)
+            }).disposed(by: self.disposeBag)
     }
 }
