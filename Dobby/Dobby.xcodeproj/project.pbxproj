@@ -76,6 +76,7 @@
 		A19E982729081B69004A8861 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A19E982629081B69004A8861 /* GoogleService-Info.plist */; };
 		A19E982A29081BF5004A8861 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = A19E982929081BF5004A8861 /* FirebaseAnalyticsWithoutAdIdSupport */; };
 		A19E982C29081BF5004A8861 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = A19E982B29081BF5004A8861 /* FirebaseCrashlytics */; };
+		A19E982E290A9D64004A8861 /* UITextField+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E982D290A9D64004A8861 /* UITextField+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -171,6 +172,7 @@
 		A19E98132906CD2C004A8861 /* ChoreCategoryAttributeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoreCategoryAttributeView.swift; sourceTree = "<group>"; };
 		A19E98152906CE85004A8861 /* ChoreMemoAttributeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoreMemoAttributeView.swift; sourceTree = "<group>"; };
 		A19E982629081B69004A8861 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		A19E982D290A9D64004A8861 /* UITextField+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+.swift"; sourceTree = "<group>"; };
 		A9B722602644972E8A20B23F /* Pods-DobbyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DobbyTests.debug.xcconfig"; path = "Target Support Files/Pods-DobbyTests/Pods-DobbyTests.debug.xcconfig"; sourceTree = "<group>"; };
 		ABCE8077762A15E26783E084 /* Pods_DobbyTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DobbyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C507575F588E1F7301BDE870 /* Pods-Dobby.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dobby.debug.xcconfig"; path = "Target Support Files/Pods-Dobby/Pods-Dobby.debug.xcconfig"; sourceTree = "<group>"; };
@@ -420,9 +422,10 @@
 		A13C537128E958D200C72215 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				A174B16D28EC6ECE00F80112 /* Rx */,
 				A19E97FA29052A2A004A8861 /* CALayer+.swift */,
 				A13C537228E958DF00C72215 /* Array+.swift */,
-				A174B16D28EC6ECE00F80112 /* Rx */,
+				A19E982D290A9D64004A8861 /* UITextField+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -872,6 +875,7 @@
 				A19E97EF2904D826004A8861 /* DailyChoreViewController.swift in Sources */,
 				A19E97F52904D83E004A8861 /* AddChoreViewController.swift in Sources */,
 				A13C537328E958DF00C72215 /* Array+.swift in Sources */,
+				A19E982E290A9D64004A8861 /* UITextField+.swift in Sources */,
 				A12095FF2901680F008CE410 /* DobbyFont.swift in Sources */,
 				A19E98122906CD18004A8861 /* ChoreOwnerAttributeView.swift in Sources */,
 				A12095FD2901669B008CE410 /* Palette.swift in Sources */,
