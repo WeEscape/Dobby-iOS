@@ -7,10 +7,12 @@
 
 import Foundation
 import RxSwift
+import RxRelay
 
 class AddChoreViewModel {
     
     var disposeBag: DisposeBag = .init()
+    let attributeItems = BehaviorRelay<[ChoreAttribute]>(value: ChoreAttribute.allCases)
     let choreUseCase: ChoreUseCase
     
     init(

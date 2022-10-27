@@ -8,6 +8,7 @@
 import UIKit
 import SnapKit
 import RxCocoa
+import RxOptional
 
 final class AddChoreViewController: BaseViewController {
     
@@ -20,15 +21,38 @@ final class AddChoreViewController: BaseViewController {
         static let addBtnLeftRightInset: CGFloat = 32
         static let addBtnHeight: CGFloat = 48
         static let addBtnBottomInset: CGFloat = 25
+        static let titleFontSize: CGFloat = 18
+        static let bodyFontSize: CGFloat = 16
+        static let textFieldHeight: CGFloat = 80
+        static let bodyLeftRightInset: CGFloat = 26
     }
     
     private let addChoreBtn: UIButton = {
         let btn = UIButton(configuration: .filled())
-        btn.tintColor = Palette.blue1
+        btn.tintColor = Palette.mainThemeBlue1
         btn.setTitle("저장하기", for: .normal)
         return btn
     }()
     
+    private let choreTitleTextField: UITextField = {
+        let tf = TextFieldWithPlaceholder(
+            placeholder: "집안일을 입력하세요",
+            fontSize: Metric.titleFontSize,
+            textColor: Palette.textBlack1
+        )
+        tf.keyboardType = .default
+        tf.autocorrectionType = .no
+        return tf
+    }()
+    
+    private let attributeStackView: UIStackView = {
+        let stack = UIStackView()
+        stack.axis = .vertical
+        stack.alignment = .fill
+        stack.distribution = .fill
+        stack.spacing = 0
+        return stack
+    }()
     
     // MARK: init
     init(
@@ -47,8 +71,13 @@ final class AddChoreViewController: BaseViewController {
     // MARK: Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        guard addChoreViewModel != nil else {return}
         setupUI()
         bind()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        choreTitleTextField.becomeFirstResponder()
     }
     
     // MARK: method
@@ -57,7 +86,7 @@ final class AddChoreViewController: BaseViewController {
         self.navigationItem.title = "집안일 등록"
         self.navigationController?.navigationBar.prefersLargeTitles = false
         self.navigationController?.navigationBar.barTintColor = .white
-        self.navigationController?.navigationBar.tintColor = Palette.blue1
+        self.navigationController?.navigationBar.tintColor = Palette.mainThemeBlue1
         
         self.view.addSubview(addChoreBtn)
         addChoreBtn.snp.makeConstraints {
@@ -70,6 +99,23 @@ final class AddChoreViewController: BaseViewController {
                 .inset(Metric.addBtnBottomInset)
             $0.centerX.equalToSuperview()
         }
+        
+        self.view.addSubview(choreTitleTextField)
+        choreTitleTextField.snp.makeConstraints {
+            $0.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            $0.centerX.equalToSuperview()
+            $0.left.equalTo(view.safeAreaLayoutGuide.snp.left).inset(Metric.bodyLeftRightInset)
+            $0.right.equalTo(view.safeAreaLayoutGuide.snp.right).inset(Metric.bodyLeftRightInset)
+            $0.height.equalTo(Metric.textFieldHeight)
+        }
+        
+        self.view.addSubview(attributeStackView)
+        attributeStackView.snp.makeConstraints {
+            $0.top.equalTo(choreTitleTextField.snp.bottom)
+            $0.left.equalTo(view.safeAreaLayoutGuide.snp.left).inset(Metric.bodyLeftRightInset)
+            $0.right.equalTo(view.safeAreaLayoutGuide.snp.right).inset(Metric.bodyLeftRightInset)
+            $0.bottom.equalTo(addChoreBtn.snp.top).inset(-Metric.addBtnBottomInset)
+        }
     }
     
     // MARK: Rx bind
@@ -79,7 +125,17 @@ final class AddChoreViewController: BaseViewController {
     }
     
     func bindState() {
-        
+        addChoreViewModel.attributeItems
+            .asDriver()
+            .distinctUntilChanged()
+            .drive(onNext: { [weak self] attributeList in
+                guard let self = self else { return }
+                attributeList.forEach { attribute in
+                    if let attributeView = self.addChoreAttributeFactory(attribute) {
+                        self.attributeStackView.addArrangedSubview(attributeView)
+                    }
+                }
+            }).disposed(by: self.disposeBag)
     }
     
     func bindAction() {
