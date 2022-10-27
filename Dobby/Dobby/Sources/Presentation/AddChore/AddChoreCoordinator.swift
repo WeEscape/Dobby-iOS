@@ -32,15 +32,15 @@ final class AddChoreCoordinator: Coordinator {
     func addChoreAttributeFactory(attribute: ChoreAttribute) -> AddChoreAttributeView {
         switch attribute {
         case .date:
-            return ChoreDateAttributeView()
+            return ChoreDateAttributeView(attribute: attribute)
         case .repeatCycle:
-            return ChoreRepeatCycleAttributeView()
+            return ChoreRepeatCycleAttributeView(attribute: attribute)
         case .owner:
-            return ChoreOwnerAttributeView()
+            return ChoreOwnerAttributeView(attribute: attribute)
         case .category:
-            return ChoreCategoryAttributeView()
+            return ChoreCategoryAttributeView(attribute: attribute)
         case .memo:
-            return ChoreMemoAttributeView()
+            return ChoreMemoAttributeView(attribute: attribute)
         }
     }
 }

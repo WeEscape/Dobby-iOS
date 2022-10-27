@@ -137,6 +137,7 @@ final class AddChoreViewController: BaseViewController {
                 guard let self = self else { return }
                 attributeList.forEach { attribute in
                     if let attributeView = self.addChoreAttributeFactory(attribute) {
+                        attributeView.delegate = self
                         self.attributeStackView.addArrangedSubview(attributeView)
                     }
                 }
@@ -156,5 +157,15 @@ final class AddChoreViewController: BaseViewController {
             .drive(onNext: { [weak self] _ in
                 self?.view.endEditing(true)
             }).disposed(by: self.disposeBag)
+    }
+}
+
+extension AddChoreViewController: AddChoreAttributeViewDelegate {
+    func extendView(attribute: ChoreAttribute) {
+        print("debug : extendView attribute -> \(attribute.description) ")
+    }
+    
+    func showAlert(attribute: ChoreAttribute) {
+        print("debug : showAlert attribute -> \(attribute.description) ")
     }
 }
