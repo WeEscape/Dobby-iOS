@@ -40,7 +40,7 @@ final class SplashViewController: BaseViewController {
         let lbl = UILabel()
         lbl.font = DobbyFont.avenirBlack(size: Metric.dobbyLabelFontSize).getFont
         lbl.text = "DOBBY"
-        lbl.textColor = Palette.blue1
+        lbl.textColor = Palette.mainThemeBlue1
         return lbl
     }()
     

@@ -44,7 +44,7 @@ final class WelcomeViewController: BaseViewController {
     
     private let kakaoView: UIView = {
         let kakao = UIView()
-        kakao.backgroundColor = Palette.yellow1
+        kakao.backgroundColor = Palette.kakaoYellow
         kakao.layer.cornerRadius = 10
         return kakao
     }()
@@ -54,7 +54,7 @@ final class WelcomeViewController: BaseViewController {
         lbl.font = DobbyFont.appleSDGothicNeoMedium(size: Metric.kakaoLabelFontSize).getFont
         lbl.text = "kakao로 로그인"
         lbl.setContentHuggingPriority(.defaultLow, for: .horizontal)
-        lbl.textColor = Palette.black1
+        lbl.textColor = Palette.textBlack1
         return lbl
     }()
     
@@ -81,7 +81,7 @@ final class WelcomeViewController: BaseViewController {
         let lbl = UILabel()
         lbl.font = DobbyFont.avenirBlack(size: Metric.welcomeTitleFontSize).getFont
         lbl.text = "DOBBY"
-        lbl.textColor = Palette.black1
+        lbl.textColor = Palette.textBlack1
         return lbl
     }()
     
@@ -89,7 +89,7 @@ final class WelcomeViewController: BaseViewController {
         let lbl = UILabel()
         lbl.font = DobbyFont.avenirMedium(size: Metric.welcomeSubTitleFontSize).getFont
         lbl.text = "가사분담에서 해방하다"
-        lbl.textColor = Palette.black1
+        lbl.textColor = Palette.textBlack1
         return lbl
     }()
     

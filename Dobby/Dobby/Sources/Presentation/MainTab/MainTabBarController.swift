@@ -44,7 +44,7 @@ final class MainTabBarController: UITabBarController {
     // MARK: method
     func setupUI() {
         view.backgroundColor = .white
-        tabBar.tintColor = Palette.blue1
+        tabBar.tintColor = Palette.mainThemeBlue1
         tabBar.backgroundColor = .white
         tabBar.layer.makeShadow()
     }
