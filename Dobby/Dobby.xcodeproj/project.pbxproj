@@ -68,10 +68,6 @@
 		A19E980729054764004A8861 /* loading.json in Resources */ = {isa = PBXBuildFile; fileRef = A19E980629054764004A8861 /* loading.json */; };
 		A19E98092906B22B004A8861 /* ChoreAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E98082906B22B004A8861 /* ChoreAttribute.swift */; };
 		A19E980C2906CB52004A8861 /* AddChoreAttributeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E980B2906CB52004A8861 /* AddChoreAttributeView.swift */; };
-		A19E980E2906CCF2004A8861 /* ChoreDateAttributeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E980D2906CCF2004A8861 /* ChoreDateAttributeView.swift */; };
-		A19E98102906CD09004A8861 /* ChoreRepeatCycleAttributeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E980F2906CD09004A8861 /* ChoreRepeatCycleAttributeView.swift */; };
-		A19E98122906CD18004A8861 /* ChoreOwnerAttributeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E98112906CD18004A8861 /* ChoreOwnerAttributeView.swift */; };
-		A19E98142906CD2C004A8861 /* ChoreCategoryAttributeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E98132906CD2C004A8861 /* ChoreCategoryAttributeView.swift */; };
 		A19E98162906CE85004A8861 /* ChoreMemoAttributeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E98152906CE85004A8861 /* ChoreMemoAttributeView.swift */; };
 		A19E982729081B69004A8861 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A19E982629081B69004A8861 /* GoogleService-Info.plist */; };
 		A19E982A29081BF5004A8861 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = A19E982929081BF5004A8861 /* FirebaseAnalyticsWithoutAdIdSupport */; };
@@ -166,10 +162,6 @@
 		A19E980629054764004A8861 /* loading.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = loading.json; sourceTree = "<group>"; };
 		A19E98082906B22B004A8861 /* ChoreAttribute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoreAttribute.swift; sourceTree = "<group>"; };
 		A19E980B2906CB52004A8861 /* AddChoreAttributeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddChoreAttributeView.swift; sourceTree = "<group>"; };
-		A19E980D2906CCF2004A8861 /* ChoreDateAttributeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoreDateAttributeView.swift; sourceTree = "<group>"; };
-		A19E980F2906CD09004A8861 /* ChoreRepeatCycleAttributeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoreRepeatCycleAttributeView.swift; sourceTree = "<group>"; };
-		A19E98112906CD18004A8861 /* ChoreOwnerAttributeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoreOwnerAttributeView.swift; sourceTree = "<group>"; };
-		A19E98132906CD2C004A8861 /* ChoreCategoryAttributeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoreCategoryAttributeView.swift; sourceTree = "<group>"; };
 		A19E98152906CE85004A8861 /* ChoreMemoAttributeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoreMemoAttributeView.swift; sourceTree = "<group>"; };
 		A19E982629081B69004A8861 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A19E982D290A9D64004A8861 /* UITextField+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+.swift"; sourceTree = "<group>"; };
@@ -546,10 +538,6 @@
 			isa = PBXGroup;
 			children = (
 				A19E980B2906CB52004A8861 /* AddChoreAttributeView.swift */,
-				A19E980D2906CCF2004A8861 /* ChoreDateAttributeView.swift */,
-				A19E980F2906CD09004A8861 /* ChoreRepeatCycleAttributeView.swift */,
-				A19E98112906CD18004A8861 /* ChoreOwnerAttributeView.swift */,
-				A19E98132906CD2C004A8861 /* ChoreCategoryAttributeView.swift */,
 				A19E98152906CE85004A8861 /* ChoreMemoAttributeView.swift */,
 			);
 			path = AddChoreAttribute;
@@ -861,7 +849,6 @@
 				A19E97ED2904D803004A8861 /* MyPageCoordinator.swift in Sources */,
 				A19E980C2906CB52004A8861 /* AddChoreAttributeView.swift in Sources */,
 				A13C535728E8231100C72215 /* BaseViewController.swift in Sources */,
-				A19E98102906CD09004A8861 /* ChoreRepeatCycleAttributeView.swift in Sources */,
 				A174B17628EF007100F80112 /* LoginAPI.swift in Sources */,
 				A12095E928F2A198008CE410 /* NetworkError.swift in Sources */,
 				A19E97FD29053621004A8861 /* AddChoreViewModel.swift in Sources */,
@@ -877,7 +864,6 @@
 				A13C537328E958DF00C72215 /* Array+.swift in Sources */,
 				A19E982E290A9D64004A8861 /* UITextField+.swift in Sources */,
 				A12095FF2901680F008CE410 /* DobbyFont.swift in Sources */,
-				A19E98122906CD18004A8861 /* ChoreOwnerAttributeView.swift in Sources */,
 				A12095FD2901669B008CE410 /* Palette.swift in Sources */,
 				A13C531128E7129D00C72215 /* AppDelegate.swift in Sources */,
 				A174B17428EF002000F80112 /* BaseAPI.swift in Sources */,
@@ -886,7 +872,6 @@
 				A13C537F28EA9C0000C72215 /* AppKey.swift in Sources */,
 				A19E980029053B32004A8861 /* ChoreUseCase.swift in Sources */,
 				A12095F528FD9427008CE410 /* MainTabBarCoordinator.swift in Sources */,
-				A19E98142906CD2C004A8861 /* ChoreCategoryAttributeView.swift in Sources */,
 				A12095EB28F2E010008CE410 /* RefreshAuthAPI.swift in Sources */,
 				A174B16F28EC6F0300F80112 /* ASAuthorizationController+.swift in Sources */,
 				A19E97E72904D7E6004A8861 /* WeeklyChoreCoordinator.swift in Sources */,
@@ -901,7 +886,6 @@
 				A19E980229053B60004A8861 /* Chore.swift in Sources */,
 				A19E98092906B22B004A8861 /* ChoreAttribute.swift in Sources */,
 				A13C536D28E94CA200C72215 /* NetworkService.swift in Sources */,
-				A19E980E2906CCF2004A8861 /* ChoreDateAttributeView.swift in Sources */,
 				A19E97F72904D845004A8861 /* MyPageViewController.swift in Sources */,
 				A13C536528E91BB800C72215 /* Authentication.swift in Sources */,
 				A19E97EB2904D7F7004A8861 /* AddChoreCoordinator.swift in Sources */,

@@ -42,7 +42,6 @@ final class AddChoreViewController: BaseViewController {
         )
         tf.returnKeyType = .done
         tf.keyboardType = .default
-        tf.autocorrectionType = .no
         return tf
     }()
     
@@ -161,11 +160,8 @@ final class AddChoreViewController: BaseViewController {
 }
 
 extension AddChoreViewController: AddChoreAttributeViewDelegate {
-    func extendView(attribute: ChoreAttribute) {
-        print("debug : extendView attribute -> \(attribute.description) ")
+    func didTapChoreAttribute(attribute: ChoreAttribute) {
+        print("Debug : AddChoreViewController did tap -> \(attribute.description)")
     }
     
-    func showAlert(attribute: ChoreAttribute) {
-        print("debug : showAlert attribute -> \(attribute.description) ")
-    }
 }
