@@ -164,6 +164,6 @@ final class AddChoreViewController: BaseViewController {
 
 extension AddChoreViewController: ChoreAttributeViewDelegate {
     func didTapChoreAttribute(attribute: ChoreAttribute) {
-        print("Debug : AddChoreViewController did tap -> \(attribute.description)")
+        self.addChoreCoordinator?.showSelectChoreAttributeModal(attribute: attribute)
     }
 }
