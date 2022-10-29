@@ -91,4 +91,13 @@ extension ChoreMemoAttributeView: UITextViewDelegate {
             textView.textColor = Palette.textGray1
         }
     }
+    
+    func textView(
+        _ textView: UITextView,
+        shouldChangeTextIn range: NSRange,
+        replacementText text: String
+    ) -> Bool {
+        // 글자수 100자 제한
+        return textView.text.count + (text.count - range.length) <= 100
+    }
 }
