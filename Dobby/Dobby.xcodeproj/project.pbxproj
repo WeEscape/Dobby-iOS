@@ -510,7 +510,7 @@
 				A19E97EA2904D7F7004A8861 /* AddChoreCoordinator.swift */,
 				A19E97F42904D83E004A8861 /* AddChoreViewController.swift */,
 				A19E97FC29053621004A8861 /* AddChoreViewModel.swift */,
-				A19E980A2906CAF4004A8861 /* AddChoreAttribute */,
+				A19E980A2906CAF4004A8861 /* AddChoreAttributeView */,
 			);
 			path = AddChore;
 			sourceTree = "<group>";
@@ -534,13 +534,13 @@
 			path = Chore;
 			sourceTree = "<group>";
 		};
-		A19E980A2906CAF4004A8861 /* AddChoreAttribute */ = {
+		A19E980A2906CAF4004A8861 /* AddChoreAttributeView */ = {
 			isa = PBXGroup;
 			children = (
 				A19E980B2906CB52004A8861 /* AddChoreAttributeView.swift */,
 				A19E98152906CE85004A8861 /* ChoreMemoAttributeView.swift */,
 			);
-			path = AddChoreAttribute;
+			path = AddChoreAttributeView;
 			sourceTree = "<group>";
 		};
 		A5DA04EED6FD9D57AE1689DC /* Frameworks */ = {
