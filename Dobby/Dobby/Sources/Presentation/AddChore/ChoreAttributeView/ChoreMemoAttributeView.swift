@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-final class ChoreMemoAttributeView: AddChoreAttributeView {
+final class ChoreMemoAttributeView: ChoreAttributeView {
     
     // MARK: property
     let memoPlaceHolder = "메모를 입력해주세요."

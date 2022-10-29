@@ -13,7 +13,7 @@ final class AddChoreCoordinator: Coordinator {
         super.init(parentCoordinator: parentCoordinator, childCoordinators: childCoordinators)
         let dummyViewController = AddChoreViewController(
             addChoreViewModel: nil,
-            addChoreAttributeFactory: addChoreAttributeFactory(attribute:)
+            choreAttributeFactory: addChoreAttributeFactory(attribute:)
         )
         self.viewController = dummyViewController
     }
@@ -24,21 +24,21 @@ final class AddChoreCoordinator: Coordinator {
         )
         let newViewController = AddChoreViewController(
             addChoreViewModel: addChoreViewModel,
-            addChoreAttributeFactory: addChoreAttributeFactory(attribute:)
+            choreAttributeFactory: addChoreAttributeFactory(attribute:)
         )
         return newViewController
     }
     
-    func addChoreAttributeFactory(attribute: ChoreAttribute) -> AddChoreAttributeView {
+    func addChoreAttributeFactory(attribute: ChoreAttribute) -> ChoreAttributeView {
         switch attribute {
         case .date:
-            return AddChoreAttributeView(attribute: attribute)
+            return ChoreAttributeView(attribute: attribute)
         case .repeatCycle:
-            return AddChoreAttributeView(attribute: attribute)
+            return ChoreAttributeView(attribute: attribute)
         case .owner:
-            return AddChoreAttributeView(attribute: attribute)
+            return ChoreAttributeView(attribute: attribute)
         case .category:
-            return AddChoreAttributeView(attribute: attribute)
+            return ChoreAttributeView(attribute: attribute)
         case .memo:
             return ChoreMemoAttributeView(attribute: attribute)
         }

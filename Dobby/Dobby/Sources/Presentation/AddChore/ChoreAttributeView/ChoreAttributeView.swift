@@ -1,5 +1,5 @@
 //
-//  AddChoreAttributeView.swift
+//  ChoreAttributeView.swift
 //  Dobby
 //
 //  Created by yongmin lee on 10/24/22.
@@ -8,14 +8,14 @@
 import UIKit
 import SnapKit
 
-protocol AddChoreAttributeViewDelegate: AnyObject {
+protocol ChoreAttributeViewDelegate: AnyObject {
     func didTapChoreAttribute(attribute: ChoreAttribute)
 }
 
-class AddChoreAttributeView: UIView {
+class ChoreAttributeView: UIView {
     
     // MARK: property
-    weak var delegate: AddChoreAttributeViewDelegate?
+    weak var delegate: ChoreAttributeViewDelegate?
     var attribute: ChoreAttribute
     
     // MARK: UI
@@ -59,7 +59,7 @@ class AddChoreAttributeView: UIView {
         self.setupUI()
         let tap = UITapGestureRecognizer(
             target: self,
-            action: #selector(didTapAddChoreAttributeView)
+            action: #selector(didTapChoreAttributeView)
         )
         self.addGestureRecognizer(tap)
     }
@@ -98,7 +98,7 @@ class AddChoreAttributeView: UIView {
         }
     }
     
-    @objc func didTapAddChoreAttributeView() {
+    @objc func didTapChoreAttributeView() {
         self.delegate?.didTapChoreAttribute(attribute: self.attribute)
     }
 }
