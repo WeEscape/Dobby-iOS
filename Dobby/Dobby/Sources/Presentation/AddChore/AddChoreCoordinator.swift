@@ -43,6 +43,7 @@ final class AddChoreCoordinator: Coordinator {
     
     func showSelectChoreAttributeModal(attribute: ChoreAttribute) {
         let selectAttributeCoordinator = SelectChoreAttributeCoordinator(
+            choreAttribute: attribute,
             parentCoordinator: self
         )
         childCoordinators += [selectAttributeCoordinator]

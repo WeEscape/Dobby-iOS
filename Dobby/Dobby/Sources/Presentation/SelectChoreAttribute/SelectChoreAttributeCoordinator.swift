@@ -9,9 +9,13 @@ import Foundation
 
 final class SelectChoreAttributeCoordinator: Coordinator {
     
-    override init(parentCoordinator: Coordinator? = nil, childCoordinators: [Coordinator] = []) {
-        super.init(parentCoordinator: parentCoordinator, childCoordinators: childCoordinators)
-        let viewModel = SelectChoreAttributeViewModel()
+    convenience init(
+        choreAttribute: ChoreAttribute,
+        parentCoordinator: Coordinator? = nil,
+        childCoordinators: [Coordinator] = []
+    ) {
+        self.init(parentCoordinator: parentCoordinator, childCoordinators: childCoordinators)
+        let viewModel = SelectChoreAttributeViewModel(choreAttribute: choreAttribute)
         let viewController = SelectChoreAttributeViewController(viewModel: viewModel)
         viewController.modalPresentationStyle = .overFullScreen
         self.viewController = viewController

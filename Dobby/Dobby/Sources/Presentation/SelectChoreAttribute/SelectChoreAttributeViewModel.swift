@@ -14,5 +14,9 @@ protocol SelectChoreAttributeDelegate: AnyObject {
 class SelectChoreAttributeViewModel {
     
     weak var delagate: SelectChoreAttributeDelegate?
+    let choreAttribute: ChoreAttribute
     
+    init(choreAttribute: ChoreAttribute) {
+        self.choreAttribute = choreAttribute
+    }
 }
