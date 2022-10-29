@@ -30,7 +30,7 @@ class SelectChoreAttributeViewController: BaseViewController {
     
     // MARK: method
     func setupUI() {
-        self.view.backgroundColor = .green.withAlphaComponent(0.66)
+        self.view.backgroundColor = .black.withAlphaComponent(0.66)
     }
     
     // MARK: Rx bind

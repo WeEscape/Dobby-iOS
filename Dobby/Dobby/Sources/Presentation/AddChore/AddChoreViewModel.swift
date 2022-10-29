@@ -31,3 +31,7 @@ class AddChoreViewModel {
         print("AddChoreViewModel didTapAddBtn ")
     }
 }
+
+extension AddChoreViewModel: SelectChoreAttributeDelegate {
+    
+}
