@@ -19,4 +19,8 @@ class SelectChoreAttributeViewModel {
     init(choreAttribute: ChoreAttribute) {
         self.choreAttribute = choreAttribute
     }
+    
+    deinit {
+        BeaverLog.debug("\(String(describing: self)) deinit")
+    }
 }

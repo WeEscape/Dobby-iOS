@@ -23,10 +23,12 @@ class Coordinator {
         childCoordinators.forEach { child in
             child.parentCoordinator = self
         }
+        BeaverLog.debug("\(String(describing: self)) init")
     }
     
     deinit {
         self.didFinish()
+        BeaverLog.debug("\(String(describing: self)) deinit")
     }
     
     func didFinish() {

@@ -16,8 +16,17 @@ final class SelectChoreAttributeCoordinator: Coordinator {
     ) {
         self.init(parentCoordinator: parentCoordinator, childCoordinators: childCoordinators)
         let viewModel = SelectChoreAttributeViewModel(choreAttribute: choreAttribute)
-        let viewController = SelectChoreAttributeViewController(viewModel: viewModel)
+        let viewController = SelectChoreAttributeViewController(
+            coordinator: self,
+            viewModel: viewModel
+        )
         viewController.modalPresentationStyle = .overFullScreen
         self.viewController = viewController
+    }
+    
+    func didDimissViewController() {
+        self.viewController = nil
+        self.didFinish()
+        self.parentCoordinator?.didFinish()
     }
 }
