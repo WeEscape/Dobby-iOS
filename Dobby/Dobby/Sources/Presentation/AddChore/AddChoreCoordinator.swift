@@ -13,6 +13,7 @@ final class AddChoreCoordinator: Coordinator {
         super.init(parentCoordinator: parentCoordinator, childCoordinators: childCoordinators)
         let dummyViewController = AddChoreViewController(
             addChoreViewModel: nil,
+            addChoreCoordinator: nil,
             choreAttributeFactory: addChoreAttributeFactory(attribute:)
         )
         self.viewController = dummyViewController
@@ -24,6 +25,7 @@ final class AddChoreCoordinator: Coordinator {
         )
         let newViewController = AddChoreViewController(
             addChoreViewModel: addChoreViewModel,
+            addChoreCoordinator: self,
             choreAttributeFactory: addChoreAttributeFactory(attribute:)
         )
         return newViewController

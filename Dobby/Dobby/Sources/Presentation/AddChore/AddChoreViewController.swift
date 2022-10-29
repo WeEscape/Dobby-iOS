@@ -15,6 +15,7 @@ final class AddChoreViewController: BaseViewController {
     // MARK: property
     let addChoreViewModel: AddChoreViewModel!
     let choreAttributeFactory: (ChoreAttribute) -> ChoreAttributeView?
+    weak var addChoreCoordinator: AddChoreCoordinator?
     
     // MARK: UI
     struct Metric {
@@ -57,9 +58,11 @@ final class AddChoreViewController: BaseViewController {
     // MARK: init
     init(
         addChoreViewModel: AddChoreViewModel?,
+        addChoreCoordinator: AddChoreCoordinator?,
         choreAttributeFactory: @escaping (ChoreAttribute) -> ChoreAttributeView?
     ) {
         self.addChoreViewModel = addChoreViewModel
+        self.addChoreCoordinator = addChoreCoordinator
         self.choreAttributeFactory = choreAttributeFactory
         super.init(nibName: nil, bundle: nil)
     }
@@ -163,5 +166,4 @@ extension AddChoreViewController: ChoreAttributeViewDelegate {
     func didTapChoreAttribute(attribute: ChoreAttribute) {
         print("Debug : AddChoreViewController did tap -> \(attribute.description)")
     }
-    
 }
