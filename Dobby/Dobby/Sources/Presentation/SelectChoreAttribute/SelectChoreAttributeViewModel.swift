@@ -7,6 +7,12 @@
 
 import Foundation
 
+protocol SelectChoreAttributeDelegate: AnyObject {
+    
+}
+
 class SelectChoreAttributeViewModel {
+    
+    weak var delagate: SelectChoreAttributeDelegate?
     
 }

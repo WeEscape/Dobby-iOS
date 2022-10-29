@@ -305,6 +305,7 @@
 		A13C534628E720E600C72215 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				A19E982F290CEA3D004A8861 /* SelectChoreAttribute */,
 				A19E97E22904D78E004A8861 /* AddChore */,
 				A19E97E32904D7AB004A8861 /* MyPage */,
 				A19E97E12904D77B004A8861 /* MonthlyChore */,
@@ -515,7 +516,6 @@
 				A19E97F42904D83E004A8861 /* AddChoreViewController.swift */,
 				A19E97FC29053621004A8861 /* AddChoreViewModel.swift */,
 				A19E980A2906CAF4004A8861 /* ChoreAttributeView */,
-				A19E982F290CEA3D004A8861 /* SelectChoreAttribute */,
 			);
 			path = AddChore;
 			sourceTree = "<group>";
