@@ -29,8 +29,6 @@ class Coordinator {
         self.didFinish()
     }
     
-    func start(window: UIWindow?, viewController: UIViewController?) { }
-    
     func didFinish() {
         childCoordinators.removeAll()
     }
@@ -40,9 +38,5 @@ class Coordinator {
             childCoordinators.remove(at: index)
             break
         }
-    }
-    
-    func getViewController() -> UIViewController? {
-        return self.viewController
     }
 }

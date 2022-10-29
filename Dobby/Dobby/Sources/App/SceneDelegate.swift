@@ -22,7 +22,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
         let appDelegate = UIApplication.shared.delegate as? AppDelegate
-        appDelegate?.rootCoordinator?.start(window: window, viewController: nil)
+//        appDelegate?.rootCoordinator?.start(window: window, viewController: nil)
+        appDelegate?.rootCoordinator?.startSplash(window: window)
     }
     
     func sceneDidDisconnect(_ scene: UIScene) {

@@ -9,7 +9,8 @@ import UIKit
 
 final class WelcomeCoordinator: Coordinator {
     
-    override func start(window: UIWindow?, viewController: UIViewController?) {
+    override init(parentCoordinator: Coordinator? = nil, childCoordinators: [Coordinator] = []) {
+        super.init(parentCoordinator: parentCoordinator, childCoordinators: childCoordinators)
         let welcomeViewModel = WelcomeViewModel(
             authUseCase: AuthUseCaseImpl(
                 authenticationRepository: AuthenticationRepositoryImpl(
@@ -22,10 +23,9 @@ final class WelcomeCoordinator: Coordinator {
             welcomeViewModel: welcomeViewModel,
             welcomeCoordinator: self
         )
-        self.viewController = welcomeViewController
         welcomeViewController.modalPresentationStyle = .fullScreen
         welcomeViewController.modalTransitionStyle = .coverVertical
-        viewController?.present(welcomeViewController, animated: true)
+        self.viewController = welcomeViewController
     }
     
     func presentMainTab() {
@@ -34,6 +34,7 @@ final class WelcomeCoordinator: Coordinator {
             childCoordinators: MainTabBarCoordinator.defaultChildCoordinators()
         )
         childCoordinators += [mainTabBarCoordinator]
-        mainTabBarCoordinator.start(window: nil, viewController: self.viewController)
+        guard let mainTabVC = mainTabBarCoordinator.viewController else {return}
+        self.viewController?.present(mainTabVC, animated: true)
     }
 }

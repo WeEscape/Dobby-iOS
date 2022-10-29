@@ -19,7 +19,7 @@ final class AddChoreCoordinator: Coordinator {
         self.viewController = dummyViewController
     }
     
-    override func getViewController() -> UIViewController? {
+    func createViewController() -> UIViewController? {
         let addChoreViewModel = AddChoreViewModel(
             choreUseCase: ChoreUseCaseImpl()
         )

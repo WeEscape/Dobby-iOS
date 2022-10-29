@@ -10,17 +10,15 @@ import UIKit
 final class RootCoordinator: Coordinator {
     
     var window: UIWindow?
-    
-    override func start(window: UIWindow?, viewController: UIViewController? = nil) {
+
+    func startSplash(window: UIWindow? = nil) {
         self.window = window
-        self.startSplash()
-    }
-    
-    func startSplash() {
         let splashCoordinator = SplashCoordinator(
             parentCoordinator: self
         )
         childCoordinators += [splashCoordinator]
-        splashCoordinator.start(window: self.window, viewController: nil)
+        let splashViewController = splashCoordinator.viewController
+        self.window?.rootViewController = splashViewController
+        self.window?.makeKeyAndVisible()
     }
 }

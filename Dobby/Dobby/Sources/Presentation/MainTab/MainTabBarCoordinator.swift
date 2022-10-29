@@ -9,7 +9,8 @@ import UIKit
 
 final class MainTabBarCoordinator: Coordinator {
     
-    override func start(window: UIWindow?, viewController: UIViewController?) {
+    override init(parentCoordinator: Coordinator? = nil, childCoordinators: [Coordinator] = []) {
+        super.init(parentCoordinator: parentCoordinator, childCoordinators: childCoordinators)
         let mainTabViewModel = MainTabViewModel()
         let mainTabBarController = UINavigationController(
             rootViewController: MainTabBarController(
@@ -18,10 +19,9 @@ final class MainTabBarCoordinator: Coordinator {
                 tabBarViewControllerFactory: self.tabBarViewControllerFactory(mainTab:)
             )
         )
-        self.viewController = mainTabBarController
         mainTabBarController.modalPresentationStyle = .fullScreen
         mainTabBarController.modalTransitionStyle = .crossDissolve
-        viewController?.present(mainTabBarController, animated: true)
+        self.viewController = mainTabBarController
     }
     
     static func defaultChildCoordinators() -> [Coordinator] {
@@ -70,11 +70,13 @@ final class MainTabBarCoordinator: Coordinator {
     }
     
     func pushToAddChore() {
-        guard let navigation = self.viewController as? UINavigationController else {return}
-        guard let addChoreCoordinator = self.childCoordinators.filter({ child in
+        let addChoreCoordinatorList = self.childCoordinators.filter({ child in
             return child is AddChoreCoordinator
-        }).first else {return}
-        guard let newAddChoreViewController = addChoreCoordinator.getViewController() else {return}
+        })
+        guard let navigation = self.viewController as? UINavigationController,
+              let addChoreCoordinator = addChoreCoordinatorList.first as? AddChoreCoordinator,
+              let newAddChoreViewController = addChoreCoordinator.createViewController()
+        else {return}
         navigation.pushViewController(newAddChoreViewController, animated: true)
     }
 }
