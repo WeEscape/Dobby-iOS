@@ -71,7 +71,8 @@ final class SelectDateAttributeView: SelectChoreAttributeView {
     }
     
     override func setState(_ value: Any?) {
-        guard let date = value as? Date else {return}
+        guard self.attribute == .date,
+              let date = value as? Date else {return}
         self.datePicker.date = date
     }
 }
