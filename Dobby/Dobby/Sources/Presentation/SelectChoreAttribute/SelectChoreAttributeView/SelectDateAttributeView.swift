@@ -69,4 +69,9 @@ final class SelectDateAttributeView: SelectChoreAttributeView {
                 self.datePublish.accept(selectedDate)
             }).disposed(by: self.disposeBag)
     }
+    
+    override func setState(_ value: Any?) {
+        guard let date = value as? Date else {return}
+        self.datePicker.date = date
+    }
 }

@@ -9,6 +9,7 @@ import Foundation
 import RxGesture
 import RxViewController
 import SnapKit
+import RxOptional
 
 class SelectChoreAttributeViewController: BaseViewController {
  
@@ -63,6 +64,12 @@ class SelectChoreAttributeViewController: BaseViewController {
     }
     
     func bindState() {
+        viewModel.dateBehavior
+            .asDriver()
+            .filterNil()
+            .drive(onNext: { [weak self] dateValue in
+                self?.contentView.setState(dateValue)
+            }).disposed(by: self.disposeBag)
     }
     
     func bindAction() {

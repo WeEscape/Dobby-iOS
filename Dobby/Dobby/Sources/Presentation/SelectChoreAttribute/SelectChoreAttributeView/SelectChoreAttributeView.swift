@@ -88,6 +88,8 @@ class SelectChoreAttributeView: UIView {
             }).disposed(by: self.disposeBag)
     }
     
+    func setState(_ value: Any?) {}
+    
     func showAnimation() {}
     
     func hideAnimation() {}
