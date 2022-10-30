@@ -17,6 +17,7 @@ class SelectChoreAttributeView: UIView {
     let viewModel: SelectChoreAttributeViewModel
     let didTapConfirm = PublishRelay<Void>.init()
     var disposeBag = DisposeBag()
+    let datePublish = PublishRelay<Date>.init()
     
     // MARK: UI
     struct Metric {
@@ -41,7 +42,7 @@ class SelectChoreAttributeView: UIView {
     
     let confirmBtn: UIButton = {
         let btn = UIButton()
-        btn.setTitle("완료", for: .normal)
+        btn.setTitle("닫기", for: .normal)
         btn.backgroundColor = .clear
         btn.setTitleColor(UIColor.white, for: .normal)
         return btn

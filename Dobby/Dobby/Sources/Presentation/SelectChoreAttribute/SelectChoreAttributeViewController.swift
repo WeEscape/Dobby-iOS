@@ -76,5 +76,11 @@ class SelectChoreAttributeViewController: BaseViewController {
                     self?.selectChoreAttributeCoordinator?.didDimissViewController()
                 })
             }).disposed(by: self.disposeBag)
+        
+        contentView.datePublish
+            .subscribe(onNext: { [weak self] selectedDate in
+                self?.viewModel.didSelectDate(selectedDate)
+            }).disposed(by: self.disposeBag)
+        
     }
 }

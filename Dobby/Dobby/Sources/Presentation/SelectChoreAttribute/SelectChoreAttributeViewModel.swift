@@ -8,7 +8,7 @@
 import Foundation
 
 protocol SelectChoreAttributeDelegate: AnyObject {
-    
+    func didSelectDate(date: Date)
 }
 
 class SelectChoreAttributeViewModel {
@@ -22,5 +22,9 @@ class SelectChoreAttributeViewModel {
     
     deinit {
         BeaverLog.debug("\(String(describing: self)) deinit")
+    }
+    
+    func didSelectDate(_ date: Date) {
+        self.delagate?.didSelectDate(date: date)
     }
 }

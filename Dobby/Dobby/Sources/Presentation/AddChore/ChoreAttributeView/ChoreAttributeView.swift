@@ -98,6 +98,10 @@ class ChoreAttributeView: UIView {
         }
     }
     
+    func updateTitle(title: String) {
+        self.titleLabel.text = title
+    }
+    
     @objc func didTapChoreAttributeView() {
         self.delegate?.didTapChoreAttribute(attribute: self.attribute)
     }

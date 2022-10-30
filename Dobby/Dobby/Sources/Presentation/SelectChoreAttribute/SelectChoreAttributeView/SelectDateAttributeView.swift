@@ -7,9 +7,10 @@
 
 import UIKit
 import SnapKit
+import RxCocoa
 
 final class SelectDateAttributeView: SelectChoreAttributeView {
-
+    
     // MARK: UI
     struct Metric {
         static let headerViewHeight: CGFloat = 78
@@ -18,7 +19,9 @@ final class SelectDateAttributeView: SelectChoreAttributeView {
        let datePicker = UIDatePicker()
         datePicker.preferredDatePickerStyle = .inline
         datePicker.datePickerMode = .date
-        datePicker.locale = Locale(identifier: "ko-KR")
+        datePicker.backgroundColor = .white
+        datePicker.locale = .current
+        datePicker.timeZone = .current
         return datePicker
     }()
     
@@ -27,7 +30,6 @@ final class SelectDateAttributeView: SelectChoreAttributeView {
         self.backgroundColor = .clear
         
         self.addSubview(datePicker)
-        datePicker.backgroundColor = .white
         datePicker.snp.makeConstraints {
             $0.left.equalToSuperview()
             $0.right.equalToSuperview()
@@ -54,5 +56,17 @@ final class SelectDateAttributeView: SelectChoreAttributeView {
                 self.layoutIfNeeded()
             }
         })
+    }
+    
+    override func bindAction() {
+        super.bindAction()
+        
+        datePicker.rx.date
+            .subscribe(onNext: { [weak self] date in
+                guard let selectedDate = date.description.toDate(),
+                      let self = self
+                else {return}
+                self.datePublish.accept(selectedDate)
+            }).disposed(by: self.disposeBag)
     }
 }

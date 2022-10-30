@@ -144,6 +144,20 @@ final class AddChoreViewController: BaseViewController {
                     }
                 }
             }).disposed(by: self.disposeBag)
+        
+        addChoreViewModel.dateBehavior
+            .asDriver()
+            .filterNil()
+            .distinctUntilChanged()
+            .drive(onNext: { [weak self] selectedDate in
+                guard let self = self,
+                      let dateView = self.attributeStackView.arrangedSubviews.filter({ sub in
+                          guard let attributeView = sub as? ChoreAttributeView else {return false}
+                          return attributeView.attribute == .date
+                      }).first as? ChoreAttributeView
+                else {return}
+                dateView.updateTitle(title: selectedDate.toStringWithoutTime())
+            }).disposed(by: self.disposeBag)
     }
     
     func bindAction() {

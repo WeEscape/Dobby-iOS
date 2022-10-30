@@ -14,6 +14,7 @@ class AddChoreViewModel {
     var disposeBag: DisposeBag = .init()
     let attributeItems = BehaviorRelay<[ChoreAttribute]>(value: ChoreAttribute.allCases)
     let choreUseCase: ChoreUseCase
+    let dateBehavior: BehaviorRelay<Date?> = .init(value: nil)
     
     init(
         choreUseCase: ChoreUseCase
@@ -33,5 +34,7 @@ class AddChoreViewModel {
 }
 
 extension AddChoreViewModel: SelectChoreAttributeDelegate {
-    
+    func didSelectDate(date: Date) {
+        dateBehavior.accept(date)
+    }
 }
