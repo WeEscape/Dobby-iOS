@@ -74,7 +74,6 @@
 		A19E982C29081BF5004A8861 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = A19E982B29081BF5004A8861 /* FirebaseCrashlytics */; };
 		A19E982E290A9D64004A8861 /* UITextField+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E982D290A9D64004A8861 /* UITextField+.swift */; };
 		A19E9831290CECEA004A8861 /* SelectChoreAttributeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E9830290CECEA004A8861 /* SelectChoreAttributeViewController.swift */; };
-		A19E9835290CED1F004A8861 /* SelectChoreAttributeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E9834290CED1F004A8861 /* SelectChoreAttributeViewModel.swift */; };
 		A19E983B290D06C7004A8861 /* SelectChoreAttributeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E983A290D06C7004A8861 /* SelectChoreAttributeCoordinator.swift */; };
 		A19E983E290D164D004A8861 /* SelectChoreAttributeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E983D290D164D004A8861 /* SelectChoreAttributeView.swift */; };
 		A19E9840290D1687004A8861 /* SelectDateAttributeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E983F290D1687004A8861 /* SelectDateAttributeView.swift */; };
@@ -173,7 +172,6 @@
 		A19E982629081B69004A8861 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A19E982D290A9D64004A8861 /* UITextField+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+.swift"; sourceTree = "<group>"; };
 		A19E9830290CECEA004A8861 /* SelectChoreAttributeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectChoreAttributeViewController.swift; sourceTree = "<group>"; };
-		A19E9834290CED1F004A8861 /* SelectChoreAttributeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectChoreAttributeViewModel.swift; sourceTree = "<group>"; };
 		A19E983A290D06C7004A8861 /* SelectChoreAttributeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectChoreAttributeCoordinator.swift; sourceTree = "<group>"; };
 		A19E983D290D164D004A8861 /* SelectChoreAttributeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectChoreAttributeView.swift; sourceTree = "<group>"; };
 		A19E983F290D1687004A8861 /* SelectDateAttributeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectDateAttributeView.swift; sourceTree = "<group>"; };
@@ -565,7 +563,6 @@
 			children = (
 				A19E983A290D06C7004A8861 /* SelectChoreAttributeCoordinator.swift */,
 				A19E9830290CECEA004A8861 /* SelectChoreAttributeViewController.swift */,
-				A19E9834290CED1F004A8861 /* SelectChoreAttributeViewModel.swift */,
 				A19E983C290D155B004A8861 /* SelectChoreAttributeView */,
 			);
 			path = SelectChoreAttribute;
@@ -925,7 +922,6 @@
 				A13C536F28E94D0500C72215 /* LocalTokenStorageService.swift in Sources */,
 				A19E980229053B60004A8861 /* Chore.swift in Sources */,
 				A19E98092906B22B004A8861 /* ChoreAttribute.swift in Sources */,
-				A19E9835290CED1F004A8861 /* SelectChoreAttributeViewModel.swift in Sources */,
 				A19E983B290D06C7004A8861 /* SelectChoreAttributeCoordinator.swift in Sources */,
 				A13C536D28E94CA200C72215 /* NetworkService.swift in Sources */,
 				A19E983E290D164D004A8861 /* SelectChoreAttributeView.swift in Sources */,

@@ -31,9 +31,7 @@ class AddChoreViewModel {
     func didTapAddBtn() {
         print("AddChoreViewModel didTapAddBtn ")
     }
-}
-
-extension AddChoreViewModel: SelectChoreAttributeDelegate {
+    
     func didSelectDate(date: Date) {
         dateBehavior.accept(date)
     }

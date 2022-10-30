@@ -42,18 +42,16 @@ final class AddChoreCoordinator: Coordinator {
     }
     
     func showSelectChoreAttributeModal(attribute: ChoreAttribute) {
+        guard let addChoreVC = self.viewController as? AddChoreViewController,
+              let addChoreVM = addChoreVC.addChoreViewModel
+        else {return}
         let selectAttributeCoordinator = SelectChoreAttributeCoordinator(
             choreAttribute: attribute,
+            viewModel: addChoreVM,
             parentCoordinator: self
         )
         childCoordinators += [selectAttributeCoordinator]
-        guard let addChoreVC = self.viewController as? AddChoreViewController,
-              let addChoreVM = addChoreVC.addChoreViewModel,
-              let selectChoreAttributeVC = selectAttributeCoordinator.viewController
-                as? SelectChoreAttributeViewController
-        else {return}
-        let selectChoreAttributeVM = selectChoreAttributeVC.viewModel
-        selectChoreAttributeVM.delagate = addChoreVM
-        self.viewController?.present(selectChoreAttributeVC, animated: false)
+        guard let selectVC = selectAttributeCoordinator.viewController else {return}
+        self.viewController?.present(selectVC, animated: false)
     }
 }

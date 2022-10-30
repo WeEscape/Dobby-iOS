@@ -14,21 +14,20 @@ class SelectChoreAttributeViewController: BaseViewController {
  
     // MARK: property
     weak var selectChoreAttributeCoordinator: SelectChoreAttributeCoordinator?
-    let viewModel: SelectChoreAttributeViewModel
-    let selectChoreAttributeFactory: (ChoreAttribute) -> SelectChoreAttributeView?
+    let viewModel: AddChoreViewModel
     
     // MARK: UI
-    lazy var contentView = self.selectChoreAttributeFactory(self.viewModel.choreAttribute)
+    let contentView: SelectChoreAttributeView
     
     // MARK: init
     init(
         coordinator: SelectChoreAttributeCoordinator,
-        viewModel: SelectChoreAttributeViewModel,
-        factory: @escaping(ChoreAttribute) -> SelectChoreAttributeView?
+        viewModel: AddChoreViewModel,
+        contentView: SelectChoreAttributeView
     ) {
         self.selectChoreAttributeCoordinator = coordinator
         self.viewModel = viewModel
-        self.selectChoreAttributeFactory = factory
+        self.contentView = contentView
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -47,7 +46,6 @@ class SelectChoreAttributeViewController: BaseViewController {
     func setupUI() {
         self.view.backgroundColor = .black.withAlphaComponent(0.66)
         
-        guard let contentView = self.contentView else {return}
         self.view.addSubview(contentView)
         contentView.snp.makeConstraints {
             $0.left.equalTo(self.view.safeAreaLayoutGuide.snp.left)
@@ -68,8 +66,6 @@ class SelectChoreAttributeViewController: BaseViewController {
     }
     
     func bindAction() {
-        guard let contentView = self.contentView else {return}
-        
         contentView.didTapConfirm
             .subscribe(onNext: { [weak self] _ in
                 self?.dismiss(animated: false, completion: {
@@ -79,7 +75,7 @@ class SelectChoreAttributeViewController: BaseViewController {
         
         contentView.datePublish
             .subscribe(onNext: { [weak self] selectedDate in
-                self?.viewModel.didSelectDate(selectedDate)
+                self?.viewModel.didSelectDate(date: selectedDate)
             }).disposed(by: self.disposeBag)
         
     }

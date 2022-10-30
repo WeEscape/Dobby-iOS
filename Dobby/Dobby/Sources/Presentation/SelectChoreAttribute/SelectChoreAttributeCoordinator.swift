@@ -11,15 +11,15 @@ final class SelectChoreAttributeCoordinator: Coordinator {
     
     convenience init(
         choreAttribute: ChoreAttribute,
+        viewModel: AddChoreViewModel,
         parentCoordinator: Coordinator? = nil,
         childCoordinators: [Coordinator] = []
     ) {
         self.init(parentCoordinator: parentCoordinator, childCoordinators: childCoordinators)
-        let viewModel = SelectChoreAttributeViewModel(choreAttribute: choreAttribute)
         let viewController = SelectChoreAttributeViewController(
             coordinator: self,
             viewModel: viewModel,
-            factory: self.selectChoreAttributeFactory(attribute:)
+            contentView: self.selectChoreAttributeFactory(attribute: choreAttribute)
         )
         viewController.modalPresentationStyle = .overFullScreen
         self.viewController = viewController
@@ -31,18 +31,14 @@ final class SelectChoreAttributeCoordinator: Coordinator {
         self.parentCoordinator?.didFinish()
     }
     
-    func selectChoreAttributeFactory(attribute: ChoreAttribute) -> SelectChoreAttributeView? {
-        guard let viewController = self.viewController as? SelectChoreAttributeViewController
-        else {return nil}
-        let viewModel = viewController.viewModel
-        
+    func selectChoreAttributeFactory(attribute: ChoreAttribute) -> SelectChoreAttributeView {
         switch attribute {
         case .date:
-            return SelectDateAttributeView(viewModel: viewModel)
+            return SelectDateAttributeView(attribute: attribute)
         case .repeatCycle, .owner, .category:
-            return SelectDateAttributeView(viewModel: viewModel)
+            return SelectDateAttributeView(attribute: attribute)
         case .memo:
-            return SelectDateAttributeView(viewModel: viewModel)
+            return SelectDateAttributeView(attribute: attribute)
         }
     }
 }
