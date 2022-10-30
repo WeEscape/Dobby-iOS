@@ -54,6 +54,6 @@ final class AddChoreCoordinator: Coordinator {
         else {return}
         let selectChoreAttributeVM = selectChoreAttributeVC.viewModel
         selectChoreAttributeVM.delagate = addChoreVM
-        self.viewController?.present(selectChoreAttributeVC, animated: true)
+        self.viewController?.present(selectChoreAttributeVC, animated: false)
     }
 }

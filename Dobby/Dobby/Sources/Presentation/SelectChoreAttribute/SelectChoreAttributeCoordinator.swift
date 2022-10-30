@@ -18,7 +18,8 @@ final class SelectChoreAttributeCoordinator: Coordinator {
         let viewModel = SelectChoreAttributeViewModel(choreAttribute: choreAttribute)
         let viewController = SelectChoreAttributeViewController(
             coordinator: self,
-            viewModel: viewModel
+            viewModel: viewModel,
+            factory: self.selectChoreAttributeFactory(attribute:)
         )
         viewController.modalPresentationStyle = .overFullScreen
         self.viewController = viewController
@@ -28,5 +29,20 @@ final class SelectChoreAttributeCoordinator: Coordinator {
         self.viewController = nil
         self.didFinish()
         self.parentCoordinator?.didFinish()
+    }
+    
+    func selectChoreAttributeFactory(attribute: ChoreAttribute) -> SelectChoreAttributeView? {
+        guard let viewController = self.viewController as? SelectChoreAttributeViewController
+        else {return nil}
+        let viewModel = viewController.viewModel
+        
+        switch attribute {
+        case .date:
+            return SelectDateAttributeView(viewModel: viewModel)
+        case .repeatCycle, .owner, .category:
+            return SelectDateAttributeView(viewModel: viewModel)
+        case .memo:
+            return SelectDateAttributeView(viewModel: viewModel)
+        }
     }
 }
