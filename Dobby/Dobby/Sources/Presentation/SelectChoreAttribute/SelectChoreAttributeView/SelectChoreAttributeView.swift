@@ -10,6 +10,7 @@ import SnapKit
 import RxRelay
 import RxSwift
 import RxCocoa
+import RxGesture
 
 class SelectChoreAttributeView: UIView {
     
@@ -22,6 +23,7 @@ class SelectChoreAttributeView: UIView {
     // MARK: UI
     struct Metric {
         static let headerItemLeftRightInset: CGFloat = 20
+        static let headerViewHeight: CGFloat = 78
     }
     
     let headerView: UIView = {
@@ -40,12 +42,26 @@ class SelectChoreAttributeView: UIView {
         return lbl
     }()
     
+    let bodyView: UIStackView = {
+       let stack = UIStackView()
+        stack.axis = .vertical
+        stack.alignment = .fill
+        stack.distribution = .fill
+        return stack
+    }()
+    
     let confirmBtn: UIButton = {
         let btn = UIButton()
         btn.setTitle("닫기", for: .normal)
         btn.backgroundColor = .clear
         btn.setTitleColor(UIColor.white, for: .normal)
         return btn
+    }()
+    
+    let closeBackView: UIView = {
+        let back = UIView()
+        back.backgroundColor = .clear
+        return back
     }()
     
     // MARK: init
@@ -66,6 +82,23 @@ class SelectChoreAttributeView: UIView {
     
     // MARK: methods
     func setupUI() {
+        self.backgroundColor = .clear
+        
+        self.addSubview(bodyView)
+        bodyView.snp.makeConstraints {
+            $0.left.equalToSuperview()
+            $0.right.equalToSuperview()
+            $0.bottom.equalToSuperview()
+        }
+        
+        self.addSubview(headerView)
+        headerView.snp.makeConstraints {
+            $0.left.equalToSuperview()
+            $0.right.equalToSuperview()
+            $0.height.equalTo(Metric.headerViewHeight)
+            $0.bottom.equalTo(bodyView.snp.top)
+        }
+        
         headerView.addSubview(confirmBtn)
         confirmBtn.snp.makeConstraints {
             $0.right.equalToSuperview().inset(Metric.headerItemLeftRightInset)
@@ -78,19 +111,55 @@ class SelectChoreAttributeView: UIView {
             $0.left.equalToSuperview().inset(Metric.headerItemLeftRightInset)
             $0.centerY.equalToSuperview()
         }
+        
+        self.addSubview(closeBackView)
+        closeBackView.snp.makeConstraints {
+            $0.left.equalToSuperview()
+            $0.right.equalToSuperview()
+            $0.top.equalToSuperview()
+            $0.bottom.equalTo(self.headerView.snp.top)
+        }
     }
     
     func bindAction() {
+        closeBackView.rx.tapGesture()
+            .when(.recognized)
+            .subscribe(onNext: { [weak self] _ in
+                self?.closeAnimation()
+            }).disposed(by: self.disposeBag)
+        
         self.confirmBtn.rx.tap
             .asDriver()
             .drive(onNext: { [weak self] _ in
-                self?.didTapConfirm.accept(())
+                self?.closeAnimation()
             }).disposed(by: self.disposeBag)
     }
     
     func setState(_ value: Any?) {}
     
-    func showAnimation() {}
+    func showAnimation() {
+        UIView.animate(withDuration: 0.1, animations: {
+            self.layoutIfNeeded()
+        }, completion: { _ in
+            self.bodyView.snp.updateConstraints {
+                $0.bottom.equalToSuperview()
+            }
+            UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut) {
+                self.layoutIfNeeded()
+            }
+        })
+    }
     
-    func hideAnimation() {}
+    func closeAnimation() {
+        self.bodyView.snp.remakeConstraints {
+            $0.left.equalToSuperview()
+            $0.right.equalToSuperview()
+            $0.top.equalTo(self.snp.bottom).offset(Metric.headerViewHeight)
+        }
+        UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: {
+            self.layoutIfNeeded()
+        }, completion: { [weak self] _ in
+            self?.didTapConfirm.accept(())
+        })
+    }
 }
