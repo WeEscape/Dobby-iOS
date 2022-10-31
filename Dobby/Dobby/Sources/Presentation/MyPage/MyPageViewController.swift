@@ -14,6 +14,16 @@ final class MyPageViewController: BaseViewController {
     weak var mypageCoordinator: MyPageCoordinator?
     let mypageViewModel: MyPageViewModel
     
+    // MARK: UI
+    private let scrollContainerView: UIScrollView = .init()
+    
+    private let stackContainerView: UIStackView = {
+        let stack = UIStackView()
+        stack.axis = .vertical
+        stack.alignment = .fill
+        return stack
+    }()
+    
     // MARK: init
     init(
         mypageCoordinator: MyPageCoordinator?,
@@ -51,6 +61,23 @@ final class MyPageViewController: BaseViewController {
             $0.right.equalToSuperview()
             $0.height.equalTo(1)
             $0.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+        }
+        
+        self.view.addSubview(scrollContainerView)
+        scrollContainerView.snp.makeConstraints {
+            $0.left.equalToSuperview()
+            $0.right.equalToSuperview()
+            $0.top.equalTo(navigationLineView.snp.bottom)
+            $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+        }
+        
+        scrollContainerView.addSubview(stackContainerView)
+        stackContainerView.snp.makeConstraints {
+            $0.left.equalToSuperview()
+            $0.right.equalToSuperview()
+            $0.top.equalToSuperview()
+            $0.bottom.equalToSuperview()
+            $0.width.equalToSuperview()
         }
     }
     
