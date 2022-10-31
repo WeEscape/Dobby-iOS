@@ -11,7 +11,7 @@ import RxViewController
 import SnapKit
 import RxOptional
 
-class SelectChoreAttributeViewController: BaseViewController {
+final class SelectChoreAttributeViewController: BaseViewController {
  
     // MARK: property
     weak var selectChoreAttributeCoordinator: SelectChoreAttributeCoordinator?
