@@ -20,4 +20,8 @@ struct Palette {
     static let textGray1 = UIColor(
         red: (109.0/255.0), green: (109.0/255.0), blue: (109.0/255.0), alpha: 1
     )
+    
+    static let lineGray1 = UIColor(
+        red: 0.921, green: 0.921, blue: 0.921, alpha: 1
+    )
 }
