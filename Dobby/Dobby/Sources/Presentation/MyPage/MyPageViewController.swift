@@ -73,13 +73,13 @@ final class MyPageViewController: BaseViewController {
     }
     
     // MARK: method
-    
     func setupUI() {
         self.view.backgroundColor = .white
         
         self.navigationItem.title = "설정"
-        self.navigationController?.navigationBar.backgroundColor = .white
+        self.navigationController?.navigationBar.backgroundColor = .clear
         self.navigationController?.navigationBar.prefersLargeTitles = true
+        self.navigationItem.largeTitleDisplayMode = .always
         self.navigationController?.navigationBar.isTranslucent = false
         self.navigationController?.navigationBar.tintColor = .black
         
@@ -154,7 +154,7 @@ final class MyPageViewController: BaseViewController {
         profileEditView.rx.tapGesture()
             .when(.recognized)
             .subscribe(onNext: { [weak self] _ in
-                print("Debug : profileEditView.rx.tapGesture() ")
+                self?.mypageCoordinator?.pushToEditProfile()
             }).disposed(by: self.disposeBag)
         
         logoutView.rx.tapGesture()

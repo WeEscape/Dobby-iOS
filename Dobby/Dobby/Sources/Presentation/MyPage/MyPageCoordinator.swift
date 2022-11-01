@@ -25,4 +25,13 @@ final class MyPageCoordinator: Coordinator {
         )
         self.viewController = mypageVC
     }
+    
+    func pushToEditProfile() {
+        let editProfileCoordinator = EditProfileCoordinator(parentCoordinator: self)
+        childCoordinators += [editProfileCoordinator]
+        guard let editProfileVC = editProfileCoordinator.viewController,
+              let navigationController = self.viewController?.navigationController
+        else {return}
+        navigationController.pushViewController(editProfileVC, animated: true)
+    }
 }
