@@ -81,6 +81,7 @@
 		A19E9846290E76AE004A8861 /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E9845290E76AE004A8861 /* Date+.swift */; };
 		A19E9848290FF1A7004A8861 /* MyPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E9847290FF1A7004A8861 /* MyPageViewModel.swift */; };
 		A19E984D291137B0004A8861 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E984C291137B0004A8861 /* UIView+.swift */; };
+		A19E984F291143AF004A8861 /* SettingItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E984E291143AF004A8861 /* SettingItemView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -181,6 +182,7 @@
 		A19E9845290E76AE004A8861 /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
 		A19E9847290FF1A7004A8861 /* MyPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewModel.swift; sourceTree = "<group>"; };
 		A19E984C291137B0004A8861 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
+		A19E984E291143AF004A8861 /* SettingItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingItemView.swift; sourceTree = "<group>"; };
 		A9B722602644972E8A20B23F /* Pods-DobbyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DobbyTests.debug.xcconfig"; path = "Target Support Files/Pods-DobbyTests/Pods-DobbyTests.debug.xcconfig"; sourceTree = "<group>"; };
 		ABCE8077762A15E26783E084 /* Pods_DobbyTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DobbyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C507575F588E1F7301BDE870 /* Pods-Dobby.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dobby.debug.xcconfig"; path = "Target Support Files/Pods-Dobby/Pods-Dobby.debug.xcconfig"; sourceTree = "<group>"; };
@@ -541,6 +543,7 @@
 				A19E97EC2904D803004A8861 /* MyPageCoordinator.swift */,
 				A19E97F62904D845004A8861 /* MyPageViewController.swift */,
 				A19E9847290FF1A7004A8861 /* MyPageViewModel.swift */,
+				A19E984E291143AF004A8861 /* SettingItemView.swift */,
 			);
 			path = MyPage;
 			sourceTree = "<group>";
@@ -904,6 +907,7 @@
 				A13C537B28E97EF600C72215 /* WelcomeCoordinator.swift in Sources */,
 				A19E97EF2904D826004A8861 /* DailyChoreViewController.swift in Sources */,
 				A19E97F52904D83E004A8861 /* AddChoreViewController.swift in Sources */,
+				A19E984F291143AF004A8861 /* SettingItemView.swift in Sources */,
 				A19E984D291137B0004A8861 /* UIView+.swift in Sources */,
 				A19E9840290D1687004A8861 /* SelectDateAttributeView.swift in Sources */,
 				A13C537328E958DF00C72215 /* Array+.swift in Sources */,
