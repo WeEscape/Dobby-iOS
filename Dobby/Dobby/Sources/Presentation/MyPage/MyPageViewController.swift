@@ -30,7 +30,6 @@ final class MyPageViewController: BaseViewController {
         let iv = UIImageView()
         iv.contentMode = .scaleAspectFit
         iv.image = UIImage(named: "default_profile")
-        iv.isUserInteractionEnabled = false
         return iv
     }()
     
