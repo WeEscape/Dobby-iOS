@@ -7,18 +7,12 @@
 
 import UIKit
 import RxSwift
+import SnapKit
 
 class BaseViewController: UIViewController {
     
     // MARK: property
     var disposeBag: DisposeBag = .init()
-    
-    // MARK: UI
-    let navigationLineView: UIView = {
-        var line = UIView()
-        line.backgroundColor = Palette.lineGray1
-        return line
-    }()
     
     // MARK: init
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -39,5 +33,13 @@ class BaseViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         BeaverLog.verbose("\(String(describing: self)) viewDidLoad")
+    }
+    
+    // MARK: methods
+    func createLineView() -> UIView {
+        let line = UIView()
+        line.backgroundColor = Palette.lineGray1
+        line.translatesAutoresizingMaskIntoConstraints = false
+        return line
     }
 }
