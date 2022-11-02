@@ -68,7 +68,7 @@
 		A19E980729054764004A8861 /* loading.json in Resources */ = {isa = PBXBuildFile; fileRef = A19E980629054764004A8861 /* loading.json */; };
 		A19E98092906B22B004A8861 /* ChoreAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E98082906B22B004A8861 /* ChoreAttribute.swift */; };
 		A19E980C2906CB52004A8861 /* ChoreAttributeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E980B2906CB52004A8861 /* ChoreAttributeView.swift */; };
-		A19E98162906CE85004A8861 /* ChoreMemoAttributeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E98152906CE85004A8861 /* ChoreMemoAttributeView.swift */; };
+		A19E98162906CE85004A8861 /* ChoreMemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E98152906CE85004A8861 /* ChoreMemoView.swift */; };
 		A19E982729081B69004A8861 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A19E982629081B69004A8861 /* GoogleService-Info.plist */; };
 		A19E982A29081BF5004A8861 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = A19E982929081BF5004A8861 /* FirebaseAnalyticsWithoutAdIdSupport */; };
 		A19E982C29081BF5004A8861 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = A19E982B29081BF5004A8861 /* FirebaseCrashlytics */; };
@@ -180,7 +180,7 @@
 		A19E980629054764004A8861 /* loading.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = loading.json; sourceTree = "<group>"; };
 		A19E98082906B22B004A8861 /* ChoreAttribute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoreAttribute.swift; sourceTree = "<group>"; };
 		A19E980B2906CB52004A8861 /* ChoreAttributeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoreAttributeView.swift; sourceTree = "<group>"; };
-		A19E98152906CE85004A8861 /* ChoreMemoAttributeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoreMemoAttributeView.swift; sourceTree = "<group>"; };
+		A19E98152906CE85004A8861 /* ChoreMemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoreMemoView.swift; sourceTree = "<group>"; };
 		A19E982629081B69004A8861 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A19E982D290A9D64004A8861 /* UITextField+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+.swift"; sourceTree = "<group>"; };
 		A19E9830290CECEA004A8861 /* ModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalViewController.swift; sourceTree = "<group>"; };
@@ -582,7 +582,7 @@
 			isa = PBXGroup;
 			children = (
 				A19E980B2906CB52004A8861 /* ChoreAttributeView.swift */,
-				A19E98152906CE85004A8861 /* ChoreMemoAttributeView.swift */,
+				A19E98152906CE85004A8861 /* ChoreMemoView.swift */,
 			);
 			path = ChoreAttributeView;
 			sourceTree = "<group>";
@@ -949,7 +949,7 @@
 				A13C537728E9786900C72215 /* WelcomeViewController.swift in Sources */,
 				A19E98522911529F004A8861 /* EditProfileCoordinator.swift in Sources */,
 				A13C534B28E816B800C72215 /* RootCoordinator.swift in Sources */,
-				A19E98162906CE85004A8861 /* ChoreMemoAttributeView.swift in Sources */,
+				A19E98162906CE85004A8861 /* ChoreMemoView.swift in Sources */,
 				A19E97ED2904D803004A8861 /* MyPageCoordinator.swift in Sources */,
 				A19E980C2906CB52004A8861 /* ChoreAttributeView.swift in Sources */,
 				A13C535728E8231100C72215 /* BaseViewController.swift in Sources */,

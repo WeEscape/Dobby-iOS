@@ -1,5 +1,5 @@
 //
-//  ChoreMemoAttributeView.swift
+//  ChoreMemoView.swift
 //  Dobby
 //
 //  Created by yongmin lee on 10/24/22.
@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-final class ChoreMemoAttributeView: ChoreAttributeView {
+final class ChoreMemoView: ChoreAttributeView {
     
     // MARK: property
     let memoPlaceHolder = "메모를 입력해주세요."
@@ -77,7 +77,7 @@ final class ChoreMemoAttributeView: ChoreAttributeView {
 }
 
 // MARK: extension UITextViewDelegate
-extension ChoreMemoAttributeView: UITextViewDelegate {
+extension ChoreMemoView: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
         if textView.text == memoPlaceHolder {
             textView.text = nil

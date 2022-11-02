@@ -37,7 +37,7 @@ final class AddChoreCoordinator: Coordinator {
         case .date, .repeatCycle, .owner, .category:
             return ChoreAttributeView(attribute: attribute)
         case .memo:
-            return ChoreMemoAttributeView(attribute: attribute)
+            return ChoreMemoView(attribute: attribute)
         }
     }
     
