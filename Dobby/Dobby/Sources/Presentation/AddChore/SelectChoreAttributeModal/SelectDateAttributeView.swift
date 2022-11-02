@@ -9,10 +9,11 @@ import UIKit
 import SnapKit
 import RxCocoa
 
-final class SelectDateAttributeView: SelectChoreAttributeView {
+final class SelectDateAttributeView: ModalContentView {
     
     // MARK: property
     var attribute: ChoreAttribute!
+    let datePublish = PublishRelay<Date>.init()
     
     // MARK: init
     override init() {
