@@ -88,6 +88,9 @@
 		A19E985829128D28004A8861 /* EditProfileItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E985729128D28004A8861 /* EditProfileItemView.swift */; };
 		A19E985B2912A1E7004A8861 /* SelectChoreAttributeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E985A2912A1E7004A8861 /* SelectChoreAttributeCoordinator.swift */; };
 		A19E985D2912A3D0004A8861 /* SelectChoreAttributeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E985C2912A3D0004A8861 /* SelectChoreAttributeViewController.swift */; };
+		A19E98622912AADA004A8861 /* SelectProfileAttributeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E98612912AADA004A8861 /* SelectProfileAttributeCoordinator.swift */; };
+		A19E98642912AAF1004A8861 /* SelectProfileAttributeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E98632912AAF1004A8861 /* SelectProfileAttributeViewController.swift */; };
+		A19E98672912AB2C004A8861 /* SelectProfileColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E98662912AB2C004A8861 /* SelectProfileColorView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -195,6 +198,9 @@
 		A19E985729128D28004A8861 /* EditProfileItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileItemView.swift; sourceTree = "<group>"; };
 		A19E985A2912A1E7004A8861 /* SelectChoreAttributeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectChoreAttributeCoordinator.swift; sourceTree = "<group>"; };
 		A19E985C2912A3D0004A8861 /* SelectChoreAttributeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectChoreAttributeViewController.swift; sourceTree = "<group>"; };
+		A19E98612912AADA004A8861 /* SelectProfileAttributeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectProfileAttributeCoordinator.swift; sourceTree = "<group>"; };
+		A19E98632912AAF1004A8861 /* SelectProfileAttributeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectProfileAttributeViewController.swift; sourceTree = "<group>"; };
+		A19E98662912AB2C004A8861 /* SelectProfileColorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectProfileColorView.swift; sourceTree = "<group>"; };
 		A9B722602644972E8A20B23F /* Pods-DobbyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DobbyTests.debug.xcconfig"; path = "Target Support Files/Pods-DobbyTests/Pods-DobbyTests.debug.xcconfig"; sourceTree = "<group>"; };
 		ABCE8077762A15E26783E084 /* Pods_DobbyTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DobbyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C507575F588E1F7301BDE870 /* Pods-Dobby.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dobby.debug.xcconfig"; path = "Target Support Files/Pods-Dobby/Pods-Dobby.debug.xcconfig"; sourceTree = "<group>"; };
@@ -598,6 +604,7 @@
 				A19E9853291152AB004A8861 /* EditProfileViewController.swift */,
 				A19E9855291152B6004A8861 /* EditProfileViewModel.swift */,
 				A19E985729128D28004A8861 /* EditProfileItemView.swift */,
+				A19E98602912AA79004A8861 /* SelectProfileAttributeModal */,
 			);
 			path = EditProfile;
 			sourceTree = "<group>";
@@ -618,6 +625,24 @@
 				A19E983F290D1687004A8861 /* SelectDateAttributeView.swift */,
 			);
 			path = SelectChoreAttributeView;
+			sourceTree = "<group>";
+		};
+		A19E98602912AA79004A8861 /* SelectProfileAttributeModal */ = {
+			isa = PBXGroup;
+			children = (
+				A19E98612912AADA004A8861 /* SelectProfileAttributeCoordinator.swift */,
+				A19E98632912AAF1004A8861 /* SelectProfileAttributeViewController.swift */,
+				A19E98652912AAF5004A8861 /* SelectProfileAttributeView */,
+			);
+			path = SelectProfileAttributeModal;
+			sourceTree = "<group>";
+		};
+		A19E98652912AAF5004A8861 /* SelectProfileAttributeView */ = {
+			isa = PBXGroup;
+			children = (
+				A19E98662912AB2C004A8861 /* SelectProfileColorView.swift */,
+			);
+			path = SelectProfileAttributeView;
 			sourceTree = "<group>";
 		};
 		A5DA04EED6FD9D57AE1689DC /* Frameworks */ = {
@@ -953,8 +978,10 @@
 				A12095FD2901669B008CE410 /* Palette.swift in Sources */,
 				A13C531128E7129D00C72215 /* AppDelegate.swift in Sources */,
 				A174B17428EF002000F80112 /* BaseAPI.swift in Sources */,
+				A19E98672912AB2C004A8861 /* SelectProfileColorView.swift in Sources */,
 				A19E97E92904D7EF004A8861 /* MonthlyChoreCoordinator.swift in Sources */,
 				A13C536328E9173900C72215 /* AuthenticationRepositoryImpl.swift in Sources */,
+				A19E98642912AAF1004A8861 /* SelectProfileAttributeViewController.swift in Sources */,
 				A13C537F28EA9C0000C72215 /* AppKey.swift in Sources */,
 				A19E980029053B32004A8861 /* ChoreUseCase.swift in Sources */,
 				A12095F528FD9427008CE410 /* MainTabBarCoordinator.swift in Sources */,
@@ -962,6 +989,7 @@
 				A174B16F28EC6F0300F80112 /* ASAuthorizationController+.swift in Sources */,
 				A19E97E72904D7E6004A8861 /* WeeklyChoreCoordinator.swift in Sources */,
 				A13C531328E7129D00C72215 /* SceneDelegate.swift in Sources */,
+				A19E98622912AADA004A8861 /* SelectProfileAttributeCoordinator.swift in Sources */,
 				A13C536728E91D9C00C72215 /* AuthUseCase.swift in Sources */,
 				A13C535228E817F800C72215 /* Coordinator.swift in Sources */,
 				A13C535A28E8288300C72215 /* SplashCoordinator.swift in Sources */,
