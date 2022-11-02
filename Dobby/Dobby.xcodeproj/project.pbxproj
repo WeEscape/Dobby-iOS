@@ -607,9 +607,17 @@
 			children = (
 				A19E985A2912A1E7004A8861 /* SelectChoreAttributeCoordinator.swift */,
 				A19E985C2912A3D0004A8861 /* SelectChoreAttributeViewController.swift */,
-				A19E983F290D1687004A8861 /* SelectDateAttributeView.swift */,
+				A19E985F2912AA1C004A8861 /* SelectChoreAttributeView */,
 			);
 			path = SelectChoreAttributeModal;
+			sourceTree = "<group>";
+		};
+		A19E985F2912AA1C004A8861 /* SelectChoreAttributeView */ = {
+			isa = PBXGroup;
+			children = (
+				A19E983F290D1687004A8861 /* SelectDateAttributeView.swift */,
+			);
+			path = SelectChoreAttributeView;
 			sourceTree = "<group>";
 		};
 		A5DA04EED6FD9D57AE1689DC /* Frameworks */ = {
