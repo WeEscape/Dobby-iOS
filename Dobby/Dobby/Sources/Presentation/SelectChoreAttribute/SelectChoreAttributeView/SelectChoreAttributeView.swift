@@ -15,7 +15,6 @@ import RxGesture
 class SelectChoreAttributeView: UIView {
     
     // MARK: property
-    let attribute: ChoreAttribute
     let didTapConfirm = PublishRelay<Void>.init()
     var disposeBag = DisposeBag()
     let datePublish = PublishRelay<Date>.init()
@@ -36,7 +35,6 @@ class SelectChoreAttributeView: UIView {
     
     lazy var headerTitle: UILabel = {
         let lbl = UILabel()
-        lbl.text = self.attribute.description
         lbl.textColor = .white
         lbl.font = DobbyFont.avenirMedium(size: 24).getFont
         return lbl
@@ -65,8 +63,7 @@ class SelectChoreAttributeView: UIView {
     }()
     
     // MARK: init
-    init(attribute: ChoreAttribute) {
-        self.attribute = attribute
+    init() {
         super.init(frame: .zero)
         self.setupUI()
         self.bindAction()

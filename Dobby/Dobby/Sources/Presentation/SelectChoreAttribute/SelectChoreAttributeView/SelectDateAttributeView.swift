@@ -11,6 +11,24 @@ import RxCocoa
 
 final class SelectDateAttributeView: SelectChoreAttributeView {
     
+    // MARK: property
+    var attribute: ChoreAttribute!
+    
+    // MARK: init
+    override init() {
+        super.init()
+    }
+    
+    convenience init(attribute: ChoreAttribute) {
+        self.init()
+        self.attribute = attribute
+        self.headerTitle.text = self.attribute.description
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     // MARK: UI
     private let datePicker: UIDatePicker = {
        let datePicker = UIDatePicker()
