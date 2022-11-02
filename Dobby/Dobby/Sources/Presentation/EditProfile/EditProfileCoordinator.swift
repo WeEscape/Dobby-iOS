@@ -18,4 +18,8 @@ final class EditProfileCoordinator: Coordinator {
         )
         self.viewController = viewController
     }
+    
+    func viewControllerDidFinish() {
+        self.parentCoordinator?.childDidFinish(child: self)
+    }
 }

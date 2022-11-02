@@ -57,6 +57,11 @@ final class EditProfileViewController: BaseViewController {
         userNameTextField.becomeFirstResponder()
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        self.coordinator?.viewControllerDidFinish()
+    }
+    
     // MARK: method
     func setupUI() {
         self.view.backgroundColor = .white
