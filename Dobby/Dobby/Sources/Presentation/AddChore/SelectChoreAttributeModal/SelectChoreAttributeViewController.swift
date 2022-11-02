@@ -15,7 +15,7 @@ final class SelectChoreAttributeViewController: ModalViewController {
  
     // MARK: property
     var viewModel: AddChoreViewModel!
-    var selectDateAttributeView: SelectDateAttributeView?
+    var selectDateView: SelectDateView?
     
     // MARK: init
     convenience init(
@@ -26,8 +26,8 @@ final class SelectChoreAttributeViewController: ModalViewController {
         self.init(coordinator: coordinator, contentView: contentView)
         self.viewModel = viewModel
         
-        if let selectDateAttributeView = contentView as? SelectDateAttributeView {
-            self.selectDateAttributeView = selectDateAttributeView
+        if let selectDateView = contentView as? SelectDateView {
+            self.selectDateView = selectDateView
         }
     }
     
@@ -47,14 +47,14 @@ final class SelectChoreAttributeViewController: ModalViewController {
             .asDriver()
             .filterNil()
             .drive(onNext: { [weak self] dateValue in
-                self?.selectDateAttributeView?.setState(dateValue)
+                self?.selectDateView?.setState(dateValue)
             }).disposed(by: self.disposeBag)
     }
     
     override func bindAction() {
         super.bindAction()
         
-        selectDateAttributeView?.datePublish
+        selectDateView?.datePublish
             .subscribe(onNext: { [weak self] selectedDate in
                 self?.viewModel.didSelectDate(date: selectedDate)
             }).disposed(by: self.disposeBag)

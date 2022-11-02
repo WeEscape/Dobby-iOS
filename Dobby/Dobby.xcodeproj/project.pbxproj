@@ -76,7 +76,7 @@
 		A19E9831290CECEA004A8861 /* ModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E9830290CECEA004A8861 /* ModalViewController.swift */; };
 		A19E983B290D06C7004A8861 /* ModalCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E983A290D06C7004A8861 /* ModalCoordinator.swift */; };
 		A19E983E290D164D004A8861 /* ModalContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E983D290D164D004A8861 /* ModalContentView.swift */; };
-		A19E9840290D1687004A8861 /* SelectDateAttributeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E983F290D1687004A8861 /* SelectDateAttributeView.swift */; };
+		A19E9840290D1687004A8861 /* SelectDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E983F290D1687004A8861 /* SelectDateView.swift */; };
 		A19E9842290E6CED004A8861 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E9841290E6CED004A8861 /* String+.swift */; };
 		A19E9846290E76AE004A8861 /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E9845290E76AE004A8861 /* Date+.swift */; };
 		A19E9848290FF1A7004A8861 /* MyPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E9847290FF1A7004A8861 /* MyPageViewModel.swift */; };
@@ -186,7 +186,7 @@
 		A19E9830290CECEA004A8861 /* ModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalViewController.swift; sourceTree = "<group>"; };
 		A19E983A290D06C7004A8861 /* ModalCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalCoordinator.swift; sourceTree = "<group>"; };
 		A19E983D290D164D004A8861 /* ModalContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalContentView.swift; sourceTree = "<group>"; };
-		A19E983F290D1687004A8861 /* SelectDateAttributeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectDateAttributeView.swift; sourceTree = "<group>"; };
+		A19E983F290D1687004A8861 /* SelectDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectDateView.swift; sourceTree = "<group>"; };
 		A19E9841290E6CED004A8861 /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 		A19E9845290E76AE004A8861 /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
 		A19E9847290FF1A7004A8861 /* MyPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewModel.swift; sourceTree = "<group>"; };
@@ -622,7 +622,7 @@
 		A19E985F2912AA1C004A8861 /* SelectChoreAttributeView */ = {
 			isa = PBXGroup;
 			children = (
-				A19E983F290D1687004A8861 /* SelectDateAttributeView.swift */,
+				A19E983F290D1687004A8861 /* SelectDateView.swift */,
 			);
 			path = SelectChoreAttributeView;
 			sourceTree = "<group>";
@@ -971,7 +971,7 @@
 				A19E97F52904D83E004A8861 /* AddChoreViewController.swift in Sources */,
 				A19E984F291143AF004A8861 /* SettingItemView.swift in Sources */,
 				A19E984D291137B0004A8861 /* UIView+.swift in Sources */,
-				A19E9840290D1687004A8861 /* SelectDateAttributeView.swift in Sources */,
+				A19E9840290D1687004A8861 /* SelectDateView.swift in Sources */,
 				A13C537328E958DF00C72215 /* Array+.swift in Sources */,
 				A19E982E290A9D64004A8861 /* UITextField+.swift in Sources */,
 				A12095FF2901680F008CE410 /* DobbyFont.swift in Sources */,

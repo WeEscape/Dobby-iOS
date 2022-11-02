@@ -1,5 +1,5 @@
 //
-//  SelectDateAttributeView.swift
+//  SelectDateView.swift
 //  Dobby
 //
 //  Created by yongmin lee on 10/29/22.
@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import RxCocoa
 
-final class SelectDateAttributeView: ModalContentView {
+final class SelectDateView: ModalContentView {
     
     // MARK: property
     var attribute: ChoreAttribute!

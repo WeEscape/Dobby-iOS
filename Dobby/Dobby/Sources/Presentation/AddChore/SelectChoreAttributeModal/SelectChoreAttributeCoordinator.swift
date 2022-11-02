@@ -28,11 +28,11 @@ final class SelectChoreAttributeCoordinator: ModalCoordinator {
     func selectChoreAttributeFactory(attribute: ChoreAttribute) -> ModalContentView {
         switch attribute {
         case .date:
-            return SelectDateAttributeView(attribute: attribute)
+            return SelectDateView(attribute: attribute)
         case .repeatCycle, .owner, .category:
-            return SelectDateAttributeView(attribute: attribute)
+            return SelectDateView(attribute: attribute)
         case .memo:
-            return SelectDateAttributeView(attribute: attribute)
+            return SelectDateView(attribute: attribute)
         }
     }
 }
