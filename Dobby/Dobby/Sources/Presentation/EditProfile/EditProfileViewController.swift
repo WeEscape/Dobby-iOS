@@ -7,6 +7,8 @@
 
 import UIKit
 import SnapKit
+import RxCocoa
+import RxGesture
 
 final class EditProfileViewController: BaseViewController {
     
@@ -15,9 +17,14 @@ final class EditProfileViewController: BaseViewController {
     let viewModel: EditProfileViewModel
     
     // MARK: UI
+    struct Metric {
+        
+    }
+    
     private let profileImageView: UIImageView = {
         let iv = UIImageView()
         iv.contentMode = .scaleAspectFit
+        iv.layer.cornerRadius = 8
         iv.image = UIImage(named: "default_profile")
         return iv
     }()
@@ -34,6 +41,25 @@ final class EditProfileViewController: BaseViewController {
         tf.textAlignment = .center
         return tf
     }()
+    
+    private let profileEditIconView: UIImageView = {
+        let iv = UIImageView()
+        iv.contentMode = .scaleAspectFit
+        iv.layer.borderWidth = 1
+        iv.layer.cornerRadius = 11
+        iv.layer.borderColor = UIColor.white.cgColor
+        iv.image = UIImage(named: "icon_profile_edit")
+        return iv
+    }()
+    
+    private let saveBtn: UIButton = {
+        let btn = UIButton(configuration: .filled())
+        btn.tintColor = Palette.mainThemeBlue1
+        btn.setTitle("저장하기", for: .normal)
+        return btn
+    }()
+    
+    private let editProfileColorView = EditProfileItemView(title: "프로필 색상")
     
     // MARK: init
     init(
@@ -54,6 +80,11 @@ final class EditProfileViewController: BaseViewController {
         super.viewDidLoad()
         setupUI()
         bind()
+        self.tabBarController?.tabBar.isHidden = true
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         userNameTextField.becomeFirstResponder()
     }
     
@@ -80,11 +111,19 @@ final class EditProfileViewController: BaseViewController {
             $0.top.equalTo(view.safeAreaLayoutGuide.snp.top).inset(60)
         }
         
+        self.profileImageView.addSubview(profileEditIconView)
+        profileEditIconView.snp.makeConstraints {
+            $0.width.equalTo(22)
+            $0.height.equalTo(22)
+            $0.right.equalToSuperview().offset(4)
+            $0.bottom.equalToSuperview().offset(4)
+        }
+        
         self.view.addSubview(userNameTextField)
-        userNameTextField.text = "스테파티"
+        userNameTextField.text = "스테파니"
         userNameTextField.snp.makeConstraints {
-            $0.left.equalToSuperview()
-            $0.right.equalToSuperview()
+            $0.left.equalToSuperview().inset(55)
+            $0.right.equalToSuperview().inset(55)
             $0.top.equalTo(profileImageView.snp.bottom).offset(20)
         }
         
@@ -96,6 +135,21 @@ final class EditProfileViewController: BaseViewController {
             topEqualTo: userNameTextField.snp.bottom,
             topOffset: 10
         )
+        
+        self.view.addSubview(editProfileColorView)
+        editProfileColorView.snp.makeConstraints {
+            $0.width.equalToSuperview()
+            $0.height.equalTo(50)
+            $0.top.equalTo(lineView.snp.bottom).offset(20)
+        }
+        
+        self.view.addSubview(saveBtn)
+        saveBtn.snp.makeConstraints {
+            $0.left.equalToSuperview().inset(32)
+            $0.right.equalToSuperview().inset(32)
+            $0.height.equalTo(48)
+            $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).inset(25)
+        }
     }
     
     func bind() {
@@ -104,11 +158,21 @@ final class EditProfileViewController: BaseViewController {
     }
     
     func bindState() {
-        
+        editProfileColorView.updateItemState(itemTitle: "블루", itemColor: Palette.mainThemeBlue1)
     }
     
     func bindAction() {
+        profileImageView.rx.tapGesture()
+            .when(.recognized)
+            .subscribe(onNext: { [weak self] _ in
+                print("Debug : show profile edit")
+            }).disposed(by: self.disposeBag)
         
+        editProfileColorView.rx.tapGesture()
+            .when(.recognized)
+            .subscribe(onNext: { [weak self] _ in
+                print("Debug : show color change popup modal")
+            }).disposed(by: self.disposeBag)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

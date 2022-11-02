@@ -71,6 +71,11 @@ final class MyPageViewController: BaseViewController {
         bind()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tabBarController?.tabBar.isHidden = false
+    }
+    
     // MARK: method
     func setupUI() {
         self.view.backgroundColor = .white

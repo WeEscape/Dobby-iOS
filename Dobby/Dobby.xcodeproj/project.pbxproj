@@ -85,6 +85,7 @@
 		A19E98522911529F004A8861 /* EditProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E98512911529F004A8861 /* EditProfileCoordinator.swift */; };
 		A19E9854291152AB004A8861 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E9853291152AB004A8861 /* EditProfileViewController.swift */; };
 		A19E9856291152B6004A8861 /* EditProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E9855291152B6004A8861 /* EditProfileViewModel.swift */; };
+		A19E985829128D28004A8861 /* EditProfileItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E985729128D28004A8861 /* EditProfileItemView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -189,6 +190,7 @@
 		A19E98512911529F004A8861 /* EditProfileCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileCoordinator.swift; sourceTree = "<group>"; };
 		A19E9853291152AB004A8861 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		A19E9855291152B6004A8861 /* EditProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewModel.swift; sourceTree = "<group>"; };
+		A19E985729128D28004A8861 /* EditProfileItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileItemView.swift; sourceTree = "<group>"; };
 		A9B722602644972E8A20B23F /* Pods-DobbyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DobbyTests.debug.xcconfig"; path = "Target Support Files/Pods-DobbyTests/Pods-DobbyTests.debug.xcconfig"; sourceTree = "<group>"; };
 		ABCE8077762A15E26783E084 /* Pods_DobbyTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DobbyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C507575F588E1F7301BDE870 /* Pods-Dobby.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dobby.debug.xcconfig"; path = "Target Support Files/Pods-Dobby/Pods-Dobby.debug.xcconfig"; sourceTree = "<group>"; };
@@ -599,6 +601,7 @@
 				A19E98512911529F004A8861 /* EditProfileCoordinator.swift */,
 				A19E9853291152AB004A8861 /* EditProfileViewController.swift */,
 				A19E9855291152B6004A8861 /* EditProfileViewModel.swift */,
+				A19E985729128D28004A8861 /* EditProfileItemView.swift */,
 			);
 			path = EditProfile;
 			sourceTree = "<group>";
@@ -958,6 +961,7 @@
 				A19E983E290D164D004A8861 /* SelectChoreAttributeView.swift in Sources */,
 				A19E97F72904D845004A8861 /* MyPageViewController.swift in Sources */,
 				A13C536528E91BB800C72215 /* Authentication.swift in Sources */,
+				A19E985829128D28004A8861 /* EditProfileItemView.swift in Sources */,
 				A19E97EB2904D7F7004A8861 /* AddChoreCoordinator.swift in Sources */,
 				A19E9842290E6CED004A8861 /* String+.swift in Sources */,
 				A13C537D28E98FD500C72215 /* WelcomeViewModel.swift in Sources */,
