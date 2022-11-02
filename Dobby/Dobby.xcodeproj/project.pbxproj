@@ -587,16 +587,8 @@
 				A19E983A290D06C7004A8861 /* ModalCoordinator.swift */,
 				A19E9830290CECEA004A8861 /* ModalViewController.swift */,
 				A19E983D290D164D004A8861 /* ModalContentView.swift */,
-				A19E983C290D155B004A8861 /* SelectChoreAttributeView */,
 			);
 			path = Modal;
-			sourceTree = "<group>";
-		};
-		A19E983C290D155B004A8861 /* SelectChoreAttributeView */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = SelectChoreAttributeView;
 			sourceTree = "<group>";
 		};
 		A19E9850291151C7004A8861 /* EditProfile */ = {
