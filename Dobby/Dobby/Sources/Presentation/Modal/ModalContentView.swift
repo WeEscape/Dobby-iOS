@@ -47,7 +47,7 @@ class ModalContentView: UIView {
         return stack
     }()
     
-    let confirmBtn: UIButton = {
+    let closeBtn: UIButton = {
         let btn = UIButton()
         btn.setTitle("닫기", for: .normal)
         btn.backgroundColor = .clear
@@ -95,8 +95,8 @@ class ModalContentView: UIView {
             $0.bottom.equalTo(bodyView.snp.top)
         }
         
-        headerView.addSubview(confirmBtn)
-        confirmBtn.snp.makeConstraints {
+        headerView.addSubview(closeBtn)
+        closeBtn.snp.makeConstraints {
             $0.right.equalToSuperview().inset(Metric.headerItemLeftRightInset)
             $0.centerY.equalToSuperview()
             $0.height.equalToSuperview()
@@ -124,7 +124,7 @@ class ModalContentView: UIView {
                 self?.closeAnimation()
             }).disposed(by: self.disposeBag)
         
-        self.confirmBtn.rx.tap
+        self.closeBtn.rx.tap
             .asDriver()
             .drive(onNext: { [weak self] _ in
                 self?.closeAnimation()

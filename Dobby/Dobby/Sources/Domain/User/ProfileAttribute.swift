@@ -16,9 +16,9 @@ extension ProfileAttribute: CustomStringConvertible {
     var description: String {
         switch self {
         case .color:
-            return "색상"
+            return "프로필 색상"
         case .photo:
-            return "사진"
+            return "프로필 사진"
         }
     }
 }

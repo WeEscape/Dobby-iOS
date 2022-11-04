@@ -22,4 +22,19 @@ final class EditProfileCoordinator: Coordinator {
     func viewControllerDidFinish() {
         self.parentCoordinator?.childDidFinish(child: self)
     }
+    
+    func showSelectProfileAttributeModal(attribute: ProfileAttribute) {
+        guard let editProfileVC = self.viewController as? EditProfileViewController
+        else {return}
+        let editProfileVM = editProfileVC.viewModel
+        let selectAttributeCoordinator = SelectProfileAttributeCoordinator(
+            profileAttribute: attribute,
+            viewModel: editProfileVM,
+            parentCoordinator: self
+        )
+        childCoordinators += [selectAttributeCoordinator]
+        guard let selectVC = selectAttributeCoordinator.viewController else {return}
+        self.viewController?.present(selectVC, animated: false)
+    }
+    
 }

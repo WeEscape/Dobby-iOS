@@ -1,5 +1,5 @@
 //
-//  EditProfileItemView.swift
+//  EditProfileColorView.swift
 //  Dobby
 //
 //  Created by yongmin lee on 11/2/22.
@@ -8,7 +8,10 @@
 import UIKit
 import SnapKit
 
-final class EditProfileItemView: UIView {
+final class EditProfileColorView: UIView {
+    
+    // MARK: property
+    let profileAttribute: ProfileAttribute
     
     // MARK: UI
     private let editProfileItemViewTitle: UILabel = {
@@ -39,8 +42,8 @@ final class EditProfileItemView: UIView {
     }()
     
     // MARK: init
-    init(title: String) {
-        editProfileItemViewTitle.text = title
+    init(profileAttribute: ProfileAttribute) {
+        self.profileAttribute = profileAttribute
         super.init(frame: .zero)
         setupUI()
     }
@@ -52,6 +55,7 @@ final class EditProfileItemView: UIView {
     // MARK: method
     func setupUI() {
         
+        editProfileItemViewTitle.text = self.profileAttribute.description
         self.addSubview(editProfileItemViewTitle)
         editProfileItemViewTitle.snp.makeConstraints {
             $0.left.equalToSuperview().inset(55)
@@ -81,9 +85,9 @@ final class EditProfileItemView: UIView {
         }
     }
     
-    func updateItemState(itemTitle: String, itemColor: UIColor) {
-        self.itemTitle.text = itemTitle
-        self.itemTitle.textColor = itemColor
-        self.itemRectView.backgroundColor = itemColor
+    func setSelectedColor(_ color: ProfileColor) {
+        self.itemTitle.text = color.description
+        self.itemTitle.textColor = color.getUIColor
+        self.itemRectView.backgroundColor = color.getUIColor
     }
 }

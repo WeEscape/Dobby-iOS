@@ -59,7 +59,7 @@ final class EditProfileViewController: BaseViewController {
         return btn
     }()
     
-    private let editProfileColorView = EditProfileItemView(title: "프로필 색상")
+    private let editProfileColorView = EditProfileColorView(profileAttribute: .color)
     
     // MARK: init
     init(
@@ -158,20 +158,24 @@ final class EditProfileViewController: BaseViewController {
     }
     
     func bindState() {
-        editProfileColorView.updateItemState(itemTitle: "블루", itemColor: Palette.mainThemeBlue1)
+        viewModel.profileColorRelay
+            .distinctUntilChanged()
+            .subscribe(onNext: { [weak self] profileColor in
+                self?.editProfileColorView.setSelectedColor(profileColor)
+            }).disposed(by: self.disposeBag)
     }
     
     func bindAction() {
         profileImageView.rx.tapGesture()
             .when(.recognized)
             .subscribe(onNext: { [weak self] _ in
-                print("Debug : show profile edit")
+                print("Debug : show profile photo edit")
             }).disposed(by: self.disposeBag)
         
         editProfileColorView.rx.tapGesture()
             .when(.recognized)
             .subscribe(onNext: { [weak self] _ in
-                print("Debug : show color change popup modal")
+                self?.coordinator?.showSelectProfileAttributeModal(attribute: .color)
             }).disposed(by: self.disposeBag)
     }
     

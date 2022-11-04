@@ -37,6 +37,7 @@ class ModalViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        contentView.showAnimation()
         bind()
     }
     
@@ -51,7 +52,6 @@ class ModalViewController: BaseViewController {
             $0.top.equalTo(self.view.safeAreaLayoutGuide.snp.top)
             $0.bottom.equalTo(self.view.snp.bottom)
         }
-        contentView.showAnimation()
     }
     
     // MARK: Rx bind

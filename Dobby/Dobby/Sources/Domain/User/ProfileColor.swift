@@ -45,7 +45,7 @@ extension ProfileColor {
         case .mint:
             return Palette.profileMint
         case .green:
-            return Palette.profileMint
+            return Palette.profileGreen
         case .pink:
             return Palette.profilePink
         case .purple:

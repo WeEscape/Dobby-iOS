@@ -85,7 +85,7 @@
 		A19E98522911529F004A8861 /* EditProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E98512911529F004A8861 /* EditProfileCoordinator.swift */; };
 		A19E9854291152AB004A8861 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E9853291152AB004A8861 /* EditProfileViewController.swift */; };
 		A19E9856291152B6004A8861 /* EditProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E9855291152B6004A8861 /* EditProfileViewModel.swift */; };
-		A19E985829128D28004A8861 /* EditProfileItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E985729128D28004A8861 /* EditProfileItemView.swift */; };
+		A19E985829128D28004A8861 /* EditProfileColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E985729128D28004A8861 /* EditProfileColorView.swift */; };
 		A19E985B2912A1E7004A8861 /* SelectChoreAttributeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E985A2912A1E7004A8861 /* SelectChoreAttributeCoordinator.swift */; };
 		A19E985D2912A3D0004A8861 /* SelectChoreAttributeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E985C2912A3D0004A8861 /* SelectChoreAttributeViewController.swift */; };
 		A19E98622912AADA004A8861 /* SelectProfileAttributeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E98612912AADA004A8861 /* SelectProfileAttributeCoordinator.swift */; };
@@ -95,6 +95,8 @@
 		A19E986C2913FDC1004A8861 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E986B2913FDC1004A8861 /* User.swift */; };
 		A19E986E29152A93004A8861 /* ProfileAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E986D29152A93004A8861 /* ProfileAttribute.swift */; };
 		A19E987029152F78004A8861 /* ProfileColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E986F29152F78004A8861 /* ProfileColor.swift */; };
+		A19E9873291537EF004A8861 /* ProfileColorItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E9872291537EF004A8861 /* ProfileColorItemView.swift */; };
+		A19E987729155984004A8861 /* ProfileColorSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E987629155984004A8861 /* ProfileColorSection.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -199,7 +201,7 @@
 		A19E98512911529F004A8861 /* EditProfileCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileCoordinator.swift; sourceTree = "<group>"; };
 		A19E9853291152AB004A8861 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		A19E9855291152B6004A8861 /* EditProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewModel.swift; sourceTree = "<group>"; };
-		A19E985729128D28004A8861 /* EditProfileItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileItemView.swift; sourceTree = "<group>"; };
+		A19E985729128D28004A8861 /* EditProfileColorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileColorView.swift; sourceTree = "<group>"; };
 		A19E985A2912A1E7004A8861 /* SelectChoreAttributeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectChoreAttributeCoordinator.swift; sourceTree = "<group>"; };
 		A19E985C2912A3D0004A8861 /* SelectChoreAttributeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectChoreAttributeViewController.swift; sourceTree = "<group>"; };
 		A19E98612912AADA004A8861 /* SelectProfileAttributeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectProfileAttributeCoordinator.swift; sourceTree = "<group>"; };
@@ -209,6 +211,8 @@
 		A19E986B2913FDC1004A8861 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		A19E986D29152A93004A8861 /* ProfileAttribute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileAttribute.swift; sourceTree = "<group>"; };
 		A19E986F29152F78004A8861 /* ProfileColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileColor.swift; sourceTree = "<group>"; };
+		A19E9872291537EF004A8861 /* ProfileColorItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileColorItemView.swift; sourceTree = "<group>"; };
+		A19E987629155984004A8861 /* ProfileColorSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileColorSection.swift; sourceTree = "<group>"; };
 		A9B722602644972E8A20B23F /* Pods-DobbyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DobbyTests.debug.xcconfig"; path = "Target Support Files/Pods-DobbyTests/Pods-DobbyTests.debug.xcconfig"; sourceTree = "<group>"; };
 		ABCE8077762A15E26783E084 /* Pods_DobbyTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DobbyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C507575F588E1F7301BDE870 /* Pods-Dobby.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dobby.debug.xcconfig"; path = "Target Support Files/Pods-Dobby/Pods-Dobby.debug.xcconfig"; sourceTree = "<group>"; };
@@ -612,7 +616,7 @@
 				A19E98512911529F004A8861 /* EditProfileCoordinator.swift */,
 				A19E9853291152AB004A8861 /* EditProfileViewController.swift */,
 				A19E9855291152B6004A8861 /* EditProfileViewModel.swift */,
-				A19E985729128D28004A8861 /* EditProfileItemView.swift */,
+				A19E985729128D28004A8861 /* EditProfileColorView.swift */,
 				A19E98602912AA79004A8861 /* SelectProfileAttributeModal */,
 			);
 			path = EditProfile;
@@ -649,7 +653,7 @@
 		A19E98652912AAF5004A8861 /* SelectProfileAttributeView */ = {
 			isa = PBXGroup;
 			children = (
-				A19E98662912AB2C004A8861 /* SelectProfileColorView.swift */,
+				A19E9871291537D5004A8861 /* SelectProfileColorView */,
 			);
 			path = SelectProfileAttributeView;
 			sourceTree = "<group>";
@@ -661,8 +665,18 @@
 				A19E986B2913FDC1004A8861 /* User.swift */,
 				A19E986D29152A93004A8861 /* ProfileAttribute.swift */,
 				A19E986F29152F78004A8861 /* ProfileColor.swift */,
+				A19E987629155984004A8861 /* ProfileColorSection.swift */,
 			);
 			path = User;
+			sourceTree = "<group>";
+		};
+		A19E9871291537D5004A8861 /* SelectProfileColorView */ = {
+			isa = PBXGroup;
+			children = (
+				A19E98662912AB2C004A8861 /* SelectProfileColorView.swift */,
+				A19E9872291537EF004A8861 /* ProfileColorItemView.swift */,
+			);
+			path = SelectProfileColorView;
 			sourceTree = "<group>";
 		};
 		A5DA04EED6FD9D57AE1689DC /* Frameworks */ = {
@@ -973,7 +987,9 @@
 				A19E97ED2904D803004A8861 /* MyPageCoordinator.swift in Sources */,
 				A19E980C2906CB52004A8861 /* ChoreAttributeView.swift in Sources */,
 				A13C535728E8231100C72215 /* BaseViewController.swift in Sources */,
+				A19E9873291537EF004A8861 /* ProfileColorItemView.swift in Sources */,
 				A174B17628EF007100F80112 /* LoginAPI.swift in Sources */,
+				A19E987729155984004A8861 /* ProfileColorSection.swift in Sources */,
 				A12095E928F2A198008CE410 /* NetworkError.swift in Sources */,
 				A19E9848290FF1A7004A8861 /* MyPageViewModel.swift in Sources */,
 				A19E97FD29053621004A8861 /* AddChoreViewModel.swift in Sources */,
@@ -1028,7 +1044,7 @@
 				A19E987029152F78004A8861 /* ProfileColor.swift in Sources */,
 				A13C536528E91BB800C72215 /* Authentication.swift in Sources */,
 				A19E985D2912A3D0004A8861 /* SelectChoreAttributeViewController.swift in Sources */,
-				A19E985829128D28004A8861 /* EditProfileItemView.swift in Sources */,
+				A19E985829128D28004A8861 /* EditProfileColorView.swift in Sources */,
 				A19E97EB2904D7F7004A8861 /* AddChoreCoordinator.swift in Sources */,
 				A19E9842290E6CED004A8861 /* String+.swift in Sources */,
 				A13C537D28E98FD500C72215 /* WelcomeViewModel.swift in Sources */,
