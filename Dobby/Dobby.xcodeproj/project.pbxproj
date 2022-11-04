@@ -94,6 +94,7 @@
 		A19E986A2913FCC6004A8861 /* UserUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E98692913FCC6004A8861 /* UserUseCase.swift */; };
 		A19E986C2913FDC1004A8861 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E986B2913FDC1004A8861 /* User.swift */; };
 		A19E986E29152A93004A8861 /* ProfileAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E986D29152A93004A8861 /* ProfileAttribute.swift */; };
+		A19E987029152F78004A8861 /* ProfileColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E986F29152F78004A8861 /* ProfileColor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -207,6 +208,7 @@
 		A19E98692913FCC6004A8861 /* UserUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserUseCase.swift; sourceTree = "<group>"; };
 		A19E986B2913FDC1004A8861 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		A19E986D29152A93004A8861 /* ProfileAttribute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileAttribute.swift; sourceTree = "<group>"; };
+		A19E986F29152F78004A8861 /* ProfileColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileColor.swift; sourceTree = "<group>"; };
 		A9B722602644972E8A20B23F /* Pods-DobbyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DobbyTests.debug.xcconfig"; path = "Target Support Files/Pods-DobbyTests/Pods-DobbyTests.debug.xcconfig"; sourceTree = "<group>"; };
 		ABCE8077762A15E26783E084 /* Pods_DobbyTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DobbyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C507575F588E1F7301BDE870 /* Pods-Dobby.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dobby.debug.xcconfig"; path = "Target Support Files/Pods-Dobby/Pods-Dobby.debug.xcconfig"; sourceTree = "<group>"; };
@@ -658,6 +660,7 @@
 				A19E98692913FCC6004A8861 /* UserUseCase.swift */,
 				A19E986B2913FDC1004A8861 /* User.swift */,
 				A19E986D29152A93004A8861 /* ProfileAttribute.swift */,
+				A19E986F29152F78004A8861 /* ProfileColor.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -1022,6 +1025,7 @@
 				A13C536D28E94CA200C72215 /* NetworkService.swift in Sources */,
 				A19E983E290D164D004A8861 /* ModalContentView.swift in Sources */,
 				A19E97F72904D845004A8861 /* MyPageViewController.swift in Sources */,
+				A19E987029152F78004A8861 /* ProfileColor.swift in Sources */,
 				A13C536528E91BB800C72215 /* Authentication.swift in Sources */,
 				A19E985D2912A3D0004A8861 /* SelectChoreAttributeViewController.swift in Sources */,
 				A19E985829128D28004A8861 /* EditProfileItemView.swift in Sources */,
