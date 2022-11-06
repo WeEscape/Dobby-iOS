@@ -41,4 +41,13 @@ class Coordinator {
             break
         }
     }
+    
+    func clearAllDescendant() {
+        childCoordinators.forEach { child in
+            child.clearAllDescendant()
+        }
+        childCoordinators.removeAll()
+        self.viewController?.dismiss(animated: false)
+        self.viewController = nil
+    }
 }

@@ -139,13 +139,27 @@ final class MyPageViewController: BaseViewController {
         stackContainerView.addArrangedSubview(resignView)
     }
     
+    // MARK: Rx bind
     func bind() {
         bindState()
         bindAction()
     }
     
     func bindState() {
+        mypageViewModel.alertPublish
+            .subscribe(onNext: { [weak self] alertVC in
+                self?.present(alertVC, animated: true)
+            }).disposed(by: self.disposeBag)
         
+        mypageViewModel.logoutPublish
+            .subscribe(onNext: { [weak self] _ in
+                self?.mypageCoordinator?.gotoSplash()
+            }).disposed(by: self.disposeBag)
+        
+        mypageViewModel.resignPublish
+            .subscribe(onNext: { [weak self] _ in
+                self?.mypageCoordinator?.gotoSplash()
+            }).disposed(by: self.disposeBag)
     }
     
     func bindAction() {
@@ -164,13 +178,13 @@ final class MyPageViewController: BaseViewController {
         logoutView.rx.tapGesture()
             .when(.recognized)
             .subscribe(onNext: { [weak self] _ in
-                print("Debug : logoutView.rx.tapGesture() ")
+                self?.mypageViewModel.didTapLogout()
             }).disposed(by: self.disposeBag)
         
         resignView.rx.tapGesture()
             .when(.recognized)
             .subscribe(onNext: { [weak self] _ in
-                print("Debug : resignView.rx.tapGesture() ")
+                self?.mypageViewModel.didTapResign()
             }).disposed(by: self.disposeBag)
     }
 }

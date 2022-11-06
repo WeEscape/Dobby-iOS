@@ -34,4 +34,9 @@ final class MyPageCoordinator: Coordinator {
         else {return}
         navigationController.pushViewController(editProfileVC, animated: true)
     }
+    
+    func gotoSplash() {
+        let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        appDelegate?.rootCoordinator?.startSplash()
+    }
 }

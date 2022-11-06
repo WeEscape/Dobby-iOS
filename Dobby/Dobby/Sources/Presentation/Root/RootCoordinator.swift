@@ -12,13 +12,19 @@ final class RootCoordinator: Coordinator {
     var window: UIWindow?
 
     func startSplash(window: UIWindow? = nil) {
-        self.window = window
-        let splashCoordinator = SplashCoordinator(
+        if self.window == nil {
+            self.window = window
+        }
+        let newSplashCoordinator = SplashCoordinator(
             parentCoordinator: self
         )
-        childCoordinators += [splashCoordinator]
-        let splashViewController = splashCoordinator.viewController
+        let splashViewController = newSplashCoordinator.viewController
         self.window?.rootViewController = splashViewController
         self.window?.makeKeyAndVisible()
+        childCoordinators.forEach { child in
+            child.clearAllDescendant()
+        }
+        childCoordinators.removeAll()
+        childCoordinators += [newSplashCoordinator]
     }
 }

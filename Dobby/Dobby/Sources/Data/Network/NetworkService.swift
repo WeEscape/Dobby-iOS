@@ -62,7 +62,6 @@ final class NetworkServiceImpl: NetworkService {
                             self.localStorage.delete(key: .jwtAccessToken)
                             self.localStorage.delete(key: .jwtRefreshToken)
                             let appDelegate = UIApplication.shared.delegate as? AppDelegate
-                            appDelegate?.rootCoordinator?.didFinish()
                             appDelegate?.rootCoordinator?.startSplash()
                             return .error(NetworkError.invalidateRefreshToken)
                         }

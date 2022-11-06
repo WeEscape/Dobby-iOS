@@ -164,6 +164,7 @@ final class EditProfileViewController: BaseViewController {
         }
     }
     
+    // MARK: Rx bind
     func bind() {
         bindState()
         bindAction()
