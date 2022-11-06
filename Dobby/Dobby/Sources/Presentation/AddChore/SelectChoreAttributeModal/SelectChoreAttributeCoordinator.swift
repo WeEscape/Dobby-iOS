@@ -16,20 +16,31 @@ final class SelectChoreAttributeCoordinator: ModalCoordinator {
         childCoordinators: [Coordinator] = []
     ) {
         self.init(parentCoordinator: parentCoordinator, childCoordinators: childCoordinators)
+        let contentView = self.selectChoreAttributeFactory(
+            attribute: choreAttribute,
+            viewModel: viewModel
+        )
         let viewController = SelectChoreAttributeViewController(
             coordinator: self,
             viewModel: viewModel,
-            contentView: self.selectChoreAttributeFactory(attribute: choreAttribute)
+            contentView: contentView
         )
         viewController.modalPresentationStyle = .overFullScreen
         self.viewController = viewController
     }
     
-    func selectChoreAttributeFactory(attribute: ChoreAttribute) -> ModalContentView {
+    func selectChoreAttributeFactory(
+        attribute: ChoreAttribute,
+        viewModel: AddChoreViewModel
+    ) -> ModalContentView {
         switch attribute {
         case .date:
             return SelectDateView(attribute: attribute)
-        case .repeatCycle, .owner, .category:
+        case .repeatCycle:
+            return SelectRepeatCycleView(
+                attribute: attribute, repeatCycleList: viewModel.repeatCycleList
+            )
+        case .owner, .category:
             return SelectDateView(attribute: attribute)
         case .memo:
             return SelectDateView(attribute: attribute)

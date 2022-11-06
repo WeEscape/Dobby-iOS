@@ -152,13 +152,18 @@ final class AddChoreViewController: BaseViewController {
             .filterNil()
             .distinctUntilChanged()
             .drive(onNext: { [weak self] selectedDate in
-                guard let self = self,
-                      let dateView = self.attributeStackView.arrangedSubviews.filter({ sub in
-                          guard let attributeView = sub as? ChoreAttributeView else {return false}
-                          return attributeView.attribute == .date
-                      }).first as? ChoreAttributeView
-                else {return}
+                guard let dateView = self?.searchChoreAttributeView(of: .date) else {return}
                 dateView.updateTitle(title: selectedDate.toStringWithoutTime())
+            }).disposed(by: self.disposeBag)
+        
+        addChoreViewModel.repeatCycleBehavior
+            .asDriver()
+            .filterNil()
+            .distinctUntilChanged()
+            .drive(onNext: { [weak self] repeatCycle in
+                guard let repeatCycleView = self?.searchChoreAttributeView(of: .repeatCycle)
+                else {return}
+                repeatCycleView.updateTitle(title: repeatCycle.description)
             }).disposed(by: self.disposeBag)
     }
     
@@ -175,6 +180,13 @@ final class AddChoreViewController: BaseViewController {
             .drive(onNext: { [weak self] _ in
                 self?.view.endEditing(true)
             }).disposed(by: self.disposeBag)
+    }
+    
+    func searchChoreAttributeView(of attributeType: ChoreAttribute) -> ChoreAttributeView? {
+        return self.attributeStackView.arrangedSubviews.filter({ sub in
+            guard let attributeView = sub as? ChoreAttributeView else {return false}
+            return attributeView.attribute == attributeType
+        }).first as? ChoreAttributeView
     }
 }
 

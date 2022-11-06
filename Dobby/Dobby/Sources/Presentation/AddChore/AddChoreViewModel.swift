@@ -15,6 +15,8 @@ final class AddChoreViewModel {
     let attributeItems = BehaviorRelay<[ChoreAttribute]>(value: ChoreAttribute.allCases)
     let choreUseCase: ChoreUseCase
     let dateBehavior: BehaviorRelay<Date?> = .init(value: nil)
+    let repeatCycleList: [ChoreRepeatCycle] = ChoreRepeatCycle.allCases
+    let repeatCycleBehavior: BehaviorRelay<ChoreRepeatCycle?> = .init(value: nil)
     
     init(
         choreUseCase: ChoreUseCase
@@ -34,5 +36,9 @@ final class AddChoreViewModel {
     
     func didSelectDate(date: Date) {
         dateBehavior.accept(date)
+    }
+    
+    func didSelectRepeatCycle(repeatCycle: ChoreRepeatCycle) {
+        repeatCycleBehavior.accept(repeatCycle)
     }
 }

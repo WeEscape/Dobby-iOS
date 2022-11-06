@@ -16,6 +16,7 @@ final class SelectChoreAttributeViewController: ModalViewController {
     // MARK: property
     var viewModel: AddChoreViewModel!
     var selectDateView: SelectDateView?
+    var selectRepeatCycleView: SelectRepeatCycleView?
     
     // MARK: init
     convenience init(
@@ -25,10 +26,8 @@ final class SelectChoreAttributeViewController: ModalViewController {
     ) {
         self.init(coordinator: coordinator, contentView: contentView)
         self.viewModel = viewModel
-        
-        if let selectDateView = contentView as? SelectDateView {
-            self.selectDateView = selectDateView
-        }
+        self.selectDateView = contentView as? SelectDateView
+        self.selectRepeatCycleView = contentView as? SelectRepeatCycleView
     }
     
     override init(coordinator: ModalCoordinator, contentView: ModalContentView) {
@@ -42,6 +41,15 @@ final class SelectChoreAttributeViewController: ModalViewController {
     override func viewDidLoad() {
         super.viewDidLoad() 
         setupUI()
+        guard selectDateView != nil else {return}
+        contentView.setupUI()
+        contentView.showAnimation()
+        bind()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        guard selectDateView == nil else {return}
         contentView.setupUI()
         contentView.showAnimation()
         bind()
@@ -57,6 +65,12 @@ final class SelectChoreAttributeViewController: ModalViewController {
             .drive(onNext: { [weak self] dateValue in
                 self?.selectDateView?.reloadView(dateValue)
             }).disposed(by: self.disposeBag)
+        
+        viewModel.repeatCycleBehavior
+            .filterNil()
+            .subscribe(onNext: { [weak self] repeatCycle in
+                self?.selectRepeatCycleView?.reloadView(repeatCycle)
+            }).disposed(by: self.disposeBag)
     }
     
     override func bindAction() {
@@ -65,6 +79,11 @@ final class SelectChoreAttributeViewController: ModalViewController {
         selectDateView?.datePublish
             .subscribe(onNext: { [weak self] selectedDate in
                 self?.viewModel.didSelectDate(date: selectedDate)
+            }).disposed(by: self.disposeBag)
+        
+        selectRepeatCycleView?.repeatCyclePublish
+            .subscribe(onNext: { [weak self] repeatCycle in
+                self?.viewModel.didSelectRepeatCycle(repeatCycle: repeatCycle)
             }).disposed(by: self.disposeBag)
         
     }
