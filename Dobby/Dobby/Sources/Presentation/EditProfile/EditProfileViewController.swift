@@ -19,13 +19,24 @@ final class EditProfileViewController: BaseViewController {
     
     // MARK: UI
     struct Metric {
-        
+        static let profileImageViewCornerRadius: CGFloat = 8
+        static let userNameTextFieldFontSize: CGFloat = 22
+        static let profileEditIconWidthHeight: CGFloat = 22
+        static let profileImageWidthHeight: CGFloat = 100
+        static let profileImageTopInset: CGFloat = 60
+        static let profileEditIconOffset: CGFloat = 4
+        static let viewSideInset: CGFloat = 55
+        static let viewTopMargin: CGFloat = 20
+        static let editProfileAttributeViewHeight: CGFloat = 50
+        static let saveBtnSideInset: CGFloat = 32
+        static let saveBtnHeight: CGFloat = 48
+        static let saveBtnBottomInset: CGFloat = 25
     }
     
     private let profileImageView: UIImageView = {
         let iv = UIImageView()
         iv.contentMode = .scaleAspectFit
-        iv.layer.cornerRadius = 8
+        iv.layer.cornerRadius = Metric.profileImageViewCornerRadius
         iv.image = UIImage(named: "default_profile")
         return iv
     }()
@@ -33,10 +44,10 @@ final class EditProfileViewController: BaseViewController {
     private let userNameTextField: UITextField = {
         let tf = TextFieldWithPlaceholder(
             placeholder: "이름을 입력해주세요",
-            fontSize: 22,
+            fontSize: Metric.userNameTextFieldFontSize,
             textColor: Palette.textBlack1
         )
-        tf.font = DobbyFont.avenirBlack(size: 22).getFont
+        tf.font = DobbyFont.avenirBlack(size: Metric.userNameTextFieldFontSize).getFont
         tf.returnKeyType = .done
         tf.keyboardType = .default
         tf.textAlignment = .center
@@ -47,7 +58,7 @@ final class EditProfileViewController: BaseViewController {
         let iv = UIImageView()
         iv.contentMode = .scaleAspectFit
         iv.layer.borderWidth = 1
-        iv.layer.cornerRadius = 11
+        iv.layer.cornerRadius = Metric.profileEditIconWidthHeight / 2
         iv.layer.borderColor = UIColor.white.cgColor
         iv.image = UIImage(named: "icon_profile_edit")
         return iv
@@ -106,50 +117,50 @@ final class EditProfileViewController: BaseViewController {
         
         self.view.addSubview(profileImageView)
         profileImageView.snp.makeConstraints {
-            $0.width.equalTo(100)
-            $0.height.equalTo(100)
+            $0.width.equalTo(Metric.profileImageWidthHeight)
+            $0.height.equalTo(Metric.profileImageWidthHeight)
             $0.centerX.equalToSuperview()
-            $0.top.equalTo(view.safeAreaLayoutGuide.snp.top).inset(60)
+            $0.top.equalTo(view.safeAreaLayoutGuide.snp.top).inset(Metric.profileImageTopInset)
         }
         
         self.profileImageView.addSubview(profileEditIconView)
         profileEditIconView.snp.makeConstraints {
-            $0.width.equalTo(22)
-            $0.height.equalTo(22)
-            $0.right.equalToSuperview().offset(4)
-            $0.bottom.equalToSuperview().offset(4)
+            $0.width.equalTo(Metric.profileEditIconWidthHeight)
+            $0.height.equalTo(Metric.profileEditIconWidthHeight)
+            $0.right.equalToSuperview().offset(Metric.profileEditIconOffset)
+            $0.bottom.equalToSuperview().offset(Metric.profileEditIconOffset)
         }
         
         self.view.addSubview(userNameTextField)
         userNameTextField.text = "스테파니"
         userNameTextField.snp.makeConstraints {
-            $0.left.equalToSuperview().inset(55)
-            $0.right.equalToSuperview().inset(55)
-            $0.top.equalTo(profileImageView.snp.bottom).offset(20)
+            $0.left.equalToSuperview().inset(Metric.viewSideInset)
+            $0.right.equalToSuperview().inset(Metric.viewSideInset)
+            $0.top.equalTo(profileImageView.snp.bottom).offset(Metric.viewTopMargin)
         }
         
         let lineView = self.createLineView()
         self.view.addSubview(lineView)
         lineView.makeLineViewConstraints(
-            leftInset: 55,
-            rightInset: 55,
+            leftInset: Metric.viewSideInset,
+            rightInset: Metric.viewSideInset,
             topEqualTo: userNameTextField.snp.bottom,
-            topOffset: 10
+            topOffset: Metric.viewTopMargin / 2
         )
         
         self.view.addSubview(editProfileColorView)
         editProfileColorView.snp.makeConstraints {
             $0.width.equalToSuperview()
-            $0.height.equalTo(50)
-            $0.top.equalTo(lineView.snp.bottom).offset(20)
+            $0.height.equalTo(Metric.editProfileAttributeViewHeight)
+            $0.top.equalTo(lineView.snp.bottom).offset(Metric.viewTopMargin)
         }
         
         self.view.addSubview(saveBtn)
         saveBtn.snp.makeConstraints {
-            $0.left.equalToSuperview().inset(32)
-            $0.right.equalToSuperview().inset(32)
-            $0.height.equalTo(48)
-            $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).inset(25)
+            $0.left.equalToSuperview().inset(Metric.saveBtnSideInset)
+            $0.right.equalToSuperview().inset(Metric.saveBtnSideInset)
+            $0.height.equalTo(Metric.saveBtnHeight)
+            $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).inset(Metric.saveBtnBottomInset)
         }
     }
     

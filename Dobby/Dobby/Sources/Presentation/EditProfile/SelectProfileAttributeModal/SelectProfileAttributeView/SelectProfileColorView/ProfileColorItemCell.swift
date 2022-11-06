@@ -16,16 +16,26 @@ final class ProfileColorItemCell: UITableViewCell {
     var isOn: Bool = false
     
     // MARK: UI
+    struct Metric {
+        static let viewTitleFontSize: CGFloat = 16
+        static let itemRectViewCornerRadius: CGFloat = 5
+        static let itemRectViewWidth: CGFloat = 8
+        static let itemRectViewHeight: CGFloat = 16
+        static let tableViewCellSideInset: CGFloat = 30
+        static let itemTitleLeftInset: CGFloat = 15
+        static let checkBoxViewWidthHeight: CGFloat = 16
+    }
+    
     private let editProfileItemViewTitle: UILabel = {
         let lbl = UILabel()
-        lbl.font = DobbyFont.appleSDGothicNeoMedium(size: 16).getFont
+        lbl.font = DobbyFont.appleSDGothicNeoMedium(size: Metric.viewTitleFontSize).getFont
         lbl.textColor = Palette.textBlack1
         return lbl
     }()
     
     private let itemRectView: UIView = {
         let colorView = UIView()
-        colorView.layer.cornerRadius = 5
+        colorView.layer.cornerRadius = Metric.itemRectViewCornerRadius
         colorView.backgroundColor = .clear
         return colorView
     }()
@@ -62,24 +72,24 @@ final class ProfileColorItemCell: UITableViewCell {
         
         self.addSubview(itemRectView)
         itemRectView.snp.makeConstraints {
-            $0.width.equalTo(8)
-            $0.height.equalTo(16)
+            $0.width.equalTo(Metric.itemRectViewWidth)
+            $0.height.equalTo(Metric.itemRectViewHeight)
             $0.centerY.equalToSuperview()
-            $0.left.equalToSuperview().inset(30)
+            $0.left.equalToSuperview().inset(Metric.tableViewCellSideInset)
         }
         
         self.addSubview(editProfileItemViewTitle)
         editProfileItemViewTitle.snp.makeConstraints {
-            $0.left.equalTo(itemRectView.snp.right).offset(15)
+            $0.left.equalTo(itemRectView.snp.right).offset(Metric.itemTitleLeftInset)
             $0.centerY.equalToSuperview()
         }
         
         self.addSubview(checkBoxView)
         checkBoxView.snp.makeConstraints {
-            $0.width.equalTo(16)
-            $0.height.equalTo(16)
+            $0.width.equalTo(Metric.checkBoxViewWidthHeight)
+            $0.height.equalTo(Metric.checkBoxViewWidthHeight)
             $0.centerY.equalToSuperview()
-            $0.right.equalToSuperview().inset(30)
+            $0.right.equalToSuperview().inset(Metric.tableViewCellSideInset)
         }
     }
     

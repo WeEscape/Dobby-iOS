@@ -18,6 +18,30 @@ final class SelectProfileColorView: ModalContentView {
     let selectColorPublish = PublishRelay<ProfileColor>.init()
     var selectedColor: ProfileColor?
     
+    // MARK: UI
+    struct Metric {
+        static let tableViewBottomInset: CGFloat = 50
+        static let tableViewHeight: CGFloat = 330
+        static let headerViewHeight: CGFloat = 78
+        static let tablewViewCellHeight: CGFloat = 44
+    }
+    
+    private lazy var profileColorTableView: UITableView = {
+        var tableView = UITableView()
+        tableView.separatorStyle = .none
+        tableView.backgroundColor = .white
+        tableView.register(
+            ProfileColorItemCell.self,
+            forCellReuseIdentifier: ProfileColorItemCell.ID
+        )
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.contentInset = .init(
+            top: 0, left: 0, bottom: Metric.tableViewBottomInset, right: 0
+        )
+        return tableView
+    }()
+    
     // MARK: init
     override init() {
         super.init()
@@ -37,31 +61,18 @@ final class SelectProfileColorView: ModalContentView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: UI
-    private lazy var profileColorTableView: UITableView = {
-        var tableView = UITableView()
-        tableView.separatorStyle = .none
-        tableView.backgroundColor = .white
-        tableView.register(
-            ProfileColorItemCell.self,
-            forCellReuseIdentifier: ProfileColorItemCell.ID
-        )
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.contentInset = .init(top: 0, left: 0, bottom: 50, right: 0)
-        return tableView
-    }()
-    
     // MARK: methods
     override func setupUI() {
         super.setupUI()
         profileColorTableView.snp.makeConstraints {
-            $0.height.equalTo(330)
+            $0.height.equalTo(Metric.tableViewHeight)
         }
         
         bodyView.addArrangedSubview(profileColorTableView)
         bodyView.snp.updateConstraints {
-            $0.bottom.equalToSuperview().inset(-400)
+            $0.bottom.equalToSuperview().inset(
+                -(Metric.tableViewHeight + Metric.headerViewHeight)
+            )
         }
     }
     
@@ -72,6 +83,7 @@ final class SelectProfileColorView: ModalContentView {
     }
 }
 
+// MARK: extension UITableView
 extension SelectProfileColorView: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.colorList?.count ?? 0
@@ -99,7 +111,7 @@ extension SelectProfileColorView: UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 44.0
+        return Metric.tablewViewCellHeight
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
