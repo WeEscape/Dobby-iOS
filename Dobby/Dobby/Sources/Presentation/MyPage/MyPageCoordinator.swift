@@ -15,7 +15,7 @@ final class MyPageCoordinator: Coordinator {
             authUseCase: AuthUseCaseImpl(
                 authenticationRepository: AuthenticationRepositoryImpl(
                     network: NetworkServiceImpl.shared,
-                    localStorage: UserDefaults.standard
+                    localTokenStorage: UserDefaults.standard
                 )
             )
         )

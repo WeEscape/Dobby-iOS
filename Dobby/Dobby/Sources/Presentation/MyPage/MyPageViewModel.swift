@@ -62,8 +62,10 @@ final class MyPageViewModel {
     }
     
     func requestLogout() {
-        // use case logout
-        self.logoutPublish.accept(())
+        self.authUseCase.logout()
+            .subscribe(onNext: { [weak self] _ in
+                self?.logoutPublish.accept(())
+            }).disposed(by: self.disposeBag)
     }
     
     func requestResign() {

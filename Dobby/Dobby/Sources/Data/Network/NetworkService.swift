@@ -17,12 +17,12 @@ protocol NetworkService {
 final class NetworkServiceImpl: NetworkService {
     
     private let provider: MoyaProvider<MultiTarget>
-    let localStorage: LocalTokenStorageService
+    let localTokenStorage: LocalTokenStorageService
     static let shared = NetworkServiceImpl()
     
     private init() {
         self.provider = Self.createProvider()
-        self.localStorage = UserDefaults.standard
+        self.localTokenStorage = UserDefaults.standard
     }
     
     private static func createProvider() -> MoyaProvider<MultiTarget> {
@@ -54,13 +54,13 @@ final class NetworkServiceImpl: NetworkService {
                                 return .error(NetworkError.invalidateAccessToken)
                             }
                             BeaverLog.verbose("new access token : \(newAccessToken)")
-                            self.localStorage.write(key: .jwtAccessToken, value: newAccessToken)
+                            self.localTokenStorage.write(key: .jwtAccessToken, value: newAccessToken)
                             return self._request(api: api)
                         }
                         .catch { _ in
                             BeaverLog.verbose("invalidate RefreshToken! -> logout")
-                            self.localStorage.delete(key: .jwtAccessToken)
-                            self.localStorage.delete(key: .jwtRefreshToken)
+                            self.localTokenStorage.delete(key: .jwtAccessToken)
+                            self.localTokenStorage.delete(key: .jwtRefreshToken)
                             let appDelegate = UIApplication.shared.delegate as? AppDelegate
                             appDelegate?.rootCoordinator?.startSplash()
                             return .error(NetworkError.invalidateRefreshToken)
@@ -95,7 +95,7 @@ final class NetworkServiceImpl: NetworkService {
     
     private func refreshAccessToken() -> Observable<Authentication> {
         BeaverLog.verbose("start refresh AccessToken")
-        guard let refreshToken = self.localStorage.read(key: .jwtRefreshToken) else {
+        guard let refreshToken = self.localTokenStorage.read(key: .jwtRefreshToken) else {
             BeaverLog.verbose("device doesn't have refreshToken")
             return .error(NetworkError.invalidateRefreshToken)
         }
