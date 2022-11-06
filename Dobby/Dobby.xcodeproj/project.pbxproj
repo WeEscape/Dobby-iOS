@@ -96,7 +96,8 @@
 		A19E986E29152A93004A8861 /* ProfileAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E986D29152A93004A8861 /* ProfileAttribute.swift */; };
 		A19E987029152F78004A8861 /* ProfileColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E986F29152F78004A8861 /* ProfileColor.swift */; };
 		A19E9873291537EF004A8861 /* ProfileColorItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E9872291537EF004A8861 /* ProfileColorItemCell.swift */; };
-		A19E987729155984004A8861 /* ProfileColorSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E987629155984004A8861 /* ProfileColorSection.swift */; };
+		A19E987A2917D4EF004A8861 /* SelectRepeatCycleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E98792917D4EF004A8861 /* SelectRepeatCycleView.swift */; };
+		A19E987C2917D500004A8861 /* SelectRepeatCycleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E987B2917D500004A8861 /* SelectRepeatCycleCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -212,7 +213,8 @@
 		A19E986D29152A93004A8861 /* ProfileAttribute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileAttribute.swift; sourceTree = "<group>"; };
 		A19E986F29152F78004A8861 /* ProfileColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileColor.swift; sourceTree = "<group>"; };
 		A19E9872291537EF004A8861 /* ProfileColorItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileColorItemCell.swift; sourceTree = "<group>"; };
-		A19E987629155984004A8861 /* ProfileColorSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileColorSection.swift; sourceTree = "<group>"; };
+		A19E98792917D4EF004A8861 /* SelectRepeatCycleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectRepeatCycleView.swift; sourceTree = "<group>"; };
+		A19E987B2917D500004A8861 /* SelectRepeatCycleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectRepeatCycleCell.swift; sourceTree = "<group>"; };
 		A9B722602644972E8A20B23F /* Pods-DobbyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DobbyTests.debug.xcconfig"; path = "Target Support Files/Pods-DobbyTests/Pods-DobbyTests.debug.xcconfig"; sourceTree = "<group>"; };
 		ABCE8077762A15E26783E084 /* Pods_DobbyTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DobbyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C507575F588E1F7301BDE870 /* Pods-Dobby.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dobby.debug.xcconfig"; path = "Target Support Files/Pods-Dobby/Pods-Dobby.debug.xcconfig"; sourceTree = "<group>"; };
@@ -636,6 +638,7 @@
 			isa = PBXGroup;
 			children = (
 				A19E983F290D1687004A8861 /* SelectDateView.swift */,
+				A19E98782917D4BB004A8861 /* SelectRepeatCycleView */,
 			);
 			path = SelectChoreAttributeView;
 			sourceTree = "<group>";
@@ -665,7 +668,6 @@
 				A19E986B2913FDC1004A8861 /* User.swift */,
 				A19E986D29152A93004A8861 /* ProfileAttribute.swift */,
 				A19E986F29152F78004A8861 /* ProfileColor.swift */,
-				A19E987629155984004A8861 /* ProfileColorSection.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -677,6 +679,15 @@
 				A19E9872291537EF004A8861 /* ProfileColorItemCell.swift */,
 			);
 			path = SelectProfileColorView;
+			sourceTree = "<group>";
+		};
+		A19E98782917D4BB004A8861 /* SelectRepeatCycleView */ = {
+			isa = PBXGroup;
+			children = (
+				A19E98792917D4EF004A8861 /* SelectRepeatCycleView.swift */,
+				A19E987B2917D500004A8861 /* SelectRepeatCycleCell.swift */,
+			);
+			path = SelectRepeatCycleView;
 			sourceTree = "<group>";
 		};
 		A5DA04EED6FD9D57AE1689DC /* Frameworks */ = {
@@ -989,7 +1000,6 @@
 				A13C535728E8231100C72215 /* BaseViewController.swift in Sources */,
 				A19E9873291537EF004A8861 /* ProfileColorItemCell.swift in Sources */,
 				A174B17628EF007100F80112 /* LoginAPI.swift in Sources */,
-				A19E987729155984004A8861 /* ProfileColorSection.swift in Sources */,
 				A12095E928F2A198008CE410 /* NetworkError.swift in Sources */,
 				A19E9848290FF1A7004A8861 /* MyPageViewModel.swift in Sources */,
 				A19E97FD29053621004A8861 /* AddChoreViewModel.swift in Sources */,
@@ -1017,6 +1027,7 @@
 				A174B17428EF002000F80112 /* BaseAPI.swift in Sources */,
 				A19E98672912AB2C004A8861 /* SelectProfileColorView.swift in Sources */,
 				A19E97E92904D7EF004A8861 /* MonthlyChoreCoordinator.swift in Sources */,
+				A19E987A2917D4EF004A8861 /* SelectRepeatCycleView.swift in Sources */,
 				A13C536328E9173900C72215 /* AuthenticationRepositoryImpl.swift in Sources */,
 				A19E98642912AAF1004A8861 /* SelectProfileAttributeViewController.swift in Sources */,
 				A13C537F28EA9C0000C72215 /* AppKey.swift in Sources */,
@@ -1032,6 +1043,7 @@
 				A19E986A2913FCC6004A8861 /* UserUseCase.swift in Sources */,
 				A13C535A28E8288300C72215 /* SplashCoordinator.swift in Sources */,
 				A12095F328FBDFDC008CE410 /* CustomError.swift in Sources */,
+				A19E987C2917D500004A8861 /* SelectRepeatCycleCell.swift in Sources */,
 				A13C535C28E8288A00C72215 /* SplashViewController.swift in Sources */,
 				A12095F928FD953E008CE410 /* MainTabViewModel.swift in Sources */,
 				A13C536F28E94D0500C72215 /* LocalTokenStorageService.swift in Sources */,
