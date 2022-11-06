@@ -50,6 +50,19 @@ final class SelectDateView: ModalContentView {
         }
     }
     
+    override func showAnimation() {
+        UIView.animate(withDuration: 0.1, animations: {
+            self.layoutIfNeeded()
+        }, completion: { _ in
+            self.bodyView.snp.updateConstraints {
+                $0.bottom.equalToSuperview()
+            }
+            UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut) {
+                self.layoutIfNeeded()
+            }
+        })
+    }
+    
     override func bindAction() {
         super.bindAction()
         
@@ -62,7 +75,7 @@ final class SelectDateView: ModalContentView {
             }).disposed(by: self.disposeBag)
     }
     
-    override func setState(_ value: Any?) {
+    override func reloadView(_ value: Any?) {
         guard self.attribute == .date,
               let date = value as? Date else {return}
         self.datePicker.date = date

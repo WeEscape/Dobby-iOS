@@ -9,6 +9,7 @@ import UIKit
 import SnapKit
 import RxCocoa
 import RxGesture
+import RxOptional
 
 final class EditProfileViewController: BaseViewController {
     
@@ -159,6 +160,7 @@ final class EditProfileViewController: BaseViewController {
     
     func bindState() {
         viewModel.profileColorRelay
+            .filterNil()
             .distinctUntilChanged()
             .subscribe(onNext: { [weak self] profileColor in
                 self?.editProfileColorView.setSelectedColor(profileColor)

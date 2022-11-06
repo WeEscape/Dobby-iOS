@@ -12,7 +12,8 @@ import RxRelay
 final class EditProfileViewModel {
     
     var disposeBag: DisposeBag = .init()
-    let profileColorRelay: PublishRelay<ProfileColor> = .init()
+    let profileColorRelay: BehaviorRelay<ProfileColor?> = .init(value: nil)
+    let colorList = ProfileColor.allCases
     
     init() {
         BeaverLog.debug("\(String(describing: self)) init")
@@ -24,7 +25,7 @@ final class EditProfileViewModel {
         BeaverLog.debug("\(String(describing: self)) deinit")
     }
     
-    func didSelectColor(_ color: ProfileColor){
+    func didSelectColor(_ color: ProfileColor) {
         profileColorRelay.accept(color)
     }
 }

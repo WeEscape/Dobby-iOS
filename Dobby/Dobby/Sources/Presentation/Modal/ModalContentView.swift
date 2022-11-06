@@ -64,7 +64,7 @@ class ModalContentView: UIView {
     // MARK: init
     init() {
         super.init(frame: .zero)
-        self.setupUI()
+        BeaverLog.debug("\(String(describing: self)) init")
         self.bindAction()
     }
     
@@ -131,19 +131,16 @@ class ModalContentView: UIView {
             }).disposed(by: self.disposeBag)
     }
     
-    func setState(_ value: Any?) {}
+    func reloadView(_ value: Any?) {}
     
     func showAnimation() {
-        UIView.animate(withDuration: 0.1, animations: {
+        self.layoutIfNeeded()
+        self.bodyView.snp.updateConstraints {
+            $0.bottom.equalToSuperview()
+        }
+        UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut) {
             self.layoutIfNeeded()
-        }, completion: { _ in
-            self.bodyView.snp.updateConstraints {
-                $0.bottom.equalToSuperview()
-            }
-            UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut) {
-                self.layoutIfNeeded()
-            }
-        })
+        }
     }
     
     func closeAnimation() {

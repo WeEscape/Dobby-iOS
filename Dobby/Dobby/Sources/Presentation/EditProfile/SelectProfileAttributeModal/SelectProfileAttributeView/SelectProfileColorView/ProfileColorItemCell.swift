@@ -1,5 +1,5 @@
 //
-//  ProfileColorItemView.swift
+//  ProfileColorItemCell.swift
 //  Dobby
 //
 //  Created by yongmin lee on 11/4/22.
@@ -7,14 +7,13 @@
 
 import UIKit
 import SnapKit
-import RxCocoa
-import RxGesture
 
-final class ProfileColorItemView: UITableViewCell {
+final class ProfileColorItemCell: UITableViewCell {
     
     // MARK: property
     static let ID = "ProfileColorItemCell"
     var profileColor: ProfileColor?
+    var isOn: Bool = false
     
     // MARK: UI
     private let editProfileItemViewTitle: UILabel = {
@@ -47,15 +46,19 @@ final class ProfileColorItemView: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
     override func prepareForReuse() {
         super.prepareForReuse()
-        self.profileColor = nil
         self.checkBoxView.image = nil
+        self.setCheckBox(isOn: self.isOn)
     }
     
     // MARK: method
     func setupUI() {
+        
+        let bgView = UIView()
+        bgView.backgroundColor = .clear
+        selectedBackgroundView = bgView
         
         self.addSubview(itemRectView)
         itemRectView.snp.makeConstraints {
@@ -81,23 +84,14 @@ final class ProfileColorItemView: UITableViewCell {
     }
     
     func bind(profileColor: ProfileColor) {
-        print("Debug : color item cell bind -> \(profileColor.description)")
         self.profileColor = profileColor
         self.itemRectView.backgroundColor = profileColor.getUIColor
         self.editProfileItemViewTitle.text = profileColor.description
     }
     
-    func setcheckBoxOn() {
-        checkBoxView.image = UIImage(systemName: "checkmark.square.fill")?
-            .withTintColor(
-                Palette.mainThemeBlue1,
-                renderingMode: .alwaysOriginal
-            )
-    }
-    
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: false)
-        if selected {
+    func setCheckBox(isOn: Bool) {
+        self.isOn = isOn
+        if isOn {
             checkBoxView.image = UIImage(systemName: "checkmark.square.fill")?
                 .withTintColor(
                     Palette.mainThemeBlue1,
@@ -105,6 +99,15 @@ final class ProfileColorItemView: UITableViewCell {
                 )
         } else {
             checkBoxView.image = UIImage(systemName: "checkmark.square")
+        }
+    }
+    
+    func setSelectedColor(_ color: ProfileColor?) {
+        if let color = color,
+           let profileColor = self.profileColor {
+            setCheckBox(isOn: color == profileColor)
+        } else {
+            setCheckBox(isOn: false)
         }
     }
 }

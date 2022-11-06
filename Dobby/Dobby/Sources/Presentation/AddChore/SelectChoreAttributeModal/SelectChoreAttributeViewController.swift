@@ -39,6 +39,14 @@ final class SelectChoreAttributeViewController: ModalViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad() 
+        setupUI()
+        contentView.setupUI()
+        contentView.showAnimation()
+        bind()
+    }
+    
     // MARK: Rx bind
     override func bindState() {
         super.bindState()
@@ -47,7 +55,7 @@ final class SelectChoreAttributeViewController: ModalViewController {
             .asDriver()
             .filterNil()
             .drive(onNext: { [weak self] dateValue in
-                self?.selectDateView?.setState(dateValue)
+                self?.selectDateView?.reloadView(dateValue)
             }).disposed(by: self.disposeBag)
     }
     

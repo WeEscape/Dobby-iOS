@@ -7,7 +7,6 @@
 
 import Foundation
 import RxGesture
-import RxViewController
 import SnapKit
 import RxOptional
 
@@ -38,22 +37,33 @@ final class SelectProfileAttributeViewController: ModalViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupUI()
+        bind()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        contentView.setupUI()
+        contentView.showAnimation()
+    }
 
     // MARK: Rx bind
     override func bindState() {
         super.bindState()
-        
-//        viewModel.profileColorRelay
-//            .distinctUntilChanged()
-//            .subscribe(onNext: { [weak self] profileColor in
-////                self?.viewModel.didSelectColor(profileColor)
-//            }).disposed(by: self.disposeBag)
+        viewModel.profileColorRelay
+            .filterNil()
+            .distinctUntilChanged()
+            .subscribe(onNext: { [weak self] profileColor in
+                self?.selectColorView?.reloadView(profileColor)
+            }).disposed(by: self.disposeBag)
     }
     
     override func bindAction() {
         super.bindAction()
-//
-        selectColorView?.colorPublish
+
+        selectColorView?.selectColorPublish
             .subscribe(onNext: { [weak self] color in
                 self?.viewModel.didSelectColor(color)
             }).disposed(by: self.disposeBag)

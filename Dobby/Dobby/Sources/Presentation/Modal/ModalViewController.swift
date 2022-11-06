@@ -33,14 +33,6 @@ class ModalViewController: BaseViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: Life Cycle
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setupUI()
-        contentView.showAnimation()
-        bind()
-    }
-    
     // MARK: method
     func setupUI() {
         self.view.backgroundColor = .black.withAlphaComponent(0.66)
@@ -60,9 +52,7 @@ class ModalViewController: BaseViewController {
         bindAction()
     }
     
-    func bindState() {
-        
-    }
+    func bindState() {}
     
     func bindAction() {
         contentView.didTapConfirm
