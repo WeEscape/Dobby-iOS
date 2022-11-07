@@ -14,7 +14,7 @@ struct LoginAPI: BaseAPI {
     var path: String {
         switch provider {
         case .kakao, .apple:
-            return "/login"
+            return "/auth/login"
         }
     }
     var method: Moya.Method { .post }
@@ -24,7 +24,6 @@ struct LoginAPI: BaseAPI {
             return .requestParameters(
                 parameters: [
                     "access_token": accessToken,
-//                    "refreshToken": refreshToken,
                     "social_type": "kakao"
                 ],
                 encoding: JSONEncoding.default
