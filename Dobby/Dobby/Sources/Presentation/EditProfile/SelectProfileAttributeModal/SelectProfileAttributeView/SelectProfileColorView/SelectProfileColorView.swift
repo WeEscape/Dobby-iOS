@@ -20,9 +20,10 @@ final class SelectProfileColorView: ModalContentView {
     
     // MARK: UI
     struct Metric {
+        static let headerTitleFontSize: CGFloat = 16
         static let tableViewBottomInset: CGFloat = 50
         static let tableViewHeight: CGFloat = 330
-        static let headerViewHeight: CGFloat = 78
+        static let headerViewHeight: CGFloat = 50
         static let tablewViewCellHeight: CGFloat = 44
     }
     
@@ -77,12 +78,12 @@ final class SelectProfileColorView: ModalContentView {
         headerView.snp.makeConstraints {
             $0.left.equalToSuperview()
             $0.right.equalToSuperview()
-            $0.height.equalTo(50)
+            $0.height.equalTo(Metric.headerViewHeight)
             $0.bottom.equalTo(bodyView.snp.top)
         }
         
         headerTitle.textColor = Palette.textBlack1
-        headerTitle.font = DobbyFont.avenirMedium(size: 16).getFont
+        headerTitle.font = DobbyFont.avenirMedium(size: Metric.headerTitleFontSize).getFont
         headerView.addSubview(headerTitle)
         headerTitle.snp.makeConstraints {
             $0.center.equalToSuperview()
