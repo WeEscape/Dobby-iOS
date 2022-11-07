@@ -63,7 +63,39 @@ final class SelectProfileColorView: ModalContentView {
     
     // MARK: methods
     override func setupUI() {
-        super.setupUI()
+        self.backgroundColor = .clear
+        
+        self.addSubview(bodyView)
+        bodyView.snp.makeConstraints {
+            $0.left.equalToSuperview()
+            $0.right.equalToSuperview()
+            $0.bottom.equalToSuperview()
+        }
+        
+        headerView.backgroundColor = .white
+        self.addSubview(headerView)
+        headerView.snp.makeConstraints {
+            $0.left.equalToSuperview()
+            $0.right.equalToSuperview()
+            $0.height.equalTo(50)
+            $0.bottom.equalTo(bodyView.snp.top)
+        }
+        
+        headerTitle.textColor = Palette.textBlack1
+        headerTitle.font = DobbyFont.avenirMedium(size: 16).getFont
+        headerView.addSubview(headerTitle)
+        headerTitle.snp.makeConstraints {
+            $0.center.equalToSuperview()
+        }
+        
+        self.addSubview(closeBackView)
+        closeBackView.snp.makeConstraints {
+            $0.left.equalToSuperview()
+            $0.right.equalToSuperview()
+            $0.top.equalToSuperview()
+            $0.bottom.equalTo(self.headerView.snp.top)
+        }
+        
         profileColorTableView.snp.makeConstraints {
             $0.height.equalTo(Metric.tableViewHeight)
         }
