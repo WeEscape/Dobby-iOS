@@ -57,7 +57,7 @@ final class SelectDateView: ModalContentView {
             self.bodyView.snp.updateConstraints {
                 $0.bottom.equalToSuperview()
             }
-            UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut) {
+            UIView.animate(withDuration: 0.25, delay: 0.1, options: .curveEaseOut) {
                 self.layoutIfNeeded()
             }
         })

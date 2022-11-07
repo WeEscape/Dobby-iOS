@@ -123,7 +123,7 @@ class ModalContentView: UIView {
         self.bodyView.snp.updateConstraints {
             $0.bottom.equalToSuperview()
         }
-        UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut) {
+        UIView.animate(withDuration: 0.25, delay: 0.1, options: .curveEaseOut) {
             self.layoutIfNeeded()
         }
     }
@@ -134,7 +134,7 @@ class ModalContentView: UIView {
             $0.right.equalToSuperview()
             $0.top.equalTo(self.snp.bottom).offset(Metric.headerViewHeight)
         }
-        UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: {
+        UIView.animate(withDuration: 0.25, delay: 0, options: .curveEaseOut, animations: {
             self.layoutIfNeeded()
         }, completion: { [weak self] _ in
             self?.didTapConfirm.accept(())
