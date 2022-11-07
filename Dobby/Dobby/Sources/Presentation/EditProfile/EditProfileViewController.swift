@@ -171,11 +171,21 @@ final class EditProfileViewController: BaseViewController {
     }
     
     func bindState() {
-        viewModel.profileColorRelay
+        viewModel.profileColorBehavior
             .filterNil()
             .distinctUntilChanged()
             .subscribe(onNext: { [weak self] profileColor in
                 self?.editProfileColorView.setSelectedColor(profileColor)
+            }).disposed(by: self.disposeBag)
+        
+        viewModel.acitonSheetPublish
+            .subscribe(onNext: { [weak self] actionSheet in
+                self?.present(actionSheet, animated: true)
+            }).disposed(by: self.disposeBag)
+        
+        viewModel.emojiModalPublishh
+            .subscribe(onNext: { [weak self] _ in
+                print("debug : show emoji modal")
             }).disposed(by: self.disposeBag)
     }
     
@@ -183,7 +193,7 @@ final class EditProfileViewController: BaseViewController {
         profileImageView.rx.tapGesture()
             .when(.recognized)
             .subscribe(onNext: { [weak self] _ in
-                print("Debug : show profile photo edit")
+                self?.viewModel.didTapProfilePhotoEdit()
             }).disposed(by: self.disposeBag)
         
         editProfileColorView.rx.tapGesture()

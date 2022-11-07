@@ -53,7 +53,7 @@ final class SelectProfileAttributeViewController: ModalViewController {
     // MARK: Rx bind
     override func bindState() {
         super.bindState()
-        viewModel.profileColorRelay
+        viewModel.profileColorBehavior
             .filterNil()
             .distinctUntilChanged()
             .subscribe(onNext: { [weak self] profileColor in
