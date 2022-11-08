@@ -10,7 +10,12 @@ import RxSwift
 
 protocol AuthUseCase {
     // oauth
-    func login(provider: AuthenticationProvider) -> Observable<Authentication>
+    func snsAuthorize(provider: AuthenticationProvider) -> Observable<Authentication>
+    func register(provider: AuthenticationProvider, auth: Authentication) -> Observable<User?>
+    func login(
+        provider: AuthenticationProvider,
+        auth: Authentication
+    ) -> Observable<Authentication>
     func logout() -> Observable<Void>
     func resign() -> Observable<Void>
     
@@ -28,7 +33,7 @@ final class AuthUseCaseImpl: AuthUseCase {
         self.authenticationRepository = authenticationRepository
     }
     
-    func login(provider: AuthenticationProvider) -> Observable<Authentication> {
+    func snsAuthorize(provider: AuthenticationProvider) -> Observable<Authentication> {
         var snsAuthorize: Observable<Authentication>
         switch provider {
         case .kakao:
@@ -37,16 +42,27 @@ final class AuthUseCaseImpl: AuthUseCase {
             snsAuthorize = self.authenticationRepository.appleAuthorize()
         }
         return snsAuthorize
-            .flatMapLatest { [weak self] auth -> Observable<Authentication> in
-                guard let self = self else {return .empty()}
-                return self.authenticationRepository.login(
-                    provider: provider,
-                    authentication: auth
-                )
-            }
+    }
+    
+    func login(
+        provider: AuthenticationProvider,
+        auth: Authentication
+    ) -> Observable<Authentication> {
+        return self.authenticationRepository.login(
+            provider: provider,
+            authentication: auth
+        )
+    }
+
+    func register(provider: AuthenticationProvider, auth: Authentication) -> Observable<User?> {
+        return self.authenticationRepository.register(
+            provider: provider,
+            auth: auth
+        )
     }
     
     func logout() -> Observable<Void> {
+        // TODO: logout api call
         return self.authenticationRepository.logout()
     }
     

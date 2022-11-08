@@ -7,15 +7,24 @@
 
 import Foundation
 
-struct User {
-    var id: String
-    var social_type: String
+struct User: Codable {
+    var userId: String
+    var socialId: String
+    var socialType: String
     var name: String?
     var profileUrl: String?
-    var profileColor: String
-    var isConnect: Bool
-    var lastConnectedAt: Date?
-    var createdAt: Date
-    var updatedAt: Date
-    var deletedAt: Date?
+    var profileColor: String?
+    var isConnect: Int
+    var groupIds: String?
+    
+    enum CodingKeys: String, CodingKey {
+        case userId = "user_id"
+        case socialId = "social_id"
+        case socialType = "social_type"
+        case name = "name"
+        case profileUrl = "profile_url"
+        case profileColor = "profile_color"
+        case isConnect = "is_connect"
+        case groupIds = "group_ids"
+    }
 }

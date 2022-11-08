@@ -17,4 +17,9 @@ struct AuthenticationDTO: Codable {
             refreshToken: self.refreshToken
         )
     }
+    
+    enum CodingKeys: String, CodingKey {
+        case accessToken = "access_token"
+        case refreshToken = "refresh_token"
+    }
 }

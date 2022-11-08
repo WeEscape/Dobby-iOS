@@ -96,6 +96,15 @@ final class AuthenticationRepositoryImpl: AuthenticationRepository {
         }
     }
     
+    func register(provider: AuthenticationProvider, auth: Authentication) -> Observable<User?> {
+        return self.network.request(api: RegisterAPI(
+            provider: provider,
+            accessToken: auth.accessToken
+        )).map { userDTO in
+            return userDTO.toDomain()
+        }
+    }
+    
     func logout() -> Observable<Void> {
         self.localTokenStorage.delete(key: .jwtAccessToken)
         self.localTokenStorage.delete(key: .jwtRefreshToken)

@@ -182,7 +182,22 @@ final class WelcomeViewController: BaseViewController {
     }
     
     func bindState() {
-        self.welcomeViewModel.loginResult
+        
+        self.welcomeViewModel.loadingPublish
+            .subscribe(onNext: { [weak self] isLoading in
+                if isLoading {
+                    self?.showLoading()
+                } else {
+                    self?.hideLoading()
+                }
+            }).disposed(by: self.disposeBag)
+        
+        self.welcomeViewModel.loginStartPublish
+            .subscribe(onNext: { [weak self] provider, auth in
+                self?.welcomeViewModel.login(provider: provider, auth: auth)
+            }).disposed(by: self.disposeBag)
+        
+        self.welcomeViewModel.loginResultPublish
             .subscribe(onNext: { [weak self] islogin in
                 guard let self = self else {return}
                 if islogin {
@@ -191,6 +206,11 @@ final class WelcomeViewController: BaseViewController {
                     self.view.makeToast("로그인 실패!\n잠시후 다시 시도해주세요", duration: 3.0, position: .bottom)
                 }
             }).disposed(by: self.disposeBag)
+        
+        self.welcomeViewModel.registerStartPublish
+            .subscribe(onNext: { [weak self] provider, auth in
+                self?.welcomeViewModel.register(provider: provider, auth: auth)
+            }).disposed(by: self.disposeBag)
     }
     
     func bindAction() {
@@ -198,7 +218,7 @@ final class WelcomeViewController: BaseViewController {
             .when(.recognized)
             .asDriver { _ in .empty() }
             .drive(onNext: { [weak self] _ in
-                self?.welcomeViewModel.login(provider: .kakao)
+                self?.welcomeViewModel.snsAuthorize(provider: .kakao)
             })
             .disposed(by: self.disposeBag)
         
@@ -206,7 +226,7 @@ final class WelcomeViewController: BaseViewController {
             .when(.recognized)
             .asDriver { _ in .empty() }
             .drive(onNext: { [weak self] _ in
-                self?.welcomeViewModel.login(provider: .apple)
+                self?.welcomeViewModel.snsAuthorize(provider: .apple)
             })
             .disposed(by: self.disposeBag)
     }

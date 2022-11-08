@@ -12,12 +12,13 @@ protocol AuthenticationRepository {
     // oauth
     func kakaoAuthorize() -> Observable<Authentication>
     func appleAuthorize() -> Observable<Authentication>
-    func logout() -> Observable<Void>
-    func resign() -> Observable<Void>
+    func register(provider: AuthenticationProvider, auth: Authentication) -> Observable<User?>
     func login(
         provider: AuthenticationProvider,
         authentication: Authentication
     ) -> Observable<Authentication>
+    func logout() -> Observable<Void>
+    func resign() -> Observable<Void>
     
     // authToken
     func readToken(tokenOption: TokenOption) -> Observable<Authentication>

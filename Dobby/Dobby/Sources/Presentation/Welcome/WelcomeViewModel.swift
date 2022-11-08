@@ -8,28 +8,65 @@
 import Foundation
 import RxSwift
 import RxRelay
+import RxOptional
 
 class WelcomeViewModel {
     
     var disposBag: DisposeBag = .init()
     let authUseCase: AuthUseCase
-    let loginResult: PublishRelay<Bool>
+    let loadingPublish: PublishRelay<Bool>
+    
+    let loginResultPublish: PublishRelay<Bool>
+    let loginStartPublish: PublishRelay<(AuthenticationProvider, Authentication)>
+    let registerStartPublish: PublishRelay<(AuthenticationProvider, Authentication)>
     
     init(authUseCase: AuthUseCase) {
         self.authUseCase = authUseCase
-        self.loginResult = .init()
+        self.loginResultPublish = .init()
+        self.loadingPublish = .init()
+        self.loginStartPublish = .init()
+        self.registerStartPublish = .init()
     }
     
-    func login(provider: AuthenticationProvider) {
-        self.authUseCase.login(provider: provider )
+    func snsAuthorize(provider: AuthenticationProvider) {
+        self.loadingPublish.accept(true)
+        self.authUseCase.snsAuthorize(provider: provider)
+            .subscribe(onNext: { [weak self] auth in
+                self?.loginStartPublish.accept((provider, auth))
+            }).disposed(by: self.disposBag)
+    }
+    
+    func login(provider: AuthenticationProvider, auth: Authentication) {
+        self.authUseCase.login(provider: provider, auth: auth)
             .subscribe(
                 onNext: { [weak self] auth in
                     self?.authUseCase.writeToken(authentication: auth)
-                    self?.loginResult.accept(true)
-                }, onError: { [weak self]  _ in
-                    self?.authUseCase.removeToken(tokenOption: [.accessToken, .refreshToken])
-                    self?.loginResult.accept(false)
+                    self?.loginResultPublish.accept(true)
+                    self?.loadingPublish.accept(false)
+                }, onError: { [weak self] err in
+                    if let networkErr = err as? NetworkError,
+                       case .unknown(let code, _) = networkErr,
+                       code == 404 { // 회원가입된 유저가 아닌경우 회원가입 진행
+                        self?.authUseCase.removeToken(tokenOption: [.accessToken, .refreshToken])
+                        self?.registerStartPublish.accept((provider, auth))
+                    } else {
+                        self?.authUseCase.removeToken(tokenOption: [.accessToken, .refreshToken])
+                        self?.loginResultPublish.accept(false)
+                        self?.loadingPublish.accept(false)
+                    }
                 }
             ).disposed(by: self.disposBag)
+    }
+    
+    func register(provider: AuthenticationProvider, auth: Authentication) {
+        self.authUseCase.register(provider: provider, auth: auth)
+            .filterNil()
+            .subscribe(onNext: { [weak self] _ in
+                self?.loginStartPublish.accept((provider, auth))
+            }, onError: { [weak self] _ in
+                self?.authUseCase.removeToken(tokenOption: [.accessToken, .refreshToken])
+                self?.loginResultPublish.accept(false)
+                self?.loadingPublish.accept(false)
+            }).disposed(by: self.disposBag)
     }
 }
