@@ -69,7 +69,9 @@ final class NetworkServiceImpl: NetworkService {
                 return .error(err)
             }
             .map { res -> API.Response in
-                let response = try JSONDecoder().decode(API.Response.self, from: res.data)
+                let decoder = JSONDecoder()
+                decoder.dateDecodingStrategy = .iso8601
+                let response = try decoder.decode(API.Response.self, from: res.data)
                 return response
             }
             .catch { err in
