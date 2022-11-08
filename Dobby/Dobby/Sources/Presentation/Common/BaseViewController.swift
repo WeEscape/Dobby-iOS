@@ -13,11 +13,13 @@ class BaseViewController: UIViewController {
     
     // MARK: property
     var disposeBag: DisposeBag = .init()
+    let loadingView = LoadingIndicatorView()
     
     // MARK: init
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         BeaverLog.debug("\(String(describing: self)) init")
+        self.setupLoadingIndicator()
     }
 
     required init?(coder: NSCoder) {
@@ -41,5 +43,24 @@ class BaseViewController: UIViewController {
         line.backgroundColor = Palette.lineGray1
         line.translatesAutoresizingMaskIntoConstraints = false
         return line
+    }
+    
+    private func setupLoadingIndicator() {
+        self.view.addSubview(self.loadingView)
+        self.loadingView.snp.makeConstraints {
+            $0.width.equalToSuperview()
+            $0.height.equalToSuperview()
+            $0.top.equalToSuperview()
+        }
+        self.loadingView.isHidden = true
+    }
+    
+    func showLoading() {
+        self.loadingView.isHidden = false
+        self.view.bringSubviewToFront(self.loadingView)
+    }
+    
+    func hideLoading() {
+        self.loadingView.isHidden = true
     }
 }

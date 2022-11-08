@@ -64,7 +64,7 @@
 		A19E97FD29053621004A8861 /* AddChoreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E97FC29053621004A8861 /* AddChoreViewModel.swift */; };
 		A19E980029053B32004A8861 /* ChoreUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E97FF29053B32004A8861 /* ChoreUseCase.swift */; };
 		A19E980229053B60004A8861 /* Chore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E980129053B60004A8861 /* Chore.swift */; };
-		A19E980529054640004A8861 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E980429054640004A8861 /* LoadingView.swift */; };
+		A19E980529054640004A8861 /* LoadingIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E980429054640004A8861 /* LoadingIndicatorView.swift */; };
 		A19E980729054764004A8861 /* loading.json in Resources */ = {isa = PBXBuildFile; fileRef = A19E980629054764004A8861 /* loading.json */; };
 		A19E98092906B22B004A8861 /* ChoreAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E98082906B22B004A8861 /* ChoreAttribute.swift */; };
 		A19E980C2906CB52004A8861 /* ChoreAttributeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E980B2906CB52004A8861 /* ChoreAttributeView.swift */; };
@@ -185,7 +185,7 @@
 		A19E97FC29053621004A8861 /* AddChoreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddChoreViewModel.swift; sourceTree = "<group>"; };
 		A19E97FF29053B32004A8861 /* ChoreUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoreUseCase.swift; sourceTree = "<group>"; };
 		A19E980129053B60004A8861 /* Chore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chore.swift; sourceTree = "<group>"; };
-		A19E980429054640004A8861 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		A19E980429054640004A8861 /* LoadingIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicatorView.swift; sourceTree = "<group>"; };
 		A19E980629054764004A8861 /* loading.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = loading.json; sourceTree = "<group>"; };
 		A19E98082906B22B004A8861 /* ChoreAttribute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoreAttribute.swift; sourceTree = "<group>"; };
 		A19E980B2906CB52004A8861 /* ChoreAttributeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoreAttributeView.swift; sourceTree = "<group>"; };
@@ -405,7 +405,7 @@
 			children = (
 				A13C535128E817F800C72215 /* Coordinator.swift */,
 				A13C535628E8231100C72215 /* BaseViewController.swift */,
-				A19E980429054640004A8861 /* LoadingView.swift */,
+				A19E980429054640004A8861 /* LoadingIndicatorView.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -1019,7 +1019,7 @@
 				A19E97FD29053621004A8861 /* AddChoreViewModel.swift in Sources */,
 				A13C536028E8942900C72215 /* AuthenticationRepository.swift in Sources */,
 				A19E97E52904D7DE004A8861 /* DailyChoreCoordinator.swift in Sources */,
-				A19E980529054640004A8861 /* LoadingView.swift in Sources */,
+				A19E980529054640004A8861 /* LoadingIndicatorView.swift in Sources */,
 				A174B17928EF010100F80112 /* AuthenticationDTO.swift in Sources */,
 				A19E97F12904D82F004A8861 /* WeeklyChoreViewController.swift in Sources */,
 				A19E9881291941B8004A8861 /* RegisterAPI.swift in Sources */,
