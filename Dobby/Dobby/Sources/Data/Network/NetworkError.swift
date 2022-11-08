@@ -7,13 +7,13 @@
 
 import Foundation
 
-enum NetworkError: Error {
+enum NetworkError: Error,Equatable {
     case invalidateAccessToken
     case invalidateRefreshToken
     case client
     case server
     case decoding
-    case unknown
+    case unknown(_ code: Int, _ message: String?)
 }
 
 extension NetworkError: LocalizedError {
@@ -29,8 +29,12 @@ extension NetworkError: LocalizedError {
             return "Network error : 서버 내부 에러"
         case .decoding:
             return "Network error : 디코딩 에러"
-        case .unknown:
-            return "Network error : 알수없는 에러"
+        case .unknown(let code, let message):
+            return "Network error : \(code), \(message ?? "")"
         }
     }
+}
+
+struct ErrorResponse: Codable {
+    var message: String?
 }

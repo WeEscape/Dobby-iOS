@@ -47,7 +47,7 @@ final class NetworkServiceImpl: NetworkService {
                 if let networkErr = err as? NetworkError,
                    networkErr == .invalidateAccessToken {
                     BeaverLog.verbose("invalidate AccessToken!")
-                    guard let self = self else { return .error(NetworkError.unknown)}
+                    guard let self = self else { return .error(NetworkError.unknown(-1, "guard self")) }
                     return self.refreshAccessToken()
                         .flatMap { auth -> Observable<Response> in
                             guard let newAccessToken = auth.accessToken else {
@@ -87,7 +87,10 @@ final class NetworkServiceImpl: NetworkService {
                 let statusCode = res.statusCode
                 BeaverLog.verbose("Network response status code : \(statusCode)")
                 guard !(statusCode == 401) else { throw NetworkError.invalidateAccessToken }
-                guard !(400..<500 ~= statusCode) else { throw NetworkError.client }
+                guard !(400..<500 ~= statusCode) else {
+                    let errorRes = try? JSONDecoder().decode(ErrorResponse.self, from: res.data)
+                    throw NetworkError.unknown(statusCode, errorRes?.message)
+                }
                 guard !(500..<600 ~= statusCode) else { throw NetworkError.server }
                 return res
             }
