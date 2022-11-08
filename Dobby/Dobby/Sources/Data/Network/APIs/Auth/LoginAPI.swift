@@ -23,7 +23,7 @@ struct LoginAPI: BaseAPI {
         case .kakao:
             return .requestParameters(
                 parameters: [
-                    "access_token": accessToken,
+                    "social_access_token": accessToken,
                     "social_type": "kakao"
                 ],
                 encoding: JSONEncoding.default
