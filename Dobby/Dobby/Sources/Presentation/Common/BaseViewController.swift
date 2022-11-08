@@ -19,7 +19,6 @@ class BaseViewController: UIViewController {
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         BeaverLog.debug("\(String(describing: self)) init")
-        self.setupLoadingIndicator()
     }
 
     required init?(coder: NSCoder) {
@@ -45,22 +44,21 @@ class BaseViewController: UIViewController {
         return line
     }
     
-    private func setupLoadingIndicator() {
+    func showLoading() {
+        self.loadingView.isHidden = false
         self.view.addSubview(self.loadingView)
         self.loadingView.snp.makeConstraints {
             $0.width.equalToSuperview()
             $0.height.equalToSuperview()
             $0.top.equalToSuperview()
         }
-        self.loadingView.isHidden = true
-    }
-    
-    func showLoading() {
-        self.loadingView.isHidden = false
         self.view.bringSubviewToFront(self.loadingView)
+        self.view.layoutIfNeeded()
     }
     
     func hideLoading() {
         self.loadingView.isHidden = true
+        self.loadingView.removeFromSuperview()
+        self.view.layoutIfNeeded()
     }
 }

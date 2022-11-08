@@ -92,7 +92,6 @@ final class EditProfileViewController: BaseViewController {
         super.viewDidLoad()
         setupUI()
         bind()
-        self.tabBarController?.tabBar.isHidden = true
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -114,6 +113,7 @@ final class EditProfileViewController: BaseViewController {
         self.navigationController?.topViewController?.extendedLayoutIncludesOpaqueBars = true
         self.navigationController?.navigationBar.isTranslucent = false
         self.navigationController?.navigationBar.tintColor = Palette.mainThemeBlue1
+        self.tabBarController?.tabBar.isHidden = true
         
         self.view.addSubview(profileImageView)
         profileImageView.snp.makeConstraints {
