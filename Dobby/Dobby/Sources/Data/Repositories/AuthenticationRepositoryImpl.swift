@@ -106,9 +106,8 @@ final class AuthenticationRepositoryImpl: AuthenticationRepository {
     }
     
     func logout() -> Observable<Void> {
-        self.localTokenStorage.delete(key: .jwtAccessToken)
-        self.localTokenStorage.delete(key: .jwtRefreshToken)
-        return .just(())
+        return self.network.request(api: LogoutAPI())
+            .map { _ -> Void in () }
     }
     
     func resign() -> Observable<Void> {

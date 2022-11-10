@@ -64,6 +64,7 @@ final class MyPageViewModel {
     func requestLogout() {
         self.authUseCase.logout()
             .subscribe(onNext: { [weak self] _ in
+                self?.authUseCase.removeToken(tokenOption: [.accessToken, .refreshToken])
                 self?.logoutPublish.accept(())
             }).disposed(by: self.disposeBag)
     }

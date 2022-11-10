@@ -69,5 +69,4 @@ struct LoginAPI: BaseAPI {
         self.identityToken = identityToken ?? ""
         self.authorizeCode = authorizeCode ?? ""
     }
-
 }

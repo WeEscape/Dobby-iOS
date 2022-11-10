@@ -51,6 +51,8 @@
 		A174B17928EF010100F80112 /* AuthenticationDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = A174B17828EF010100F80112 /* AuthenticationDTO.swift */; };
 		A174B17C28EF034100F80112 /* NetworkLoggerPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = A174B17B28EF034100F80112 /* NetworkLoggerPlugin.swift */; };
 		A1789353291A912A007893FB /* UserDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1789352291A912A007893FB /* UserDTO.swift */; };
+		A1789355291D115D007893FB /* LogoutAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1789354291D115D007893FB /* LogoutAPI.swift */; };
+		A1789357291D17E2007893FB /* DobbyResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1789356291D17E2007893FB /* DobbyResponse.swift */; };
 		A19E97E52904D7DE004A8861 /* DailyChoreCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E97E42904D7DE004A8861 /* DailyChoreCoordinator.swift */; };
 		A19E97E72904D7E6004A8861 /* WeeklyChoreCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E97E62904D7E6004A8861 /* WeeklyChoreCoordinator.swift */; };
 		A19E97E92904D7EF004A8861 /* MonthlyChoreCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E97E82904D7EF004A8861 /* MonthlyChoreCoordinator.swift */; };
@@ -173,6 +175,8 @@
 		A174B17828EF010100F80112 /* AuthenticationDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationDTO.swift; sourceTree = "<group>"; };
 		A174B17B28EF034100F80112 /* NetworkLoggerPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLoggerPlugin.swift; sourceTree = "<group>"; };
 		A1789352291A912A007893FB /* UserDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDTO.swift; sourceTree = "<group>"; };
+		A1789354291D115D007893FB /* LogoutAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutAPI.swift; sourceTree = "<group>"; };
+		A1789356291D17E2007893FB /* DobbyResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DobbyResponse.swift; sourceTree = "<group>"; };
 		A19E97E42904D7DE004A8861 /* DailyChoreCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyChoreCoordinator.swift; sourceTree = "<group>"; };
 		A19E97E62904D7E6004A8861 /* WeeklyChoreCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyChoreCoordinator.swift; sourceTree = "<group>"; };
 		A19E97E82904D7EF004A8861 /* MonthlyChoreCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyChoreCoordinator.swift; sourceTree = "<group>"; };
@@ -445,6 +449,7 @@
 			children = (
 				A13C536C28E94CA200C72215 /* NetworkService.swift */,
 				A12095E828F2A198008CE410 /* NetworkError.swift */,
+				A1789356291D17E2007893FB /* DobbyResponse.swift */,
 				A174B17A28EF031700F80112 /* Plugins */,
 				A174B17228EF000B00F80112 /* APIs */,
 			);
@@ -703,6 +708,7 @@
 				A174B17528EF007100F80112 /* LoginAPI.swift */,
 				A19E9880291941B8004A8861 /* RegisterAPI.swift */,
 				A12095EA28F2E010008CE410 /* RefreshAuthAPI.swift */,
+				A1789354291D115D007893FB /* LogoutAPI.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -1069,6 +1075,7 @@
 				A19E980229053B60004A8861 /* Chore.swift in Sources */,
 				A19E98092906B22B004A8861 /* ChoreAttribute.swift in Sources */,
 				A19E983B290D06C7004A8861 /* ModalCoordinator.swift in Sources */,
+				A1789355291D115D007893FB /* LogoutAPI.swift in Sources */,
 				A13C536D28E94CA200C72215 /* NetworkService.swift in Sources */,
 				A19E983E290D164D004A8861 /* ModalContentView.swift in Sources */,
 				A19E97F72904D845004A8861 /* MyPageViewController.swift in Sources */,
@@ -1076,6 +1083,7 @@
 				A13C536528E91BB800C72215 /* Authentication.swift in Sources */,
 				A19E985D2912A3D0004A8861 /* SelectChoreAttributeViewController.swift in Sources */,
 				A19E985829128D28004A8861 /* EditProfileColorView.swift in Sources */,
+				A1789357291D17E2007893FB /* DobbyResponse.swift in Sources */,
 				A19E97EB2904D7F7004A8861 /* AddChoreCoordinator.swift in Sources */,
 				A19E9842290E6CED004A8861 /* String+.swift in Sources */,
 				A13C537D28E98FD500C72215 /* WelcomeViewModel.swift in Sources */,

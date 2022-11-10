@@ -19,6 +19,12 @@ final class NetworkServiceImpl: NetworkService {
     private let provider: MoyaProvider<MultiTarget>
     let localTokenStorage: LocalTokenStorageService
     static let shared = NetworkServiceImpl()
+    var headers: [String: String] {
+        guard let accessToken = self.localTokenStorage.read(
+            key: .jwtAccessToken
+        ) else { return [:] }
+        return ["authorization": "Bearer \(accessToken)"]
+    }
     
     private init() {
         self.provider = Self.createProvider()
@@ -47,14 +53,18 @@ final class NetworkServiceImpl: NetworkService {
                 if let networkErr = err as? NetworkError,
                    networkErr == .invalidateAccessToken {
                     BeaverLog.verbose("invalidate AccessToken!")
-                    guard let self = self else { return .error(NetworkError.unknown(-1, "guard self")) }
+                    guard let self = self else {
+                        return .error(NetworkError.unknown(-1, "guard self"))
+                    }
                     return self.refreshAccessToken()
                         .flatMap { auth -> Observable<Response> in
                             guard let newAccessToken = auth.accessToken else {
                                 return .error(NetworkError.invalidateAccessToken)
                             }
                             BeaverLog.verbose("new access token : \(newAccessToken)")
-                            self.localTokenStorage.write(key: .jwtAccessToken, value: newAccessToken)
+                            self.localTokenStorage.write(
+                                key: .jwtAccessToken, value: newAccessToken
+                            )
                             return self._request(api: api)
                         }
                         .catch { _ in

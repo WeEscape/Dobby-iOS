@@ -62,7 +62,6 @@ final class AuthUseCaseImpl: AuthUseCase {
     }
     
     func logout() -> Observable<Void> {
-        // TODO: logout api call
         return self.authenticationRepository.logout()
     }
     
