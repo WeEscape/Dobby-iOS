@@ -70,7 +70,10 @@ final class MyPageViewModel {
     }
     
     func requestResign() {
-        // use case resign
-        self.logoutPublish.accept(())
+        self.authUseCase.resign()
+            .subscribe(onNext: { [weak self] _ in
+                self?.authUseCase.removeToken(tokenOption: [.accessToken, .refreshToken])
+                self?.resignPublish.accept(())
+            }).disposed(by: self.disposeBag)
     }
 }

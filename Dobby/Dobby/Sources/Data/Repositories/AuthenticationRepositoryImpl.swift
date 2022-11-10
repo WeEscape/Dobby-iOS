@@ -111,7 +111,8 @@ final class AuthenticationRepositoryImpl: AuthenticationRepository {
     }
     
     func resign() -> Observable<Void> {
-        return .empty()
+        return self.network.request(api: ResignAPI())
+            .map { _ -> Void in () }
     }
     
     func readToken(tokenOption: TokenOption) -> Observable<Authentication> {
