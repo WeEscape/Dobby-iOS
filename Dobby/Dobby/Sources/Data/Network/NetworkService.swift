@@ -58,12 +58,18 @@ final class NetworkServiceImpl: NetworkService {
                     }
                     return self.refreshAccessToken()
                         .flatMap { auth -> Observable<Response> in
-                            guard let newAccessToken = auth.accessToken else {
-                                return .error(NetworkError.invalidateAccessToken)
+                            guard let newAccessToken = auth.accessToken,
+                                  let newRefreshToken = auth.refreshToken
+                            else {
+                                return .error(NetworkError.invalidateRefreshToken)
                             }
-                            BeaverLog.verbose("new access token : \(newAccessToken)")
+                            BeaverLog.verbose("refreshed access token : \(newAccessToken)")
+                            BeaverLog.verbose("refreshed refresh token : \(newRefreshToken)")
                             self.localTokenStorage.write(
                                 key: .jwtAccessToken, value: newAccessToken
+                            )
+                            self.localTokenStorage.write(
+                                key: .jwtRefreshToken, value: newRefreshToken
                             )
                             return self._request(api: api)
                         }

@@ -10,12 +10,17 @@ import Moya
 
 struct AuthRefreshAPI: BaseAPI {
     typealias Response = AuthenticationDTO
-    var path: String = ""
+    var path: String = "/auth/tokens"
     var method: Moya.Method {
-        .get
+        .post
     }
     var task: Moya.Task {
-        .requestPlain
+        return .requestParameters(
+            parameters: [
+                "refresh_token": refreshToken
+            ],
+            encoding: JSONEncoding.default
+        )
     }
     var refreshToken: String
     
