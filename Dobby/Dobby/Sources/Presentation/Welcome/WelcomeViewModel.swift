@@ -15,7 +15,7 @@ class WelcomeViewModel {
     var disposBag: DisposeBag = .init()
     let authUseCase: AuthUseCase
     let loadingPublish: PublishRelay<Bool>
-    
+    var registerTryCount = 0
     let loginResultPublish: PublishRelay<Bool>
     let loginStartPublish: PublishRelay<(AuthenticationProvider, Authentication)>
     let registerStartPublish: PublishRelay<(AuthenticationProvider, Authentication)>
@@ -40,19 +40,22 @@ class WelcomeViewModel {
         self.authUseCase.login(provider: provider, auth: auth)
             .subscribe(
                 onNext: { [weak self] auth in
-                    self?.authUseCase.writeToken(authentication: auth)
-                    self?.loginResultPublish.accept(true)
-                    self?.loadingPublish.accept(false)
+                    self?.loginSuccess(auth: auth)
                 }, onError: { [weak self] err in
                     if let networkErr = err as? NetworkError,
                        case .unknown(let code, _) = networkErr,
                        code == 404 { // 회원가입된 유저가 아닌경우 회원가입 진행
-                        self?.authUseCase.removeToken(tokenOption: [.accessToken, .refreshToken])
-                        self?.registerStartPublish.accept((provider, auth))
+                        self?.registerTryCount += 1
+                        if (self?.registerTryCount ?? 0) > 3 {
+                            self?.loginFail()
+                        } else {
+                            self?.authUseCase.removeToken(
+                                tokenOption: [.accessToken, .refreshToken]
+                            )
+                            self?.registerStartPublish.accept((provider, auth))
+                        }
                     } else {
-                        self?.authUseCase.removeToken(tokenOption: [.accessToken, .refreshToken])
-                        self?.loginResultPublish.accept(false)
-                        self?.loadingPublish.accept(false)
+                        self?.loginFail()
                     }
                 }
             ).disposed(by: self.disposBag)
@@ -64,9 +67,19 @@ class WelcomeViewModel {
             .subscribe(onNext: { [weak self] _ in
                 self?.loginStartPublish.accept((provider, auth))
             }, onError: { [weak self] _ in
-                self?.authUseCase.removeToken(tokenOption: [.accessToken, .refreshToken])
-                self?.loginResultPublish.accept(false)
-                self?.loadingPublish.accept(false)
+                self?.loginFail()
             }).disposed(by: self.disposBag)
+    }
+    
+    func loginSuccess(auth: Authentication) {
+        self.authUseCase.writeToken(authentication: auth)
+        self.loginResultPublish.accept(true)
+        self.loadingPublish.accept(false)
+    }
+    
+    func loginFail() {
+        self.authUseCase.removeToken(tokenOption: [.accessToken, .refreshToken])
+        self.loginResultPublish.accept(false)
+        self.loadingPublish.accept(false)
     }
 }
