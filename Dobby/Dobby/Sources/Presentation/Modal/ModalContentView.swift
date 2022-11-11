@@ -21,7 +21,7 @@ class ModalContentView: UIView {
     // MARK: UI
     struct Metric {
         static let headerItemLeftRightInset: CGFloat = 20
-        static let headerViewHeight: CGFloat = 78
+        static let headerViewHeight: CGFloat = 64
     }
     
     let headerView: UIView = {
@@ -35,7 +35,7 @@ class ModalContentView: UIView {
     lazy var headerTitle: UILabel = {
         let lbl = UILabel()
         lbl.textColor = .white
-        lbl.font = DobbyFont.avenirMedium(size: 24).getFont
+        lbl.font = DobbyFont.avenirMedium(size: 20).getFont
         return lbl
     }()
     
