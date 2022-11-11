@@ -818,10 +818,10 @@
 			};
 			buildConfigurationList = A13C530828E7129D00C72215 /* Build configuration list for PBXProject "Dobby" */;
 			compatibilityVersion = "Xcode 13.0";
-			developmentRegion = en;
+			developmentRegion = ko;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				en,
+				ko,
 				Base,
 			);
 			mainGroup = A13C530428E7129D00C72215;
