@@ -7,9 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7A1E238D9702E2CD63EAB538 /* Pods_Dobby.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 690E5636BED438ED7FB12D25 /* Pods_Dobby.framework */; };
-		85B3274CA2BFED914D29318D /* Pods_DobbyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABCE8077762A15E26783E084 /* Pods_DobbyTests.framework */; };
-		8A2C023E51967F7CE6E7BB59 /* Pods_Dobby_DobbyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73DDA743A982F06E1D5193E0 /* Pods_Dobby_DobbyUITests.framework */; };
+		5D37CFAC2FFA4B3C846EA3C8 /* Pods_Dobby_DobbyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F56AA76B9FEBCC2098137B1 /* Pods_Dobby_DobbyUITests.framework */; };
+		81D7170A0CB8A71B30D14140 /* Pods_Dobby.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3336AE106AE91D152C06F33D /* Pods_Dobby.framework */; };
 		A12095E928F2A198008CE410 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12095E828F2A198008CE410 /* NetworkError.swift */; };
 		A12095EB28F2E010008CE410 /* RefreshAuthAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12095EA28F2E010008CE410 /* RefreshAuthAPI.swift */; };
 		A12095F328FBDFDC008CE410 /* CustomError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12095F228FBDFDC008CE410 /* CustomError.swift */; };
@@ -54,6 +53,7 @@
 		A1789355291D115D007893FB /* LogoutAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1789354291D115D007893FB /* LogoutAPI.swift */; };
 		A1789357291D17E2007893FB /* DobbyResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1789356291D17E2007893FB /* DobbyResponse.swift */; };
 		A1789359291D2035007893FB /* ResignAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1789358291D2035007893FB /* ResignAPI.swift */; };
+		A178935D291E8332007893FB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A178935C291E8332007893FB /* GoogleService-Info.plist */; };
 		A19E97E52904D7DE004A8861 /* DailyChoreCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E97E42904D7DE004A8861 /* DailyChoreCoordinator.swift */; };
 		A19E97E72904D7E6004A8861 /* WeeklyChoreCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E97E62904D7E6004A8861 /* WeeklyChoreCoordinator.swift */; };
 		A19E97E92904D7EF004A8861 /* MonthlyChoreCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E97E82904D7EF004A8861 /* MonthlyChoreCoordinator.swift */; };
@@ -73,9 +73,6 @@
 		A19E98092906B22B004A8861 /* ChoreAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E98082906B22B004A8861 /* ChoreAttribute.swift */; };
 		A19E980C2906CB52004A8861 /* ChoreAttributeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E980B2906CB52004A8861 /* ChoreAttributeView.swift */; };
 		A19E98162906CE85004A8861 /* ChoreMemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E98152906CE85004A8861 /* ChoreMemoView.swift */; };
-		A19E982729081B69004A8861 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A19E982629081B69004A8861 /* GoogleService-Info.plist */; };
-		A19E982A29081BF5004A8861 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = A19E982929081BF5004A8861 /* FirebaseAnalyticsWithoutAdIdSupport */; };
-		A19E982C29081BF5004A8861 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = A19E982B29081BF5004A8861 /* FirebaseCrashlytics */; };
 		A19E982E290A9D64004A8861 /* UITextField+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E982D290A9D64004A8861 /* UITextField+.swift */; };
 		A19E9831290CECEA004A8861 /* ModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E9830290CECEA004A8861 /* ModalViewController.swift */; };
 		A19E983B290D06C7004A8861 /* ModalCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E983A290D06C7004A8861 /* ModalCoordinator.swift */; };
@@ -104,6 +101,7 @@
 		A19E987C2917D500004A8861 /* SelectRepeatCycleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E987B2917D500004A8861 /* SelectRepeatCycleCell.swift */; };
 		A19E987E2917D6B0004A8861 /* ChoreRepeatCycle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E987D2917D6B0004A8861 /* ChoreRepeatCycle.swift */; };
 		A19E9881291941B8004A8861 /* RegisterAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E9880291941B8004A8861 /* RegisterAPI.swift */; };
+		C2781E59171273E0B07E799D /* Pods_DobbyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4AD1EDD5CCDD37BD771AC5A /* Pods_DobbyTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -124,12 +122,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		08A81A233D17FC80B06193AF /* Pods-Dobby-DobbyUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dobby-DobbyUITests.release.xcconfig"; path = "Target Support Files/Pods-Dobby-DobbyUITests/Pods-Dobby-DobbyUITests.release.xcconfig"; sourceTree = "<group>"; };
-		3FA77014358A4A589F0E4EEB /* Pods-DobbyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DobbyTests.release.xcconfig"; path = "Target Support Files/Pods-DobbyTests/Pods-DobbyTests.release.xcconfig"; sourceTree = "<group>"; };
-		67ECB9F13FDFEA20C434C48B /* Pods-Dobby.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dobby.release.xcconfig"; path = "Target Support Files/Pods-Dobby/Pods-Dobby.release.xcconfig"; sourceTree = "<group>"; };
-		690E5636BED438ED7FB12D25 /* Pods_Dobby.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Dobby.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		7259709F58ED6A5CD10AB35B /* Pods-Dobby-DobbyUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dobby-DobbyUITests.debug.xcconfig"; path = "Target Support Files/Pods-Dobby-DobbyUITests/Pods-Dobby-DobbyUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		73DDA743A982F06E1D5193E0 /* Pods_Dobby_DobbyUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Dobby_DobbyUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3336AE106AE91D152C06F33D /* Pods_Dobby.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Dobby.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3F56AA76B9FEBCC2098137B1 /* Pods_Dobby_DobbyUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Dobby_DobbyUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8083386DCEF92A322C58B66A /* Pods-Dobby.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dobby.release.xcconfig"; path = "Target Support Files/Pods-Dobby/Pods-Dobby.release.xcconfig"; sourceTree = "<group>"; };
+		8741B0934360EC4A243B1998 /* Pods-Dobby-DobbyUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dobby-DobbyUITests.release.xcconfig"; path = "Target Support Files/Pods-Dobby-DobbyUITests/Pods-Dobby-DobbyUITests.release.xcconfig"; sourceTree = "<group>"; };
 		A12095E828F2A198008CE410 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		A12095EA28F2E010008CE410 /* RefreshAuthAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshAuthAPI.swift; sourceTree = "<group>"; };
 		A12095EC28F3F1B5008CE410 /* Dobby.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Dobby.entitlements; sourceTree = "<group>"; };
@@ -179,6 +175,8 @@
 		A1789354291D115D007893FB /* LogoutAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutAPI.swift; sourceTree = "<group>"; };
 		A1789356291D17E2007893FB /* DobbyResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DobbyResponse.swift; sourceTree = "<group>"; };
 		A1789358291D2035007893FB /* ResignAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResignAPI.swift; sourceTree = "<group>"; };
+		A178935C291E8332007893FB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		A17A60EDE0B5ABC5EFFC0B11 /* Pods-DobbyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DobbyTests.release.xcconfig"; path = "Target Support Files/Pods-DobbyTests/Pods-DobbyTests.release.xcconfig"; sourceTree = "<group>"; };
 		A19E97E42904D7DE004A8861 /* DailyChoreCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyChoreCoordinator.swift; sourceTree = "<group>"; };
 		A19E97E62904D7E6004A8861 /* WeeklyChoreCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyChoreCoordinator.swift; sourceTree = "<group>"; };
 		A19E97E82904D7EF004A8861 /* MonthlyChoreCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyChoreCoordinator.swift; sourceTree = "<group>"; };
@@ -198,7 +196,6 @@
 		A19E98082906B22B004A8861 /* ChoreAttribute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoreAttribute.swift; sourceTree = "<group>"; };
 		A19E980B2906CB52004A8861 /* ChoreAttributeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoreAttributeView.swift; sourceTree = "<group>"; };
 		A19E98152906CE85004A8861 /* ChoreMemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoreMemoView.swift; sourceTree = "<group>"; };
-		A19E982629081B69004A8861 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A19E982D290A9D64004A8861 /* UITextField+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+.swift"; sourceTree = "<group>"; };
 		A19E9830290CECEA004A8861 /* ModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalViewController.swift; sourceTree = "<group>"; };
 		A19E983A290D06C7004A8861 /* ModalCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalCoordinator.swift; sourceTree = "<group>"; };
@@ -227,9 +224,10 @@
 		A19E987B2917D500004A8861 /* SelectRepeatCycleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectRepeatCycleCell.swift; sourceTree = "<group>"; };
 		A19E987D2917D6B0004A8861 /* ChoreRepeatCycle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoreRepeatCycle.swift; sourceTree = "<group>"; };
 		A19E9880291941B8004A8861 /* RegisterAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterAPI.swift; sourceTree = "<group>"; };
-		A9B722602644972E8A20B23F /* Pods-DobbyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DobbyTests.debug.xcconfig"; path = "Target Support Files/Pods-DobbyTests/Pods-DobbyTests.debug.xcconfig"; sourceTree = "<group>"; };
-		ABCE8077762A15E26783E084 /* Pods_DobbyTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DobbyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C507575F588E1F7301BDE870 /* Pods-Dobby.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dobby.debug.xcconfig"; path = "Target Support Files/Pods-Dobby/Pods-Dobby.debug.xcconfig"; sourceTree = "<group>"; };
+		A5AC03B947483404E600E584 /* Pods-DobbyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DobbyTests.debug.xcconfig"; path = "Target Support Files/Pods-DobbyTests/Pods-DobbyTests.debug.xcconfig"; sourceTree = "<group>"; };
+		DB5AA1FAC158301AE70B684B /* Pods-Dobby.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dobby.debug.xcconfig"; path = "Target Support Files/Pods-Dobby/Pods-Dobby.debug.xcconfig"; sourceTree = "<group>"; };
+		E4AD1EDD5CCDD37BD771AC5A /* Pods_DobbyTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DobbyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F6AFAAA971B1B1A2BF1DDCE2 /* Pods-Dobby-DobbyUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dobby-DobbyUITests.debug.xcconfig"; path = "Target Support Files/Pods-Dobby-DobbyUITests/Pods-Dobby-DobbyUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -237,9 +235,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A19E982C29081BF5004A8861 /* FirebaseCrashlytics in Frameworks */,
-				7A1E238D9702E2CD63EAB538 /* Pods_Dobby.framework in Frameworks */,
-				A19E982A29081BF5004A8861 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
+				81D7170A0CB8A71B30D14140 /* Pods_Dobby.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -247,7 +243,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				85B3274CA2BFED914D29318D /* Pods_DobbyTests.framework in Frameworks */,
+				C2781E59171273E0B07E799D /* Pods_DobbyTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -255,7 +251,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8A2C023E51967F7CE6E7BB59 /* Pods_Dobby_DobbyUITests.framework in Frameworks */,
+				5D37CFAC2FFA4B3C846EA3C8 /* Pods_Dobby_DobbyUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -265,12 +261,12 @@
 		59B4FB3B3674F69DBEF32677 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				C507575F588E1F7301BDE870 /* Pods-Dobby.debug.xcconfig */,
-				67ECB9F13FDFEA20C434C48B /* Pods-Dobby.release.xcconfig */,
-				7259709F58ED6A5CD10AB35B /* Pods-Dobby-DobbyUITests.debug.xcconfig */,
-				08A81A233D17FC80B06193AF /* Pods-Dobby-DobbyUITests.release.xcconfig */,
-				A9B722602644972E8A20B23F /* Pods-DobbyTests.debug.xcconfig */,
-				3FA77014358A4A589F0E4EEB /* Pods-DobbyTests.release.xcconfig */,
+				DB5AA1FAC158301AE70B684B /* Pods-Dobby.debug.xcconfig */,
+				8083386DCEF92A322C58B66A /* Pods-Dobby.release.xcconfig */,
+				F6AFAAA971B1B1A2BF1DDCE2 /* Pods-Dobby-DobbyUITests.debug.xcconfig */,
+				8741B0934360EC4A243B1998 /* Pods-Dobby-DobbyUITests.release.xcconfig */,
+				A5AC03B947483404E600E584 /* Pods-DobbyTests.debug.xcconfig */,
+				A17A60EDE0B5ABC5EFFC0B11 /* Pods-DobbyTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -284,7 +280,7 @@
 				A13C533028E7129F00C72215 /* DobbyUITests */,
 				A13C530E28E7129D00C72215 /* Products */,
 				59B4FB3B3674F69DBEF32677 /* Pods */,
-				A5DA04EED6FD9D57AE1689DC /* Frameworks */,
+				EECB826E23EA5A1E908A6DD1 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -301,8 +297,8 @@
 		A13C530F28E7129D00C72215 /* Dobby */ = {
 			isa = PBXGroup;
 			children = (
-				A19E982629081B69004A8861 /* GoogleService-Info.plist */,
 				A12095EC28F3F1B5008CE410 /* Dobby.entitlements */,
+				A178935C291E8332007893FB /* GoogleService-Info.plist */,
 				A13C534128E7175700C72215 /* Resources */,
 				A13C534028E7175000C72215 /* Sources */,
 				A13C531E28E7129E00C72215 /* Info.plist */,
@@ -716,12 +712,12 @@
 			path = Auth;
 			sourceTree = "<group>";
 		};
-		A5DA04EED6FD9D57AE1689DC /* Frameworks */ = {
+		EECB826E23EA5A1E908A6DD1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				690E5636BED438ED7FB12D25 /* Pods_Dobby.framework */,
-				73DDA743A982F06E1D5193E0 /* Pods_Dobby_DobbyUITests.framework */,
-				ABCE8077762A15E26783E084 /* Pods_DobbyTests.framework */,
+				3336AE106AE91D152C06F33D /* Pods_Dobby.framework */,
+				3F56AA76B9FEBCC2098137B1 /* Pods_Dobby_DobbyUITests.framework */,
+				E4AD1EDD5CCDD37BD771AC5A /* Pods_DobbyTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -733,13 +729,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A13C533728E7129F00C72215 /* Build configuration list for PBXNativeTarget "Dobby" */;
 			buildPhases = (
-				B459462496B6F1FD69692E63 /* [CP] Check Pods Manifest.lock */,
+				053B6A25A73E9B3DF81E39AA /* [CP] Check Pods Manifest.lock */,
 				A13C530928E7129D00C72215 /* Sources */,
 				A13C530A28E7129D00C72215 /* Frameworks */,
 				A13C530B28E7129D00C72215 /* Resources */,
 				A13C534228E71AED00C72215 /* ShellScript */,
 				A12095EF28F3FFAC008CE410 /* ShellScript */,
-				99F963BB6F683A77FDC682C4 /* [CP] Embed Pods Frameworks */,
+				D17067F7F1EFEA84311475AB /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -747,8 +743,6 @@
 			);
 			name = Dobby;
 			packageProductDependencies = (
-				A19E982929081BF5004A8861 /* FirebaseAnalyticsWithoutAdIdSupport */,
-				A19E982B29081BF5004A8861 /* FirebaseCrashlytics */,
 			);
 			productName = Dobby;
 			productReference = A13C530D28E7129D00C72215 /* Dobby.app */;
@@ -758,7 +752,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A13C533A28E7129F00C72215 /* Build configuration list for PBXNativeTarget "DobbyTests" */;
 			buildPhases = (
-				52998C1EFB2D461E8B804E3E /* [CP] Check Pods Manifest.lock */,
+				A84F43FB6E012266EB18F083 /* [CP] Check Pods Manifest.lock */,
 				A13C531F28E7129E00C72215 /* Sources */,
 				A13C532028E7129E00C72215 /* Frameworks */,
 				A13C532128E7129E00C72215 /* Resources */,
@@ -777,11 +771,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A13C533D28E7129F00C72215 /* Build configuration list for PBXNativeTarget "DobbyUITests" */;
 			buildPhases = (
-				5D84765D00329D809DD6FD10 /* [CP] Check Pods Manifest.lock */,
+				62986E861344FCC98C504970 /* [CP] Check Pods Manifest.lock */,
 				A13C532928E7129F00C72215 /* Sources */,
 				A13C532A28E7129F00C72215 /* Frameworks */,
 				A13C532B28E7129F00C72215 /* Resources */,
-				964B8091CBCB26AE368BFB56 /* [CP] Embed Pods Frameworks */,
+				426E9E02BF6A642655E083B3 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -826,7 +820,6 @@
 			);
 			mainGroup = A13C530428E7129D00C72215;
 			packageReferences = (
-				A19E982829081BF5004A8861 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = A13C530E28E7129D00C72215 /* Products */;
 			projectDirPath = "";
@@ -849,7 +842,7 @@
 				A13C531D28E7129E00C72215 /* LaunchScreen.storyboard in Resources */,
 				A13C531A28E7129E00C72215 /* Assets.xcassets in Resources */,
 				A12095FB29016034008CE410 /* splash.json in Resources */,
-				A19E982729081B69004A8861 /* GoogleService-Info.plist in Resources */,
+				A178935D291E8332007893FB /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -870,7 +863,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		52998C1EFB2D461E8B804E3E /* [CP] Check Pods Manifest.lock */ = {
+		053B6A25A73E9B3DF81E39AA /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -885,14 +878,31 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-DobbyTests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-Dobby-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		5D84765D00329D809DD6FD10 /* [CP] Check Pods Manifest.lock */ = {
+		426E9E02BF6A642655E083B3 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Dobby-DobbyUITests/Pods-Dobby-DobbyUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Dobby-DobbyUITests/Pods-Dobby-DobbyUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Dobby-DobbyUITests/Pods-Dobby-DobbyUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		62986E861344FCC98C504970 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -914,50 +924,15 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		964B8091CBCB26AE368BFB56 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Dobby-DobbyUITests/Pods-Dobby-DobbyUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Dobby-DobbyUITests/Pods-Dobby-DobbyUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Dobby-DobbyUITests/Pods-Dobby-DobbyUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		99F963BB6F683A77FDC682C4 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Dobby/Pods-Dobby-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Dobby/Pods-Dobby-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Dobby/Pods-Dobby-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		A12095EF28F3FFAC008CE410 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}",
-				"$(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
 			);
 			outputFileListPaths = (
 			);
@@ -965,7 +940,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${BUILD_DIR%/Build/*}/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/run\"\n";
+			shellScript = "\"${PODS_ROOT}/FirebaseCrashlytics/run\"\n\"${PODS_ROOT}/FirebaseCrashlytics/upload-symbols\" -gsp ${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app/GoogleService-Info.plist -p ios ${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}\n";
 		};
 		A13C534228E71AED00C72215 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -984,7 +959,7 @@
 			shellPath = /bin/sh;
 			shellScript = "${PODS_ROOT}/SwiftLint/swiftlint\n\n";
 		};
-		B459462496B6F1FD69692E63 /* [CP] Check Pods Manifest.lock */ = {
+		A84F43FB6E012266EB18F083 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -999,11 +974,28 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Dobby-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-DobbyTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D17067F7F1EFEA84311475AB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Dobby/Pods-Dobby-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Dobby/Pods-Dobby-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Dobby/Pods-Dobby-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1259,7 +1251,7 @@
 		};
 		A13C533828E7129F00C72215 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C507575F588E1F7301BDE870 /* Pods-Dobby.debug.xcconfig */;
+			baseConfigurationReference = DB5AA1FAC158301AE70B684B /* Pods-Dobby.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1295,7 +1287,7 @@
 		};
 		A13C533928E7129F00C72215 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 67ECB9F13FDFEA20C434C48B /* Pods-Dobby.release.xcconfig */;
+			baseConfigurationReference = 8083386DCEF92A322C58B66A /* Pods-Dobby.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1330,7 +1322,7 @@
 		};
 		A13C533B28E7129F00C72215 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A9B722602644972E8A20B23F /* Pods-DobbyTests.debug.xcconfig */;
+			baseConfigurationReference = A5AC03B947483404E600E584 /* Pods-DobbyTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1351,7 +1343,7 @@
 		};
 		A13C533C28E7129F00C72215 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3FA77014358A4A589F0E4EEB /* Pods-DobbyTests.release.xcconfig */;
+			baseConfigurationReference = A17A60EDE0B5ABC5EFFC0B11 /* Pods-DobbyTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1372,7 +1364,7 @@
 		};
 		A13C533E28E7129F00C72215 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7259709F58ED6A5CD10AB35B /* Pods-Dobby-DobbyUITests.debug.xcconfig */;
+			baseConfigurationReference = F6AFAAA971B1B1A2BF1DDCE2 /* Pods-Dobby-DobbyUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -1391,7 +1383,7 @@
 		};
 		A13C533F28E7129F00C72215 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 08A81A233D17FC80B06193AF /* Pods-Dobby-DobbyUITests.release.xcconfig */;
+			baseConfigurationReference = 8741B0934360EC4A243B1998 /* Pods-Dobby-DobbyUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -1448,30 +1440,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		A19E982829081BF5004A8861 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 9.0.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		A19E982929081BF5004A8861 /* FirebaseAnalyticsWithoutAdIdSupport */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = A19E982829081BF5004A8861 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAnalyticsWithoutAdIdSupport;
-		};
-		A19E982B29081BF5004A8861 /* FirebaseCrashlytics */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = A19E982829081BF5004A8861 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseCrashlytics;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A13C530528E7129D00C72215 /* Project object */;
 }

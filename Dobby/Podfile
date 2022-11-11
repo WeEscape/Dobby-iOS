@@ -36,6 +36,10 @@ target 'Dobby' do
   
   # KakaoSDK
   pod 'RxKakaoSDK'
+  
+  # Firebase
+  pod 'FirebaseCrashlytics'
+  pod 'FirebaseAnalytics'
 
   target 'DobbyTests' do
     inherit! :search_paths
