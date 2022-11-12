@@ -24,9 +24,8 @@ final class AddChoreViewController: BaseViewController {
         static let addBtnBottomInset: CGFloat = 25
         static let titleFontSize: CGFloat = 18
         static let bodyFontSize: CGFloat = 16
-        static let titleTextFieldHeight: CGFloat = 0 // 80
+        static let titleTextFieldHeight: CGFloat = 80
         static let bodyLeftRightInset: CGFloat = 26
-        static let stackViewTopMargin: CGFloat = 20
     }
     
     private let addChoreBtn: UIButton = {
@@ -44,7 +43,6 @@ final class AddChoreViewController: BaseViewController {
         )
         tf.returnKeyType = .done
         tf.keyboardType = .default
-        tf.isHidden = true
         return tf
     }()
     
@@ -81,10 +79,10 @@ final class AddChoreViewController: BaseViewController {
         bind()
     }
     
-//    override func viewDidAppear(_ animated: Bool) {
-//        choreTitleTextField.becomeFirstResponder()
-//    }
-//
+    override func viewDidAppear(_ animated: Bool) {
+        choreTitleTextField.becomeFirstResponder()
+    }
+
     // MARK: method
     func setupUI() {
         self.view.backgroundColor = .white
@@ -116,7 +114,7 @@ final class AddChoreViewController: BaseViewController {
         
         self.view.addSubview(attributeStackView)
         attributeStackView.snp.makeConstraints {
-            $0.top.equalTo(choreTitleTextField.snp.bottom).offset(Metric.stackViewTopMargin)
+            $0.top.equalTo(choreTitleTextField.snp.bottom)
             $0.left.equalTo(view.safeAreaLayoutGuide.snp.left).inset(Metric.bodyLeftRightInset)
             $0.right.equalTo(view.safeAreaLayoutGuide.snp.right).inset(Metric.bodyLeftRightInset)
             $0.bottom.equalTo(addChoreBtn.snp.top).inset(-Metric.addBtnBottomInset)
