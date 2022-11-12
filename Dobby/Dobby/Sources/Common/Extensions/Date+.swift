@@ -8,9 +8,9 @@
 import Foundation
 
 extension Date {
-    func toStringWithoutTime() -> String {
+    func toStringWithoutTime(dateFormat: String = "yyyy-MM-dd") -> String {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
+        dateFormatter.dateFormat = dateFormat
         dateFormatter.locale = Locale.current
         dateFormatter.timeZone = TimeZone.current
         return dateFormatter.string(from: self)

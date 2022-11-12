@@ -54,6 +54,10 @@
 		A1789357291D17E2007893FB /* DobbyResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1789356291D17E2007893FB /* DobbyResponse.swift */; };
 		A1789359291D2035007893FB /* ResignAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1789358291D2035007893FB /* ResignAPI.swift */; };
 		A178935D291E8332007893FB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A178935C291E8332007893FB /* GoogleService-Info.plist */; };
+		A178935F291E8E2B007893FB /* DateStrCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A178935E291E8E2B007893FB /* DateStrCollectionCell.swift */; };
+		A1789361291FA8C4007893FB /* DailyChoreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1789360291FA8C4007893FB /* DailyChoreViewModel.swift */; };
+		A1789363291FADAC007893FB /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1789362291FADAC007893FB /* BaseViewModel.swift */; };
+		A1789365291FAF67007893FB /* DateStrListSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1789364291FAF66007893FB /* DateStrListSection.swift */; };
 		A19E97E52904D7DE004A8861 /* DailyChoreCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E97E42904D7DE004A8861 /* DailyChoreCoordinator.swift */; };
 		A19E97E72904D7E6004A8861 /* WeeklyChoreCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E97E62904D7E6004A8861 /* WeeklyChoreCoordinator.swift */; };
 		A19E97E92904D7EF004A8861 /* MonthlyChoreCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E97E82904D7EF004A8861 /* MonthlyChoreCoordinator.swift */; };
@@ -176,6 +180,10 @@
 		A1789356291D17E2007893FB /* DobbyResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DobbyResponse.swift; sourceTree = "<group>"; };
 		A1789358291D2035007893FB /* ResignAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResignAPI.swift; sourceTree = "<group>"; };
 		A178935C291E8332007893FB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		A178935E291E8E2B007893FB /* DateStrCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateStrCollectionCell.swift; sourceTree = "<group>"; };
+		A1789360291FA8C4007893FB /* DailyChoreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyChoreViewModel.swift; sourceTree = "<group>"; };
+		A1789362291FADAC007893FB /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
+		A1789364291FAF66007893FB /* DateStrListSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateStrListSection.swift; sourceTree = "<group>"; };
 		A17A60EDE0B5ABC5EFFC0B11 /* Pods-DobbyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DobbyTests.release.xcconfig"; path = "Target Support Files/Pods-DobbyTests/Pods-DobbyTests.release.xcconfig"; sourceTree = "<group>"; };
 		A19E97E42904D7DE004A8861 /* DailyChoreCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyChoreCoordinator.swift; sourceTree = "<group>"; };
 		A19E97E62904D7E6004A8861 /* WeeklyChoreCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyChoreCoordinator.swift; sourceTree = "<group>"; };
@@ -410,6 +418,7 @@
 				A13C535128E817F800C72215 /* Coordinator.swift */,
 				A13C535628E8231100C72215 /* BaseViewController.swift */,
 				A19E980429054640004A8861 /* LoadingIndicatorView.swift */,
+				A1789362291FADAC007893FB /* BaseViewModel.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -547,6 +556,9 @@
 			children = (
 				A19E97E42904D7DE004A8861 /* DailyChoreCoordinator.swift */,
 				A19E97EE2904D826004A8861 /* DailyChoreViewController.swift */,
+				A178935E291E8E2B007893FB /* DateStrCollectionCell.swift */,
+				A1789360291FA8C4007893FB /* DailyChoreViewModel.swift */,
+				A1789364291FAF66007893FB /* DateStrListSection.swift */,
 			);
 			path = DailyChore;
 			sourceTree = "<group>";
@@ -1010,6 +1022,7 @@
 				A174B17C28EF034100F80112 /* NetworkLoggerPlugin.swift in Sources */,
 				A19E985B2912A1E7004A8861 /* SelectChoreAttributeCoordinator.swift in Sources */,
 				A13C537728E9786900C72215 /* WelcomeViewController.swift in Sources */,
+				A1789363291FADAC007893FB /* BaseViewModel.swift in Sources */,
 				A19E98522911529F004A8861 /* EditProfileCoordinator.swift in Sources */,
 				A13C534B28E816B800C72215 /* RootCoordinator.swift in Sources */,
 				A19E98162906CE85004A8861 /* ChoreMemoView.swift in Sources */,
@@ -1021,6 +1034,7 @@
 				A12095E928F2A198008CE410 /* NetworkError.swift in Sources */,
 				A19E9848290FF1A7004A8861 /* MyPageViewModel.swift in Sources */,
 				A19E97FD29053621004A8861 /* AddChoreViewModel.swift in Sources */,
+				A1789361291FA8C4007893FB /* DailyChoreViewModel.swift in Sources */,
 				A13C536028E8942900C72215 /* AuthenticationRepository.swift in Sources */,
 				A19E97E52904D7DE004A8861 /* DailyChoreCoordinator.swift in Sources */,
 				A19E980529054640004A8861 /* LoadingIndicatorView.swift in Sources */,
@@ -1087,6 +1101,8 @@
 				A19E97FB29052A2A004A8861 /* CALayer+.swift in Sources */,
 				A13C537928E9789200C72215 /* MainTabBarController.swift in Sources */,
 				A1789353291A912A007893FB /* UserDTO.swift in Sources */,
+				A178935F291E8E2B007893FB /* DateStrCollectionCell.swift in Sources */,
+				A1789365291FAF67007893FB /* DateStrListSection.swift in Sources */,
 				A19E9854291152AB004A8861 /* EditProfileViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
