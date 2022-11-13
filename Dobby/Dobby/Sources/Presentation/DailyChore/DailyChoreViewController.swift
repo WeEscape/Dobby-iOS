@@ -32,8 +32,7 @@ final class DailyChoreViewController: BaseViewController {
     // MARK: UI
     struct Metric {
         static let titleMargin: CGFloat = 40
-        static let interitemSpacing: CGFloat = 10
-        static let itemSize: CGSize = .init(width: 60, height: 60)
+        static let itemSize: CGSize = .init(width: 30, height: 60)
     }
     
     private let titleLabel: UILabel = {
@@ -76,10 +75,10 @@ final class DailyChoreViewController: BaseViewController {
     private let dateSelectCollectionView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.itemSize = Metric.itemSize
-        flowLayout.minimumInteritemSpacing = Metric.interitemSpacing
+        flowLayout.minimumInteritemSpacing = 0
+        flowLayout.minimumLineSpacing = 10
         flowLayout.scrollDirection = .horizontal
         let collection = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
-        collection.backgroundColor = .yellow
         collection.showsVerticalScrollIndicator = false
         collection.showsHorizontalScrollIndicator = false
         collection.register(

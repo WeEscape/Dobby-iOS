@@ -24,7 +24,7 @@ class DailyChoreViewModel: BaseViewModel {
         let calendar = Calendar.current
         var component = calendar.dateComponents([.year, .month, .day, .weekday], from: today)
         component.day! -= 7
-        let dateArrange = 0...15
+        let dateArrange = 0...14
         var dateList: [Date] = .init()
         for _ in dateArrange {
             if let date = calendar.date(from: component) {
@@ -41,7 +41,7 @@ class DailyChoreViewModel: BaseViewModel {
                 from: today
             )
             self.selectedDatePublish.accept(todayDateComponent)
-            let middle = (dateArrange.count / 2) - 1
+            let middle = (dateArrange.count / 2)
             self.emitNewSelectedCellIndex(middle)
         }
     }
@@ -50,7 +50,7 @@ class DailyChoreViewModel: BaseViewModel {
         guard let selectedDate = dateListSectionBehavior.value.first?.items[safe: index]
         else {return}
         let calendar = Calendar.current
-        var component = calendar.dateComponents(
+        let component = calendar.dateComponents(
             [.year, .month, .day, .weekday],
             from: selectedDate
         )
@@ -77,7 +77,7 @@ class DailyChoreViewModel: BaseViewModel {
     
     func didTapGotoToday() {
         let numberOfCell = dateListSectionBehavior.value.first?.items.count ?? 0
-        let middle = (numberOfCell / 2) - 1
+        let middle = (numberOfCell / 2)
         if middle >= 0 {
             let calendar = Calendar.current
             let todayDateComponent = calendar.dateComponents(
