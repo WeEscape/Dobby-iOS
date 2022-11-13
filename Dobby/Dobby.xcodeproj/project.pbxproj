@@ -54,10 +54,12 @@
 		A1789357291D17E2007893FB /* DobbyResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1789356291D17E2007893FB /* DobbyResponse.swift */; };
 		A1789359291D2035007893FB /* ResignAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1789358291D2035007893FB /* ResignAPI.swift */; };
 		A178935D291E8332007893FB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A178935C291E8332007893FB /* GoogleService-Info.plist */; };
-		A178935F291E8E2B007893FB /* DateStrCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A178935E291E8E2B007893FB /* DateStrCollectionCell.swift */; };
+		A178935F291E8E2B007893FB /* DateSelectCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A178935E291E8E2B007893FB /* DateSelectCollectionCell.swift */; };
 		A1789361291FA8C4007893FB /* DailyChoreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1789360291FA8C4007893FB /* DailyChoreViewModel.swift */; };
 		A1789363291FADAC007893FB /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1789362291FADAC007893FB /* BaseViewModel.swift */; };
-		A1789365291FAF67007893FB /* DateStrListSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1789364291FAF66007893FB /* DateStrListSection.swift */; };
+		A1789365291FAF67007893FB /* DateListSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1789364291FAF66007893FB /* DateListSection.swift */; };
+		A178936C2920C8FD007893FB /* DailyChoreDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A178936B2920C8FD007893FB /* DailyChoreDetailViewController.swift */; };
+		A178936E2920C908007893FB /* DailyChoreDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A178936D2920C908007893FB /* DailyChoreDetailViewModel.swift */; };
 		A19E97E52904D7DE004A8861 /* DailyChoreCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E97E42904D7DE004A8861 /* DailyChoreCoordinator.swift */; };
 		A19E97E72904D7E6004A8861 /* WeeklyChoreCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E97E62904D7E6004A8861 /* WeeklyChoreCoordinator.swift */; };
 		A19E97E92904D7EF004A8861 /* MonthlyChoreCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E97E82904D7EF004A8861 /* MonthlyChoreCoordinator.swift */; };
@@ -180,10 +182,12 @@
 		A1789356291D17E2007893FB /* DobbyResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DobbyResponse.swift; sourceTree = "<group>"; };
 		A1789358291D2035007893FB /* ResignAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResignAPI.swift; sourceTree = "<group>"; };
 		A178935C291E8332007893FB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		A178935E291E8E2B007893FB /* DateStrCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateStrCollectionCell.swift; sourceTree = "<group>"; };
+		A178935E291E8E2B007893FB /* DateSelectCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateSelectCollectionCell.swift; sourceTree = "<group>"; };
 		A1789360291FA8C4007893FB /* DailyChoreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyChoreViewModel.swift; sourceTree = "<group>"; };
 		A1789362291FADAC007893FB /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
-		A1789364291FAF66007893FB /* DateStrListSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateStrListSection.swift; sourceTree = "<group>"; };
+		A1789364291FAF66007893FB /* DateListSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateListSection.swift; sourceTree = "<group>"; };
+		A178936B2920C8FD007893FB /* DailyChoreDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyChoreDetailViewController.swift; sourceTree = "<group>"; };
+		A178936D2920C908007893FB /* DailyChoreDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyChoreDetailViewModel.swift; sourceTree = "<group>"; };
 		A17A60EDE0B5ABC5EFFC0B11 /* Pods-DobbyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DobbyTests.release.xcconfig"; path = "Target Support Files/Pods-DobbyTests/Pods-DobbyTests.release.xcconfig"; sourceTree = "<group>"; };
 		A19E97E42904D7DE004A8861 /* DailyChoreCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyChoreCoordinator.swift; sourceTree = "<group>"; };
 		A19E97E62904D7E6004A8861 /* WeeklyChoreCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyChoreCoordinator.swift; sourceTree = "<group>"; };
@@ -373,6 +377,7 @@
 				A19E97E32904D7AB004A8861 /* MyPage */,
 				A19E97E12904D77B004A8861 /* MonthlyChore */,
 				A19E97E02904D775004A8861 /* WeeklyChore */,
+				A178936A2920C8DC007893FB /* DailyChoreDetail */,
 				A19E97DF2904D761004A8861 /* DailyChore */,
 				A13C537428E9783500C72215 /* MainTab */,
 				A13C537528E9784300C72215 /* Welcome */,
@@ -551,14 +556,23 @@
 			path = Plugins;
 			sourceTree = "<group>";
 		};
+		A178936A2920C8DC007893FB /* DailyChoreDetail */ = {
+			isa = PBXGroup;
+			children = (
+				A178936B2920C8FD007893FB /* DailyChoreDetailViewController.swift */,
+				A178936D2920C908007893FB /* DailyChoreDetailViewModel.swift */,
+			);
+			path = DailyChoreDetail;
+			sourceTree = "<group>";
+		};
 		A19E97DF2904D761004A8861 /* DailyChore */ = {
 			isa = PBXGroup;
 			children = (
 				A19E97E42904D7DE004A8861 /* DailyChoreCoordinator.swift */,
 				A19E97EE2904D826004A8861 /* DailyChoreViewController.swift */,
-				A178935E291E8E2B007893FB /* DateStrCollectionCell.swift */,
+				A178935E291E8E2B007893FB /* DateSelectCollectionCell.swift */,
 				A1789360291FA8C4007893FB /* DailyChoreViewModel.swift */,
-				A1789364291FAF66007893FB /* DateStrListSection.swift */,
+				A1789364291FAF66007893FB /* DateListSection.swift */,
 			);
 			path = DailyChore;
 			sourceTree = "<group>";
@@ -1062,6 +1076,7 @@
 				A19E97E92904D7EF004A8861 /* MonthlyChoreCoordinator.swift in Sources */,
 				A19E987A2917D4EF004A8861 /* SelectRepeatCycleView.swift in Sources */,
 				A13C536328E9173900C72215 /* AuthenticationRepositoryImpl.swift in Sources */,
+				A178936C2920C8FD007893FB /* DailyChoreDetailViewController.swift in Sources */,
 				A19E98642912AAF1004A8861 /* SelectProfileAttributeViewController.swift in Sources */,
 				A13C537F28EA9C0000C72215 /* AppKey.swift in Sources */,
 				A19E980029053B32004A8861 /* ChoreUseCase.swift in Sources */,
@@ -1092,6 +1107,7 @@
 				A13C536528E91BB800C72215 /* Authentication.swift in Sources */,
 				A19E985D2912A3D0004A8861 /* SelectChoreAttributeViewController.swift in Sources */,
 				A19E985829128D28004A8861 /* EditProfileColorView.swift in Sources */,
+				A178936E2920C908007893FB /* DailyChoreDetailViewModel.swift in Sources */,
 				A1789359291D2035007893FB /* ResignAPI.swift in Sources */,
 				A1789357291D17E2007893FB /* DobbyResponse.swift in Sources */,
 				A19E97EB2904D7F7004A8861 /* AddChoreCoordinator.swift in Sources */,
@@ -1101,8 +1117,8 @@
 				A19E97FB29052A2A004A8861 /* CALayer+.swift in Sources */,
 				A13C537928E9789200C72215 /* MainTabBarController.swift in Sources */,
 				A1789353291A912A007893FB /* UserDTO.swift in Sources */,
-				A178935F291E8E2B007893FB /* DateStrCollectionCell.swift in Sources */,
-				A1789365291FAF67007893FB /* DateStrListSection.swift in Sources */,
+				A178935F291E8E2B007893FB /* DateSelectCollectionCell.swift in Sources */,
+				A1789365291FAF67007893FB /* DateListSection.swift in Sources */,
 				A19E9854291152AB004A8861 /* EditProfileViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

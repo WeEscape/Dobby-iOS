@@ -1,5 +1,5 @@
 //
-//  DateStrCollectionCell.swift
+//  DateSelectCollectionCell.swift
 //  Dobby
 //
 //  Created by yongmin lee on 11/11/22.
@@ -9,10 +9,11 @@ import UIKit
 import SnapKit
 import RxSwift
 
-class DateStrCollectionCell: UICollectionViewCell {
+class DateSelectCollectionCell: UICollectionViewCell {
 
     static var ID = "DateStrCollectionCell"
-
+    var day: Int = 0
+    
     let titleLabel: UILabel = {
         let label = UILabel()
         return label
@@ -45,12 +46,12 @@ class DateStrCollectionCell: UICollectionViewCell {
             make.center.equalToSuperview()
         }
     }
-
-    func setItem(_ item: String) {
-        guard let date = item.toDate(dateFormat: "yyyy-MM-dd") else {return}
+    
+    func setDate(_ date: Date) {
         let calendar = Calendar.current
-        let component = calendar.dateComponents([.year, .month, .day], from: date)
-        print("Debug : cell day -> \(component.day!)")
+        let component = calendar.dateComponents([.year, .month, .day, .weekday], from: date)
+        print("Debug : cell day -> \(component.day!), 요일: \(component.weekday!)")
         titleLabel.text = "\(component.day ?? 0)"
+        self.day = component.day ?? 0
     }
 }

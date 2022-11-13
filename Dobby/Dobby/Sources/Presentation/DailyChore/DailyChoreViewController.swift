@@ -11,18 +11,21 @@ import RxGesture
 import RxSwift
 import RxCocoa
 import RxDataSources
+import RxOptional
 
 final class DailyChoreViewController: BaseViewController {
 
     // MARK: property
     let viewModel: DailyChoreViewModel
-    let collectionDataSource = RxCollectionViewSectionedReloadDataSource<DateStrListSection> {
-        datasource, collectionview, index, item in
+    let collectionDataSource = RxCollectionViewSectionedReloadDataSource<DateListSection> {
+        _, collectionview, index, item in
         let cell = collectionview.dequeueReusableCell(
-            withReuseIdentifier: DateStrCollectionCell.ID,
+            withReuseIdentifier: DateSelectCollectionCell.ID,
             for: index
-        ) as! DateStrCollectionCell
-        cell.setItem(item)
+        )
+        if let cell = cell as? DateSelectCollectionCell {
+            cell.setDate(item)
+        }
         return cell
     }
     
@@ -30,7 +33,7 @@ final class DailyChoreViewController: BaseViewController {
     struct Metric {
         static let titleMargin: CGFloat = 40
         static let interitemSpacing: CGFloat = 10
-        static let itemSize: CGSize = .init(width: 56, height: 56)
+        static let itemSize: CGSize = .init(width: 60, height: 60)
     }
     
     private let titleLabel: UILabel = {
@@ -43,10 +46,21 @@ final class DailyChoreViewController: BaseViewController {
     
     private let monthBtn: UIButton = {
         let btn = UIButton(configuration: .gray())
-        btn.setTitle("12월", for: .normal)
+        btn.setTitle("월", for: .normal)
         btn.setTitleColor(Palette.textBlack1, for: .normal)
         btn.tintColor = Palette.textGray1
         return btn
+    }()
+    
+    private lazy var pageViewController: UIPageViewController = {
+        let vc = UIPageViewController(
+            transitionStyle: .scroll,
+            navigationOrientation: .horizontal,
+            options: nil
+        )
+        vc.delegate = self
+        vc.dataSource = self
+        return vc
     }()
     
     // MARK: init
@@ -69,8 +83,8 @@ final class DailyChoreViewController: BaseViewController {
         collection.showsVerticalScrollIndicator = false
         collection.showsHorizontalScrollIndicator = false
         collection.register(
-            DateStrCollectionCell.self,
-            forCellWithReuseIdentifier: DateStrCollectionCell.ID
+            DateSelectCollectionCell.self,
+            forCellWithReuseIdentifier: DateSelectCollectionCell.ID
         )
         return collection
     }()
@@ -94,8 +108,8 @@ final class DailyChoreViewController: BaseViewController {
         
         self.view.addSubview(monthBtn)
         monthBtn.snp.makeConstraints {
-            $0.width.equalTo(56)
-            $0.height.equalTo(56)
+            $0.width.equalTo(60)
+            $0.height.equalTo(60)
             $0.left.equalToSuperview().inset(20)
             $0.top.equalTo(self.titleLabel.snp.bottom).offset(20)
         }
@@ -104,30 +118,69 @@ final class DailyChoreViewController: BaseViewController {
         dateSelectCollectionView.snp.makeConstraints {
             $0.left.equalTo(monthBtn.snp.right).offset(20)
             $0.right.equalToSuperview().inset(20)
-            $0.height.equalTo(56)
+            $0.height.equalTo(60)
             $0.centerY.equalTo(monthBtn.snp.centerY)
         }
+        
+        addChild(pageViewController)
+        view.addSubview(pageViewController.view)
+        pageViewController.view.snp.makeConstraints {
+            $0.top.equalTo(dateSelectCollectionView.snp.bottom).offset(20)
+            $0.left.right.equalToSuperview().inset(20)
+            $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).inset(20)
+        }
+        pageViewController.didMove(toParent: self)
     }
     
+    func setMonthBtnTitle(_ month: Int?) {
+        guard let month = month else {return}
+        monthBtn.setTitle("\(month)월", for: .normal)
+    }
+    
+    func updateSelectedDate(_ selectedIndexList: [Int]) {
+        let oldPageIndex = selectedIndexList.first ?? 0
+        let newpageIndex = selectedIndexList.last ?? 0
+        let direction: UIPageViewController.NavigationDirection =
+        oldPageIndex < newpageIndex ? .forward : .reverse
+        
+        if let selectedVC = self.viewModel.pageVCDataSourceBehavior.value[safe: newpageIndex] {
+            self.pageViewController.setViewControllers(
+                [selectedVC],
+                direction: direction,
+                animated: true,
+                completion: nil
+            )
+        }
+        self.dateSelectCollectionView.selectItem(
+            at: .init(row: newpageIndex, section: 0),
+            animated: true,
+            scrollPosition: .centeredHorizontally
+        )
+    }
+    
+    // MARK: Rx bind
     func bind() {
         bindState()
         bindAction()
     }
     
     func bindState() {
-     
-        viewModel.dateStringBehavior
+        viewModel.dateListSectionBehavior
             .distinctUntilChanged()
             .bind(to: self.dateSelectCollectionView.rx.items(dataSource: collectionDataSource))
             .disposed(by: self.disposeBag)
         
         viewModel.selectedDatePublish
-            .asDriver(onErrorJustReturn: 0)
-            .drive(onNext: { [weak self] dateIndex in
-                self?.dateSelectCollectionView.selectItem(
-                    at: .init(row: dateIndex, section: 0),
-                    animated: false,
-                    scrollPosition: .centeredHorizontally)
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] dateComponents in
+                self?.setMonthBtnTitle(dateComponents.month)
+            }).disposed(by: self.disposeBag)
+        
+        viewModel.selectedCellIndexBehavior
+            .filterNil()
+            .asDriver(onErrorJustReturn: [0, 0])
+            .drive(onNext: { [weak self] selectedIndexList in
+                self?.updateSelectedDate(selectedIndexList)
             }).disposed(by: self.disposeBag)
     }
     
@@ -141,13 +194,47 @@ final class DailyChoreViewController: BaseViewController {
         self.monthBtn.rx.tap
             .throttle(.seconds(1), latest: false, scheduler: MainScheduler.instance)
             .subscribe(onNext: { [weak self] _ in
-                print("Debug : monthBtn.rx.tap -> show today chore with colletionView today animation ")
+                self?.viewModel.didTapGotoToday()
             }).disposed(by: self.disposeBag)
         
         self.dateSelectCollectionView.rx.itemSelected
             .subscribe(onNext: { [weak self] indexPath in
-                self?.viewModel.didTapCell(indexPath.row)
+                self?.viewModel.didSelectCell(indexPath.row)
             }).disposed(by: self.disposeBag)
-        
+    }
+}
+
+extension DailyChoreViewController: UIPageViewControllerDelegate, UIPageViewControllerDataSource {
+    func pageViewController(
+        _ pageViewController: UIPageViewController,
+        viewControllerBefore viewController: UIViewController
+    ) -> UIViewController? {
+        let dataSourceVC = viewModel.pageVCDataSourceBehavior.value
+        guard let index = dataSourceVC.firstIndex(of: viewController) else { return nil }
+        let previousIndex = index - 1
+        return dataSourceVC[safe: previousIndex]
+    }
+    
+    func pageViewController(
+        _ pageViewController: UIPageViewController,
+        viewControllerAfter viewController: UIViewController
+    ) -> UIViewController? {
+        let dataSourceVC = viewModel.pageVCDataSourceBehavior.value
+        guard let index = dataSourceVC.firstIndex(of: viewController) else { return nil }
+        let nextIndex = index + 1
+        return dataSourceVC[safe: nextIndex]
+    }
+    
+    func pageViewController(
+        _ pageViewController: UIPageViewController,
+        didFinishAnimating finished: Bool,
+        previousViewControllers: [UIViewController],
+        transitionCompleted completed: Bool
+    ) {
+        let dataSourceVC = viewModel.pageVCDataSourceBehavior.value
+        guard let currentVC = pageViewController.viewControllers?.first,
+              let currentIndex = dataSourceVC.firstIndex(of: currentVC)
+        else { return }
+        viewModel.didSelectCell(currentIndex)
     }
 }
