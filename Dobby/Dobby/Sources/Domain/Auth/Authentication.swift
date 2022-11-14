@@ -15,6 +15,7 @@ struct Authentication: Decodable {
     let snsUserName: String?
     let snsUserEmail: String?
     let snsUserId: String?
+    let snsProfileUrl: String?
     
     init(
         accessToken: String?,
@@ -23,7 +24,8 @@ struct Authentication: Decodable {
         authorizeCode: String? = nil,
         snsUserName: String? = nil,
         snsUserEmail: String? = nil,
-        snsUserId: String? = nil
+        snsUserId: String? = nil,
+        snsProfileUrl: String? = nil
     ) {
         self.accessToken = accessToken
         self.refreshToken = refreshToken
@@ -32,6 +34,7 @@ struct Authentication: Decodable {
         self.snsUserName = snsUserName
         self.snsUserEmail = snsUserEmail
         self.snsUserId = snsUserId
+        self.snsProfileUrl = snsProfileUrl
     }
 }
 

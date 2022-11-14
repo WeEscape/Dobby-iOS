@@ -30,16 +30,29 @@ final class AuthenticationRepositoryImpl: AuthenticationRepository {
                         BeaverLog.debug(err.localizedDescription)
                         observer.on(.error(err))
                     } else {
-                        observer.on(.next(.init(
-                            accessToken: respone?.accessToken,
-                            refreshToken: respone?.refreshToken,
-                            identityToken: nil,
-                            authorizeCode: nil,
-                            snsUserName: nil,
-                            snsUserEmail: nil,
-                            snsUserId: nil
-                        )))
-                        observer.onCompleted()
+                        UserApi.shared.me { user, err in
+                            if let err = error {
+                                BeaverLog.debug(err.localizedDescription)
+                                observer.on(.error(err))
+                            } else{
+                                guard let userId = user?.id else {
+                                    BeaverLog.debug("error: no kakao user id")
+                                    observer.on(.error(CustomError(memo: "no kakao user id")))
+                                    return
+                                }
+                                observer.on(.next(.init(
+                                    accessToken: respone?.accessToken,
+                                    refreshToken: respone?.refreshToken,
+                                    identityToken: nil,
+                                    authorizeCode: nil,
+                                    snsUserName: user?.kakaoAccount?.name,
+                                    snsUserEmail: user?.kakaoAccount?.email,
+                                    snsUserId: String(userId),
+                                    snsProfileUrl: user?.kakaoAccount?.profile?.profileImageUrl?.absoluteString
+                                )))
+                                observer.onCompleted()
+                            }
+                        }
                     }
                 }
             } else {
