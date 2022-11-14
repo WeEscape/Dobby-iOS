@@ -23,19 +23,20 @@ struct LoginAPI: BaseAPI {
         case .kakao:
             return .requestParameters(
                 parameters: [
-                    "social_access_token": accessToken,
-                    "social_type": "kakao"
+                    "social_type": "kakao",
+                    "social_user_id": snsUserId
                 ],
                 encoding: JSONEncoding.default
             )
         case .apple:
             return .requestParameters(
                 parameters: [
-                    "snsUserName": snsUserName,
-                    "snsUserEmail": snsUserEmail,
-                    "snsUserId": snsUserId,
-                    "identityToken": identityToken,
-                    "authorizeCode": authorizeCode
+                    "social_type": "apple",
+                    "social_user_id": snsUserId
+//                    "snsUserName": snsUserName,
+//                    "snsUserEmail": snsUserEmail,
+//                    "identityToken": identityToken,
+//                    "authorizeCode": authorizeCode
                 ],
                 encoding: JSONEncoding.default
             )
@@ -43,30 +44,30 @@ struct LoginAPI: BaseAPI {
     }
     
     let provider: AuthenticationProvider
-    let accessToken: String
-    let refreshToken: String
-    let identityToken: String
-    let authorizeCode: String
-    let snsUserName: String
-    let snsUserEmail: String
     let snsUserId: String
+//    let accessToken: String
+//    let refreshToken: String
+//    let identityToken: String
+//    let authorizeCode: String
+//    let snsUserName: String
+//    let snsUserEmail: String
     
     init(provider: AuthenticationProvider,
-         accessToken: String?,
-         refreshToken: String?,
-         snsUserName: String?,
-         snsUserEmail: String?,
-         snsUserId: String?,
-         identityToken: String?,
-         authorizeCode: String?
+         snsUserId: String?
+//         accessToken: String?,
+//         refreshToken: String?,
+//         snsUserName: String?,
+//         snsUserEmail: String?,
+//         identityToken: String?,
+//         authorizeCode: String?
     ) {
         self.provider = provider
-        self.accessToken = accessToken ?? ""
-        self.refreshToken = refreshToken ?? ""
-        self.snsUserName = snsUserName ?? ""
-        self.snsUserEmail = snsUserEmail ?? ""
         self.snsUserId = snsUserId ?? ""
-        self.identityToken = identityToken ?? ""
-        self.authorizeCode = authorizeCode ?? ""
+//        self.accessToken = accessToken ?? ""
+//        self.refreshToken = refreshToken ?? ""
+//        self.snsUserName = snsUserName ?? ""
+//        self.snsUserEmail = snsUserEmail ?? ""
+//        self.identityToken = identityToken ?? ""
+//        self.authorizeCode = authorizeCode ?? ""
     }
 }

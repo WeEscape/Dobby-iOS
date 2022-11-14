@@ -34,7 +34,7 @@ final class AuthenticationRepositoryImpl: AuthenticationRepository {
                             if let err = error {
                                 BeaverLog.debug(err.localizedDescription)
                                 observer.on(.error(err))
-                            } else{
+                            } else {
                                 guard let userId = user?.id else {
                                     BeaverLog.debug("error: no kakao user id")
                                     observer.on(.error(CustomError(memo: "no kakao user id")))
@@ -97,13 +97,13 @@ final class AuthenticationRepositoryImpl: AuthenticationRepository {
     ) -> Observable<Authentication> {
         return self.network.request(api: LoginAPI(
             provider: provider,
-            accessToken: authentication.accessToken,
-            refreshToken: authentication.refreshToken,
-            snsUserName: authentication.snsUserName,
-            snsUserEmail: authentication.snsUserEmail,
-            snsUserId: authentication.snsUserId,
-            identityToken: authentication.identityToken,
-            authorizeCode: authentication.authorizeCode
+            snsUserId: authentication.snsUserId
+//            accessToken: authentication.accessToken,
+//            refreshToken: authentication.refreshToken,
+//            snsUserName: authentication.snsUserName,
+//            snsUserEmail: authentication.snsUserEmail,
+//            identityToken: authentication.identityToken,
+//            authorizeCode: authentication.authorizeCode
         )).map { authDTO in
             return authDTO.toDomain()
         }
@@ -112,7 +112,11 @@ final class AuthenticationRepositoryImpl: AuthenticationRepository {
     func register(provider: AuthenticationProvider, auth: Authentication) -> Observable<User?> {
         return self.network.request(api: RegisterAPI(
             provider: provider,
-            accessToken: auth.accessToken
+            snsUserId: auth.snsUserId,
+            userName: auth.snsUserName,
+            userEmail: auth.snsUserEmail,
+            profileUrl: auth.snsProfileUrl,
+            authorizeCode: auth.authorizeCode
         )).map { userDTO in
             return userDTO.toDomain()
         }

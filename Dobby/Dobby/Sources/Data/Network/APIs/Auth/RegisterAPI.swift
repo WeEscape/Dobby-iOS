@@ -23,16 +23,24 @@ struct RegisterAPI: BaseAPI {
         case .kakao:
             return .requestParameters(
                 parameters: [
-                    "social_access_token": accessToken,
-                    "social_type": "kakao"
+                    "social_type": "kakao",
+                    "social_user_id": snsUserId,
+                    "name": userName,
+                    "email": userEmail,
+                    "profile_url": profileUrl,
+                    "authorize_code": authorizeCode
                 ],
                 encoding: JSONEncoding.default
             )
         case .apple:
             return .requestParameters(
                 parameters: [
-                    "social_access_token": accessToken,
-                    "social_type": "apple"
+                    "social_type": "apple",
+                    "social_user_id": snsUserId,
+                    "name": userName,
+                    "email": userEmail,
+                    "profile_url": profileUrl,
+                    "authorize_code": authorizeCode
                 ],
                 encoding: JSONEncoding.default
             )
@@ -40,12 +48,24 @@ struct RegisterAPI: BaseAPI {
     }
     
     let provider: AuthenticationProvider
-    let accessToken: String
+    let snsUserId: String
+    let userName: String
+    let userEmail: String
+    let profileUrl: String
+    let authorizeCode: String
 
     init(provider: AuthenticationProvider,
-         accessToken: String?
+         snsUserId: String?,
+         userName: String?,
+         userEmail: String?,
+         profileUrl: String?,
+         authorizeCode: String?
     ) {
         self.provider = provider
-        self.accessToken = accessToken ?? ""
+        self.snsUserId = snsUserId ?? ""
+        self.userName = userName ?? ""
+        self.userEmail = userEmail ?? ""
+        self.profileUrl = profileUrl ?? ""
+        self.authorizeCode = authorizeCode ?? ""
     }
 }
