@@ -15,9 +15,7 @@ struct CreateGroupAPI: BaseAPI {
         .post
     }
     var headers: [String: String]? {
-        var headers = NetworkServiceImpl.shared.headers
-        headers["content-type"] = "application/json"
-        return headers
+        return NetworkServiceImpl.shared.headers
     }
     
     var task: Moya.Task {

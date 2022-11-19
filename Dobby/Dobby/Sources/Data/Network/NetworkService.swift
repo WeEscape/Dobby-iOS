@@ -20,10 +20,12 @@ final class NetworkServiceImpl: NetworkService {
     let localTokenStorage: LocalTokenStorageService
     static let shared = NetworkServiceImpl()
     var headers: [String: String] {
+        var headers = ["content-type":"application/json;charset=UTF-8"]
         guard let accessToken = self.localTokenStorage.read(
             key: .jwtAccessToken
-        ) else { return [:] }
-        return ["authorization": "Bearer \(accessToken)"]
+        ) else { return headers }
+        headers["authorization"] = "Bearer \(accessToken)"
+        return headers
     }
     
     private init() {
