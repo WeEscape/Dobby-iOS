@@ -57,8 +57,10 @@ class BaseViewController: UIViewController {
     }
     
     func hideLoading() {
-        self.loadingView.isHidden = true
-        self.loadingView.removeFromSuperview()
-        self.view.layoutIfNeeded()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { [weak self] in
+            self?.loadingView.isHidden = true
+            self?.loadingView.removeFromSuperview()
+            self?.view.layoutIfNeeded()
+        }
     }
 }

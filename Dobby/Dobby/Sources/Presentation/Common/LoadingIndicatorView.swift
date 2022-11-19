@@ -20,7 +20,7 @@ final class LoadingIndicatorView: UIView {
     }
     
     private func setupUI() {
-        self.backgroundColor = .gray.withAlphaComponent(0.2)
+        self.backgroundColor = .clear
         self.isUserInteractionEnabled = true
         self.isExclusiveTouch = true
         self.makeToastActivity(.center)
