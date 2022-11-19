@@ -29,4 +29,9 @@ final class GroupRepositoryImpl: GroupRepository {
                 return res.data?.toDomain()
             }
     }
+    
+    func leaveGroup(id: String) -> Observable<Void> {
+        return self.network.request(api: LeaveGroupAPI(groupId: id))
+            .map { _ -> Void in () }
+    }
 }
