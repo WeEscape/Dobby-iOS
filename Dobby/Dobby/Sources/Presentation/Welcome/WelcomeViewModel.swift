@@ -33,6 +33,8 @@ class WelcomeViewModel {
         self.authUseCase.snsAuthorize(provider: provider)
             .subscribe(onNext: { [weak self] auth in
                 self?.loginStartPublish.accept((provider, auth))
+            }, onError: { [weak self] _ in
+                self?.loginFail()
             }).disposed(by: self.disposBag)
     }
     
