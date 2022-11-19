@@ -10,4 +10,5 @@ import Foundation
 struct DobbyResponse<T>: Codable where T: Codable {
     var data: T?
     var message: String?
+    var name: String?
 }

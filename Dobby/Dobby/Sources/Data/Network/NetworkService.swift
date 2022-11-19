@@ -11,7 +11,7 @@ import Moya
 import FirebaseCrashlytics
 
 protocol NetworkService {
-    func request<API>(api: API) -> Observable<API.Response> where API: BaseAPI
+    func request<API>(api: API) -> Observable<DobbyResponse<API.Response>> where API: BaseAPI
 }
 
 final class NetworkServiceImpl: NetworkService {
@@ -42,7 +42,7 @@ final class NetworkServiceImpl: NetworkService {
         )
     }
     
-    func request<API>(api: API) -> Observable<API.Response> where API: BaseAPI {
+    func request<API>(api: API) -> Observable<DobbyResponse<API.Response>> where API: BaseAPI {
         return self._request(api: api)
             .catch { [weak self] err -> Observable<Response>  in
                 if let urlErr = err as? URLError,
@@ -84,15 +84,14 @@ final class NetworkServiceImpl: NetworkService {
                 }
                 return .error(err)
             }
-            .map { res -> API.Response in
+            .map { res -> DobbyResponse<API.Response> in
                 let decoder = JSONDecoder()
                 decoder.dateDecodingStrategy = .iso8601
-                let response = try decoder.decode(API.Response.self, from: res.data)
+                let response = try decoder.decode(DobbyResponse<API.Response>.self, from: res.data)
                 return response
             }
             .catch { err in
-                BeaverLog.debug(err.localizedDescription)
-                Crashlytics.crashlytics().record(error: err)
+                BeaverLog.error(err.localizedDescription)
                 return .error(err)
             }
     }
@@ -105,8 +104,8 @@ final class NetworkServiceImpl: NetworkService {
                 let statusCode = res.statusCode
                 BeaverLog.verbose("Network response status code : \(statusCode)")
                 guard !(statusCode == 401) else { throw NetworkError.invalidateAccessToken }
-                guard !(400..<500 ~= statusCode) else {
-                    let errorRes = try? JSONDecoder().decode(ErrorResponse.self, from: res.data)
+                guard !(400..<405 ~= statusCode) else {
+                    let errorRes = try? JSONDecoder().decode(DobbyResponse<Bool>.self, from: res.data)
                     throw NetworkError.unknown(statusCode, errorRes?.message)
                 }
                 guard !(500..<600 ~= statusCode) else { throw NetworkError.server }

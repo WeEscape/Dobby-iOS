@@ -19,7 +19,7 @@ protocol BaseAPI: TargetType {
 
 extension BaseAPI {
     var baseURL: URL {
-        return URL(string: "http://www.dobby.shop:5000")!
+        return URL(string: "http://www.dobby.shop/api")!
     }
     
     var headers: [String: String]? {

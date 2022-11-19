@@ -10,7 +10,7 @@ import Moya
 
 struct ResignAPI: BaseAPI {
     
-    typealias Response = DobbyResponse<Int>
+    typealias Response = Int
     
     var path: String {
         return "/auth/withdraw"

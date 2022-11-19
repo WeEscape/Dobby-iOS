@@ -24,10 +24,10 @@ struct RegisterAPI: BaseAPI {
             return .requestParameters(
                 parameters: [
                     "social_type": "kakao",
-                    "social_user_id": snsUserId,
-                    "name": userName,
-                    "email": userEmail,
-                    "profile_url": profileUrl,
+                    "social_id": snsUserId,
+                    "user_name": userName,
+                    "profile_image_url": profileUrl,
+                    "profile_color": "Blue",
                     "authorize_code": authorizeCode
                 ],
                 encoding: JSONEncoding.default
@@ -36,10 +36,10 @@ struct RegisterAPI: BaseAPI {
             return .requestParameters(
                 parameters: [
                     "social_type": "apple",
-                    "social_user_id": snsUserId,
-                    "name": userName,
-                    "email": userEmail,
-                    "profile_url": profileUrl,
+                    "social_id": snsUserId,
+                    "user_name": userName,
+                    "profile_image_url": profileUrl,
+                    "profile_color": "Blue",
                     "authorize_code": authorizeCode
                 ],
                 encoding: JSONEncoding.default

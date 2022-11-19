@@ -65,7 +65,6 @@ extension Reactive where Base: ASAuthorizationController {
                 // 첫번째 회원가입 성공이후 부터 애플로그인시에는 빈값으로 넘어옴
                 let givenName = credential.fullName?.givenName ?? ""
                 let userEmail = credential.email ?? ""
-                let defaultProfileUrl = "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fk.kakaocdn.net%2Fdn%2FuOK4l%2FbtrRaElWB4Z%2Flvon5InjkCshKhgMJmhTLk%2Fimg.jpg"
                 
                 return .init(
                     accessToken: nil,
@@ -75,7 +74,7 @@ extension Reactive where Base: ASAuthorizationController {
                     snsUserName: givenName,
                     snsUserEmail: userEmail,
                     snsUserId: credential.user,
-                    snsProfileUrl: defaultProfileUrl
+                    snsProfileUrl: nil
                 )
             }
     }

@@ -24,7 +24,7 @@ struct LoginAPI: BaseAPI {
             return .requestParameters(
                 parameters: [
                     "social_type": "kakao",
-                    "social_user_id": snsUserId
+                    "social_id": snsUserId
                 ],
                 encoding: JSONEncoding.default
             )
@@ -32,11 +32,7 @@ struct LoginAPI: BaseAPI {
             return .requestParameters(
                 parameters: [
                     "social_type": "apple",
-                    "social_user_id": snsUserId
-//                    "snsUserName": snsUserName,
-//                    "snsUserEmail": snsUserEmail,
-//                    "identityToken": identityToken,
-//                    "authorizeCode": authorizeCode
+                    "social_id": snsUserId
                 ],
                 encoding: JSONEncoding.default
             )
@@ -45,29 +41,11 @@ struct LoginAPI: BaseAPI {
     
     let provider: AuthenticationProvider
     let snsUserId: String
-//    let accessToken: String
-//    let refreshToken: String
-//    let identityToken: String
-//    let authorizeCode: String
-//    let snsUserName: String
-//    let snsUserEmail: String
     
     init(provider: AuthenticationProvider,
          snsUserId: String?
-//         accessToken: String?,
-//         refreshToken: String?,
-//         snsUserName: String?,
-//         snsUserEmail: String?,
-//         identityToken: String?,
-//         authorizeCode: String?
     ) {
         self.provider = provider
         self.snsUserId = snsUserId ?? ""
-//        self.accessToken = accessToken ?? ""
-//        self.refreshToken = refreshToken ?? ""
-//        self.snsUserName = snsUserName ?? ""
-//        self.snsUserEmail = snsUserEmail ?? ""
-//        self.identityToken = identityToken ?? ""
-//        self.authorizeCode = authorizeCode ?? ""
     }
 }

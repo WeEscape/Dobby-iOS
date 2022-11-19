@@ -45,7 +45,7 @@ final class AuthenticationRepositoryImpl: AuthenticationRepository {
                                     refreshToken: respone?.refreshToken,
                                     identityToken: nil,
                                     authorizeCode: nil,
-                                    snsUserName: user?.kakaoAccount?.name,
+                                    snsUserName: user?.kakaoAccount?.profile?.nickname,
                                     snsUserEmail: user?.kakaoAccount?.email,
                                     snsUserId: String(userId),
                                     snsProfileUrl: user?.kakaoAccount?.profile?.profileImageUrl?.absoluteString
@@ -61,16 +61,29 @@ final class AuthenticationRepositoryImpl: AuthenticationRepository {
                         BeaverLog.debug(err.localizedDescription)
                         observer.on(.error(err))
                     } else {
-                        observer.on(.next(.init(
-                            accessToken: respone?.accessToken,
-                            refreshToken: respone?.refreshToken,
-                            identityToken: nil,
-                            authorizeCode: nil,
-                            snsUserName: nil,
-                            snsUserEmail: nil,
-                            snsUserId: nil
-                        )))
-                        observer.onCompleted()
+                        UserApi.shared.me { user, err in
+                            if let err = error {
+                                BeaverLog.debug(err.localizedDescription)
+                                observer.on(.error(err))
+                            } else {
+                                guard let userId = user?.id else {
+                                    BeaverLog.debug("error: no kakao user id")
+                                    observer.on(.error(CustomError(memo: "no kakao user id")))
+                                    return
+                                }
+                                observer.on(.next(.init(
+                                    accessToken: respone?.accessToken,
+                                    refreshToken: respone?.refreshToken,
+                                    identityToken: nil,
+                                    authorizeCode: nil,
+                                    snsUserName: user?.kakaoAccount?.profile?.nickname,
+                                    snsUserEmail: user?.kakaoAccount?.email,
+                                    snsUserId: String(userId),
+                                    snsProfileUrl: user?.kakaoAccount?.profile?.profileImageUrl?.absoluteString
+                                )))
+                                observer.onCompleted()
+                            }
+                        }
                     }
                 }
             }
@@ -98,14 +111,9 @@ final class AuthenticationRepositoryImpl: AuthenticationRepository {
         return self.network.request(api: LoginAPI(
             provider: provider,
             snsUserId: authentication.snsUserId
-//            accessToken: authentication.accessToken,
-//            refreshToken: authentication.refreshToken,
-//            snsUserName: authentication.snsUserName,
-//            snsUserEmail: authentication.snsUserEmail,
-//            identityToken: authentication.identityToken,
-//            authorizeCode: authentication.authorizeCode
-        )).map { authDTO in
-            return authDTO.toDomain()
+        ))
+        .compactMap { res in
+            return res.data?.toDomain()
         }
     }
     
@@ -117,8 +125,9 @@ final class AuthenticationRepositoryImpl: AuthenticationRepository {
             userEmail: auth.snsUserEmail,
             profileUrl: auth.snsProfileUrl,
             authorizeCode: auth.authorizeCode
-        )).map { userDTO in
-            return userDTO.toDomain()
+        ))
+        .compactMap { res in
+            return res.data?.toDomain()
         }
     }
     
