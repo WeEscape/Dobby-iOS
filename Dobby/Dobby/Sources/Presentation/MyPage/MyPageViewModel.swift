@@ -12,16 +12,19 @@ import RxRelay
 final class MyPageViewModel {
     
     var disposeBag: DisposeBag = .init()
-    let authUseCase: AuthUseCase
     let alertPublish: PublishRelay<UIAlertController> = .init()
     let logoutPublish: PublishRelay<Void> = .init()
     let resignPublish: PublishRelay<Void> = .init()
+    let myInfoBehavior: BehaviorRelay<User?> = .init(value: nil)
+    let authUseCase: AuthUseCase
+    let userUserCase: UserUseCase
     
     init(
-        authUseCase: AuthUseCase
+        authUseCase: AuthUseCase,
+        userUserCase: UserUseCase
     ) {
         self.authUseCase = authUseCase
-        BeaverLog.debug("\(String(describing: self)) init")
+        self.userUserCase = userUserCase
     }
     
     deinit {
@@ -74,6 +77,13 @@ final class MyPageViewModel {
             .subscribe(onNext: { [weak self] _ in
                 self?.authUseCase.removeToken(tokenOption: [.accessToken, .refreshToken])
                 self?.resignPublish.accept(())
+            }).disposed(by: self.disposeBag)
+    }
+    
+    func getMyInfo() {
+        self.userUserCase.getMyInfo()
+            .subscribe(onNext: { [weak self] myinfo in
+                self?.myInfoBehavior.accept(myinfo)
             }).disposed(by: self.disposeBag)
     }
 }

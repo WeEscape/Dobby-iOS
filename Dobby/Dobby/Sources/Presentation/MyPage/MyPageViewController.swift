@@ -9,6 +9,7 @@ import UIKit
 import SnapKit
 import RxCocoa
 import RxGesture
+import RxOptional
 
 final class MyPageViewController: BaseViewController {
  
@@ -36,14 +37,16 @@ final class MyPageViewController: BaseViewController {
     private let userNameLabel: UILabel = {
         let lbl = UILabel()
         lbl.font = DobbyFont.avenirBlack(size: 36).getFont
-        lbl.text = "스테파니"
+        lbl.text = "이름"
         lbl.textAlignment = .center
         return lbl
     }()
     
     private let tutorialView = SettingItemView(title: "사용방법")
     private let profileEditView = SettingItemView(title: "프로필 수정")
-    private let leaveHomeView = SettingItemView(title: "연결된 집안일 나가기")
+    private let leaveHomeView = SettingItemView(title: "연결된 그룹 나가기")
+    private let createHomeView = SettingItemView(title: "그룹 만들기")
+    private let joinHomeView = SettingItemView(title: "다른 그룹 참여하기")
     private let logoutView = SettingItemView(title: "로그아웃")
     private let resignView = SettingItemView(
         title: "회원탈퇴",
@@ -131,9 +134,25 @@ final class MyPageViewController: BaseViewController {
             $0.bottom.equalToSuperview()
             $0.width.equalToSuperview()
         }
-        
-//        stackContainerView.addArrangedSubview(tutorialView)
-        stackContainerView.addArrangedSubview(leaveHomeView)
+    }
+    
+    func updateMyProfile(_ user: User) {
+        userNameLabel.text = user.name
+    }
+    
+    func updateSettingItems(_ user: User) {
+        // 스택뷰 초기화
+        stackContainerView.arrangedSubviews.forEach { view in
+            view.removeFromSuperview()
+        }
+        self.view.layoutIfNeeded()
+         
+        if user.groupIds.isNilOrEmpty() { // 그룹 없음
+            stackContainerView.addArrangedSubview(createHomeView)
+            stackContainerView.addArrangedSubview(joinHomeView)
+        } else { // 그룹 참여중
+            stackContainerView.addArrangedSubview(leaveHomeView)
+        }
         stackContainerView.addArrangedSubview(profileEditView)
         stackContainerView.addArrangedSubview(logoutView)
         stackContainerView.addArrangedSubview(resignView)
@@ -160,13 +179,22 @@ final class MyPageViewController: BaseViewController {
             .subscribe(onNext: { [weak self] _ in
                 self?.mypageCoordinator?.gotoSplash()
             }).disposed(by: self.disposeBag)
+        
+        mypageViewModel.myInfoBehavior
+            .asDriver()
+            .filterNil()
+            .drive(onNext: { [weak self] user in
+                guard let self = self else {return}
+                self.updateMyProfile(user)
+                self.updateSettingItems(user)
+            }).disposed(by: self.disposeBag)
+        
     }
     
     func bindAction() {
-        leaveHomeView.rx.tapGesture()
-            .when(.recognized)
-            .subscribe(onNext: { [weak self] _ in
-                print("Debug : leaveHomeView.rx.tapGesture() ")
+        self.rx.viewDidAppear
+            .subscribe(onNext: { _ in
+                self.mypageViewModel.getMyInfo()
             }).disposed(by: self.disposeBag)
         
         profileEditView.rx.tapGesture()
@@ -185,6 +213,24 @@ final class MyPageViewController: BaseViewController {
             .when(.recognized)
             .subscribe(onNext: { [weak self] _ in
                 self?.mypageViewModel.didTapResign()
+            }).disposed(by: self.disposeBag)
+        
+        leaveHomeView.rx.tapGesture()
+            .when(.recognized)
+            .subscribe(onNext: { [weak self] _ in
+                print("Debug : leaveHomeView. tapGesture() ")
+            }).disposed(by: self.disposeBag)
+        
+        createHomeView.rx.tapGesture()
+            .when(.recognized)
+            .subscribe(onNext: { [weak self] _ in
+                print("Debug : createHomeView tapGesture() ")
+            }).disposed(by: self.disposeBag)
+        
+        joinHomeView.rx.tapGesture()
+            .when(.recognized)
+            .subscribe(onNext: { [weak self] _ in
+                print("Debug : joinHomeView tapGesture() ")
             }).disposed(by: self.disposeBag)
     }
 }
