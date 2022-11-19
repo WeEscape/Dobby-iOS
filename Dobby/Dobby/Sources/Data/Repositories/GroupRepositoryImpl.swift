@@ -34,4 +34,11 @@ final class GroupRepositoryImpl: GroupRepository {
         return self.network.request(api: LeaveGroupAPI(groupId: id))
             .map { _ -> Void in () }
     }
+    
+    func joinGroup(id: String) -> Observable<Group> {
+        return self.network.request(api: JoinGroupAPI(groupId: id))
+            .compactMap { res in
+                return res.data?.toDomain()
+            }
+    }
 }

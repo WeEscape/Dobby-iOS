@@ -12,6 +12,7 @@ protocol GroupUseCase {
     func getGroupInfo(id: String) -> Observable<Group>
     func createGroup() -> Observable<Group>
     func leaveGroup(id: String) -> Observable<Void>
+    func joinGroup(id: String) -> Observable<Group>
 }
 
 final class GroupUseCaseImpl: GroupUseCase {
@@ -32,6 +33,10 @@ final class GroupUseCaseImpl: GroupUseCase {
     
     func leaveGroup(id: String) -> Observable<Void> {
         return self.groupRepository.leaveGroup(id: id)
+    }
+    
+    func joinGroup(id: String) -> Observable<Group> {
+        return self.groupRepository.joinGroup(id: id)
     }
 }
     

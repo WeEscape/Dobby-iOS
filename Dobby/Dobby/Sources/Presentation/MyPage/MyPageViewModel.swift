@@ -19,6 +19,7 @@ final class MyPageViewModel {
     let myGroupIdBehavior: BehaviorRelay<String?> = .init(value: nil)
     let inviteCodePublish: PublishRelay<String?> = .init()
     let loadingPublish: PublishRelay<Bool> = .init()
+    let toastMessagePublish: PublishRelay<String> = .init()
     let authUseCase: AuthUseCase
     let userUserCase: UserUseCase
     let groupUseCase: GroupUseCase
@@ -39,29 +40,46 @@ final class MyPageViewModel {
     }
     
     func didTapLogout() {
-        let alertVC = UIAlertController(
-            title: "알림",
-            message: "\n로그아웃을 하시겠습니까?",
-            preferredStyle: .alert
+        let alertVC = self.alertFactory(
+            message: "로그아웃을 하시겠습니까?",
+            confirmAction: UIAlertAction(title: "확인", style: .default) { [weak self] _ in
+                self?.requestLogout()
+            }
         )
-        let confirmAction = UIAlertAction(title: "확인", style: .default) { [weak self] _ in
-            self?.requestLogout()
-        }
-        let cancelAction = UIAlertAction(title: "취소", style: .cancel, handler: nil)
-        [confirmAction, cancelAction].forEach { action in
-            alertVC.addAction(action)
-        }
         alertPublish.accept(alertVC)
     }
     
     func didTapResign() {
+        let alertVC = self.alertFactory(
+            message: "정말 회원탈퇴를 하시겠습니까?",
+            confirmAction: UIAlertAction(title: "확인", style: .default) { [weak self] _ in
+                self?.requestResign()
+            }
+        )
+        alertPublish.accept(alertVC)
+    }
+    
+    func didTapLeaveGroup() {
+        let alertVC = self.alertFactory(
+            message: "그룹을 나가시겠습니까?",
+            confirmAction: UIAlertAction(title: "확인", style: .default) { [weak self] _ in
+                self?.leaveGroup()
+            }
+        )
+        alertPublish.accept(alertVC)
+    }
+    
+    func didTapJoinGroup() {
         let alertVC = UIAlertController(
             title: "알림",
-            message: "\n정말 회원탈퇴를 하시겠습니까?",
+            message: "그룹코드를 입력하세요",
             preferredStyle: .alert
         )
+        alertVC.addTextField { textfield in
+            textfield.keyboardType = .numberPad
+        }
         let confirmAction = UIAlertAction(title: "확인", style: .default) { [weak self] _ in
-            self?.requestResign()
+            self?.joinGroup(groupId: alertVC.textFields?.first?.text)
         }
         let cancelAction = UIAlertAction(title: "취소", style: .cancel, handler: nil)
         [confirmAction, cancelAction].forEach { action in
@@ -70,20 +88,18 @@ final class MyPageViewModel {
         alertPublish.accept(alertVC)
     }
     
-    func didTapLeaveGroup() {
+    func alertFactory(message: String?, confirmAction: UIAlertAction) -> UIAlertController {
         let alertVC = UIAlertController(
             title: "알림",
-            message: "\n정말 그룹을 나가시겠습니까?",
+            message: message,
             preferredStyle: .alert
         )
-        let confirmAction = UIAlertAction(title: "확인", style: .default) { [weak self] _ in
-            self?.leaveGroup()
-        }
+        let confirmAction = confirmAction
         let cancelAction = UIAlertAction(title: "취소", style: .cancel, handler: nil)
         [confirmAction, cancelAction].forEach { action in
             alertVC.addAction(action)
         }
-        alertPublish.accept(alertVC)
+        return alertVC
     }
     
     func requestLogout() {
@@ -145,5 +161,20 @@ final class MyPageViewModel {
             }, onError: { [weak self] _ in
                 self?.loadingPublish.accept(false)
             }).disposed(by: self.disposeBag)
+    }
+    
+    func joinGroup(groupId: String?) {
+        guard let groupId = groupId else {return}
+        self.loadingPublish.accept(true)
+        self.groupUseCase.joinGroup(id: groupId)
+            .subscribe(onNext: { [weak self] group in
+                self?.myGroupIdBehavior.accept(group.groupId)
+                self?.inviteCodePublish.accept(group.inviteCode)
+                self?.loadingPublish.accept(false)
+            }, onError: { [weak self] _ in
+                self?.loadingPublish.accept(false)
+                self?.toastMessagePublish.accept("그룹코드를 확인 해주세요")
+            }).disposed(by: self.disposeBag)
+        
     }
 }

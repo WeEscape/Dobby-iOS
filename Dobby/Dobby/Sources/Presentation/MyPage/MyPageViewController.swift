@@ -11,6 +11,7 @@ import RxSwift
 import RxCocoa
 import RxGesture
 import RxOptional
+import Toast_Swift
 
 final class MyPageViewController: BaseViewController {
  
@@ -234,6 +235,12 @@ final class MyPageViewController: BaseViewController {
             .drive(onNext: { [weak self] code in
                 self?.updateGroupInviteCode(code)
             }).disposed(by: self.disposeBag)
+        
+        mypageViewModel.toastMessagePublish
+            .debounce(.milliseconds(350), scheduler: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] message in
+                self?.view.makeToast(message, duration: 3.0, position: .bottom)
+            }).disposed(by: self.disposeBag)
     }
     
     func bindAction() {
@@ -278,7 +285,7 @@ final class MyPageViewController: BaseViewController {
             .when(.recognized)
             .throttle(.seconds(1), latest: false, scheduler: MainScheduler.instance)
             .subscribe(onNext: { [weak self] _ in
-                print("Debug : joinHomeView tapGesture() ")
+                self?.mypageViewModel.didTapJoinGroup()
             }).disposed(by: self.disposeBag)
     }
 }
