@@ -15,7 +15,7 @@ struct User: Codable {
     var profileUrl: String?
     var profileColor: String?
     var isConnect: Int?
-    var groupIds: String?
+    var groupIds: [String]?
     
     enum CodingKeys: String, CodingKey {
         case userId = "user_id"
