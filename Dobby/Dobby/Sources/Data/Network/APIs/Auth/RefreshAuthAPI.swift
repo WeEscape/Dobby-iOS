@@ -10,7 +10,7 @@ import Moya
 
 struct AuthRefreshAPI: BaseAPI {
     typealias Response = AuthenticationDTO
-    var path: String = "/auth/tokens"
+    var path: String {"/auth/tokens"}
     var method: Moya.Method {
         .post
     }

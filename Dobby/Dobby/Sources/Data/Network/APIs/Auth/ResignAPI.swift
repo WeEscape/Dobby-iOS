@@ -12,9 +12,7 @@ struct ResignAPI: BaseAPI {
     
     typealias Response = Int
     
-    var path: String {
-        return "/auth/withdraw"
-    }
+    var path: String {"/auth/withdraw"}
     var method: Moya.Method { .post }
     var headers: [String: String]? {
         var headers = NetworkServiceImpl.shared.headers

@@ -12,9 +12,7 @@ struct LogoutAPI: BaseAPI {
     
     typealias Response = Int
     
-    var path: String {
-        return "/auth/logout"
-    }
+    var path: String {"/auth/logout"}
     var method: Moya.Method { .post }
     var headers: [String: String]? {
         var headers = NetworkServiceImpl.shared.headers
