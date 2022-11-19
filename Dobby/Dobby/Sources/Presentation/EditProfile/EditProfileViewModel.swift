@@ -40,12 +40,12 @@ final class EditProfileViewModel {
         let emojiAction = UIAlertAction(title: "이모티콘 선택", style: .default) { [weak self] _ in
             self?.emojiModalPublishh.accept(())
         }
-        let defaultProfileAction = UIAlertAction(title: "프로필 이미지로 변경", style: .default) { [weak self] _ in
+        let profileAction = UIAlertAction(title: "프로필 이미지로 변경", style: .default) { [weak self] _ in
             self?.setDefaultProfile()
         }
         let cancelAction = UIAlertAction(title: "취소", style: .cancel, handler: nil)
         
-        [emojiAction, defaultProfileAction, cancelAction].forEach { action in
+        [emojiAction, profileAction, cancelAction].forEach { action in
             actionSheetVC.addAction(action)
         }
         self.acitonSheetPublish.accept(actionSheetVC)

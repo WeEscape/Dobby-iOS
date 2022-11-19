@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum NetworkError: Error,Equatable {
+enum NetworkError: Error, Equatable {
     case invalidateAccessToken
     case invalidateRefreshToken
     case client
