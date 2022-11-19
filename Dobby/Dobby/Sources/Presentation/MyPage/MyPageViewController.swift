@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import RxSwift
 import RxCocoa
 import RxGesture
 import RxOptional
@@ -38,6 +39,15 @@ final class MyPageViewController: BaseViewController {
         let lbl = UILabel()
         lbl.font = DobbyFont.avenirBlack(size: 36).getFont
         lbl.text = "이름"
+        lbl.textAlignment = .center
+        return lbl
+    }()
+    
+    private let groupIdLabel: UILabel = {
+        let lbl = UILabel()
+        lbl.font = DobbyFont.avenirMedium(size: 16).getFont
+        lbl.text = "그룹아이디"
+        lbl.textColor = Palette.textGray1
         lbl.textAlignment = .center
         return lbl
     }()
@@ -111,10 +121,17 @@ final class MyPageViewController: BaseViewController {
             $0.centerX.equalToSuperview()
         }
         
+        self.view.addSubview(groupIdLabel)
+        groupIdLabel.snp.makeConstraints {
+            $0.width.equalToSuperview()
+            $0.top.equalTo(userNameLabel.snp.bottom).offset(10)
+            $0.centerX.equalToSuperview()
+        }
+        
         let nameLineView = createLineView()
         self.view.addSubview(nameLineView)
         nameLineView.makeLineViewConstraints(
-            topEqualTo: userNameLabel.snp.bottom,
+            topEqualTo: groupIdLabel.snp.bottom,
             topOffset: 40
         )
         
@@ -138,16 +155,25 @@ final class MyPageViewController: BaseViewController {
     
     func updateMyProfile(_ user: User) {
         userNameLabel.text = user.name
+        // 프로필
     }
     
-    func updateSettingItems(_ user: User) {
+    func updateGroupInviteCode(_ code: String?) {
+        if let code = code {
+            groupIdLabel.text = "그룹코드: " + code
+        } else {
+            groupIdLabel.text = "그룹 없음"
+        }
+    }
+    
+    func updateSettingItems(_ groupId: String?) {
         // 스택뷰 초기화
         stackContainerView.arrangedSubviews.forEach { view in
             view.removeFromSuperview()
         }
         self.view.layoutIfNeeded()
          
-        if user.groupIds.isNilOrEmpty() { // 그룹 없음
+        if groupId.isNilOrEmpty() { // 그룹 없음
             stackContainerView.addArrangedSubview(createHomeView)
             stackContainerView.addArrangedSubview(joinHomeView)
         } else { // 그룹 참여중
@@ -170,6 +196,15 @@ final class MyPageViewController: BaseViewController {
                 self?.present(alertVC, animated: true)
             }).disposed(by: self.disposeBag)
         
+        mypageViewModel.loadingPublish
+            .subscribe(onNext: { [weak self] isLoading in
+                if isLoading {
+                    self?.showLoading()
+                } else {
+                    self?.hideLoading()
+                }
+            }).disposed(by: self.disposeBag)
+        
         mypageViewModel.logoutPublish
             .subscribe(onNext: { [weak self] _ in
                 self?.mypageCoordinator?.gotoSplash()
@@ -184,11 +219,21 @@ final class MyPageViewController: BaseViewController {
             .asDriver()
             .filterNil()
             .drive(onNext: { [weak self] user in
-                guard let self = self else {return}
-                self.updateMyProfile(user)
-                self.updateSettingItems(user)
+                self?.updateMyProfile(user)
             }).disposed(by: self.disposeBag)
         
+        mypageViewModel.myGroupIdBehavior
+            .asDriver(onErrorJustReturn: nil)
+            .drive(onNext: { [weak self] groupId in
+                self?.updateSettingItems(groupId)
+                self?.mypageViewModel.getGroupInfo(groupId: groupId)
+            }).disposed(by: self.disposeBag)
+        
+        mypageViewModel.inviteCodePublish
+            .asDriver(onErrorJustReturn: nil)
+            .drive(onNext: { [weak self] code in
+                self?.updateGroupInviteCode(code)
+            }).disposed(by: self.disposeBag)
     }
     
     func bindAction() {
@@ -217,18 +262,21 @@ final class MyPageViewController: BaseViewController {
         
         leaveHomeView.rx.tapGesture()
             .when(.recognized)
+            .throttle(.seconds(1), latest: false, scheduler: MainScheduler.instance)
             .subscribe(onNext: { [weak self] _ in
-                print("Debug : leaveHomeView. tapGesture() ")
+                self?.mypageViewModel.didTapLeaveGroup()
             }).disposed(by: self.disposeBag)
         
         createHomeView.rx.tapGesture()
             .when(.recognized)
+            .throttle(.seconds(1), latest: false, scheduler: MainScheduler.instance)
             .subscribe(onNext: { [weak self] _ in
-                print("Debug : createHomeView tapGesture() ")
+                self?.mypageViewModel.createGroup()
             }).disposed(by: self.disposeBag)
         
         joinHomeView.rx.tapGesture()
             .when(.recognized)
+            .throttle(.seconds(1), latest: false, scheduler: MainScheduler.instance)
             .subscribe(onNext: { [weak self] _ in
                 print("Debug : joinHomeView tapGesture() ")
             }).disposed(by: self.disposeBag)
