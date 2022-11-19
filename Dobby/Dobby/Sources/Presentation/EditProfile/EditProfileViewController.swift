@@ -132,7 +132,7 @@ final class EditProfileViewController: BaseViewController {
         }
         
         self.view.addSubview(userNameTextField)
-        userNameTextField.text = "스테파니"
+        userNameTextField.text = "이름"
         userNameTextField.snp.makeConstraints {
             $0.left.equalToSuperview().inset(Metric.viewSideInset)
             $0.right.equalToSuperview().inset(Metric.viewSideInset)

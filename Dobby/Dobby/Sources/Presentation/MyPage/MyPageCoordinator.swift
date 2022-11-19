@@ -17,6 +17,9 @@ final class MyPageCoordinator: Coordinator {
                     network: NetworkServiceImpl.shared,
                     localTokenStorage: UserDefaults.standard
                 )
+            ),
+            userUserCase: UserUseCaseImpl(
+                userRepository: UserRepositoryImpl(network: NetworkServiceImpl.shared)
             )
         )
         let mypageVC = MyPageViewController(

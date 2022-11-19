@@ -10,9 +10,11 @@ import RxSwift
 import RxCocoa
 import SnapKit
 
-class DailyChoreViewModel: BaseViewModel {
+class DailyChoreViewModel {
     
     // MARK: property
+    var disposBag: DisposeBag = .init()
+    let loadingPublish: PublishRelay<Bool> = .init()
     let dateListSectionBehavior: BehaviorRelay<[DateListSection]> = .init(value: [])
     let selectedDatePublish: PublishRelay<DateComponents> = .init()
     let selectedCellIndexBehavior: BehaviorRelay<[Int]?> = .init(value: nil)
