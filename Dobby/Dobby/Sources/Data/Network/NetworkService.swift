@@ -122,14 +122,16 @@ final class NetworkServiceImpl: NetworkService {
         return self._request(api: AuthRefreshAPI(refreshToken: refreshToken))
             .map { res in
                 let statusCode = res.statusCode
-                guard !(statusCode == 401) else { throw NetworkError.invalidateRefreshToken }
+                guard !(statusCode == 401) else {
+                    throw NetworkError.invalidateRefreshToken
+                }
                 let resData = try JSONDecoder().decode(
-                    AuthRefreshAPI.Response.self,
+                    DobbyResponse<AuthRefreshAPI.Response>.self,
                     from: res.data
                 )
                 return .init(
-                    accessToken: resData.accessToken,
-                    refreshToken: resData.refreshToken
+                    accessToken: resData.data?.accessToken,
+                    refreshToken: resData.data?.refreshToken
                 )
             }
     }
