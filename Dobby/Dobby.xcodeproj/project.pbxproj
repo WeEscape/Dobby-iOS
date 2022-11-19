@@ -64,6 +64,13 @@
 		A178937D2928B3FD007893FB /* UserRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A178937C2928B3FD007893FB /* UserRepositoryImpl.swift */; };
 		A17893802928B4A0007893FB /* MyInfoAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A178937F2928B4A0007893FB /* MyInfoAPI.swift */; };
 		A17893822928B7B5007893FB /* UserInfoDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17893812928B7B5007893FB /* UserInfoDTO.swift */; };
+		A17893852928CC76007893FB /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17893842928CC76007893FB /* Group.swift */; };
+		A17893882928CC87007893FB /* GroupUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17893872928CC87007893FB /* GroupUseCase.swift */; };
+		A178938A2928CC94007893FB /* GroupRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17893892928CC94007893FB /* GroupRepository.swift */; };
+		A178938C2928CD3F007893FB /* GroupInfoDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = A178938B2928CD3F007893FB /* GroupInfoDTO.swift */; };
+		A178938E2928CDCC007893FB /* GroupRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A178938D2928CDCC007893FB /* GroupRepositoryImpl.swift */; };
+		A17893912928CE95007893FB /* GroupInfoAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17893902928CE95007893FB /* GroupInfoAPI.swift */; };
+		A17893932928D34E007893FB /* CreateGroupAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17893922928D34E007893FB /* CreateGroupAPI.swift */; };
 		A19E97E52904D7DE004A8861 /* DailyChoreCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E97E42904D7DE004A8861 /* DailyChoreCoordinator.swift */; };
 		A19E97E72904D7E6004A8861 /* WeeklyChoreCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E97E62904D7E6004A8861 /* WeeklyChoreCoordinator.swift */; };
 		A19E97E92904D7EF004A8861 /* MonthlyChoreCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E97E82904D7EF004A8861 /* MonthlyChoreCoordinator.swift */; };
@@ -196,6 +203,13 @@
 		A178937C2928B3FD007893FB /* UserRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepositoryImpl.swift; sourceTree = "<group>"; };
 		A178937F2928B4A0007893FB /* MyInfoAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoAPI.swift; sourceTree = "<group>"; };
 		A17893812928B7B5007893FB /* UserInfoDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoDTO.swift; sourceTree = "<group>"; };
+		A17893842928CC76007893FB /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
+		A17893872928CC87007893FB /* GroupUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupUseCase.swift; sourceTree = "<group>"; };
+		A17893892928CC94007893FB /* GroupRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupRepository.swift; sourceTree = "<group>"; };
+		A178938B2928CD3F007893FB /* GroupInfoDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupInfoDTO.swift; sourceTree = "<group>"; };
+		A178938D2928CDCC007893FB /* GroupRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupRepositoryImpl.swift; sourceTree = "<group>"; };
+		A17893902928CE95007893FB /* GroupInfoAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupInfoAPI.swift; sourceTree = "<group>"; };
+		A17893922928D34E007893FB /* CreateGroupAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGroupAPI.swift; sourceTree = "<group>"; };
 		A17A60EDE0B5ABC5EFFC0B11 /* Pods-DobbyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DobbyTests.release.xcconfig"; path = "Target Support Files/Pods-DobbyTests/Pods-DobbyTests.release.xcconfig"; sourceTree = "<group>"; };
 		A19E97E42904D7DE004A8861 /* DailyChoreCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyChoreCoordinator.swift; sourceTree = "<group>"; };
 		A19E97E62904D7E6004A8861 /* WeeklyChoreCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyChoreCoordinator.swift; sourceTree = "<group>"; };
@@ -399,6 +413,7 @@
 		A13C534728E7213100C72215 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				A17893832928CC66007893FB /* Group */,
 				A19E98682913F9EA004A8861 /* User */,
 				A19E97FE29053B28004A8861 /* Chore */,
 				A13C535328E81D3F00C72215 /* Auth */,
@@ -461,6 +476,7 @@
 			children = (
 				A13C536228E9173900C72215 /* AuthenticationRepositoryImpl.swift */,
 				A178937C2928B3FD007893FB /* UserRepositoryImpl.swift */,
+				A178938D2928CDCC007893FB /* GroupRepositoryImpl.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -543,6 +559,7 @@
 			isa = PBXGroup;
 			children = (
 				A174B17328EF002000F80112 /* BaseAPI.swift */,
+				A178938F2928CE84007893FB /* Group */,
 				A178937E2928B48B007893FB /* User */,
 				A19E987F291941A5004A8861 /* Auth */,
 			);
@@ -555,6 +572,7 @@
 				A174B17828EF010100F80112 /* AuthenticationDTO.swift */,
 				A1789352291A912A007893FB /* UserDTO.swift */,
 				A17893812928B7B5007893FB /* UserInfoDTO.swift */,
+				A178938B2928CD3F007893FB /* GroupInfoDTO.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -582,6 +600,25 @@
 				A178937F2928B4A0007893FB /* MyInfoAPI.swift */,
 			);
 			path = User;
+			sourceTree = "<group>";
+		};
+		A17893832928CC66007893FB /* Group */ = {
+			isa = PBXGroup;
+			children = (
+				A17893842928CC76007893FB /* Group.swift */,
+				A17893872928CC87007893FB /* GroupUseCase.swift */,
+				A17893892928CC94007893FB /* GroupRepository.swift */,
+			);
+			path = Group;
+			sourceTree = "<group>";
+		};
+		A178938F2928CE84007893FB /* Group */ = {
+			isa = PBXGroup;
+			children = (
+				A17893902928CE95007893FB /* GroupInfoAPI.swift */,
+				A17893922928D34E007893FB /* CreateGroupAPI.swift */,
+			);
+			path = Group;
 			sourceTree = "<group>";
 		};
 		A19E97DF2904D761004A8861 /* DailyChore */ = {
@@ -1053,6 +1090,7 @@
 			files = (
 				A13C535E28E8289200C72215 /* SplashViewModel.swift in Sources */,
 				A19E97F32904D837004A8861 /* MonthlyChoreViewController.swift in Sources */,
+				A178938C2928CD3F007893FB /* GroupInfoDTO.swift in Sources */,
 				A174B17C28EF034100F80112 /* NetworkLoggerPlugin.swift in Sources */,
 				A17893822928B7B5007893FB /* UserInfoDTO.swift in Sources */,
 				A19E985B2912A1E7004A8861 /* SelectChoreAttributeCoordinator.swift in Sources */,
@@ -1063,7 +1101,9 @@
 				A19E98162906CE85004A8861 /* ChoreMemoView.swift in Sources */,
 				A19E97ED2904D803004A8861 /* MyPageCoordinator.swift in Sources */,
 				A19E980C2906CB52004A8861 /* ChoreAttributeView.swift in Sources */,
+				A178938E2928CDCC007893FB /* GroupRepositoryImpl.swift in Sources */,
 				A13C535728E8231100C72215 /* BaseViewController.swift in Sources */,
+				A17893882928CC87007893FB /* GroupUseCase.swift in Sources */,
 				A19E9873291537EF004A8861 /* ProfileColorItemCell.swift in Sources */,
 				A174B17628EF007100F80112 /* LoginAPI.swift in Sources */,
 				A17893802928B4A0007893FB /* MyInfoAPI.swift in Sources */,
@@ -1086,7 +1126,9 @@
 				A19E97F52904D83E004A8861 /* AddChoreViewController.swift in Sources */,
 				A19E984F291143AF004A8861 /* SettingItemView.swift in Sources */,
 				A19E984D291137B0004A8861 /* UIView+.swift in Sources */,
+				A17893932928D34E007893FB /* CreateGroupAPI.swift in Sources */,
 				A19E9840290D1687004A8861 /* SelectDateView.swift in Sources */,
+				A17893912928CE95007893FB /* GroupInfoAPI.swift in Sources */,
 				A13C537328E958DF00C72215 /* Array+.swift in Sources */,
 				A19E982E290A9D64004A8861 /* UITextField+.swift in Sources */,
 				A12095FF2901680F008CE410 /* DobbyFont.swift in Sources */,
@@ -1112,6 +1154,7 @@
 				A19E98622912AADA004A8861 /* SelectProfileAttributeCoordinator.swift in Sources */,
 				A13C536728E91D9C00C72215 /* AuthUseCase.swift in Sources */,
 				A13C535228E817F800C72215 /* Coordinator.swift in Sources */,
+				A17893852928CC76007893FB /* Group.swift in Sources */,
 				A19E986A2913FCC6004A8861 /* UserUseCase.swift in Sources */,
 				A13C535A28E8288300C72215 /* SplashCoordinator.swift in Sources */,
 				A12095F328FBDFDC008CE410 /* CustomError.swift in Sources */,
@@ -1142,6 +1185,7 @@
 				A13C537928E9789200C72215 /* MainTabBarController.swift in Sources */,
 				A1789353291A912A007893FB /* UserDTO.swift in Sources */,
 				A178935F291E8E2B007893FB /* DateSelectCollectionCell.swift in Sources */,
+				A178938A2928CC94007893FB /* GroupRepository.swift in Sources */,
 				A1789365291FAF67007893FB /* DateListSection.swift in Sources */,
 				A19E9854291152AB004A8861 /* EditProfileViewController.swift in Sources */,
 			);
