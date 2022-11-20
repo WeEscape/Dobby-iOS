@@ -23,15 +23,18 @@ final class MyPageViewModel {
     let authUseCase: AuthUseCase
     let userUserCase: UserUseCase
     let groupUseCase: GroupUseCase
+    let categoryUseCase: CategoryUseCase
     
     init(
         authUseCase: AuthUseCase,
         userUserCase: UserUseCase,
-        groupUseCase: GroupUseCase
+        groupUseCase: GroupUseCase,
+        categoryUseCase: CategoryUseCase
     ) {
         self.authUseCase = authUseCase
         self.userUserCase = userUserCase
         self.groupUseCase = groupUseCase
+        self.categoryUseCase = categoryUseCase
     }
     
     deinit {
@@ -140,9 +143,21 @@ final class MyPageViewModel {
     func createGroup() {
         self.loadingPublish.accept(true)
         self.groupUseCase.createGroup()
-            .subscribe(onNext: { [weak self] group in
-                self?.myGroupIdBehavior.accept(group.groupId)
-                self?.inviteCodePublish.accept(group.inviteCode)
+            .flatMap { [weak self] group -> Observable<Category> in
+                guard let self = self,
+                      let groupId = group.groupId
+                else {
+                    self?.loadingPublish.accept(false)
+                    return .error(CustomError.init(memo: "unwrapping error"))
+                }
+                let defaultCategoryTitle = "청소"
+                self.inviteCodePublish.accept(group.inviteCode)
+                return self.categoryUseCase.createCategory(
+                    groupId: groupId, title: defaultCategoryTitle
+                )
+            }
+            .subscribe(onNext: { [weak self] category in
+                self?.myGroupIdBehavior.accept(category.groupId)
                 self?.loadingPublish.accept(false)
             }, onError: { [weak self] _ in
                 self?.loadingPublish.accept(false)
