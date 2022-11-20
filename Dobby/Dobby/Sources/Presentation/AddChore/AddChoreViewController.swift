@@ -188,6 +188,15 @@ final class AddChoreViewController: BaseViewController {
             .drive(onNext: { [weak self] isEnable in
                 self?.addChoreBtn.isEnabled = isEnable
             }).disposed(by: self.disposeBag)
+        
+        addChoreViewModel.loadingPublush
+            .subscribe(onNext: { [weak self] isLoading in
+                if isLoading {
+                    self?.showLoading()
+                } else {
+                    self?.hideLoading()
+                }
+            }).disposed(by: self.disposeBag)
     }
     
     func bindAction() {

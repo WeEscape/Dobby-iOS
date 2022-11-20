@@ -63,6 +63,7 @@ final class AddChoreViewModel {
     }
     
     func getInitialInfo() {
+        self.loadingPublush.accept(true)
         self.userUseCase.getMyInfo()
             .flatMap { [unowned self] myinfo -> Observable<Group> in
                 if myinfo.groupIds == nil || myinfo.groupIds!.isEmpty {
@@ -78,9 +79,11 @@ final class AddChoreViewModel {
                 self.membersBehavior.accept(userIds)
                 return self.categoryUseCase.getCategoryList(groupId: group.groupId!)
             }
-            .subscribe(onNext: { [unowned self] categoryList in
-                self.categoriesBehavior.accept(categoryList)
+            .subscribe(onNext: { [weak self] categoryList in
+                self?.loadingPublush.accept(false)
+                self?.categoriesBehavior.accept(categoryList)
             }, onError: { [weak self] _ in
+                self?.loadingPublush.accept(false)
                 self?.disableAddChore.accept(.FAIL_INIT)
             }).disposed(by: self.disposeBag)
     }
