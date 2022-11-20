@@ -21,6 +21,7 @@ target 'Dobby' do
   # UI
   pod 'SnapKit'
   pod 'lottie-ios'
+  pod 'Kingfisher'
   
   # Toast
   pod 'Toast-Swift'

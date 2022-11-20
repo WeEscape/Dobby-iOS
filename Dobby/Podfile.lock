@@ -111,6 +111,7 @@ PODS:
     - KakaoSDKCommon/Common (= 2.11.1)
   - KakaoSDKUser (2.11.1):
     - KakaoSDKAuth (= 2.11.1)
+  - Kingfisher (7.3.2)
   - lottie-ios (3.4.3)
   - Moya/Core (15.0.0):
     - Alamofire (~> 5.0)
@@ -195,6 +196,7 @@ PODS:
 DEPENDENCIES:
   - FirebaseAnalytics
   - FirebaseCrashlytics
+  - Kingfisher
   - lottie-ios
   - Moya/RxSwift
   - RxCocoa
@@ -231,6 +233,7 @@ SPEC REPOS:
     - KakaoSDKTalk
     - KakaoSDKTemplate
     - KakaoSDKUser
+    - Kingfisher
     - lottie-ios
     - Moya
     - nanopb
@@ -277,6 +280,7 @@ SPEC CHECKSUMS:
   KakaoSDKTalk: 504872e5b49e5ff104c65e37d54d2a8f04c606d3
   KakaoSDKTemplate: f8ee0b33f649e436c1aaf2a3a6bd6aa3dcae2451
   KakaoSDKUser: 08c0a4f40bebdebdf948a9e3d0e44ed5c2754f99
+  Kingfisher: 0086ad83719761ba9b2cdaf6ef4d5b4878cbae23
   lottie-ios: 9ae750cdc7820fecbd3c2f0cfc493038208fcdc4
   Moya: 138f0573e53411fb3dc17016add0b748dfbd78ee
   nanopb: b552cce312b6c8484180ef47159bc0f65a1f0431
@@ -302,6 +306,6 @@ SPEC CHECKSUMS:
   SwiftyBeaver: c8241b4745aa269a78ca5a022532c6915e948536
   Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
 
-PODFILE CHECKSUM: 4b3a62a4f4c1e4750f11e826802eb117fefa02c8
+PODFILE CHECKSUM: 74f511fd123397d471789d2b4addb45faae3db23
 
 COCOAPODS: 1.11.3

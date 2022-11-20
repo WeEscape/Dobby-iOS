@@ -31,8 +31,10 @@ final class MyPageViewController: BaseViewController {
     
     private let profileImageView: UIImageView = {
         let iv = UIImageView()
-        iv.contentMode = .scaleAspectFit
-        iv.image = UIImage(named: "default_profile")
+        iv.contentMode = .scaleAspectFill
+        iv.clipsToBounds = true
+        iv.layer.cornerRadius = 10
+        iv.backgroundColor = .systemGray6
         return iv
     }()
     
@@ -156,7 +158,8 @@ final class MyPageViewController: BaseViewController {
     
     func updateMyProfile(_ user: User) {
         userNameLabel.text = user.name
-        // 프로필
+        guard let profileUrl = user.profileUrl else {return}
+        profileImageView.setImage(urlString: profileUrl)
     }
     
     func updateGroupInviteCode(_ code: String?) {
@@ -180,7 +183,8 @@ final class MyPageViewController: BaseViewController {
         } else { // 그룹 참여중
             stackContainerView.addArrangedSubview(leaveHomeView)
         }
-        stackContainerView.addArrangedSubview(profileEditView)
+        // TODO: 프로필수정 개발
+//        stackContainerView.addArrangedSubview(profileEditView)
         stackContainerView.addArrangedSubview(logoutView)
         stackContainerView.addArrangedSubview(resignView)
     }
