@@ -9,6 +9,8 @@ import UIKit
 import SnapKit
 import RxCocoa
 import RxOptional
+import RxViewController
+import Toast_Swift
 
 final class AddChoreViewController: BaseViewController {
     
@@ -32,6 +34,7 @@ final class AddChoreViewController: BaseViewController {
         let btn = UIButton(configuration: .filled())
         btn.tintColor = Palette.mainThemeBlue1
         btn.setTitle("저장하기", for: .normal)
+        btn.isEnabled = false
         return btn
     }()
     
@@ -125,6 +128,17 @@ final class AddChoreViewController: BaseViewController {
         self.view.endEditing(true)
     }
     
+    func disableAddchore() {
+        self.view.makeToast(
+            "참여중인 그룹이 없습니다\n하단 탭의 더보기 > 그룹 생성 또는 다른 그룹 참여 후 등록 가능합니다.",
+            duration: 3.0,
+            position: .center
+        )
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) { [weak self] in
+            self?.navigationController?.popViewController(animated: true)
+        }
+    }
+    
     // MARK: Rx bind
     func bind() {
         bindState()
@@ -150,7 +164,7 @@ final class AddChoreViewController: BaseViewController {
             .filterNil()
             .distinctUntilChanged()
             .drive(onNext: { [weak self] selectedDate in
-                guard let dateView = self?.searchChoreAttributeView(of: .date) else {return}
+                guard let dateView = self?.searchChoreAttributeView(of: .startDate) else {return}
                 dateView.updateTitle(title: selectedDate.toStringWithoutTime())
             }).disposed(by: self.disposeBag)
         
@@ -163,9 +177,25 @@ final class AddChoreViewController: BaseViewController {
                 else {return}
                 repeatCycleView.updateTitle(title: repeatCycle.description)
             }).disposed(by: self.disposeBag)
+        
+        addChoreViewModel.disableAddChore
+            .subscribe(onNext: { [weak self] _ in
+                self?.disableAddchore()
+            }).disposed(by: self.disposeBag)
+        
+        addChoreViewModel.saveBtnEnableBehavior
+            .asDriver()
+            .drive(onNext: { [weak self] isEnable in
+                self?.addChoreBtn.isEnabled = isEnable
+            }).disposed(by: self.disposeBag)
     }
     
     func bindAction() {
+        self.rx.viewDidAppear
+            .subscribe(onNext: { [weak self] _ in
+                self?.addChoreViewModel.getMyInfo()
+            }).disposed(by: self.disposeBag)
+        
         addChoreBtn.rx.tap
             .asDriver()
             .throttle(.seconds(1), latest: false)

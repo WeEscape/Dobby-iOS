@@ -76,7 +76,7 @@ final class SelectDateView: ModalContentView {
     }
     
     override func reloadView(_ value: Any?) {
-        guard self.attribute == .date,
+        guard self.attribute == .startDate,
               let date = value as? Date else {return}
         self.datePicker.date = date
     }

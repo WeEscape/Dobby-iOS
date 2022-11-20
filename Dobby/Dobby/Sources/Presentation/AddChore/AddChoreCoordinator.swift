@@ -21,7 +21,12 @@ final class AddChoreCoordinator: Coordinator {
     
     func createViewController() -> UIViewController? {
         let addChoreViewModel = AddChoreViewModel(
-            choreUseCase: ChoreUseCaseImpl()
+            choreUseCase: ChoreUseCaseImpl(),
+            userUseCase: UserUseCaseImpl(
+                userRepository: UserRepositoryImpl(
+                    network: NetworkServiceImpl.shared
+                )
+            )
         )
         let newViewController = AddChoreViewController(
             addChoreViewModel: addChoreViewModel,
@@ -34,7 +39,7 @@ final class AddChoreCoordinator: Coordinator {
     
     func addChoreAttributeFactory(attribute: ChoreAttribute) -> ChoreAttributeView {
         switch attribute {
-        case .date, .repeatCycle, .owner, .category:
+        case .startDate, .repeatCycle, .owner, .category:
             return ChoreAttributeView(attribute: attribute)
         case .memo:
             return ChoreMemoView(attribute: attribute)

@@ -34,7 +34,7 @@ final class SelectChoreAttributeCoordinator: ModalCoordinator {
         viewModel: AddChoreViewModel
     ) -> ModalContentView {
         switch attribute {
-        case .date:
+        case .startDate:
             return SelectDateView(attribute: attribute)
         case .repeatCycle:
             return SelectRepeatCycleView(
