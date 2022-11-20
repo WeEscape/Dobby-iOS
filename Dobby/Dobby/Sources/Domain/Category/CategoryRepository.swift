@@ -10,4 +10,5 @@ import RxSwift
 
 protocol CategoryRepository {
     func createCategory(groupId: String, title: String) -> Observable<Category>
+    func getCategoryList(groupId: String) -> Observable<[Category]>
 }

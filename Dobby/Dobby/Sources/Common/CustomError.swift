@@ -10,7 +10,7 @@ import Foundation
 struct CustomError: Error, LocalizedError {
     let memo: String
     
-    init(memo: String) {
+    init(memo: String = "") {
         self.memo = memo
     }
     

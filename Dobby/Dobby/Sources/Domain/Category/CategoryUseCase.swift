@@ -10,6 +10,7 @@ import RxSwift
 
 protocol CategoryUseCase {
     func createCategory(groupId: String, title: String) -> Observable<Category>
+    func getCategoryList(groupId: String) -> Observable<[Category]>
 }
 
 final class CategoryUseCaseImpl: CategoryUseCase {
@@ -22,5 +23,9 @@ final class CategoryUseCaseImpl: CategoryUseCase {
     
     func createCategory(groupId: String, title: String) -> Observable<Category> {
         return self.categoryRepository.createCategory(groupId: groupId, title: title)
+    }
+    
+    func getCategoryList(groupId: String) -> Observable<[Category]> {
+        return self.categoryRepository.getCategoryList(groupId: groupId)
     }
 }

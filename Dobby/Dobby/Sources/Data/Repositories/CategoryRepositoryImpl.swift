@@ -23,4 +23,11 @@ final class CategoryRepositoryImpl: CategoryRepository {
                 return res.data?.toDomain()
             }
     }
+    
+    func getCategoryList(groupId: String) -> Observable<[Category]> {
+        return self.network.request(api: CategoryListAPI(groupId: groupId))
+            .compactMap { res in
+                return res.data?.toDomain()
+            }
+    }
 }

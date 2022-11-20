@@ -26,6 +26,16 @@ final class AddChoreCoordinator: Coordinator {
                 userRepository: UserRepositoryImpl(
                     network: NetworkServiceImpl.shared
                 )
+            ),
+            groupUseCase: GroupUseCaseImpl(
+                groupRepository: GroupRepositoryImpl(
+                    network: NetworkServiceImpl.shared
+                )
+            ),
+            categoryUseCase: CategoryUseCaseImpl(
+                repository: CategoryRepositoryImpl(
+                    network: NetworkServiceImpl.shared
+                )
             )
         )
         let newViewController = AddChoreViewController(

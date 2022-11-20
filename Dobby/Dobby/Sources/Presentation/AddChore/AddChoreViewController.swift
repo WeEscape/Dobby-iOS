@@ -128,9 +128,9 @@ final class AddChoreViewController: BaseViewController {
         self.view.endEditing(true)
     }
     
-    func disableAddchore() {
+    func disableAddchore(message: AddChoreViewModel.DisableMessage) {
         self.view.makeToast(
-            "참여중인 그룹이 없습니다\n하단 탭의 더보기 > 그룹 생성 또는 다른 그룹 참여 후 등록 가능합니다.",
+            message.rawValue,
             duration: 3.0,
             position: .center
         )
@@ -179,8 +179,8 @@ final class AddChoreViewController: BaseViewController {
             }).disposed(by: self.disposeBag)
         
         addChoreViewModel.disableAddChore
-            .subscribe(onNext: { [weak self] _ in
-                self?.disableAddchore()
+            .subscribe(onNext: { [weak self] disableMsg in
+                self?.disableAddchore(message: disableMsg)
             }).disposed(by: self.disposeBag)
         
         addChoreViewModel.saveBtnEnableBehavior
@@ -193,7 +193,7 @@ final class AddChoreViewController: BaseViewController {
     func bindAction() {
         self.rx.viewDidAppear
             .subscribe(onNext: { [weak self] _ in
-                self?.addChoreViewModel.getMyInfo()
+                self?.addChoreViewModel.getInitialInfo()
             }).disposed(by: self.disposeBag)
         
         addChoreBtn.rx.tap
