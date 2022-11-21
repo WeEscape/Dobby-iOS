@@ -9,7 +9,7 @@ import Foundation
 import Moya
 
 struct CreateGroupAPI: BaseAPI {
-    typealias Response = GroupInfoDTO
+    typealias Response = GroupDTO
     var path: String { "/groups" }
     var method: Moya.Method {
         .post

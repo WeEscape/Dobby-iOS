@@ -9,7 +9,7 @@ import Foundation
 import Moya
 
 struct MyInfoAPI: BaseAPI {
-    typealias Response = UserInfoDTO
+    typealias Response = UserDTO
     var path: String { "/users/my" }
     var method: Moya.Method { .get }
     var task: Moya.Task { .requestPlain }

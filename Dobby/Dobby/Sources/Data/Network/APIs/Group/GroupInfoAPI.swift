@@ -9,7 +9,7 @@ import Foundation
 import Moya
 
 struct GroupInfoAPI: BaseAPI {
-    typealias Response = GroupInfoDTO
+    typealias Response = GroupDTO
     var path: String {
         "/groups/\(groupId)"
     }

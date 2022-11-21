@@ -9,7 +9,7 @@ import Foundation
 import Moya
 
 struct CreateCategoryAPI: BaseAPI {
-    typealias Response = CategoryInfoDTO
+    typealias Response = CategoryDTO
     var path: String { "/categories" }
     var method: Moya.Method {
         .post

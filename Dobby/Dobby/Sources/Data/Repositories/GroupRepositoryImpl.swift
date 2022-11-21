@@ -19,7 +19,7 @@ final class GroupRepositoryImpl: GroupRepository {
     func getGroupInfo(id: String) -> Observable<Group> {
         return self.network.request(api: GroupInfoAPI(groupId: id))
             .compactMap { res in
-                return res.data?.groupInfo
+                return res.data?.toDomain()
             }
     }
     
