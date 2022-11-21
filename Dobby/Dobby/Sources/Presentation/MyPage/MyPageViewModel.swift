@@ -143,21 +143,9 @@ final class MyPageViewModel {
     func createGroup() {
         self.loadingPublish.accept(true)
         self.groupUseCase.createGroup()
-            .flatMap { [weak self] group -> Observable<Category> in
-                guard let self = self,
-                      let groupId = group.groupId
-                else {
-                    self?.loadingPublish.accept(false)
-                    return .error(CustomError.init(memo: "unwrapping error"))
-                }
-                let defaultCategoryTitle = "청소"
-                self.inviteCodePublish.accept(group.inviteCode)
-                return self.categoryUseCase.createCategory(
-                    groupId: groupId, title: defaultCategoryTitle
-                )
-            }
-            .subscribe(onNext: { [weak self] category in
-                self?.myGroupIdBehavior.accept(category.groupId)
+            .subscribe(onNext: { [weak self] group in
+                self?.inviteCodePublish.accept(group.inviteCode)
+                self?.myGroupIdBehavior.accept(group.groupId)
                 self?.loadingPublish.accept(false)
             }, onError: { [weak self] _ in
                 self?.loadingPublish.accept(false)
