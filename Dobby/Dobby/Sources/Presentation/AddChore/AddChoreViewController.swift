@@ -198,7 +198,7 @@ final class AddChoreViewController: BaseViewController {
                 self?.disableAddchore(message: disableMsg)
             }).disposed(by: self.disposeBag)
         
-        addChoreViewModel.saveBtnEnableBehavior
+        addChoreViewModel.saveBtnEnableBehavior?
             .asDriver()
             .drive(onNext: { [weak self] isEnable in
                 self?.addChoreBtn.isEnabled = isEnable

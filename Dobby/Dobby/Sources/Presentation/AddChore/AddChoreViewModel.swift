@@ -16,7 +16,7 @@ final class AddChoreViewModel {
     let myinfoBehavior: BehaviorRelay<User?> = .init(value: nil)
     let disableAddChore: PublishRelay<DisableMessage> = .init()
     let loadingPublush: PublishRelay<Bool> = .init()
-    let saveBtnEnableBehavior: BehaviorRelay<Bool> = .init(value: false)
+    var saveBtnEnableBehavior: BehaviorRelay<Bool>? = .init(value: false)
     
     let repeatCycleList: [ChoreRepeatCycle] = ChoreRepeatCycle.allCases
     let membersBehavior: BehaviorRelay<[User]> = .init(value: [])
@@ -84,9 +84,9 @@ final class AddChoreViewModel {
            selectedRepeatCycleBehavior.value != nil,
            selectedCategoryBehavior.value != nil,
            selectedUserBehavior.value != nil {
-            self.saveBtnEnableBehavior.accept(true)
+            self.saveBtnEnableBehavior?.accept(true)
         } else {
-            self.saveBtnEnableBehavior.accept(false)
+            self.saveBtnEnableBehavior?.accept(false)
         }
     }
     
@@ -113,6 +113,7 @@ final class AddChoreViewModel {
             }, onError: { [weak self] _ in
                 self?.loadingPublush.accept(false)
                 self?.disableAddChore.accept(.FAIL_INIT)
+                self?.saveBtnEnableBehavior = nil
             }).disposed(by: self.disposeBag)
     }
 }
