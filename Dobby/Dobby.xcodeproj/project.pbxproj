@@ -421,7 +421,8 @@
 		A13C534628E720E600C72215 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				A19E982F290CEA3D004A8861 /* Modal */,
+				A19E98602912AA79004A8861 /* SelectProfileAttributeModal */,
+				A19E98592912A162004A8861 /* SelectChoreAttributeModal */,
 				A19E97E22904D78E004A8861 /* AddChore */,
 				A19E9850291151C7004A8861 /* EditProfile */,
 				A19E97E32904D7AB004A8861 /* MyPage */,
@@ -476,6 +477,7 @@
 				A13C535628E8231100C72215 /* BaseViewController.swift */,
 				A19E980429054640004A8861 /* LoadingIndicatorView.swift */,
 				A1789362291FADAC007893FB /* BaseViewModel.swift */,
+				A19E982F290CEA3D004A8861 /* Modal */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -731,7 +733,6 @@
 				A19E97FC29053621004A8861 /* AddChoreViewModel.swift */,
 				A19E980B2906CB52004A8861 /* ChoreAttributeView.swift */,
 				A19E98152906CE85004A8861 /* ChoreMemoView.swift */,
-				A19E98592912A162004A8861 /* SelectChoreAttributeModal */,
 			);
 			path = AddChore;
 			sourceTree = "<group>";
@@ -775,7 +776,6 @@
 				A19E9853291152AB004A8861 /* EditProfileViewController.swift */,
 				A19E9855291152B6004A8861 /* EditProfileViewModel.swift */,
 				A19E985729128D28004A8861 /* EditProfileColorView.swift */,
-				A19E98602912AA79004A8861 /* SelectProfileAttributeModal */,
 			);
 			path = EditProfile;
 			sourceTree = "<group>";

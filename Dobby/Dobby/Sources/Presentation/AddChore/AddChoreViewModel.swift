@@ -70,7 +70,7 @@ final class AddChoreViewModel {
                     return .error(CustomError.init())
                 }
                 self.myinfoBehavior.accept(myinfo)
-                return self.groupUseCase.getGroupInfo(id: myinfo.groupIds!.first!)
+                return self.groupUseCase.getGroupInfo(id: myinfo.groupIds!.last!)
             }
             .flatMap { [unowned self] group -> Observable<[Category]> in
                 guard let userIds = group.members else {
