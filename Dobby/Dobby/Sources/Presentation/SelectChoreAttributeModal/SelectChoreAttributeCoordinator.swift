@@ -40,7 +40,12 @@ final class SelectChoreAttributeCoordinator: ModalCoordinator {
             return SelectRepeatCycleView(
                 attribute: attribute, repeatCycleList: viewModel.repeatCycleList
             )
-        case .owner, .category:
+        case .category:
+            return SelectCategoryView(
+                attribute: attribute,
+                categoryList: viewModel.categoriesBehavior.value
+            )
+        case .owner:
             return SelectDateView(attribute: attribute)
         case .memo:
             return SelectDateView(attribute: attribute)

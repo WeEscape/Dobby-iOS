@@ -17,6 +17,7 @@ final class SelectChoreAttributeViewController: ModalViewController {
     var viewModel: AddChoreViewModel!
     var selectDateView: SelectDateView?
     var selectRepeatCycleView: SelectRepeatCycleView?
+    var selectCategotyView: SelectCategoryView?
     
     // MARK: init
     convenience init(
@@ -28,6 +29,7 @@ final class SelectChoreAttributeViewController: ModalViewController {
         self.viewModel = viewModel
         self.selectDateView = contentView as? SelectDateView
         self.selectRepeatCycleView = contentView as? SelectRepeatCycleView
+        self.selectCategotyView = contentView as? SelectCategoryView
     }
     
     override init(coordinator: ModalCoordinator, contentView: ModalContentView) {
@@ -59,17 +61,23 @@ final class SelectChoreAttributeViewController: ModalViewController {
     override func bindState() {
         super.bindState()
         
-        viewModel.dateBehavior
+        viewModel.selectedDateBehavior
             .asDriver()
             .filterNil()
             .drive(onNext: { [weak self] dateValue in
                 self?.selectDateView?.reloadView(dateValue)
             }).disposed(by: self.disposeBag)
         
-        viewModel.repeatCycleBehavior
+        viewModel.selectedRepeatCycleBehavior
             .filterNil()
             .subscribe(onNext: { [weak self] repeatCycle in
                 self?.selectRepeatCycleView?.reloadView(repeatCycle)
+            }).disposed(by: self.disposeBag)
+        
+        viewModel.selectedCategoryBehavior
+            .filterNil()
+            .subscribe(onNext: { [weak self] category in
+                self?.selectCategotyView?.reloadView(category)
             }).disposed(by: self.disposeBag)
     }
     
@@ -84,6 +92,11 @@ final class SelectChoreAttributeViewController: ModalViewController {
         selectRepeatCycleView?.repeatCyclePublish
             .subscribe(onNext: { [weak self] repeatCycle in
                 self?.viewModel.didSelectRepeatCycle(repeatCycle: repeatCycle)
+            }).disposed(by: self.disposeBag)
+        
+        selectCategotyView?.categoryPublish
+            .subscribe(onNext: { [weak self] category in
+                self?.viewModel.didSelectCategory(category: category)
             }).disposed(by: self.disposeBag)
         
     }

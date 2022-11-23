@@ -156,7 +156,7 @@ final class AddChoreViewController: BaseViewController {
                 }
             }).disposed(by: self.disposeBag)
         
-        addChoreViewModel.dateBehavior
+        addChoreViewModel.selectedDateBehavior
             .asDriver()
             .filterNil()
             .distinctUntilChanged()
@@ -165,7 +165,7 @@ final class AddChoreViewController: BaseViewController {
                 dateView.updateTitle(title: selectedDate.toStringWithoutTime())
             }).disposed(by: self.disposeBag)
         
-        addChoreViewModel.repeatCycleBehavior
+        addChoreViewModel.selectedRepeatCycleBehavior
             .asDriver()
             .filterNil()
             .distinctUntilChanged()
@@ -173,6 +173,15 @@ final class AddChoreViewController: BaseViewController {
                 guard let repeatCycleView = self?.searchChoreAttributeView(of: .repeatCycle)
                 else {return}
                 repeatCycleView.updateTitle(title: repeatCycle.description)
+            }).disposed(by: self.disposeBag)
+        
+        addChoreViewModel.selectedCategoryBehavior
+            .asDriver()
+            .filterNil()
+            .drive(onNext: { [weak self] category in
+                guard let categoryView = self?.searchChoreAttributeView(of: .category)
+                else {return}
+                categoryView.updateTitle(title: category.title)
             }).disposed(by: self.disposeBag)
         
         addChoreViewModel.disableAddChore

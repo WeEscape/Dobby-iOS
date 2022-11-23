@@ -13,15 +13,20 @@ final class AddChoreViewModel {
     
     var disposeBag: DisposeBag = .init()
     let attributeItems = BehaviorRelay<[ChoreAttribute]>(value: ChoreAttribute.allCases)
-    let dateBehavior: BehaviorRelay<Date?> = .init(value: nil)
-    let repeatCycleList: [ChoreRepeatCycle] = ChoreRepeatCycle.allCases
-    let repeatCycleBehavior: BehaviorRelay<ChoreRepeatCycle?> = .init(value: nil)
     let myinfoBehavior: BehaviorRelay<User?> = .init(value: nil)
     let disableAddChore: PublishRelay<DisableMessage> = .init()
     let loadingPublush: PublishRelay<Bool> = .init()
     let saveBtnEnableBehavior: BehaviorRelay<Bool> = .init(value: false)
+    
+    let repeatCycleList: [ChoreRepeatCycle] = ChoreRepeatCycle.allCases
     let membersBehavior: BehaviorRelay<[User]> = .init(value: [])
     let categoriesBehavior: BehaviorRelay<[Category]> = .init(value: [])
+    
+    let selectedDateBehavior: BehaviorRelay<Date?> = .init(value: nil)
+    let selectedRepeatCycleBehavior: BehaviorRelay<ChoreRepeatCycle?> = .init(value: nil)
+    let selectedMemberBehavior: BehaviorRelay<User?> = .init(value: nil)
+    let selectedCategoryBehavior: BehaviorRelay<Category?> = .init(value: nil)
+    
     let choreUseCase: ChoreUseCase
     let userUseCase: UserUseCase
     let groupUseCase: GroupUseCase
@@ -55,16 +60,38 @@ final class AddChoreViewModel {
     }
     
     func didSelectDate(date: Date) {
-        dateBehavior.accept(date)
+        selectedDateBehavior.accept(date)
+        enableSaveBtn()
     }
     
     func didSelectRepeatCycle(repeatCycle: ChoreRepeatCycle) {
-        repeatCycleBehavior.accept(repeatCycle)
+        selectedRepeatCycleBehavior.accept(repeatCycle)
+        enableSaveBtn()
+    }
+    
+    func didSelectCategory(category: Category) {
+        selectedCategoryBehavior.accept(category)
+        enableSaveBtn()
+    }
+    
+    func didSelectMember(member: User) {
+        selectedMemberBehavior.accept(member)
+        enableSaveBtn()
+    }
+    
+    func enableSaveBtn() {
+        if selectedDateBehavior.value != nil,
+           selectedRepeatCycleBehavior.value != nil,
+           selectedCategoryBehavior.value != nil,
+           selectedMemberBehavior.value != nil {
+            self.saveBtnEnableBehavior.accept(true)
+        } else {
+            self.saveBtnEnableBehavior.accept(false)
+        }
     }
     
     func getInitialInfo() {
         self.loadingPublush.accept(true)
-        
         self.userUseCase.getMyInfo()
             .flatMap { [unowned self] myinfo -> Observable<Group> in
                 guard let myGroupId = myinfo.groupList?.last?.groupId else {

@@ -96,7 +96,7 @@ final class SelectRepeatCycleCell: UITableViewCell {
         }
     }
     
-    func setSelectedColor(_ selectedCycle: ChoreRepeatCycle?) {
+    func setSelectedCycle(_ selectedCycle: ChoreRepeatCycle?) {
         if let selectedCycle = selectedCycle,
            let repeatCyle = self.repeatCyle {
             setCheckBox(isOn: selectedCycle == repeatCyle)

@@ -101,7 +101,7 @@ extension SelectRepeatCycleView: UITableViewDelegate, UITableViewDataSource {
             if let repeatCycle = self.repeatCycleList?[indexPath.row] {
                 repeatCycleCell.bind(repeatCyle: repeatCycle)
             }
-            repeatCycleCell.setSelectedColor(self.selectedRepeatCycle)
+            repeatCycleCell.setSelectedCycle(self.selectedRepeatCycle)
         }
         return cell
     }

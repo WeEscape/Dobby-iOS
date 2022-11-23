@@ -98,7 +98,7 @@ class ChoreAttributeView: UIView {
         }
     }
     
-    func updateTitle(title: String) {
+    func updateTitle(title: String?) {
         self.titleLabel.text = title
     }
     
