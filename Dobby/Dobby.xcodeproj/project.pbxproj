@@ -677,13 +677,13 @@
 			path = Category;
 			sourceTree = "<group>";
 		};
-		A17893AD292A2A5F007893FB /* SelectOwnerView */ = {
+		A17893AD292A2A5F007893FB /* SelectUserView */ = {
 			isa = PBXGroup;
 			children = (
 				A17893AE292A2AA6007893FB /* SelectUserView.swift */,
 				A17893B0292A2AB4007893FB /* SelectUserCell.swift */,
 			);
-			path = SelectOwnerView;
+			path = SelectUserView;
 			sourceTree = "<group>";
 		};
 		A17893B2292A2AC0007893FB /* SelectCategoryView */ = {
@@ -794,7 +794,7 @@
 			isa = PBXGroup;
 			children = (
 				A17893B2292A2AC0007893FB /* SelectCategoryView */,
-				A17893AD292A2A5F007893FB /* SelectOwnerView */,
+				A17893AD292A2A5F007893FB /* SelectUserView */,
 				A19E98782917D4BB004A8861 /* SelectRepeatCycleView */,
 				A19E983F290D1687004A8861 /* SelectDateView.swift */,
 			);
