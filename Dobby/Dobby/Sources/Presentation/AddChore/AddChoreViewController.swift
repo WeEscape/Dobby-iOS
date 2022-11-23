@@ -131,12 +131,9 @@ final class AddChoreViewController: BaseViewController {
     func disableAddchore(message: AddChoreViewModel.DisableMessage) {
         self.view.makeToast(
             message.rawValue,
-            duration: 3.0,
+            duration: 2.0,
             position: .center
         )
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3) { [weak self] in
-            self?.navigationController?.popViewController(animated: true)
-        }
     }
     
     // MARK: Rx bind

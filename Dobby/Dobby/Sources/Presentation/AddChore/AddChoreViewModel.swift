@@ -20,7 +20,7 @@ final class AddChoreViewModel {
     let disableAddChore: PublishRelay<DisableMessage> = .init()
     let loadingPublush: PublishRelay<Bool> = .init()
     let saveBtnEnableBehavior: BehaviorRelay<Bool> = .init(value: false)
-    let membersBehavior: BehaviorRelay<[String]> = .init(value: [])
+    let membersBehavior: BehaviorRelay<[User]> = .init(value: [])
     let categoriesBehavior: BehaviorRelay<[Category]> = .init(value: [])
     let choreUseCase: ChoreUseCase
     let userUseCase: UserUseCase
@@ -64,19 +64,20 @@ final class AddChoreViewModel {
     
     func getInitialInfo() {
         self.loadingPublush.accept(true)
+        
         self.userUseCase.getMyInfo()
             .flatMap { [unowned self] myinfo -> Observable<Group> in
-                if myinfo.groupIds == nil || myinfo.groupIds!.isEmpty {
+                guard let myGroupId = myinfo.groupList?.last?.groupId else {
                     return .error(CustomError.init())
                 }
                 self.myinfoBehavior.accept(myinfo)
-                return self.groupUseCase.getGroupInfo(id: myinfo.groupIds!.last!)
+                return self.groupUseCase.getGroupInfo(id: myGroupId)
             }
             .flatMap { [unowned self] group -> Observable<[Category]> in
-                guard let userIds = group.members else {
+                guard let memberList = group.memberList else {
                     return .error(CustomError.init())
                 }
-                self.membersBehavior.accept(userIds)
+                self.membersBehavior.accept(memberList)
                 return self.categoryUseCase.getCategoryList(groupId: group.groupId!)
             }
             .subscribe(onNext: { [weak self] categoryList in

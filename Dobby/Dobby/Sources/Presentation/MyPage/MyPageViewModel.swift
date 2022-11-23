@@ -125,7 +125,7 @@ final class MyPageViewModel {
         self.userUserCase.getMyInfo()
             .subscribe(onNext: { [weak self] myinfo in
                 self?.myInfoBehavior.accept(myinfo)
-                self?.myGroupIdBehavior.accept(myinfo.groupIds?.last)
+                self?.myGroupIdBehavior.accept(myinfo.groupList?.last?.groupId)
             }).disposed(by: self.disposeBag)
     }
     
