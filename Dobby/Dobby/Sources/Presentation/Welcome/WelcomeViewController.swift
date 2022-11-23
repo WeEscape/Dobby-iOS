@@ -183,15 +183,6 @@ final class WelcomeViewController: BaseViewController {
     
     func bindState() {
         
-        self.welcomeViewModel.loadingPublish
-            .subscribe(onNext: { [weak self] isLoading in
-                if isLoading {
-                    self?.showLoading()
-                } else {
-                    self?.hideLoading()
-                }
-            }).disposed(by: self.disposeBag)
-        
         self.welcomeViewModel.loginStartPublish
             .subscribe(onNext: { [weak self] provider, auth in
                 self?.welcomeViewModel.login(provider: provider, auth: auth)
