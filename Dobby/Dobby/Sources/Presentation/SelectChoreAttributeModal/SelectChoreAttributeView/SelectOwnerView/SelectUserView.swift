@@ -1,5 +1,5 @@
 //
-//  SelectCategoryView.swift
+//  SelectUserView.swift
 //  Dobby
 //
 //  Created by yongmin lee on 11/20/22.
@@ -8,19 +8,19 @@
 import UIKit
 import RxRelay
 
-final class SelectCategoryView: ModalContentView {
+final class SelectUserView: ModalContentView {
     
     // MARK: property
     var attribute: ChoreAttribute!
-    let categoryPublish = PublishRelay<Category>.init()
-    var categoryList: [Category]?
-    var selectedCategory: Category?
+    let userPublish = PublishRelay<User>.init()
+    var userList: [User]?
+    var selectedUser: User?
     
     // MARK: UI
     struct Metric {
         static let headerViewHeight: CGFloat = 78
         static let tablewViewCellHeight: CGFloat = 44
-        static let tableViewHeight: CGFloat = 300
+        static let tableViewHeight: CGFloat = 220
     }
     
     private lazy var categoryTableView: UITableView = {
@@ -28,8 +28,8 @@ final class SelectCategoryView: ModalContentView {
         tableView.separatorStyle = .none
         tableView.backgroundColor = .white
         tableView.register(
-            SelectCategoryCell.self,
-            forCellReuseIdentifier: SelectCategoryCell.ID
+            SelectUserCell.self,
+            forCellReuseIdentifier: SelectUserCell.ID
         )
         tableView.delegate = self
         tableView.dataSource = self
@@ -40,12 +40,12 @@ final class SelectCategoryView: ModalContentView {
     // MARK: init
     convenience init(
         attribute: ChoreAttribute,
-        categoryList: [Category]
+        userList: [User]
     ) {
         self.init()
         self.attribute = attribute
         self.headerTitle.text = attribute.description
-        self.categoryList = categoryList
+        self.userList = userList
     }
     
     override init() {
@@ -74,15 +74,15 @@ final class SelectCategoryView: ModalContentView {
     }
     
     override func reloadView(_ value: Any?) {
-        guard let selectedCategory = value as? Category else {return}
-        self.selectedCategory = selectedCategory
+        guard let selectedUser = value as? User else {return}
+        self.selectedUser = selectedUser
         self.categoryTableView.reloadData()
     }
 }
 
-extension SelectCategoryView: UITableViewDelegate, UITableViewDataSource {
+extension SelectUserView: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.categoryList?.count ?? 0
+        return self.userList?.count ?? 0
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -94,14 +94,14 @@ extension SelectCategoryView: UITableViewDelegate, UITableViewDataSource {
         cellForRowAt indexPath: IndexPath
     ) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(
-            withIdentifier: SelectCategoryCell.ID,
+            withIdentifier: SelectUserCell.ID,
             for: indexPath
         )
-        if let categoryCell = cell as? SelectCategoryCell {
-            if let category = self.categoryList?[safe: indexPath.row] {
-                categoryCell.bind(category: category)
+        if let userCell = cell as? SelectUserCell {
+            if let user = self.userList?[safe: indexPath.row] {
+                userCell.bind(user: user)
             }
-            categoryCell.setSelectedCategory(self.selectedCategory)
+            userCell.setSelectedUser(self.selectedUser)
         }
         return cell
     }
@@ -112,10 +112,10 @@ extension SelectCategoryView: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        guard let cell = tableView.cellForRow(at: indexPath) as? SelectCategoryCell
+        guard let cell = tableView.cellForRow(at: indexPath) as? SelectUserCell
         else {return}
-        if let category = cell.category {
-            self.categoryPublish.accept(category)
+        if let user = cell.user {
+            self.userPublish.accept(user)
         }
     }
 }

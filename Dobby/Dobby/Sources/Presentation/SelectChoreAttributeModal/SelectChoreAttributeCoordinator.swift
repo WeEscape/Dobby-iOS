@@ -46,7 +46,10 @@ final class SelectChoreAttributeCoordinator: ModalCoordinator {
                 categoryList: viewModel.categoriesBehavior.value
             )
         case .owner:
-            return SelectDateView(attribute: attribute)
+            return SelectUserView(
+                attribute: attribute,
+                userList: viewModel.membersBehavior.value
+            )
         case .memo:
             return SelectDateView(attribute: attribute)
         }

@@ -24,7 +24,7 @@ final class AddChoreViewModel {
     
     let selectedDateBehavior: BehaviorRelay<Date?> = .init(value: nil)
     let selectedRepeatCycleBehavior: BehaviorRelay<ChoreRepeatCycle?> = .init(value: nil)
-    let selectedMemberBehavior: BehaviorRelay<User?> = .init(value: nil)
+    let selectedUserBehavior: BehaviorRelay<User?> = .init(value: nil)
     let selectedCategoryBehavior: BehaviorRelay<Category?> = .init(value: nil)
     
     let choreUseCase: ChoreUseCase
@@ -74,8 +74,8 @@ final class AddChoreViewModel {
         enableSaveBtn()
     }
     
-    func didSelectMember(member: User) {
-        selectedMemberBehavior.accept(member)
+    func didSelectUser(user: User) {
+        selectedUserBehavior.accept(user)
         enableSaveBtn()
     }
     
@@ -83,7 +83,7 @@ final class AddChoreViewModel {
         if selectedDateBehavior.value != nil,
            selectedRepeatCycleBehavior.value != nil,
            selectedCategoryBehavior.value != nil,
-           selectedMemberBehavior.value != nil {
+           selectedUserBehavior.value != nil {
             self.saveBtnEnableBehavior.accept(true)
         } else {
             self.saveBtnEnableBehavior.accept(false)

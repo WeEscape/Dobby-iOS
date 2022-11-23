@@ -18,6 +18,7 @@ final class SelectChoreAttributeViewController: ModalViewController {
     var selectDateView: SelectDateView?
     var selectRepeatCycleView: SelectRepeatCycleView?
     var selectCategotyView: SelectCategoryView?
+    var selecteUserView: SelectUserView?
     
     // MARK: init
     convenience init(
@@ -30,6 +31,7 @@ final class SelectChoreAttributeViewController: ModalViewController {
         self.selectDateView = contentView as? SelectDateView
         self.selectRepeatCycleView = contentView as? SelectRepeatCycleView
         self.selectCategotyView = contentView as? SelectCategoryView
+        self.selecteUserView = contentView as? SelectUserView
     }
     
     override init(coordinator: ModalCoordinator, contentView: ModalContentView) {
@@ -79,6 +81,12 @@ final class SelectChoreAttributeViewController: ModalViewController {
             .subscribe(onNext: { [weak self] category in
                 self?.selectCategotyView?.reloadView(category)
             }).disposed(by: self.disposeBag)
+        
+        viewModel.selectedUserBehavior
+            .filterNil()
+            .subscribe(onNext: { [weak self] user in
+                self?.selecteUserView?.reloadView(user)
+            }).disposed(by: self.disposeBag)
     }
     
     override func bindAction() {
@@ -98,6 +106,12 @@ final class SelectChoreAttributeViewController: ModalViewController {
             .subscribe(onNext: { [weak self] category in
                 self?.viewModel.didSelectCategory(category: category)
             }).disposed(by: self.disposeBag)
+        
+        selecteUserView?.userPublish
+            .subscribe(onNext: { [weak self] user in
+                self?.viewModel.didSelectUser(user: user)
+            }).disposed(by: self.disposeBag)
+        
         
     }
 }

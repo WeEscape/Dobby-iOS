@@ -184,6 +184,15 @@ final class AddChoreViewController: BaseViewController {
                 categoryView.updateTitle(title: category.title)
             }).disposed(by: self.disposeBag)
         
+        addChoreViewModel.selectedUserBehavior
+            .asDriver()
+            .filterNil()
+            .drive(onNext: { [weak self] user in
+                guard let userView = self?.searchChoreAttributeView(of: .owner)
+                else {return}
+                userView.updateTitle(title: user.name)
+            }).disposed(by: self.disposeBag)
+        
         addChoreViewModel.disableAddChore
             .subscribe(onNext: { [weak self] disableMsg in
                 self?.disableAddchore(message: disableMsg)
