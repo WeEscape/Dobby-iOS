@@ -38,6 +38,8 @@ final class SelectDateView: ModalContentView {
         datePicker.backgroundColor = .white
         datePicker.locale = .current
         datePicker.timeZone = .current
+        datePicker.maximumDate = Date().getNextMonth()
+        datePicker.minimumDate = Date().getLastMonth()
         return datePicker
     }()
     

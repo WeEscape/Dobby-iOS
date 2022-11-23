@@ -15,4 +15,20 @@ extension Date {
         dateFormatter.timeZone = TimeZone.current
         return dateFormatter.string(from: self)
     }
+    
+    func getNextMonth() -> Date? {
+        let calendar = Calendar.current
+        var component = calendar.dateComponents([.year, .month, .day], from: Date())
+        component.month! += 1
+        let nextMonth = calendar.date(from: component)
+        return nextMonth
+    }
+    
+    func getLastMonth() -> Date? {
+        let calendar = Calendar.current
+        var component = calendar.dateComponents([.year, .month, .day], from: Date())
+        component.month! -= 1
+        let lastMonth = calendar.date(from: component)
+        return lastMonth
+    }
 }
