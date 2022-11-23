@@ -111,7 +111,5 @@ final class SelectChoreAttributeViewController: ModalViewController {
             .subscribe(onNext: { [weak self] user in
                 self?.viewModel.didSelectUser(user: user)
             }).disposed(by: self.disposeBag)
-        
-        
     }
 }

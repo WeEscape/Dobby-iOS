@@ -107,7 +107,10 @@ final class NetworkServiceImpl: NetworkService {
                 BeaverLog.verbose("Network response status code : \(statusCode)")
                 guard !(statusCode == 401) else { throw NetworkError.invalidateAccessToken }
                 guard !(400..<405 ~= statusCode) else {
-                    let errorRes = try? JSONDecoder().decode(DobbyResponse<Bool>.self, from: res.data)
+                    let errorRes = try? JSONDecoder().decode(
+                        DobbyResponse<Bool>.self,
+                        from: res.data
+                    )
                     throw NetworkError.unknown(statusCode, errorRes?.message)
                 }
                 guard !(500..<600 ~= statusCode) else { throw NetworkError.server }

@@ -20,4 +20,3 @@ struct Category: Codable {
         case title = "category_title"
     }
 }
-

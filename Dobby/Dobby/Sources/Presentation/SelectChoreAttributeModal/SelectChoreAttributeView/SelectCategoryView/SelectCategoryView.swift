@@ -70,7 +70,6 @@ final class SelectCategoryView: ModalContentView {
                 -(Metric.tableViewHeight + Metric.headerViewHeight)
             )
         }
-        
     }
     
     override func reloadView(_ value: Any?) {
