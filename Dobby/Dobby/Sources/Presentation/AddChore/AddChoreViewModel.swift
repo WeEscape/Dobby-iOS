@@ -17,6 +17,7 @@ final class AddChoreViewModel {
     let disableAddChore: PublishRelay<DisableMessage> = .init()
     let loadingPublush: PublishRelay<Bool> = .init()
     var saveBtnEnableBehavior: BehaviorRelay<Bool>? = .init(value: false)
+    var choreTitle: String?
     
     let repeatCycleList: [ChoreRepeatCycle] = ChoreRepeatCycle.allCases
     let membersBehavior: BehaviorRelay<[User]> = .init(value: [])
@@ -61,29 +62,30 @@ final class AddChoreViewModel {
     
     func didSelectDate(date: Date) {
         selectedDateBehavior.accept(date)
-        enableSaveBtn()
+        validateSaveBtn()
     }
     
     func didSelectRepeatCycle(repeatCycle: ChoreRepeatCycle) {
         selectedRepeatCycleBehavior.accept(repeatCycle)
-        enableSaveBtn()
+        validateSaveBtn()
     }
     
     func didSelectCategory(category: Category) {
         selectedCategoryBehavior.accept(category)
-        enableSaveBtn()
+        validateSaveBtn()
     }
     
     func didSelectUser(user: User) {
         selectedUserBehavior.accept(user)
-        enableSaveBtn()
+        validateSaveBtn()
     }
     
-    func enableSaveBtn() {
+    func validateSaveBtn() {
         if selectedDateBehavior.value != nil,
            selectedRepeatCycleBehavior.value != nil,
            selectedCategoryBehavior.value != nil,
-           selectedUserBehavior.value != nil {
+           selectedUserBehavior.value != nil,
+           choreTitle.isNilOrEmpty() == false {
             self.saveBtnEnableBehavior?.accept(true)
         } else {
             self.saveBtnEnableBehavior?.accept(false)

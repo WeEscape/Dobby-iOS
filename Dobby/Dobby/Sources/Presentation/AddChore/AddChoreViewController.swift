@@ -232,6 +232,13 @@ final class AddChoreViewController: BaseViewController {
             .drive(onNext: { [weak self] _ in
                 self?.view.endEditing(true)
             }).disposed(by: self.disposeBag)
+        
+        choreTitleTextField.rx.controlEvent(.editingChanged)
+            .withLatestFrom(choreTitleTextField.rx.value)
+            .subscribe(onNext: { [weak self] title in
+                self?.addChoreViewModel.choreTitle = title.value
+                self?.addChoreViewModel.validateSaveBtn()
+            }).disposed(by: self.disposeBag)
     }
     
     func searchChoreAttributeView(of attributeType: ChoreAttribute) -> ChoreAttributeView? {
