@@ -9,6 +9,8 @@ import UIKit
 
 final class AddChoreCoordinator: Coordinator {
 
+    var initialVC: AddChoreViewController?
+    
     override init(parentCoordinator: Coordinator? = nil, childCoordinators: [Coordinator] = []) {
         super.init(parentCoordinator: parentCoordinator, childCoordinators: childCoordinators)
         let dummyViewController = AddChoreViewController(
@@ -16,6 +18,7 @@ final class AddChoreCoordinator: Coordinator {
             addChoreCoordinator: nil,
             choreAttributeFactory: addChoreAttributeFactory(attribute:)
         )
+        self.initialVC = dummyViewController
         self.viewController = dummyViewController
     }
     
@@ -72,5 +75,10 @@ final class AddChoreCoordinator: Coordinator {
         childCoordinators += [selectAttributeCoordinator]
         guard let selectVC = selectAttributeCoordinator.viewController else {return}
         self.viewController?.present(selectVC, animated: false)
+    }
+    
+    func didSaveChore() {
+        self.viewController?.navigationController?.popViewController(animated: true)
+        self.viewController = self.initialVC
     }
 }

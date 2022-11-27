@@ -128,12 +128,17 @@ final class AddChoreViewController: BaseViewController {
         self.view.endEditing(true)
     }
     
-    func disableAddchore(message: AddChoreViewModel.DisableMessage) {
+    func showAddChoreMessage(_ message: AddChoreViewModel.AddChoreMessage) {
         self.view.makeToast(
             message.rawValue,
             duration: 2.0,
             position: .center
         )
+        if message == .SUCCESS_ADD_CHORE {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) { [weak self] in
+                self?.addChoreCoordinator?.didSaveChore()
+            }
+        }
     }
     
     // MARK: Rx bind
@@ -193,9 +198,9 @@ final class AddChoreViewController: BaseViewController {
                 userView.updateTitle(title: user.name)
             }).disposed(by: self.disposeBag)
         
-        addChoreViewModel.disableAddChore
-            .subscribe(onNext: { [weak self] disableMsg in
-                self?.disableAddchore(message: disableMsg)
+        addChoreViewModel.addChoreMsgPublish
+            .subscribe(onNext: { [weak self] message in
+                self?.showAddChoreMessage(message)
             }).disposed(by: self.disposeBag)
         
         addChoreViewModel.saveBtnEnableBehavior?
@@ -211,11 +216,6 @@ final class AddChoreViewController: BaseViewController {
                 } else {
                     self?.hideLoading()
                 }
-            }).disposed(by: self.disposeBag)
-        
-        addChoreViewModel.saveChoreResult
-            .subscribe(onNext: { [weak self] res in
-                print("debug : saveChoreResult -> \(res)")
             }).disposed(by: self.disposeBag)
     }
     
