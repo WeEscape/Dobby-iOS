@@ -31,4 +31,12 @@ extension Date {
         let lastMonth = calendar.date(from: component)
         return lastMonth
     }
+    
+    func calculateDiffDate(diff: Int) -> Date? {
+        let calendar = Calendar.current
+        var component = calendar.dateComponents([.year, .month, .day], from: self)
+        component.day! += diff
+        let res = calendar.date(from: component)
+        return res
+    }
 }
