@@ -100,4 +100,8 @@ extension ChoreMemoView: UITextViewDelegate {
         // 글자수 100자 제한
         return textView.text.count + (text.count - range.length) <= 100
     }
+    
+    func textViewDidChange(_ textView: UITextView) {
+        self.delegate?.editingChanged(value: textView.text)
+    }
 }

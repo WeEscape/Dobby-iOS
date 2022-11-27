@@ -10,6 +10,7 @@ import SnapKit
 
 protocol ChoreAttributeViewDelegate: AnyObject {
     func didTapChoreAttribute(attribute: ChoreAttribute)
+    func editingChanged(value: String?)
 }
 
 class ChoreAttributeView: UIView {

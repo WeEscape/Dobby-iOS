@@ -17,12 +17,13 @@ final class AddChoreViewModel {
     let disableAddChore: PublishRelay<DisableMessage> = .init()
     let loadingPublush: PublishRelay<Bool> = .init()
     var saveBtnEnableBehavior: BehaviorRelay<Bool>? = .init(value: false)
-    var choreTitle: String?
     
     let repeatCycleList: [ChoreRepeatCycle] = ChoreRepeatCycle.allCases
     let membersBehavior: BehaviorRelay<[User]> = .init(value: [])
     let categoriesBehavior: BehaviorRelay<[Category]> = .init(value: [])
     
+    var choreTitle: String?
+    var choreMemo: String?
     let selectedDateBehavior: BehaviorRelay<Date?> = .init(value: nil)
     let selectedRepeatCycleBehavior: BehaviorRelay<ChoreRepeatCycle?> = .init(value: nil)
     let selectedUserBehavior: BehaviorRelay<User?> = .init(value: nil)

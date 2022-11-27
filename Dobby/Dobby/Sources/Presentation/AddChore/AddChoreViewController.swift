@@ -250,6 +250,10 @@ final class AddChoreViewController: BaseViewController {
 }
 
 extension AddChoreViewController: ChoreAttributeViewDelegate {
+    func editingChanged(value: String?) {
+        self.addChoreViewModel.choreMemo = value
+    }
+    
     func didTapChoreAttribute(attribute: ChoreAttribute) {
         self.addChoreCoordinator?.showSelectChoreAttributeModal(attribute: attribute)
     }
