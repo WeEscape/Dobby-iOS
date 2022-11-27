@@ -11,7 +11,15 @@ final class DailyChoreCoordinator: Coordinator {
 
     override init(parentCoordinator: Coordinator? = nil, childCoordinators: [Coordinator] = []) {
         super.init(parentCoordinator: parentCoordinator, childCoordinators: childCoordinators)
-        let viewMode = DailyChoreViewModel()
+        let viewMode = DailyChoreViewModel(
+            dailyChoreDetailFactory: self.dailyChoreDetailFactory(date:)
+        )
         self.viewController = DailyChoreViewController(viewModel: viewMode)
+    }
+    
+    func dailyChoreDetailFactory(date: Date) -> DailyChoreDetailViewController {
+        let vc = DailyChoreDetailViewController()
+        vc.dateLabel.text = date.toStringWithoutTime()
+        return vc
     }
 }
