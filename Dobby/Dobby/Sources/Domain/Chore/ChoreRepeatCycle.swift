@@ -7,11 +7,11 @@
 
 import Foundation
 
-enum ChoreRepeatCycle: Int, CaseIterable {
-    case off
-    case everyday
-    case everyWeek
-    case everyMonth
+enum ChoreRepeatCycle: String, CaseIterable {
+    case off = "off"
+    case everyday = "1D"
+    case everyWeek = "1W"
+    case everyMonth = "1M"
 }
 
 extension ChoreRepeatCycle: CustomStringConvertible {

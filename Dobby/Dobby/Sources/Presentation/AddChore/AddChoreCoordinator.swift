@@ -21,7 +21,11 @@ final class AddChoreCoordinator: Coordinator {
     
     func createViewController() -> UIViewController? {
         let addChoreViewModel = AddChoreViewModel(
-            choreUseCase: ChoreUseCaseImpl(),
+            choreUseCase: ChoreUseCaseImpl(
+                choreRepository: ChoreRepositoryImpl(
+                    network: NetworkServiceImpl.shared
+                )
+            ),
             userUseCase: UserUseCaseImpl(
                 userRepository: UserRepositoryImpl(
                     network: NetworkServiceImpl.shared

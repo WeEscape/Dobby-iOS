@@ -7,13 +7,25 @@
 
 import Foundation
 
-struct Chore {
+struct Chore: Codable {
+    var choreId: String
     var title: String
     var categoryId: String
-    var repeatCycle: ChoreRepeatCycle
+    var repeatCycle: String?
     var noticeEnable: Int
-    var executeAt: Date
-    var endAt: Date
-    var ownerList : [String] // id list
+    var executeAt: String
+    var endAt: String
+    var ownerList : [ChoreOwner]?
     var memo: String?
+    
+    enum CodingKeys: String, CodingKey {
+        case choreId = "task_id"
+        case title = "task_title"
+        case categoryId = "category_id"
+        case repeatCycle = "repeat_cycle"
+        case memo = "memo"
+        case noticeEnable = "notice_available"
+        case endAt = "end_repeat_at"
+        case executeAt = "excute_at"
+    }
 }

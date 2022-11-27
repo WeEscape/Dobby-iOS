@@ -212,6 +212,11 @@ final class AddChoreViewController: BaseViewController {
                     self?.hideLoading()
                 }
             }).disposed(by: self.disposeBag)
+        
+        addChoreViewModel.saveChoreResult
+            .subscribe(onNext: { [weak self] res in
+                print("debug : saveChoreResult -> \(res)")
+            }).disposed(by: self.disposeBag)
     }
     
     func bindAction() {

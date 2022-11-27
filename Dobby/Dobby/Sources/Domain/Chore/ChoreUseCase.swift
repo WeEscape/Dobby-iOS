@@ -9,12 +9,18 @@ import Foundation
 import RxSwift
 
 protocol ChoreUseCase {
-    func register(chore: Chore) -> Observable<Void>
+    func postChore(chore: Chore, ownerList: [String]) -> Observable<Void>
 }
 
 final class ChoreUseCaseImpl: ChoreUseCase {
-    func register(chore: Chore) -> Observable<Void> {
-        return .empty()
-
+    
+    let choreRepository: ChoreRepository
+    
+    init(choreRepository: ChoreRepository) {
+        self.choreRepository = choreRepository
+    }
+    
+    func postChore(chore: Chore, ownerList: [String]) -> Observable<Void> {
+        return self.choreRepository.postChore(chore: chore, ownerList: ownerList)
     }
 }
