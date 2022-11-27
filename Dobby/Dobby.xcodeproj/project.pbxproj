@@ -438,7 +438,6 @@
 				A19E97E32904D7AB004A8861 /* MyPage */,
 				A19E97E12904D77B004A8861 /* MonthlyChore */,
 				A19E97E02904D775004A8861 /* WeeklyChore */,
-				A178936A2920C8DC007893FB /* DailyChoreDetail */,
 				A19E97DF2904D761004A8861 /* DailyChore */,
 				A13C537428E9783500C72215 /* MainTab */,
 				A13C537528E9784300C72215 /* Welcome */,
@@ -633,15 +632,6 @@
 			path = Plugins;
 			sourceTree = "<group>";
 		};
-		A178936A2920C8DC007893FB /* DailyChoreDetail */ = {
-			isa = PBXGroup;
-			children = (
-				A178936B2920C8FD007893FB /* DailyChoreDetailViewController.swift */,
-				A178936D2920C908007893FB /* DailyChoreDetailViewModel.swift */,
-			);
-			path = DailyChoreDetail;
-			sourceTree = "<group>";
-		};
 		A178937E2928B48B007893FB /* User */ = {
 			isa = PBXGroup;
 			children = (
@@ -724,6 +714,8 @@
 				A178935E291E8E2B007893FB /* DateSelectCollectionCell.swift */,
 				A1789360291FA8C4007893FB /* DailyChoreViewModel.swift */,
 				A1789364291FAF66007893FB /* DateListSection.swift */,
+				A178936B2920C8FD007893FB /* DailyChoreDetailViewController.swift */,
+				A178936D2920C908007893FB /* DailyChoreDetailViewModel.swift */,
 			);
 			path = DailyChore;
 			sourceTree = "<group>";
