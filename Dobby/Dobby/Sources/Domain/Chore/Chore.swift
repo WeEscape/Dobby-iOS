@@ -8,10 +8,12 @@
 import Foundation
 
 struct Chore {
-    var title: String?
-    var registerDate: Date?
-    var ownerId: String?
-    var category: Int?
-    var repeatCycle: Int?
+    var title: String
+    var categoryId: String
+    var repeatCycle: ChoreRepeatCycle
+    var noticeEnable: Int
+    var executeAt: Date
+    var endAt: Date
+    var ownerList : [String] // id list
     var memo: String?
 }
