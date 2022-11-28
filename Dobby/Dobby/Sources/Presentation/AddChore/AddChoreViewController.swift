@@ -11,6 +11,7 @@ import RxCocoa
 import RxOptional
 import RxViewController
 import Toast_Swift
+import ProgressHUD
 
 final class AddChoreViewController: BaseViewController {
     
@@ -129,15 +130,13 @@ final class AddChoreViewController: BaseViewController {
     }
     
     func showAddChoreMessage(_ message: AddChoreViewModel.AddChoreMessage) {
-        self.view.makeToast(
-            message.rawValue,
-            duration: 2.0,
-            position: .center
-        )
         if message == .SUCCESS_ADD_CHORE {
+            ProgressHUD.showSucceed(message.rawValue, interaction: false)
             DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) { [weak self] in
                 self?.addChoreCoordinator?.didSaveChore()
             }
+        } else {
+            ProgressHUD.showFailed(message.rawValue, interaction: false)
         }
     }
     
