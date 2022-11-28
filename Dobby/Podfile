@@ -18,12 +18,11 @@ target 'Dobby' do
   pod 'RxViewController'
   pod 'RxGesture'
   
-  # UI
+  # frameWork
   pod 'SnapKit'
   pod 'lottie-ios'
   pod 'Kingfisher'
-  
-  # Toast
+  pod 'ProgressHUD'
   pod 'Toast-Swift'
   
   # Network

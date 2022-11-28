@@ -123,6 +123,7 @@ PODS:
     - nanopb/encode (= 2.30909.0)
   - nanopb/decode (2.30909.0)
   - nanopb/encode (2.30909.0)
+  - ProgressHUD (13.6)
   - PromisesObjC (2.1.1)
   - RxAlamofire (6.1.1):
     - RxAlamofire/Core (= 6.1.1)
@@ -199,6 +200,7 @@ DEPENDENCIES:
   - Kingfisher
   - lottie-ios
   - Moya/RxSwift
+  - ProgressHUD
   - RxCocoa
   - RxDataSources
   - RxGesture
@@ -237,6 +239,7 @@ SPEC REPOS:
     - lottie-ios
     - Moya
     - nanopb
+    - ProgressHUD
     - PromisesObjC
     - RxAlamofire
     - RxCocoa
@@ -284,6 +287,7 @@ SPEC CHECKSUMS:
   lottie-ios: 9ae750cdc7820fecbd3c2f0cfc493038208fcdc4
   Moya: 138f0573e53411fb3dc17016add0b748dfbd78ee
   nanopb: b552cce312b6c8484180ef47159bc0f65a1f0431
+  ProgressHUD: 4bdaa0d2ddf676b23324b199f9facffb5c3a1620
   PromisesObjC: ab77feca74fa2823e7af4249b8326368e61014cb
   RxAlamofire: beb75a1c452d0de225651db4903f5d29d034a620
   RxCocoa: 94f817b71c07517321eb4f9ad299112ca8af743b
@@ -306,6 +310,6 @@ SPEC CHECKSUMS:
   SwiftyBeaver: c8241b4745aa269a78ca5a022532c6915e948536
   Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
 
-PODFILE CHECKSUM: 74f511fd123397d471789d2b4addb45faae3db23
+PODFILE CHECKSUM: 214ea5c35d67ac93e1035b7dfbd242c120a60ba0
 
 COCOAPODS: 1.11.3
