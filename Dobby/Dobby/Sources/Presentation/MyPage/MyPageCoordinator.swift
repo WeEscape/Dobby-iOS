@@ -44,6 +44,20 @@ final class MyPageCoordinator: Coordinator {
         navigationController.pushViewController(editProfileVC, animated: true)
     }
     
+    func pushToSetting() {
+        let vc = SettingViewController(coordinator: self)
+        guard let navigationController = self.viewController?.navigationController
+        else {return}
+        navigationController.pushViewController(vc, animated: true)
+    }
+    
+    func pushToPolicy(policyType: PolicyType) {
+        let vc = PolicyViewController(policyType: policyType)
+        guard let navigationController = self.viewController?.navigationController
+        else {return}
+        navigationController.pushViewController(vc, animated: true)
+    }
+    
     func gotoSplash() {
         let appDelegate = UIApplication.shared.delegate as? AppDelegate
         appDelegate?.rootCoordinator?.startSplash()

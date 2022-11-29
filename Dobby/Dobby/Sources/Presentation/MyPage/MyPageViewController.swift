@@ -60,6 +60,7 @@ final class MyPageViewController: BaseViewController {
     private let leaveHomeView = SettingItemView(title: "연결된 그룹 나가기")
     private let createHomeView = SettingItemView(title: "그룹 만들기")
     private let joinHomeView = SettingItemView(title: "다른 그룹 참여하기")
+    private let settingView = SettingItemView(title: "도움말")
     private let logoutView = SettingItemView(title: "로그아웃")
     private let resignView = SettingItemView(
         title: "회원탈퇴",
@@ -183,8 +184,8 @@ final class MyPageViewController: BaseViewController {
         } else { // 그룹 참여중
             stackContainerView.addArrangedSubview(leaveHomeView)
         }
-        // TODO: 프로필수정 개발
-//        stackContainerView.addArrangedSubview(profileEditView)
+//        stackContainerView.addArrangedSubview(profileEditView) // TODO: 프로필수정 개발
+        stackContainerView.addArrangedSubview(settingView)
         stackContainerView.addArrangedSubview(logoutView)
         stackContainerView.addArrangedSubview(resignView)
     }
@@ -291,5 +292,13 @@ final class MyPageViewController: BaseViewController {
             .subscribe(onNext: { [weak self] _ in
                 self?.mypageViewModel.didTapJoinGroup()
             }).disposed(by: self.disposeBag)
+        
+        settingView.rx.tapGesture()
+            .when(.recognized)
+            .throttle(.seconds(1), latest: false, scheduler: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] _ in
+                self?.mypageCoordinator?.pushToSetting()
+            }).disposed(by: self.disposeBag)
+        
     }
 }
