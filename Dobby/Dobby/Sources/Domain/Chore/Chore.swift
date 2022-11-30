@@ -15,7 +15,7 @@ struct Chore: Codable {
     var noticeEnable: Int
     var executeAt: String
     var endAt: String
-    var ownerList : [ChoreOwner]?
+    var ownerList: [ChoreOwner]?
     var memo: String?
     
     enum CodingKeys: String, CodingKey {
@@ -27,5 +27,6 @@ struct Chore: Codable {
         case noticeEnable = "notice_available"
         case endAt = "end_repeat_at"
         case executeAt = "excute_at"
+        case ownerList = "task_user_list"
     }
 }

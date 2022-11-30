@@ -8,7 +8,7 @@
 import Foundation
 
 struct ChoreOwner: Codable {
-    var taskId: String
+    var taskId: String?
     var userId: String
     var isEnd: Int
     
