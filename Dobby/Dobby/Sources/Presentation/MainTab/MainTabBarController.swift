@@ -56,7 +56,8 @@ final class MainTabBarController: UITabBarController {
     }
     
     func bindState() {
-        mainTabViewModel.tabItems.distinctUntilChanged()
+        mainTabViewModel.tabItems
+            .distinctUntilChanged()
             .subscribe(onNext: { [weak self] tabBarList in
                 guard let self = self else { return }
                 let viewControllers = tabBarList.map { tabBarItem -> UIViewController? in
@@ -66,10 +67,9 @@ final class MainTabBarController: UITabBarController {
                 self.setViewControllers(viewControllers, animated: true)
             }).disposed(by: self.disposeBag)
         
-        mainTabViewModel.selectedTab
-            .map { $0.rawValue }
-            .subscribe(onNext: { [weak self] selectedIndex in
-                self?.selectedIndex = selectedIndex
+        mainTabViewModel.selectedTabIndex
+            .subscribe(onNext: { [weak self] idx in
+                self?.selectedIndex = idx
             }).disposed(by: self.disposeBag)
         
         mainTabViewModel.pushAddChoreTab
@@ -86,7 +86,7 @@ final class MainTabBarController: UITabBarController {
             }
             .filterNil()
             .subscribe(onNext: { [weak self] selectedIndex in
-                self?.mainTabViewModel.didSelect(selectIdx: selectedIndex)
+                self?.mainTabViewModel.didSelect(index: selectedIndex)
             })
             .disposed(by: self.disposeBag)
     }
