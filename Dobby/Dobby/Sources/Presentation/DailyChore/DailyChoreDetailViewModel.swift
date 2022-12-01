@@ -6,3 +6,11 @@
 //
 
 import Foundation
+import RxSwift
+
+class DailyChoreDetailViewModel {
+    
+    // MARK: property
+    var disposBag: DisposeBag = .init()
+    
+}

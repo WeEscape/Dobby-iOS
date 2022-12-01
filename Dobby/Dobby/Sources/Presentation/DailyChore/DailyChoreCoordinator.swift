@@ -18,7 +18,8 @@ final class DailyChoreCoordinator: Coordinator {
     }
     
     func dailyChoreDetailFactory(date: Date) -> DailyChoreDetailViewController {
-        let vc = DailyChoreDetailViewController()
+        let vm = DailyChoreDetailViewModel()
+        let vc = DailyChoreDetailViewController(viewModel: vm)
         vc.dateLabel.text = date.toStringWithoutTime()
         return vc
     }
