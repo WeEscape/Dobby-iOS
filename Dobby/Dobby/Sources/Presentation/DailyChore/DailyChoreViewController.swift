@@ -32,7 +32,7 @@ final class DailyChoreViewController: BaseViewController {
     // MARK: UI
     struct Metric {
         static let titleMargin: CGFloat = 40
-        static let itemSize: CGSize = .init(width: 30, height: 60)
+        static let itemSize: CGSize = .init(width: 40, height: 60)
     }
     
     private let titleLabel: UILabel = {
@@ -105,20 +105,21 @@ final class DailyChoreViewController: BaseViewController {
             $0.left.equalToSuperview().inset(20)
         }
         
-        self.view.addSubview(monthBtn)
-        monthBtn.snp.makeConstraints {
-            $0.width.equalTo(60)
-            $0.height.equalTo(60)
-            $0.left.equalToSuperview().inset(20)
-            $0.top.equalTo(self.titleLabel.snp.bottom).offset(20)
-        }
+//        self.view.addSubview(monthBtn)
+//        monthBtn.snp.makeConstraints {
+//            $0.width.equalTo(60)
+//            $0.height.equalTo(60)
+//            $0.left.equalToSuperview().inset(20)
+//            $0.top.equalTo(self.titleLabel.snp.bottom).offset(20)
+//        }
+        monthBtn.isHidden = true
         
         self.view.addSubview(dateSelectCollectionView)
         dateSelectCollectionView.snp.makeConstraints {
-            $0.left.equalTo(monthBtn.snp.right).offset(20)
+            $0.left.equalToSuperview().inset(20)
             $0.right.equalToSuperview().inset(20)
             $0.height.equalTo(60)
-            $0.centerY.equalTo(monthBtn.snp.centerY)
+            $0.top.equalTo(self.titleLabel.snp.bottom).offset(20)
         }
         
         addChild(pageViewController)

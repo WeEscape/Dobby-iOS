@@ -13,11 +13,6 @@ final class DateSelectCollectionCell: UICollectionViewCell {
 
     static var ID = "DateSelectCollectionCell"
     
-    let titleLabel: UILabel = {
-        let label = UILabel()
-        return label
-    }()
-    
     private let dayLabel: UILabel = {
         let label = UILabel()
         label.font = DobbyFont.avenirMedium(size: 15).getFont
@@ -78,7 +73,9 @@ final class DateSelectCollectionCell: UICollectionViewCell {
     func setDate(_ date: Date) {
         let calendar = Calendar.current
         let component = calendar.dateComponents([.year, .month, .day, .weekday], from: date)
-        dayLabel.text = "\(component.day ?? 0)"
+        let day = component.day ?? 0
+        let month = component.month ?? 0
+        dayLabel.text = day == 1 ? "\(month)/\(day)" : "\(day)"
         if let weekday = component.weekday {
             if weekday == 1 {
                 self.weekDayLabel.text = "일"
