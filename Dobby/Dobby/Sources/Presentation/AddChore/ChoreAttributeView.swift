@@ -28,7 +28,7 @@ class ChoreAttributeView: UIView {
         static let arrowViewWidthHeight: CGFloat = 12
     }
     
-    private lazy var iconView: UIImageView = {
+    lazy var iconView: UIImageView = {
         let iv = UIImageView()
         iv.contentMode = .scaleAspectFit
         iv.image = self.attribute.icon

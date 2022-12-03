@@ -16,8 +16,9 @@ final class ChoreMemoView: ChoreAttributeView {
     // MARK: UI
     struct Metric {
         static let memoBodyFontSize: CGFloat = 12
-        static let titleLabelLeftInset: CGFloat = 28
-        static let titleLabelTopInset: CGFloat = 16
+        static let iconViewTopInset: CGFloat = 16
+        static let iconViewWidthHeight: CGFloat = 20
+        static let titleLabelLeftMargin: CGFloat = 8
         static let memoTextViewTopMargin: CGFloat = 9
         static let memoTextViewLeftRightInset: CGFloat = 28
         static let memoTextViewHeight: CGFloat = 94
@@ -60,17 +61,25 @@ final class ChoreMemoView: ChoreAttributeView {
     override func setupUI() {
         self.backgroundColor = .white
         
+        self.addSubview(iconView)
+        iconView.snp.makeConstraints {
+            $0.left.equalToSuperview()
+            $0.top.equalToSuperview().inset(Metric.iconViewTopInset)
+            $0.width.equalTo(Metric.iconViewWidthHeight)
+            $0.height.equalTo(Metric.iconViewWidthHeight)
+        }
+        
         self.addSubview(titleLabel)
         titleLabel.snp.makeConstraints {
-            $0.left.equalToSuperview().inset(Metric.titleLabelLeftInset)
-            $0.top.equalToSuperview().inset(Metric.titleLabelTopInset)
+            $0.left.equalTo(iconView.snp.right).offset(Metric.titleLabelLeftMargin)
+            $0.centerY.equalTo(iconView.snp.centerY)
         }
         
         self.addSubview(memoTextView)
         memoTextView.snp.makeConstraints {
             $0.top.equalTo(titleLabel.snp.bottom).offset(Metric.memoTextViewTopMargin)
-            $0.left.equalToSuperview().inset(Metric.memoTextViewLeftRightInset)
-            $0.right.equalToSuperview().inset(Metric.memoTextViewLeftRightInset)
+            $0.left.equalToSuperview()
+            $0.right.equalToSuperview()
             $0.height.equalTo(Metric.memoTextViewHeight)
         }
     }

@@ -44,7 +44,7 @@ extension ChoreAttribute {
         case .category:
             return UIImage(named: "icon_hamburger")?.withRenderingMode(.alwaysOriginal)
         case .memo:
-            return nil
+            return UIImage(named: "icon_memo")?.withRenderingMode(.alwaysOriginal)
         }
     }
 }
