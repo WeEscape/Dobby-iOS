@@ -21,6 +21,7 @@ struct Palette {
     static let textGray2 = UIColor(red: 0.333, green: 0.333, blue: 0.333, alpha: 1)
     static let textRed1 = UIColor(red: 1, green: 0.368, blue: 0.368, alpha: 1)
     static let lineGray1 = UIColor(red: 0.921, green: 0.921, blue: 0.921, alpha: 1)
+    static let pageBackground = UIColor(red: 0.976, green: 0.976, blue: 0.976, alpha: 1)
     
     // profile color
     static let profileBlue = UIColor(red: 0.063, green: 0.337, blue: 0.984, alpha: 1)

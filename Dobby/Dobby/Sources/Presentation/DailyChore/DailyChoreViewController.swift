@@ -57,6 +57,7 @@ final class DailyChoreViewController: BaseViewController {
             navigationOrientation: .horizontal,
             options: nil
         )
+        vc.view.backgroundColor = Palette.pageBackground
         vc.delegate = self
         vc.dataSource = self
         return vc
@@ -126,8 +127,8 @@ final class DailyChoreViewController: BaseViewController {
         view.addSubview(pageViewController.view)
         pageViewController.view.snp.makeConstraints {
             $0.top.equalTo(dateSelectCollectionView.snp.bottom).offset(20)
-            $0.left.right.equalToSuperview().inset(20)
-            $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).inset(20)
+            $0.left.right.equalToSuperview()
+            $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
         }
         pageViewController.didMove(toParent: self)
     }

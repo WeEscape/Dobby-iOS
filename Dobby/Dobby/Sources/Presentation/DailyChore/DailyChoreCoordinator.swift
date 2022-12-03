@@ -9,18 +9,22 @@ import UIKit
 
 final class DailyChoreCoordinator: Coordinator {
 
-    override init(parentCoordinator: Coordinator? = nil, childCoordinators: [Coordinator] = []) {
+    override init(
+        parentCoordinator: Coordinator? = nil,
+        childCoordinators: [Coordinator] = [ChoreListCoordinator()]
+    ) {
         super.init(parentCoordinator: parentCoordinator, childCoordinators: childCoordinators)
         let viewMode = DailyChoreViewModel(
-            dailyChoreDetailFactory: self.dailyChoreDetailFactory(date:)
+            choreListVCFactory: self.choreListVCFactory(date:)
         )
         self.viewController = DailyChoreViewController(viewModel: viewMode)
     }
     
-    func dailyChoreDetailFactory(date: Date) -> DailyChoreDetailViewController {
-        let vm = DailyChoreDetailViewModel()
-        let vc = DailyChoreDetailViewController(viewModel: vm)
-        vc.dateLabel.text = date.toStringWithoutTime()
+    func choreListVCFactory(date: Date) -> ChoreListViewController {
+        let coordinator = self.childCoordinators.filter { child in
+            return child is ChoreListCoordinator
+        }.first! as! ChoreListCoordinator
+        let vc = coordinator.createViewController(dateList: [date])
         return vc
     }
 }
