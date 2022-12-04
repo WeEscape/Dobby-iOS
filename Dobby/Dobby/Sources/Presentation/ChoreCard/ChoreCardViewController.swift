@@ -50,10 +50,6 @@ final class ChoreCardViewController: BaseViewController {
         bind()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-    }
-    
     // MARK: methods
     func setupUI() {
         
@@ -92,7 +88,13 @@ final class ChoreCardViewController: BaseViewController {
     }
     
     func bindState() {
-        viewModel.choreListPerDatBehavior
+        viewModel.loadingPublish
+            .asDriver(onErrorJustReturn: false)
+            .drive(onNext: { [weak self] isLoading in
+                
+            }).disposed(by: self.disposeBag)
+        
+        viewModel.choreListBehavior
             .subscribe(onNext: { [weak self] choreListPerDate in
                 self?.emptyChoreImageView.isHidden = !choreListPerDate.isEmpty
                 // TODO: card view factory

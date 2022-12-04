@@ -14,8 +14,9 @@ class ChoreCardViewModel: BaseViewModel {
     // MARK: property
     let isGroupChore: Bool
     let dateList: [Date]
-    let choreListPerDatBehavior: BehaviorRelay<[[Chore]]> = .init(value: [])
-//    var memberList: [User]?
+    
+    let memberListPublish: PublishRelay<[User]> = .init()
+    let choreListBehavior: BehaviorRelay<[[Chore]]> = .init(value: [])
     
     // MARK: initialize
     init(dateList: [Date], isGroupChore: Bool) {
@@ -23,8 +24,15 @@ class ChoreCardViewModel: BaseViewModel {
         self.dateList = dateList
     }
     
-    func viewDidAppear() {
-        // fetch chore list with [date]. [User]
+    func getMemberList() {
+        self.loadingPublish.accept(true)
+        
+        if isGroupChore {
+            // 내 그룹 멤버 정보
+            
+        } else {
+            // 내정보
+            
+        }
     }
-    
 }
