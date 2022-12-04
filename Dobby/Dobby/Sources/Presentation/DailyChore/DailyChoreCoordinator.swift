@@ -11,19 +11,19 @@ final class DailyChoreCoordinator: Coordinator {
 
     override init(
         parentCoordinator: Coordinator? = nil,
-        childCoordinators: [Coordinator] = [ChoreListCoordinator()]
+        childCoordinators: [Coordinator] = [ChoreCardCoordinator()]
     ) {
         super.init(parentCoordinator: parentCoordinator, childCoordinators: childCoordinators)
         let viewMode = DailyChoreViewModel(
-            choreListVCFactory: self.choreListVCFactory(date:)
+            choreCardVCFactory: self.choreCardVCFactory(date:)
         )
         self.viewController = DailyChoreViewController(viewModel: viewMode)
     }
     
-    func choreListVCFactory(date: Date) -> ChoreListViewController {
+    func choreCardVCFactory(date: Date) -> ChoreCardViewController {
         let coordinator = self.childCoordinators.filter { child in
-            return child is ChoreListCoordinator
-        }.first! as! ChoreListCoordinator
+            return child is ChoreCardCoordinator
+        }.first! as! ChoreCardCoordinator
         let vc = coordinator.createViewController(dateList: [date], isGroupChore: false)
         return vc
     }

@@ -58,8 +58,8 @@
 		A1789361291FA8C4007893FB /* DailyChoreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1789360291FA8C4007893FB /* DailyChoreViewModel.swift */; };
 		A1789363291FADAC007893FB /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1789362291FADAC007893FB /* BaseViewModel.swift */; };
 		A1789365291FAF67007893FB /* DateListSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1789364291FAF66007893FB /* DateListSection.swift */; };
-		A178936C2920C8FD007893FB /* ChoreListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A178936B2920C8FD007893FB /* ChoreListViewController.swift */; };
-		A178936E2920C908007893FB /* ChoreListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A178936D2920C908007893FB /* ChoreListViewModel.swift */; };
+		A178936C2920C8FD007893FB /* ChoreCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A178936B2920C8FD007893FB /* ChoreCardViewController.swift */; };
+		A178936E2920C908007893FB /* ChoreCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A178936D2920C908007893FB /* ChoreCardViewModel.swift */; };
 		A178937B2928B254007893FB /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A178937A2928B254007893FB /* UserRepository.swift */; };
 		A178937D2928B3FD007893FB /* UserRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A178937C2928B3FD007893FB /* UserRepositoryImpl.swift */; };
 		A17893802928B4A0007893FB /* MyInfoAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A178937F2928B4A0007893FB /* MyInfoAPI.swift */; };
@@ -93,7 +93,7 @@
 		A18DF2812934E97F0073A01F /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18DF2802934E97F0073A01F /* SettingViewController.swift */; };
 		A18DF28329362E9F0073A01F /* PolicyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18DF28229362E9F0073A01F /* PolicyViewController.swift */; };
 		A18DF28529362ED10073A01F /* PolicyType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18DF28429362ED10073A01F /* PolicyType.swift */; };
-		A18DF288293B1E250073A01F /* ChoreListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18DF287293B1E250073A01F /* ChoreListCoordinator.swift */; };
+		A18DF288293B1E250073A01F /* ChoreCardCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18DF287293B1E250073A01F /* ChoreCardCoordinator.swift */; };
 		A18DF28A293B2E620073A01F /* ChoreCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18DF289293B2E620073A01F /* ChoreCardView.swift */; };
 		A18DF28C293B5AD20073A01F /* ChoreItemListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18DF28B293B5AD20073A01F /* ChoreItemListView.swift */; };
 		A18DF28E293C5CCA0073A01F /* ChoreItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18DF28D293C5CCA0073A01F /* ChoreItemView.swift */; };
@@ -223,8 +223,8 @@
 		A1789360291FA8C4007893FB /* DailyChoreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyChoreViewModel.swift; sourceTree = "<group>"; };
 		A1789362291FADAC007893FB /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		A1789364291FAF66007893FB /* DateListSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateListSection.swift; sourceTree = "<group>"; };
-		A178936B2920C8FD007893FB /* ChoreListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoreListViewController.swift; sourceTree = "<group>"; };
-		A178936D2920C908007893FB /* ChoreListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoreListViewModel.swift; sourceTree = "<group>"; };
+		A178936B2920C8FD007893FB /* ChoreCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoreCardViewController.swift; sourceTree = "<group>"; };
+		A178936D2920C908007893FB /* ChoreCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoreCardViewModel.swift; sourceTree = "<group>"; };
 		A178937A2928B254007893FB /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
 		A178937C2928B3FD007893FB /* UserRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepositoryImpl.swift; sourceTree = "<group>"; };
 		A178937F2928B4A0007893FB /* MyInfoAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoAPI.swift; sourceTree = "<group>"; };
@@ -259,7 +259,7 @@
 		A18DF2802934E97F0073A01F /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		A18DF28229362E9F0073A01F /* PolicyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolicyViewController.swift; sourceTree = "<group>"; };
 		A18DF28429362ED10073A01F /* PolicyType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolicyType.swift; sourceTree = "<group>"; };
-		A18DF287293B1E250073A01F /* ChoreListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoreListCoordinator.swift; sourceTree = "<group>"; };
+		A18DF287293B1E250073A01F /* ChoreCardCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoreCardCoordinator.swift; sourceTree = "<group>"; };
 		A18DF289293B2E620073A01F /* ChoreCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoreCardView.swift; sourceTree = "<group>"; };
 		A18DF28B293B5AD20073A01F /* ChoreItemListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoreItemListView.swift; sourceTree = "<group>"; };
 		A18DF28D293C5CCA0073A01F /* ChoreItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoreItemView.swift; sourceTree = "<group>"; };
@@ -724,9 +724,9 @@
 		A18DF286293B1D9F0073A01F /* ChoreList */ = {
 			isa = PBXGroup;
 			children = (
-				A18DF287293B1E250073A01F /* ChoreListCoordinator.swift */,
-				A178936B2920C8FD007893FB /* ChoreListViewController.swift */,
-				A178936D2920C908007893FB /* ChoreListViewModel.swift */,
+				A18DF287293B1E250073A01F /* ChoreCardCoordinator.swift */,
+				A178936B2920C8FD007893FB /* ChoreCardViewController.swift */,
+				A178936D2920C908007893FB /* ChoreCardViewModel.swift */,
 				A18DF289293B2E620073A01F /* ChoreCardView.swift */,
 				A18DF28B293B5AD20073A01F /* ChoreItemListView.swift */,
 				A18DF28D293C5CCA0073A01F /* ChoreItemView.swift */,
@@ -1239,7 +1239,7 @@
 				A19E9846290E76AE004A8861 /* Date+.swift in Sources */,
 				A12095F728FD9532008CE410 /* MainTab.swift in Sources */,
 				A13C537B28E97EF600C72215 /* WelcomeCoordinator.swift in Sources */,
-				A18DF288293B1E250073A01F /* ChoreListCoordinator.swift in Sources */,
+				A18DF288293B1E250073A01F /* ChoreCardCoordinator.swift in Sources */,
 				A19E97EF2904D826004A8861 /* DailyChoreViewController.swift in Sources */,
 				A19E9856291152B6004A8861 /* EditProfileViewModel.swift in Sources */,
 				A17893AA292A1867007893FB /* CategoryListDTO.swift in Sources */,
@@ -1263,7 +1263,7 @@
 				A19E97E92904D7EF004A8861 /* MonthlyChoreCoordinator.swift in Sources */,
 				A19E987A2917D4EF004A8861 /* SelectRepeatCycleView.swift in Sources */,
 				A13C536328E9173900C72215 /* AuthenticationRepositoryImpl.swift in Sources */,
-				A178936C2920C8FD007893FB /* ChoreListViewController.swift in Sources */,
+				A178936C2920C8FD007893FB /* ChoreCardViewController.swift in Sources */,
 				A19E98642912AAF1004A8861 /* SelectProfileAttributeViewController.swift in Sources */,
 				A13C537F28EA9C0000C72215 /* AppKey.swift in Sources */,
 				A19E980029053B32004A8861 /* ChoreUseCase.swift in Sources */,
@@ -1307,7 +1307,7 @@
 				A19E985D2912A3D0004A8861 /* SelectChoreAttributeViewController.swift in Sources */,
 				A19E985829128D28004A8861 /* EditProfileColorView.swift in Sources */,
 				A17893A4292A0924007893FB /* CategoryRepositoryImpl.swift in Sources */,
-				A178936E2920C908007893FB /* ChoreListViewModel.swift in Sources */,
+				A178936E2920C908007893FB /* ChoreCardViewModel.swift in Sources */,
 				A1789359291D2035007893FB /* ResignAPI.swift in Sources */,
 				A17893B4292A2AD0007893FB /* SelectCategoryView.swift in Sources */,
 				A1789357291D17E2007893FB /* DobbyResponse.swift in Sources */,

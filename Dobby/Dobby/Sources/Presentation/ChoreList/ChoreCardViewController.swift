@@ -1,5 +1,5 @@
 //
-//  ChoreListViewController.swift
+//  ChoreCardViewController.swift
 //  Dobby
 //
 //  Created by yongmin lee on 11/13/22.
@@ -10,10 +10,10 @@ import SnapKit
 import RxViewController
 import RxCocoa
 
-final class ChoreListViewController: BaseViewController {
+final class ChoreCardViewController: BaseViewController {
     
     // MARK: property
-    let viewModel: ChoreListViewModel
+    let viewModel: ChoreCardViewModel
     
     // MARK: UI
     private let scrollContainerView: UIScrollView = .init()
@@ -34,7 +34,7 @@ final class ChoreListViewController: BaseViewController {
     }()
     
     // MARK: init
-    init(viewModel: ChoreListViewModel) {
+    init(viewModel: ChoreCardViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }

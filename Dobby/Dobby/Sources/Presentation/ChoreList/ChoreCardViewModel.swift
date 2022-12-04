@@ -1,5 +1,5 @@
 //
-//  ChoreListViewModel.swift
+//  ChoreCardViewModel.swift
 //  Dobby
 //
 //  Created by yongmin lee on 11/13/22.
@@ -9,7 +9,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-class ChoreListViewModel: BaseViewModel {
+class ChoreCardViewModel: BaseViewModel {
     
     // MARK: property
     let isGroupChore: Bool
