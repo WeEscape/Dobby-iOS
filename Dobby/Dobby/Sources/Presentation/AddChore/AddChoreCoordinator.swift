@@ -31,7 +31,8 @@ final class AddChoreCoordinator: Coordinator {
             ),
             userUseCase: UserUseCaseImpl(
                 userRepository: UserRepositoryImpl(
-                    network: NetworkServiceImpl.shared
+                    network: NetworkServiceImpl.shared,
+                    localStorage: UserDefaults.standard
                 )
             ),
             groupUseCase: GroupUseCaseImpl(

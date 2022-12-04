@@ -37,7 +37,7 @@
 		A13C536528E91BB800C72215 /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13C536428E91BB700C72215 /* Authentication.swift */; };
 		A13C536728E91D9C00C72215 /* AuthUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13C536628E91D9C00C72215 /* AuthUseCase.swift */; };
 		A13C536D28E94CA200C72215 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13C536C28E94CA200C72215 /* NetworkService.swift */; };
-		A13C536F28E94D0500C72215 /* LocalTokenStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13C536E28E94D0500C72215 /* LocalTokenStorageService.swift */; };
+		A13C536F28E94D0500C72215 /* LocalStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13C536E28E94D0500C72215 /* LocalStorageService.swift */; };
 		A13C537328E958DF00C72215 /* Array+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13C537228E958DF00C72215 /* Array+.swift */; };
 		A13C537728E9786900C72215 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13C537628E9786900C72215 /* WelcomeViewController.swift */; };
 		A13C537928E9789200C72215 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13C537828E9789200C72215 /* MainTabBarController.swift */; };
@@ -202,7 +202,7 @@
 		A13C536428E91BB700C72215 /* Authentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authentication.swift; sourceTree = "<group>"; };
 		A13C536628E91D9C00C72215 /* AuthUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthUseCase.swift; sourceTree = "<group>"; };
 		A13C536C28E94CA200C72215 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
-		A13C536E28E94D0500C72215 /* LocalTokenStorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalTokenStorageService.swift; sourceTree = "<group>"; };
+		A13C536E28E94D0500C72215 /* LocalStorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorageService.swift; sourceTree = "<group>"; };
 		A13C537228E958DF00C72215 /* Array+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+.swift"; sourceTree = "<group>"; };
 		A13C537628E9786900C72215 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		A13C537828E9789200C72215 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
@@ -553,7 +553,7 @@
 		A13C536B28E94C7400C72215 /* LocalStorage */ = {
 			isa = PBXGroup;
 			children = (
-				A13C536E28E94D0500C72215 /* LocalTokenStorageService.swift */,
+				A13C536E28E94D0500C72215 /* LocalStorageService.swift */,
 			);
 			path = LocalStorage;
 			sourceTree = "<group>";
@@ -1291,7 +1291,7 @@
 				A13C535C28E8288A00C72215 /* SplashViewController.swift in Sources */,
 				A12095F928FD953E008CE410 /* MainTabViewModel.swift in Sources */,
 				A178937D2928B3FD007893FB /* UserRepositoryImpl.swift in Sources */,
-				A13C536F28E94D0500C72215 /* LocalTokenStorageService.swift in Sources */,
+				A13C536F28E94D0500C72215 /* LocalStorageService.swift in Sources */,
 				A19E980229053B60004A8861 /* Chore.swift in Sources */,
 				A19E98092906B22B004A8861 /* ChoreAttribute.swift in Sources */,
 				A19E983B290D06C7004A8861 /* ModalCoordinator.swift in Sources */,

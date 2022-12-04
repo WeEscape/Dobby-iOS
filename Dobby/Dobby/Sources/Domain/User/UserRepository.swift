@@ -10,4 +10,6 @@ import RxSwift
 
 protocol UserRepository {
     func getMyInfo() -> Observable<User>
+    func saveUserInfoInLocalStorate(user: User)
+    func removeUserInfoInLocalStorate()
 }

@@ -15,7 +15,7 @@ final class SplashCoordinator: Coordinator {
             authUseCase: AuthUseCaseImpl(
                 authenticationRepository: AuthenticationRepositoryImpl(
                     network: NetworkServiceImpl.shared,
-                    localTokenStorage: UserDefaults.standard
+                    localStorage: UserDefaults.standard
                 )
             )
         )

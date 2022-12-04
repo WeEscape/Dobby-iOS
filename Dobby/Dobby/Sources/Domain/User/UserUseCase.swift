@@ -10,6 +10,8 @@ import RxSwift
 
 protocol UserUseCase {
     func getMyInfo() -> Observable<User>
+    func saveUserInfoInLocalStorate(user:User)
+    func removeUserInfoInLocalStorate()
 }
 
 final class UserUseCaseImpl: UserUseCase {
@@ -23,4 +25,13 @@ final class UserUseCaseImpl: UserUseCase {
     func getMyInfo() -> Observable<User> {
         return self.userRepository.getMyInfo()
     }
+    
+    func saveUserInfoInLocalStorate(user: User) {
+        self.userRepository.saveUserInfoInLocalStorate(user: user)
+    }
+    
+    func removeUserInfoInLocalStorate() {
+        self.userRepository.removeUserInfoInLocalStorate()
+    }
+    
 }

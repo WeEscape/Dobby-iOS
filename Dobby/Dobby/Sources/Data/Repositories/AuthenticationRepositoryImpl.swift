@@ -15,11 +15,11 @@ import RxOptional
 final class AuthenticationRepositoryImpl: AuthenticationRepository {
     
     let network: NetworkService
-    let localTokenStorage: LocalTokenStorageService
+    let localStorage: LocalStorageService
     
-    init(network: NetworkService, localTokenStorage: LocalTokenStorageService) {
+    init(network: NetworkService, localStorage: LocalStorageService) {
         self.network = network
-        self.localTokenStorage = localTokenStorage
+        self.localStorage = localStorage
     }
     
     func kakaoAuthorize() -> Observable<Authentication> {
@@ -132,11 +132,13 @@ final class AuthenticationRepositoryImpl: AuthenticationRepository {
     }
     
     func logout() -> Observable<Void> {
+        self.localStorage.delete(key: .userInfo)
         return self.network.request(api: LogoutAPI())
             .map { _ -> Void in () }
     }
     
     func resign() -> Observable<Void> {
+        self.localStorage.delete(key: .userInfo)
         return self.network.request(api: ResignAPI())
             .map { _ -> Void in () }
     }
@@ -144,10 +146,10 @@ final class AuthenticationRepositoryImpl: AuthenticationRepository {
     func readToken(tokenOption: TokenOption) -> Observable<Authentication> {
         var tokenList: [String?] = []
         if tokenOption.contains(.accessToken) {
-            tokenList.append(self.localTokenStorage.read(key: .jwtAccessToken))
+            tokenList.append(self.localStorage.read(key: .jwtAccessToken))
         }
         if tokenOption.contains(.refreshToken) {
-            tokenList.append(self.localTokenStorage.read(key: .jwtRefreshToken))
+            tokenList.append(self.localStorage.read(key: .jwtRefreshToken))
         }
         return Observable.just(Authentication(
             accessToken: tokenList[safe: 0] ?? nil,
@@ -157,19 +159,19 @@ final class AuthenticationRepositoryImpl: AuthenticationRepository {
     
     func writeToken(authentication: Authentication) {
         if let accessToken = authentication.accessToken {
-            self.localTokenStorage.write(key: .jwtAccessToken, value: accessToken)
+            self.localStorage.write(key: .jwtAccessToken, value: accessToken)
         }
         if let refreshToken = authentication.refreshToken {
-            self.localTokenStorage.write(key: .jwtRefreshToken, value: refreshToken)
+            self.localStorage.write(key: .jwtRefreshToken, value: refreshToken)
         }
     }
     
     func removeToken(tokenOption: TokenOption) {
         if tokenOption.contains(.accessToken) {
-            self.localTokenStorage.delete(key: .jwtAccessToken)
+            self.localStorage.delete(key: .jwtAccessToken)
         }
         if tokenOption.contains(.refreshToken) {
-            self.localTokenStorage.delete(key: .jwtRefreshToken)
+            self.localStorage.delete(key: .jwtRefreshToken)
         }
     }
 }

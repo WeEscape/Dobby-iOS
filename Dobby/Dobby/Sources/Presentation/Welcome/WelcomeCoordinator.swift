@@ -15,7 +15,12 @@ final class WelcomeCoordinator: Coordinator {
             authUseCase: AuthUseCaseImpl(
                 authenticationRepository: AuthenticationRepositoryImpl(
                     network: NetworkServiceImpl.shared,
-                    localTokenStorage: UserDefaults.standard
+                    localStorage: UserDefaults.standard
+                )
+            ), userUseCase: UserUseCaseImpl(
+                userRepository: UserRepositoryImpl(
+                    network: NetworkServiceImpl.shared,
+                    localStorage: UserDefaults.standard
                 )
             )
         )

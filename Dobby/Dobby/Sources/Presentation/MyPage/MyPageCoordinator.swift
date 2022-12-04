@@ -15,11 +15,14 @@ final class MyPageCoordinator: Coordinator {
             authUseCase: AuthUseCaseImpl(
                 authenticationRepository: AuthenticationRepositoryImpl(
                     network: NetworkServiceImpl.shared,
-                    localTokenStorage: UserDefaults.standard
+                    localStorage: UserDefaults.standard
                 )
             ),
             userUserCase: UserUseCaseImpl(
-                userRepository: UserRepositoryImpl(network: NetworkServiceImpl.shared)
+                userRepository: UserRepositoryImpl(
+                    network: NetworkServiceImpl.shared,
+                    localStorage: UserDefaults.standard
+                )
             ),
             groupUseCase: GroupUseCaseImpl(
                 groupRepository: GroupRepositoryImpl(network: NetworkServiceImpl.shared)
