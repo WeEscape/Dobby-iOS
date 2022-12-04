@@ -9,8 +9,10 @@ import UIKit
 
 final class ChoreListCoordinator: Coordinator {
  
-    func createViewController(dateList: [Date]) -> ChoreListViewController {
-        let vm = ChoreListViewModel(dateList: dateList)
+    func createViewController(
+        dateList: [Date], isGroupChore: Bool
+    ) -> ChoreListViewController {
+        let vm = ChoreListViewModel(dateList: dateList, isGroupChore: isGroupChore)
         let vc = ChoreListViewController(viewModel: vm)
         return vc
     }
