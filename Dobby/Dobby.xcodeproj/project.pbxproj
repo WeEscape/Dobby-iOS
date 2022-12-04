@@ -445,7 +445,7 @@
 		A13C534628E720E600C72215 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				A18DF286293B1D9F0073A01F /* ChoreList */,
+				A18DF286293B1D9F0073A01F /* ChoreCard */,
 				A19E98602912AA79004A8861 /* SelectProfileAttributeModal */,
 				A19E98592912A162004A8861 /* SelectChoreAttributeModal */,
 				A19E97E22904D78E004A8861 /* AddChore */,
@@ -721,7 +721,7 @@
 			path = Chore;
 			sourceTree = "<group>";
 		};
-		A18DF286293B1D9F0073A01F /* ChoreList */ = {
+		A18DF286293B1D9F0073A01F /* ChoreCard */ = {
 			isa = PBXGroup;
 			children = (
 				A18DF287293B1E250073A01F /* ChoreCardCoordinator.swift */,
@@ -731,7 +731,7 @@
 				A18DF28B293B5AD20073A01F /* ChoreItemListView.swift */,
 				A18DF28D293C5CCA0073A01F /* ChoreItemView.swift */,
 			);
-			path = ChoreList;
+			path = ChoreCard;
 			sourceTree = "<group>";
 		};
 		A19E97DF2904D761004A8861 /* DailyChore */ = {
