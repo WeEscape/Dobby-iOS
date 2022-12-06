@@ -21,6 +21,18 @@ final class ChoreRepositoryImpl: ChoreRepository {
             chore: chore,
             ownerList: ownerList
         ))
-        .compactMap { res -> Void in  () }
+        .compactMap { _ -> Void in () }
+    }
+    
+    func getChores(userId: String, groupId: String, date: Date, periodical: ChorePeriodical) -> Observable<[Chore]> {
+        return self.network.request(api: ChoreListAPI(
+            userId: userId,
+            groupId: groupId,
+            date: date,
+            periodical: periodical
+        ))
+        .compactMap { res in
+            return res.data?.toDomain()
+        }
     }
 }
