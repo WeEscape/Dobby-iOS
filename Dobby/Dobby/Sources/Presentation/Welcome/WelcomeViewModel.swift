@@ -88,6 +88,7 @@ class WelcomeViewModel {
     }
     
     func loginFail() {
+        self.userUseCase.removeUserInfoInLocalStorate()
         self.authUseCase.removeToken(tokenOption: [.accessToken, .refreshToken])
         self.loginResultPublish.accept(false)
         self.loadingPublish.accept(false)

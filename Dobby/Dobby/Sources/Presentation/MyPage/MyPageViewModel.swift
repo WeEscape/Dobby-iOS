@@ -108,6 +108,7 @@ final class MyPageViewModel {
     func requestLogout() {
         self.authUseCase.logout()
             .subscribe(onNext: { [weak self] _ in
+                self?.userUserCase.removeUserInfoInLocalStorate()
                 self?.authUseCase.removeToken(tokenOption: [.accessToken, .refreshToken])
                 self?.logoutPublish.accept(())
             }).disposed(by: self.disposeBag)
@@ -116,6 +117,7 @@ final class MyPageViewModel {
     func requestResign() {
         self.authUseCase.resign()
             .subscribe(onNext: { [weak self] _ in
+                self?.userUserCase.removeUserInfoInLocalStorate()
                 self?.authUseCase.removeToken(tokenOption: [.accessToken, .refreshToken])
                 self?.resignPublish.accept(())
             }).disposed(by: self.disposeBag)
@@ -144,6 +146,7 @@ final class MyPageViewModel {
         self.loadingPublish.accept(true)
         self.groupUseCase.createGroup()
             .subscribe(onNext: { [weak self] group in
+                self?.userUserCase.removeUserInfoInLocalStorate()
                 self?.inviteCodePublish.accept(group.inviteCode)
                 self?.myGroupIdBehavior.accept(group.groupId)
                 self?.loadingPublish.accept(false)
@@ -159,6 +162,7 @@ final class MyPageViewModel {
         self.loadingPublish.accept(true)
         self.groupUseCase.leaveGroup(id: myGroupId)
             .subscribe(onNext: { [weak self] _ in
+                self?.userUserCase.removeUserInfoInLocalStorate()
                 self?.myGroupIdBehavior.accept(nil)
                 self?.loadingPublish.accept(false)
             }, onError: { [weak self] _ in
@@ -171,6 +175,7 @@ final class MyPageViewModel {
         self.loadingPublish.accept(true)
         self.groupUseCase.joinGroup(id: groupId)
             .subscribe(onNext: { [weak self] group in
+                self?.userUserCase.removeUserInfoInLocalStorate()
                 self?.myGroupIdBehavior.accept(group.groupId)
                 self?.inviteCodePublish.accept(group.inviteCode)
                 self?.loadingPublish.accept(false)
