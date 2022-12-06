@@ -64,27 +64,62 @@ final class ChoreCardViewController: BaseViewController {
         scrollContainerView.snp.makeConstraints {
             $0.left.equalToSuperview()
             $0.right.equalToSuperview()
-            $0.top.equalToSuperview()
+            $0.top.equalToSuperview().inset(20)
             $0.bottom.equalToSuperview()
         }
         
         scrollContainerView.addSubview(stackContainerView)
         stackContainerView.snp.makeConstraints {
-            $0.left.equalToSuperview()
-            $0.right.equalToSuperview()
+            $0.left.equalToSuperview().inset(10)
+            $0.right.equalToSuperview().inset(10)
             $0.top.equalToSuperview()
             $0.bottom.equalToSuperview()
-            $0.width.equalToSuperview()
+            $0.width.equalToSuperview().inset(10)
         }
     }
     
+    func reloadCardViews() {
+        self.stackContainerView.arrangedSubviews.forEach { [weak self] subview in
+            subview.removeFromSuperview()
+        }
+        
+        self.view.layoutIfNeeded()
+        let cardViews = self.cardViewFactory()
+        cardViews.forEach { [weak self] cardView in
+            self?.stackContainerView.addArrangedSubview(cardView)
+        }
+    }
+    
+    func cardViewFactory() -> [ChoreCardView] {
+        let dateList = viewModel.dateList
+        let memberList = viewModel.memberListBehavior.value
+        var ret: [ChoreCardView] = []
+        
+        for (dateIdx, date) in dateList.enumerated() {
+            let start = dateIdx * memberList.count
+            let choreList = Array(viewModel.choreListBehavior.value[start...(start + memberList.count - 1)])
+            let cardView = ChoreCardView(
+                date: date,
+                memberList: memberList,
+                choreList: choreList,
+                viewModel: viewModel
+            )
+            ret.append(cardView)
+        }
+        return ret
+    }
+    
+    // MARK: rx
     func bind() {
         bindAction()
         bindState()
     }
     
     func bindAction() {
-        
+        self.rx.viewDidAppear
+            .subscribe(onNext: { [weak self] _ in
+                self?.viewModel.getMemberList()
+            }).disposed(by: self.disposeBag)
     }
     
     func bindState() {
@@ -94,10 +129,19 @@ final class ChoreCardViewController: BaseViewController {
                 
             }).disposed(by: self.disposeBag)
         
-        viewModel.choreListBehavior
-            .subscribe(onNext: { [weak self] choreListPerDate in
-                self?.emptyChoreImageView.isHidden = !choreListPerDate.isEmpty
-                // TODO: card view factory
+        viewModel.memberListBehavior
+            .subscribe(onNext: { [weak self] members in
+                self?.viewModel.getChoreList(of: members)
             }).disposed(by: self.disposeBag)
+        
+        viewModel.isChoreListEmptyBehavior
+            .asDriver()
+            .drive(onNext: { [weak self] isEmpty in
+                self?.emptyChoreImageView.isHidden = !isEmpty
+                self?.scrollContainerView.isHidden = isEmpty
+                if !isEmpty {
+                    self?.reloadCardViews()
+                }
+            }).disposed(by: self.disposeBag)   
     }
 }

@@ -55,4 +55,21 @@ extension Date {
         }
         return ret
     }
+    
+    func isSame(with date: Date) -> Bool {
+        let calendar = Calendar.current
+        let dateComponent = calendar.dateComponents([.year, .month, .day], from: date)
+        let component = calendar.dateComponents([.year, .month, .day], from: self)
+         
+        if dateComponent.year == component.year,
+           dateComponent.month == component.month,
+           dateComponent.day == component.day {
+            return true
+        } else {
+            return false
+        }
+        
+        
+        
+    }
 }
