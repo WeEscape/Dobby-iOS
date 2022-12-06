@@ -78,8 +78,7 @@ class ChoreCardViewModel: BaseViewModel {
                 if choreList.isEmpty {
                     self?.choreListBehavior.accept([])
                     self?.isChoreListEmptyBehavior.accept(true)
-                }
-                else if let firstChore = choreList.first, firstChore.isEmpty {
+                } else if let firstChore = choreList.first, firstChore.isEmpty {
                     self?.choreListBehavior.accept([])
                     self?.isChoreListEmptyBehavior.accept(true)
                 } else {

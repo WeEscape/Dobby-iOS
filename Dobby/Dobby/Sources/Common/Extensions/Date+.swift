@@ -67,9 +67,6 @@ extension Date {
             return true
         } else {
             return false
-        }
-        
-        
-        
+        } 
     }
 }

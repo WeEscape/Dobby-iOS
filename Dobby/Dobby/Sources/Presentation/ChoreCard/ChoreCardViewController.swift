@@ -79,7 +79,7 @@ final class ChoreCardViewController: BaseViewController {
     }
     
     func reloadCardViews() {
-        self.stackContainerView.arrangedSubviews.forEach { [weak self] subview in
+        self.stackContainerView.arrangedSubviews.forEach { subview in
             subview.removeFromSuperview()
         }
         
@@ -97,7 +97,9 @@ final class ChoreCardViewController: BaseViewController {
         
         for (dateIdx, date) in dateList.enumerated() {
             let start = dateIdx * memberList.count
-            let choreList = Array(viewModel.choreListBehavior.value[start...(start + memberList.count - 1)])
+            let choreList = Array(
+                viewModel.choreListBehavior.value[start...(start + memberList.count - 1)]
+            )
             let cardView = ChoreCardView(
                 date: date,
                 memberList: memberList,

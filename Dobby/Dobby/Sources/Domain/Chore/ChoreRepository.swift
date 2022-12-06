@@ -10,5 +10,7 @@ import RxSwift
 
 protocol ChoreRepository {
     func postChore(chore: Chore, ownerList: [String]) -> Observable<Void>
-    func getChores(userId: String, groupId: String, date: Date, periodical: ChorePeriodical) -> Observable<[Chore]>
+    func getChores(
+        userId: String, groupId: String, date: Date, periodical: ChorePeriodical
+    ) -> Observable<[Chore]>
 }
