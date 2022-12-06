@@ -39,4 +39,20 @@ extension Date {
         let res = calendar.date(from: component)
         return res
     }
+    
+    func getWeekday() -> String? {
+        let calendar = Calendar.current
+        var component = calendar.dateComponents([.year, .month, .day, .weekday], from: self)
+        var ret: String?
+        if let weekday = component.weekday {
+            if weekday == 1 { ret = "SUN" }
+            else if weekday == 2 { ret = "MON" }
+            else if weekday == 3 { ret = "TUE" }
+            else if weekday == 4 { ret = "WED" }
+            else if weekday == 5 { ret = "TUR" }
+            else if weekday == 6 { ret = "FRI" }
+            else if weekday == 7 { ret = "SAT" }
+        }
+        return ret
+    }
 }
