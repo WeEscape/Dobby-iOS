@@ -9,6 +9,7 @@ import UIKit
 import SnapKit
 import RxViewController
 import RxCocoa
+import Toast_Swift
 
 final class ChoreCardViewController: BaseViewController {
     
@@ -144,6 +145,13 @@ final class ChoreCardViewController: BaseViewController {
                 if !isEmpty {
                     self?.reloadCardViews()
                 }
-            }).disposed(by: self.disposeBag)   
+            }).disposed(by: self.disposeBag)
+        
+        viewModel.messagePublish
+            .asDriver(onErrorJustReturn: "")
+            .drive(onNext: { [weak self] message in
+                self?.view.makeToast(message, duration: 2.0, position: .bottom)
+            }).disposed(by: self.disposeBag)
+            
     }
 }
