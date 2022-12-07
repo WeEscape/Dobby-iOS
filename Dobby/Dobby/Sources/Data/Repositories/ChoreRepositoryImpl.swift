@@ -37,4 +37,13 @@ final class ChoreRepositoryImpl: ChoreRepository {
             return res.data?.toDomain()
         }
     }
+    
+    func finishChore(chore: Chore, userId: String, isEnd: Bool) -> Observable<Void> {
+        return self.network.request(api: FinishChoreAPI(
+            userId: userId,
+            choreId: chore.choreId,
+            isEnd: isEnd
+        ))
+        .compactMap { _ -> Void in () }
+    }
 }

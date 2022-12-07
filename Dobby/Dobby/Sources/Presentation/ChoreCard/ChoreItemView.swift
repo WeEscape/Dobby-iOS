@@ -105,6 +105,13 @@ final class ChoreItemView: UIView {
     }
     
     @objc func didTapChoreItemView() {
-        viewModel?.didTapChoreItem(self.chore)
+        guard let memberId = member.userId,
+              let ownerList = chore.ownerList,
+              let owner = ownerList.first(where: { owner in
+                  owner.userId == memberId
+              })
+        else {return}
+        let toggleEnd = !(owner.isEnd == 1)
+        viewModel?.toggleChoreIsEnd(chore, userId: memberId, isEnd: toggleEnd)
     }
 }

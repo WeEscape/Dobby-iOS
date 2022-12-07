@@ -97,7 +97,11 @@ class ChoreCardViewModel: BaseViewModel {
         }
     }
     
-    func didTapChoreItem(_ chore: Chore) {
-        print("debug : tap chore -> \(chore.title)")
+    func toggleChoreIsEnd(_ chore: Chore, userId: String, isEnd: Bool) {
+        self.choreUseCase.finishChore(chore: chore, userId: userId, isEnd: isEnd)
+            .subscribe(onNext: { [weak self] _ in
+                guard let memberlist = self?.memberListBehavior.value else {return}
+                self?.memberListBehavior.accept(memberlist)
+            }).disposed(by: self.disposBag)
     }
 }

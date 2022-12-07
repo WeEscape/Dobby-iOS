@@ -10,6 +10,7 @@ import RxSwift
 
 protocol ChoreUseCase {
     func postChore(chore: Chore, ownerList: [String]) -> Observable<Void>
+    func finishChore(chore: Chore, userId: String, isEnd: Bool) -> Observable<Void>
     func getChores(
         userId: String, groupId: String, date: Date, periodical: ChorePeriodical
     ) -> Observable<[Chore]>
@@ -31,5 +32,9 @@ final class ChoreUseCaseImpl: ChoreUseCase {
         userId: String, groupId: String, date: Date, periodical: ChorePeriodical
     ) -> Observable<[Chore]> {
         return self.choreRepository.getChores(userId: userId, groupId: groupId, date: date, periodical: periodical)
+    }
+    
+    func finishChore(chore: Chore, userId: String, isEnd: Bool) -> Observable<Void> {
+        return self.choreRepository.finishChore(chore: chore, userId: userId, isEnd: isEnd)
     }
 }
