@@ -17,7 +17,17 @@ final class ChoreCardViewController: BaseViewController {
     let viewModel: ChoreCardViewModel
     
     // MARK: UI
-    private let scrollContainerView: UIScrollView = .init()
+    let refreshControl = UIRefreshControl()
+    
+    lazy var scrollContainerView: UIScrollView = {
+        let scroll = UIScrollView()
+        scroll.bounces = true
+        scroll.alwaysBounceVertical = true
+        scroll.contentInset = .init(top: 20, left: 0, bottom: 0, right: 0)
+        self.refreshControl.endRefreshing()
+        scroll.refreshControl = self.refreshControl
+        return scroll
+    }()
     
     private let stackContainerView: UIStackView = {
         let stack = UIStackView()
@@ -65,7 +75,7 @@ final class ChoreCardViewController: BaseViewController {
         scrollContainerView.snp.makeConstraints {
             $0.left.equalToSuperview()
             $0.right.equalToSuperview()
-            $0.top.equalToSuperview().inset(20)
+            $0.top.equalToSuperview()
             $0.bottom.equalToSuperview()
         }
         
@@ -123,14 +133,17 @@ final class ChoreCardViewController: BaseViewController {
             .subscribe(onNext: { [weak self] _ in
                 self?.viewModel.getMemberList()
             }).disposed(by: self.disposeBag)
+        
+        refreshControl.rx.controlEvent(.valueChanged)
+            .subscribe(onNext: { [weak self] _ in
+                self?.viewModel.getMemberList()
+            }).disposed(by: self.disposeBag)
     }
     
     func bindState() {
         viewModel.loadingPublish
-            .asDriver(onErrorJustReturn: false)
-            .drive(onNext: { [weak self] isLoading in
-                
-            }).disposed(by: self.disposeBag)
+            .bind(to: self.refreshControl.rx.isRefreshing)
+            .disposed(by: self.disposeBag)
         
         viewModel.memberListBehavior
             .subscribe(onNext: { [weak self] members in
