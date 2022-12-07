@@ -24,7 +24,8 @@ final class AddChoreViewModel {
     
     var choreTitle: String?
     var choreMemo: String?
-    let selectedDateBehavior: BehaviorRelay<Date?> = .init(value: nil)
+    let selectedStartDateBehavior: BehaviorRelay<Date?> = .init(value: nil)
+    let selectedEndDateBehavior: BehaviorRelay<Date?> = .init(value: nil)
     let selectedRepeatCycleBehavior: BehaviorRelay<ChoreRepeatCycle?> = .init(value: nil)
     let selectedUserBehavior: BehaviorRelay<User?> = .init(value: nil)
     let selectedCategoryBehavior: BehaviorRelay<Category?> = .init(value: nil)
@@ -64,8 +65,8 @@ final class AddChoreViewModel {
         guard let categoryId = self.selectedCategoryBehavior.value?.categoryId,
               let title = self.choreTitle,
               let repeayCycle = self.selectedRepeatCycleBehavior.value,
-              let excuteAt = self.selectedDateBehavior.value,
-              let endAt = excuteAt.calculateDiffDate(diff: 365),
+              let excuteAt = self.selectedStartDateBehavior.value,
+              let endAt = self.selectedEndDateBehavior.value,
               let ownerId = self.selectedUserBehavior.value?.userId
         else {
             self.loadingPublush.accept(false)
@@ -90,8 +91,12 @@ final class AddChoreViewModel {
             }).disposed(by: self.disposeBag)
     }
     
-    func didSelectDate(date: Date) {
-        selectedDateBehavior.accept(date)
+    func didSelectDate(date: Date, attribute: ChoreAttribute) {
+        if attribute == .startDate {
+            selectedStartDateBehavior.accept(date)
+        } else if attribute == .endDate {
+            selectedEndDateBehavior.accept(date)
+        }
         validateSaveBtn()
     }
     
@@ -111,11 +116,20 @@ final class AddChoreViewModel {
     }
     
     func validateSaveBtn() {
-        if selectedDateBehavior.value != nil,
-           selectedRepeatCycleBehavior.value != nil,
+        if let cycle = selectedRepeatCycleBehavior.value,
+           cycle == .off,
+           selectedStartDateBehavior.value != nil,
            selectedCategoryBehavior.value != nil,
            selectedUserBehavior.value != nil,
            choreTitle.isNilOrEmpty() == false {
+            self.saveBtnEnableBehavior?.accept(true)
+        } else if let cycle = selectedRepeatCycleBehavior.value,
+                  cycle != .off,
+                  selectedStartDateBehavior.value != nil,
+                  selectedEndDateBehavior.value != nil,
+                  selectedCategoryBehavior.value != nil,
+                  selectedUserBehavior.value != nil,
+                  choreTitle.isNilOrEmpty() == false {
             self.saveBtnEnableBehavior?.accept(true)
         } else {
             self.saveBtnEnableBehavior?.accept(false)

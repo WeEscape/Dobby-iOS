@@ -65,6 +65,7 @@ class ModalContentView: UIView {
     }
     
     deinit {
+        disposeBag = DisposeBag()
         BeaverLog.debug("\(String(describing: self)) deinit")
     }
     

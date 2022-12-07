@@ -145,7 +145,6 @@ final class AddChoreViewController: BaseViewController {
     func bindState() {
         addChoreViewModel.attributeItems
             .asDriver()
-            .distinctUntilChanged()
             .drive(onNext: { [weak self] attributeList in
                 guard let self = self else { return }
                 attributeList.forEach { attribute in
@@ -156,12 +155,21 @@ final class AddChoreViewController: BaseViewController {
                 }
             }).disposed(by: self.disposeBag)
         
-        addChoreViewModel.selectedDateBehavior
+        addChoreViewModel.selectedStartDateBehavior
             .asDriver()
             .filterNil()
             .distinctUntilChanged()
             .drive(onNext: { [weak self] selectedDate in
                 guard let dateView = self?.searchChoreAttributeView(of: .startDate) else {return}
+                dateView.updateTitle(title: selectedDate.toStringWithoutTime())
+            }).disposed(by: self.disposeBag)
+        
+        addChoreViewModel.selectedEndDateBehavior
+            .asDriver()
+            .filterNil()
+            .distinctUntilChanged()
+            .drive(onNext: { [weak self] selectedDate in
+                guard let dateView = self?.searchChoreAttributeView(of: .endDate) else {return}
                 dateView.updateTitle(title: selectedDate.toStringWithoutTime())
             }).disposed(by: self.disposeBag)
         

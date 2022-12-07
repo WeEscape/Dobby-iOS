@@ -63,7 +63,14 @@ final class SelectChoreAttributeViewController: ModalViewController {
     override func bindState() {
         super.bindState()
         
-        viewModel.selectedDateBehavior
+        viewModel.selectedStartDateBehavior
+            .asDriver()
+            .filterNil()
+            .drive(onNext: { [weak self] dateValue in
+                self?.selectDateView?.reloadView(dateValue)
+            }).disposed(by: self.disposeBag)
+        
+        viewModel.selectedEndDateBehavior
             .asDriver()
             .filterNil()
             .drive(onNext: { [weak self] dateValue in
@@ -93,8 +100,8 @@ final class SelectChoreAttributeViewController: ModalViewController {
         super.bindAction()
         
         selectDateView?.datePublish
-            .subscribe(onNext: { [weak self] selectedDate in
-                self?.viewModel.didSelectDate(date: selectedDate)
+            .subscribe(onNext: { [weak self] selectedDate, attribute in
+                self?.viewModel.didSelectDate(date: selectedDate, attribute: attribute)
             }).disposed(by: self.disposeBag)
         
         selectRepeatCycleView?.repeatCyclePublish

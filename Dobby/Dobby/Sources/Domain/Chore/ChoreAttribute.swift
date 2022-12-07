@@ -8,8 +8,9 @@
 import UIKit
 
 enum ChoreAttribute: Int, CaseIterable {
-    case startDate
     case repeatCycle
+    case startDate
+    case endDate
     case owner
     case category
     case memo
@@ -20,6 +21,8 @@ extension ChoreAttribute: CustomStringConvertible {
         switch self {
         case .startDate:
             return "시작일"
+        case .endDate:
+            return "종료일"
         case .repeatCycle:
             return "반복"
         case .owner:
@@ -36,6 +39,8 @@ extension ChoreAttribute {
     var icon: UIImage? {
         switch self {
         case .startDate:
+            return UIImage(named: "weekly_chore_active")?.withRenderingMode(.alwaysOriginal)
+        case .endDate:
             return UIImage(named: "weekly_chore_active")?.withRenderingMode(.alwaysOriginal)
         case .repeatCycle:
             return UIImage(named: "icon_recycle")?.withRenderingMode(.alwaysOriginal)
