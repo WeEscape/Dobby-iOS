@@ -14,9 +14,10 @@ final class ChoreItemListView: UIView {
     let isShowMember: Bool
     let member: User
     let choreList: [Chore]
+    weak var viewModel: ChoreCardViewModel?
     
     // MARK: UI
-    lazy var userProfile: UIImageView = {
+    private let userProfile: UIImageView = {
         let iv = UIImageView()
         iv.contentMode = .scaleAspectFit
         iv.layer.cornerRadius = 5
@@ -33,10 +34,16 @@ final class ChoreItemListView: UIView {
     }()
     
     // MARK: init
-    init(isShowMember: Bool, member: User, choreList: [Chore]) {
+    init(
+        isShowMember: Bool,
+        member: User,
+        choreList: [Chore],
+        viewModel: ChoreCardViewModel?
+    ) {
         self.isShowMember = isShowMember
         self.member = member
         self.choreList = choreList
+        self.viewModel = viewModel
         super.init(frame: .zero)
         self.setupUI()
     }
@@ -76,7 +83,11 @@ final class ChoreItemListView: UIView {
         }
         
         choreList.forEach { chore in
-            let choreItemView = ChoreItemView(member: member, chore: chore)
+            let choreItemView = ChoreItemView(
+                member: member,
+                chore: chore,
+                viewModel: viewModel
+            )
             stackContainerView.addArrangedSubview(choreItemView)
         }
     }

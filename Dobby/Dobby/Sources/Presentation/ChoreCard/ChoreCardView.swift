@@ -118,7 +118,8 @@ final class ChoreCardView: UIView {
             let choreItemListView = ChoreItemListView(
                 isShowMember: choreCardPeriod == .daily ? false : true,
                 member: member,
-                choreList: choreList[memberIdx]
+                choreList: choreList[memberIdx],
+                viewModel: viewModel
             )
             stackContainerView.addArrangedSubview(choreItemListView)
         }

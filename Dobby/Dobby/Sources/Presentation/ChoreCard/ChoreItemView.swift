@@ -13,6 +13,7 @@ final class ChoreItemView: UIView {
     // MARK: properties
     let member: User
     let chore: Chore
+    weak var viewModel: ChoreCardViewModel?
     
     // MARK: UI
     lazy var choreTitle: UILabel = {
@@ -47,9 +48,14 @@ final class ChoreItemView: UIView {
     }()
     
     // MARK: init
-    init(member: User, chore: Chore) {
+    init(
+        member: User,
+        chore: Chore,
+        viewModel: ChoreCardViewModel?
+    ) {
         self.member = member
         self.chore = chore
+        self.viewModel = viewModel
         super.init(frame: .zero)
         self.setupUI()
         
@@ -99,6 +105,6 @@ final class ChoreItemView: UIView {
     }
     
     @objc func didTapChoreItemView() {
-        print("debug : didTapChoreItemView -> \(chore.title)")
+        viewModel?.didTapChoreItem(self.chore)
     }
 }

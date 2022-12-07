@@ -96,4 +96,8 @@ class ChoreCardViewModel: BaseViewModel {
             self.loadingPublish.accept(false)
         }
     }
+    
+    func didTapChoreItem(_ chore: Chore) {
+        print("debug : tap chore -> \(chore.title)")
+    }
 }
