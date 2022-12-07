@@ -24,7 +24,10 @@ final class DailyChoreCoordinator: Coordinator {
         let coordinator = self.childCoordinators.filter { child in
             return child is ChoreCardCoordinator
         }.first! as! ChoreCardCoordinator
-        let vc = coordinator.createViewController(dateList: [date], isGroupChore: false)
+        let vc = coordinator.createViewController(
+            dateList: [date],
+            choreCardPeriod: .daily
+        )
         return vc
     }
 }

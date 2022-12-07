@@ -10,11 +10,12 @@ import UIKit
 final class ChoreCardCoordinator: Coordinator {
  
     func createViewController(
-        dateList: [Date], isGroupChore: Bool
+        dateList: [Date],
+        choreCardPeriod: ChorePeriodical
     ) -> ChoreCardViewController {
         let vm = ChoreCardViewModel(
+            choreCardPeriod: choreCardPeriod,
             dateList: dateList,
-            isGroupChore: isGroupChore,
             userUseCase: UserUseCaseImpl(
                 userRepository: UserRepositoryImpl(
                     network: NetworkServiceImpl.shared, localStorage: UserDefaults.standard

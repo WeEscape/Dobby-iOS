@@ -12,7 +12,7 @@ import RxCocoa
 class ChoreCardViewModel: BaseViewModel {
     
     // MARK: property
-    let isGroupChore: Bool
+    let choreCardPeriod: ChorePeriodical
     let dateList: [Date]
     let userUseCase: UserUseCase
     let groupUseCase: GroupUseCase
@@ -25,13 +25,13 @@ class ChoreCardViewModel: BaseViewModel {
     
     // MARK: initialize
     init(
+        choreCardPeriod: ChorePeriodical,
         dateList: [Date],
-        isGroupChore: Bool,
         userUseCase: UserUseCase,
         groupUseCase: GroupUseCase,
         choreUseCase: ChoreUseCase
     ) {
-        self.isGroupChore = isGroupChore
+        self.choreCardPeriod = choreCardPeriod
         self.dateList = dateList
         self.userUseCase = userUseCase
         self.groupUseCase = groupUseCase
@@ -41,7 +41,7 @@ class ChoreCardViewModel: BaseViewModel {
     func getMemberList() {
         self.userUseCase.getMyInfo()
             .flatMapLatest { [unowned self] myinfo -> Observable<Group> in
-                if self.isGroupChore {
+                if choreCardPeriod != .daily {
                     guard let userId = myinfo.userId else {return .error(CustomError.init())}
                     return self.groupUseCase.getGroupInfo(id: userId)
                 } else {

@@ -11,6 +11,7 @@ import SnapKit
 final class ChoreCardView: UIView {
     
     // MARK: properties
+    let choreCardPeriod: ChorePeriodical
     let date: Date
     let memberList: [User]
     let choreList: [[Chore]]
@@ -49,7 +50,14 @@ final class ChoreCardView: UIView {
     }()
     
     // MARK: init
-    init(date: Date, memberList: [User], choreList: [[Chore]], viewModel: ChoreCardViewModel) {
+    init(
+        choreCardPeriod: ChorePeriodical,
+        date: Date,
+        memberList: [User],
+        choreList: [[Chore]],
+        viewModel: ChoreCardViewModel
+    ) {
+        self.choreCardPeriod = choreCardPeriod
         self.date = date
         self.memberList = memberList
         self.choreList = choreList
@@ -108,7 +116,7 @@ final class ChoreCardView: UIView {
         
         for (memberIdx, member) in memberList.enumerated() {
             let choreItemListView = ChoreItemListView(
-                isShowMember: self.memberList.count == 1 ? false : true,
+                isShowMember: choreCardPeriod == .daily ? false : true,
                 member: member,
                 choreList: choreList[memberIdx]
             )

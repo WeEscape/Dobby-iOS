@@ -112,6 +112,7 @@ final class ChoreCardViewController: BaseViewController {
                 viewModel.choreListBehavior.value[start...(start + memberList.count - 1)]
             )
             let cardView = ChoreCardView(
+                choreCardPeriod: viewModel.choreCardPeriod,
                 date: date,
                 memberList: memberList,
                 choreList: choreList,
