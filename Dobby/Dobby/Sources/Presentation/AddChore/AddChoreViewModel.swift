@@ -17,6 +17,7 @@ final class AddChoreViewModel {
     let addChoreMsgPublish: PublishRelay<AddChoreMessage> = .init()
     let loadingPublush: PublishRelay<Bool> = .init()
     var saveBtnEnableBehavior: BehaviorRelay<Bool>? = .init(value: false)
+    let isHiddenEndDateSelectPublish: PublishRelay<Bool> = .init()
     
     let repeatCycleList: [ChoreRepeatCycle] = ChoreRepeatCycle.allCases
     let membersBehavior: BehaviorRelay<[User]> = .init(value: [])
@@ -94,6 +95,10 @@ final class AddChoreViewModel {
     func didSelectDate(date: Date, attribute: ChoreAttribute) {
         if attribute == .startDate {
             selectedStartDateBehavior.accept(date)
+            if let currentEndDate = selectedEndDateBehavior.value,
+               currentEndDate < date {
+                selectedEndDateBehavior.accept(nil)
+            }
         } else if attribute == .endDate {
             selectedEndDateBehavior.accept(date)
         }
@@ -103,6 +108,7 @@ final class AddChoreViewModel {
     func didSelectRepeatCycle(repeatCycle: ChoreRepeatCycle) {
         selectedRepeatCycleBehavior.accept(repeatCycle)
         validateSaveBtn()
+        isHiddenEndDateSelect()
     }
     
     func didSelectCategory(category: Category) {
@@ -113,6 +119,15 @@ final class AddChoreViewModel {
     func didSelectUser(user: User) {
         selectedUserBehavior.accept(user)
         validateSaveBtn()
+    }
+    
+    func isHiddenEndDateSelect() {
+        if let cycle = selectedRepeatCycleBehavior.value,
+           cycle == .off {
+            isHiddenEndDateSelectPublish.accept(true)
+        } else {
+            isHiddenEndDateSelectPublish.accept(false)
+        }
     }
     
     func validateSaveBtn() {

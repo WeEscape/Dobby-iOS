@@ -136,6 +136,27 @@ final class AddChoreViewController: BaseViewController {
         }
     }
     
+    func searchChoreAttributeView(of attributeType: ChoreAttribute) -> ChoreAttributeView? {
+        return self.attributeStackView.arrangedSubviews.filter({ sub in
+            guard let attributeView = sub as? ChoreAttributeView else {return false}
+            return attributeView.attribute == attributeType
+        }).first as? ChoreAttributeView
+    }
+    
+    func endDateViewAnimation(isHidden: Bool) {
+        self.attributeStackView.layoutIfNeeded()
+        guard let dateView = self.searchChoreAttributeView(of: .endDate) else {return}
+        let choreAttributeViewHeight: CGFloat = 48
+        dateView.snp.updateConstraints {
+            $0.height.equalTo(isHidden ? 0 : choreAttributeViewHeight)
+        }
+        dateView.isHidden = isHidden
+        
+        UIView.animate(withDuration: 0.3, animations: {
+            self.attributeStackView.layoutIfNeeded()
+        }, completion: nil)
+    }
+    
     // MARK: Rx bind
     func bind() {
         bindState()
@@ -166,11 +187,11 @@ final class AddChoreViewController: BaseViewController {
         
         addChoreViewModel.selectedEndDateBehavior
             .asDriver()
-            .filterNil()
             .distinctUntilChanged()
             .drive(onNext: { [weak self] selectedDate in
                 guard let dateView = self?.searchChoreAttributeView(of: .endDate) else {return}
-                dateView.updateTitle(title: selectedDate.toStringWithoutTime())
+                let title = selectedDate?.toStringWithoutTime() ?? "종료일"
+                dateView.updateTitle(title: title)
             }).disposed(by: self.disposeBag)
         
         addChoreViewModel.selectedRepeatCycleBehavior
@@ -220,6 +241,11 @@ final class AddChoreViewController: BaseViewController {
                     self?.hideLoading()
                 }
             }).disposed(by: self.disposeBag)
+        
+        addChoreViewModel.isHiddenEndDateSelectPublish
+            .subscribe(onNext: { [weak self] isHidden in
+                self?.endDateViewAnimation(isHidden: isHidden)
+            }).disposed(by: self.disposeBag)
     }
     
     func bindAction() {
@@ -247,13 +273,6 @@ final class AddChoreViewController: BaseViewController {
                 self?.addChoreViewModel.choreTitle = title.value
                 self?.addChoreViewModel.validateSaveBtn()
             }).disposed(by: self.disposeBag)
-    }
-    
-    func searchChoreAttributeView(of attributeType: ChoreAttribute) -> ChoreAttributeView? {
-        return self.attributeStackView.arrangedSubviews.filter({ sub in
-            guard let attributeView = sub as? ChoreAttributeView else {return false}
-            return attributeView.attribute == attributeType
-        }).first as? ChoreAttributeView
     }
 }
 

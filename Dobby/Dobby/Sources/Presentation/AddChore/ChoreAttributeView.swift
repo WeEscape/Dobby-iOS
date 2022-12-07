@@ -72,8 +72,9 @@ class ChoreAttributeView: UIView {
     // MARK: method
     func setupUI() {
         self.snp.makeConstraints {
-            $0.height.equalTo(Metric.viewHeight)
+            $0.height.equalTo(attribute == .endDate ? 0 : Metric.viewHeight)
         }
+        self.isHidden = attribute == .endDate ? true : false
         self.backgroundColor = .white
         
         self.addSubview(iconView)

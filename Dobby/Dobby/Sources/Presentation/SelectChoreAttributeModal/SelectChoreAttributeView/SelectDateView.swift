@@ -49,6 +49,8 @@ final class SelectDateView: ModalContentView {
         datePicker.backgroundColor = .white
         datePicker.locale = .current
         datePicker.timeZone = .current
+        datePicker.minimumDate = Date().getLastMonth()
+        datePicker.maximumDate = Date().getNextMonth()
         return datePicker
     }()
     
@@ -93,14 +95,16 @@ final class SelectDateView: ModalContentView {
     }
     
     func setupDatePickerRange() {
-        if attribute == .startDate {
-            datePicker.minimumDate = Date().getLastMonth()
-            datePicker.maximumDate = Date().getNextMonth()
-        } else if attribute == .endDate{
+        if attribute == .endDate{
             viewModel.selectedStartDateBehavior
                 .subscribe(onNext: { [weak self] startDate in
+                    guard let  startDate = startDate else {
+                        self?.datePicker.minimumDate = Date()
+                        self?.datePicker.maximumDate = Date().calculateDiffDate(diff: 90)
+                        return
+                    }
                     self?.datePicker.minimumDate = startDate
-                    self?.datePicker.maximumDate = startDate?.calculateDiffDate(diff: 365)
+                    self?.datePicker.maximumDate = startDate.calculateDiffDate(diff: 365)
                 }).disposed(by: self.disposeBag)
         }
     }
