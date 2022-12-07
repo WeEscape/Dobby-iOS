@@ -35,7 +35,7 @@ final class AddChoreViewModel {
     let categoryUseCase: CategoryUseCase
     
     enum AddChoreMessage: String {
-        case NO_GROUP = "참여중인 그룹이 없습니다\n하단 탭의 더보기 > 그룹 생성 또는 다른 그룹 참여 후 등록 가능합니다."
+        case NO_GROUP = "참여중인 그룹이 없습니다\n더보기에서 그룹 생성 또는 다른 그룹 참여 후 등록 가능합니다."
         case ERROR_ADD_CHORE = "에러 발생\n잠시후 다시 시도해주세요"
         case SUCCESS_ADD_CHORE = "집안일이 등록되었습니다."
     }
@@ -127,14 +127,18 @@ final class AddChoreViewModel {
         self.userUseCase.getMyInfo()
             .flatMap { [unowned self] myinfo -> Observable<Group> in
                 guard let myGroupId = myinfo.groupList?.last?.groupId else {
-                    return .error(CustomError.init())
+                    return .error(CustomError.init(
+                        memo: AddChoreMessage.NO_GROUP.rawValue
+                    ))
                 }
                 self.myinfoBehavior.accept(myinfo)
                 return self.groupUseCase.getGroupInfo(id: myGroupId)
             }
             .flatMap { [unowned self] group -> Observable<[Category]> in
                 guard let memberList = group.memberList else {
-                    return .error(CustomError.init())
+                    return .error(CustomError.init(
+                        memo: AddChoreMessage.NO_GROUP.rawValue
+                    ))
                 }
                 self.membersBehavior.accept(memberList)
                 return self.categoryUseCase.getCategoryList(groupId: group.groupId!)
@@ -142,9 +146,11 @@ final class AddChoreViewModel {
             .subscribe(onNext: { [weak self] categoryList in
                 self?.loadingPublush.accept(false)
                 self?.categoriesBehavior.accept(categoryList)
-            }, onError: { [weak self] _ in
+            }, onError: { [weak self] err in
                 self?.loadingPublush.accept(false)
-                self?.addChoreMsgPublish.accept(.ERROR_ADD_CHORE)
+                self?.addChoreMsgPublish.accept(
+                    AddChoreMessage(rawValue: err.localizedDescription) ?? .ERROR_ADD_CHORE
+                )
                 self?.saveBtnEnableBehavior = nil
             }).disposed(by: self.disposeBag)
     }

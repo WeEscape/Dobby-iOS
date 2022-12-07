@@ -78,7 +78,7 @@ final class AddChoreCoordinator: Coordinator {
         self.viewController?.present(selectVC, animated: false)
     }
     
-    func didSaveChore() {
+    func finishAddChore() {
         self.viewController?.navigationController?.popViewController(animated: true)
         self.viewController = self.initialVC
     }

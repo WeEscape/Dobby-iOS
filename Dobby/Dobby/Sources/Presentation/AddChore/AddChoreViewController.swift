@@ -82,10 +82,6 @@ final class AddChoreViewController: BaseViewController {
         setupUI()
         bind()
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        choreTitleTextField.becomeFirstResponder()
-    }
 
     // MARK: method
     func setupUI() {
@@ -132,11 +128,11 @@ final class AddChoreViewController: BaseViewController {
     func showAddChoreMessage(_ message: AddChoreViewModel.AddChoreMessage) {
         if message == .SUCCESS_ADD_CHORE {
             ProgressHUD.showSucceed(message.rawValue, interaction: false)
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) { [weak self] in
-                self?.addChoreCoordinator?.didSaveChore()
-            }
         } else {
             ProgressHUD.showFailed(message.rawValue, interaction: false)
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) { [weak self] in
+            self?.addChoreCoordinator?.finishAddChore()
         }
     }
     
