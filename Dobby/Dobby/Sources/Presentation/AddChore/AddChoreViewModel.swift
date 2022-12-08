@@ -67,12 +67,12 @@ final class AddChoreViewModel {
               let title = self.choreTitle,
               let repeayCycle = self.selectedRepeatCycleBehavior.value,
               let excuteAt = self.selectedStartDateBehavior.value,
-              let endAt = self.selectedEndDateBehavior.value,
               let ownerId = self.selectedUserBehavior.value?.userId
         else {
             self.loadingPublush.accept(false)
             return
         }
+        let endAt = self.selectedEndDateBehavior.value ?? Date().calculateDiffDate(diff: 60)!
         let notice = 1
         let memo = self.choreMemo ?? ""
         let newChore = Chore(
@@ -100,6 +100,10 @@ final class AddChoreViewModel {
                 selectedEndDateBehavior.accept(nil)
             }
         } else if attribute == .endDate {
+            if let currentStartDate = selectedStartDateBehavior.value,
+               date < currentStartDate {
+                selectedEndDateBehavior.accept(nil)
+            }
             selectedEndDateBehavior.accept(date)
         }
         validateSaveBtn()

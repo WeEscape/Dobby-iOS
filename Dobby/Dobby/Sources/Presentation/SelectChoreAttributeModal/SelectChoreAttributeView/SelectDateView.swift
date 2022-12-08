@@ -14,8 +14,27 @@ final class SelectDateView: ModalContentView {
     
     // MARK: property
     var attribute: ChoreAttribute!
-    let datePublish = PublishRelay<(Date, ChoreAttribute)>.init()
+    lazy var datePublish = BehaviorRelay<(Date, ChoreAttribute)>.init(
+        value: (initialDate, self.attribute)
+    )
     weak var viewModel: AddChoreViewModel!
+    var initialDate: Date {
+        if attribute == .startDate {
+            guard let currentStartDate = viewModel.selectedStartDateBehavior.value else {
+                return Date()
+            }
+            return currentStartDate
+        } else if attribute == .endDate {
+            guard let currentStartDate = viewModel.selectedStartDateBehavior.value else {
+                return Date()
+            }
+            guard let currentEndDate = viewModel.selectedEndDateBehavior.value else {
+                return currentStartDate
+            }
+            return currentEndDate
+        }
+        return Date()
+    }
     
     // MARK: init
     override init() {
@@ -42,15 +61,16 @@ final class SelectDateView: ModalContentView {
     }
     
     // MARK: UI
-    private let datePicker: UIDatePicker = {
+    lazy var datePicker: UIDatePicker = {
         let datePicker = UIDatePicker()
         datePicker.preferredDatePickerStyle = .inline
         datePicker.datePickerMode = .date
         datePicker.backgroundColor = .white
         datePicker.locale = .current
         datePicker.timeZone = .current
-        datePicker.minimumDate = Date().getLastMonth()
-        datePicker.maximumDate = Date().getNextMonth()
+        datePicker.minimumDate = Date()
+        datePicker.maximumDate = Date().calculateDiffDate(diff: 60)
+        datePicker.date = initialDate
         return datePicker
     }()
     
@@ -95,10 +115,10 @@ final class SelectDateView: ModalContentView {
     }
     
     func setupDatePickerRange() {
-        if attribute == .endDate{
+        if attribute == .endDate {
             viewModel.selectedStartDateBehavior
                 .subscribe(onNext: { [weak self] startDate in
-                    guard let  startDate = startDate else {
+                    guard let startDate = startDate else {
                         self?.datePicker.minimumDate = Date()
                         self?.datePicker.maximumDate = Date().calculateDiffDate(diff: 90)
                         return

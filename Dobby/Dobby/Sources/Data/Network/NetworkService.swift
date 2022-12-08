@@ -105,7 +105,9 @@ final class NetworkServiceImpl: NetworkService {
             .map { res -> Response in
                 let statusCode = res.statusCode
                 BeaverLog.verbose("Network response status code : \(statusCode)")
-                guard !(statusCode == 401) else { throw NetworkError.invalidateAccessToken }
+                guard !(statusCode == 401) else {
+                    throw NetworkError.invalidateAccessToken
+                }
                 guard !(400..<405 ~= statusCode) else {
                     let errorRes = try? JSONDecoder().decode(
                         DobbyResponse<Bool>.self,
