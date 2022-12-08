@@ -102,7 +102,7 @@ final class MyPageViewController: BaseViewController {
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.navigationItem.largeTitleDisplayMode = .always
         self.navigationController?.navigationBar.isTranslucent = false
-        self.navigationController?.navigationBar.tintColor = .black
+        self.navigationController?.navigationBar.tintColor = Palette.mainThemeBlue1
         
         let navigationLineView = self.createLineView()
         self.view.addSubview(navigationLineView)

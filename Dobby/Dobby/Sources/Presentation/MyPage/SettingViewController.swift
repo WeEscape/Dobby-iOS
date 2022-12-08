@@ -49,7 +49,6 @@ final class SettingViewController: BaseViewController {
         self.navigationItem.title = "도움말"
         self.navigationItem.largeTitleDisplayMode = .never
         self.navigationController?.navigationBar.isTranslucent = false
-        self.navigationController?.navigationBar.tintColor = .black
         self.navigationController?.topViewController?.extendedLayoutIncludesOpaqueBars = true
         
         let navigationLineView = self.createLineView()
