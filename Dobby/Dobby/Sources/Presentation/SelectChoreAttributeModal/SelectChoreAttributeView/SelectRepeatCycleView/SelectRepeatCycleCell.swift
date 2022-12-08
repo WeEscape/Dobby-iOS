@@ -17,13 +17,10 @@ final class SelectRepeatCycleCell: UITableViewCell {
     
     // MARK: UI
     struct Metric {
-        static let viewTitleFontSize: CGFloat = 16
-        static let itemRectViewCornerRadius: CGFloat = 5
-        static let itemRectViewWidth: CGFloat = 8
-        static let itemRectViewHeight: CGFloat = 16
+        static let viewTitleFontSize: CGFloat = 18
         static let tableViewCellSideInset: CGFloat = 30
-        static let itemTitleLeftInset: CGFloat = 15
-        static let checkBoxViewWidthHeight: CGFloat = 16
+        static let checkBoxViewWidthHeight: CGFloat = 19
+        static let cellTitleLabelLeftInset: CGFloat = 15
     }
     
     private let cellTitleLabel: UILabel = {
@@ -63,18 +60,18 @@ final class SelectRepeatCycleCell: UITableViewCell {
         bgView.backgroundColor = .clear
         selectedBackgroundView = bgView
         
-        self.addSubview(cellTitleLabel)
-        cellTitleLabel.snp.makeConstraints {
-            $0.left.equalToSuperview().inset(Metric.tableViewCellSideInset)
-            $0.centerY.equalToSuperview()
-        }
-        
         self.addSubview(checkBoxView)
         checkBoxView.snp.makeConstraints {
             $0.width.equalTo(Metric.checkBoxViewWidthHeight)
             $0.height.equalTo(Metric.checkBoxViewWidthHeight)
             $0.centerY.equalToSuperview()
-            $0.right.equalToSuperview().inset(Metric.tableViewCellSideInset)
+            $0.left.equalToSuperview().inset(Metric.tableViewCellSideInset)
+        }
+        
+        self.addSubview(cellTitleLabel)
+        cellTitleLabel.snp.makeConstraints {
+            $0.left.equalTo(checkBoxView.snp.right).offset(Metric.cellTitleLabelLeftInset)
+            $0.centerY.equalToSuperview()
         }
     }
     

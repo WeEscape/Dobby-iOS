@@ -19,8 +19,8 @@ final class SelectRepeatCycleView: ModalContentView {
     // MARK: UI
     struct Metric {
         static let headerViewHeight: CGFloat = 78
-        static let tablewViewCellHeight: CGFloat = 44
-        static let tableViewHeight: CGFloat = 220
+        static let tablewViewCellHeight: CGFloat = 50
+        static let tableViewHeight: CGFloat = 300
     }
     
     private lazy var repeatCycleTableView: UITableView = {
@@ -33,7 +33,7 @@ final class SelectRepeatCycleView: ModalContentView {
         )
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.contentInset = .zero
+        tableView.contentInset = .init(top: 10, left: 0, bottom: 20, right: 0)
         return tableView
     }()
     
