@@ -19,10 +19,11 @@ final class ChoreItemView: UIView {
     lazy var choreTitle: UILabel = {
         let lbl = UILabel()
         lbl.text = self.chore.title
-        lbl.font = DobbyFont.avenirMedium(size: 18).getFont
         if self.isFinished() {
-            lbl.textColor = UIColor.systemGray2
+            lbl.font = DobbyFont.avenirMedium(size: 18).getFont
+            lbl.textColor = UIColor.systemGray3
         } else {
+            lbl.font = DobbyFont.avenirBlack(size: 18).getFont
             lbl.textColor = Palette.textBlack1
         }
         return lbl
