@@ -15,11 +15,11 @@ final class ChoreMemoView: ChoreAttributeView {
     
     // MARK: UI
     struct Metric {
-        static let memoBodyFontSize: CGFloat = 12
+        static let memoBodyFontSize: CGFloat = 14
         static let iconViewTopInset: CGFloat = 16
         static let iconViewWidthHeight: CGFloat = 20
         static let titleLabelLeftMargin: CGFloat = 8
-        static let memoTextViewTopMargin: CGFloat = 9
+        static let memoTextViewTopMargin: CGFloat = 20
         static let memoTextViewLeftRightInset: CGFloat = 28
         static let memoTextViewHeight: CGFloat = 94
         static let textContainerTopBottomInset: CGFloat = 8
