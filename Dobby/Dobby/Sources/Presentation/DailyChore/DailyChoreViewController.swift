@@ -63,6 +63,18 @@ final class DailyChoreViewController: BaseViewController {
         return vc
     }()
     
+    private let addChoreBtn: UIButton = {
+        let btn = UIButton()
+        let img = UIImage(systemName: "plus")?
+            .withTintColor(.white, renderingMode: .alwaysOriginal)
+        btn.setImage(img, for: .normal)
+        btn.imageView?.contentMode = .scaleToFill
+        btn.backgroundColor = Palette.mainThemeBlue1
+        btn.layer.cornerRadius = 30
+        btn.layer.makeShadow()
+        return btn
+    }()
+    
     // MARK: init
     init(viewModel: DailyChoreViewModel) {
         self.viewModel = viewModel
@@ -131,6 +143,14 @@ final class DailyChoreViewController: BaseViewController {
             $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
         }
         pageViewController.didMove(toParent: self)
+        
+        view.addSubview(addChoreBtn)
+        addChoreBtn.snp.makeConstraints {
+            $0.width.equalTo(60)
+            $0.height.equalTo(60)
+            $0.right.equalToSuperview().inset(20)
+            $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).inset(20)
+        }
     }
     
     func setMonthBtnTitle(_ month: Int?) {
@@ -201,6 +221,12 @@ final class DailyChoreViewController: BaseViewController {
         self.dateSelectCollectionView.rx.itemSelected
             .subscribe(onNext: { [weak self] indexPath in
                 self?.viewModel.didSelectCell(indexPath.row)
+            }).disposed(by: self.disposeBag)
+        
+        self.addChoreBtn.rx.tap
+            .throttle(.seconds(1), latest: false, scheduler: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] _ in
+                print("Debug : did tap add chore ")
             }).disposed(by: self.disposeBag)
     }
 }
