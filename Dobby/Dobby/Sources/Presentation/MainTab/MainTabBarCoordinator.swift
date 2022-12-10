@@ -9,7 +9,16 @@ import UIKit
 
 final class MainTabBarCoordinator: Coordinator {
     
-    override init(parentCoordinator: Coordinator? = nil, childCoordinators: [Coordinator] = []) {
+    override init(
+        parentCoordinator: Coordinator? = nil,
+        childCoordinators: [Coordinator] = [
+            DailyChoreCoordinator(),
+            WeeklyChoreCoordinator(),
+            AddChoreCoordinator(),
+            MonthlyChoreCoordinator(),
+            MyPageCoordinator()
+        ]
+    ) {
         super.init(parentCoordinator: parentCoordinator, childCoordinators: childCoordinators)
         let mainTabViewModel = MainTabViewModel()
         let mainTabBarController = UINavigationController(
@@ -22,16 +31,6 @@ final class MainTabBarCoordinator: Coordinator {
         mainTabBarController.modalPresentationStyle = .fullScreen
         mainTabBarController.modalTransitionStyle = .crossDissolve
         self.viewController = mainTabBarController
-    }
-    
-    static func defaultChildCoordinators() -> [Coordinator] {
-        return [
-            DailyChoreCoordinator(),
-            WeeklyChoreCoordinator(),
-            AddChoreCoordinator(),
-            MonthlyChoreCoordinator(),
-            MyPageCoordinator()
-        ]
     }
     
     func tabBarViewControllerFactory(mainTab: MainTab) -> UIViewController? {

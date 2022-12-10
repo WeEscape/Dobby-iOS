@@ -17,7 +17,9 @@ final class DailyChoreCoordinator: Coordinator {
         let viewMode = DailyChoreViewModel(
             choreCardVCFactory: self.choreCardVCFactory(date:)
         )
-        self.viewController = DailyChoreViewController(viewModel: viewMode)
+        let viewController = DailyChoreViewController(viewModel: viewMode)
+        viewController.coordinator = self
+        self.viewController = viewController
     }
     
     func choreCardVCFactory(date: Date) -> ChoreCardViewController {
@@ -29,5 +31,10 @@ final class DailyChoreCoordinator: Coordinator {
             choreCardPeriod: .daily
         )
         return vc
+    }
+    
+    func pushToAddChore() {
+        guard let parent = parentCoordinator as? MainTabBarCoordinator else {return}
+        parent.pushToAddChore()
     }
 }

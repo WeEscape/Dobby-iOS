@@ -16,6 +16,7 @@ import RxOptional
 final class DailyChoreViewController: BaseViewController {
 
     // MARK: property
+    weak var coordinator: DailyChoreCoordinator?
     let viewModel: DailyChoreViewModel
     let collectionDataSource = RxCollectionViewSectionedReloadDataSource<DateListSection> {
         _, collectionview, index, item in
@@ -226,7 +227,7 @@ final class DailyChoreViewController: BaseViewController {
         self.addChoreBtn.rx.tap
             .throttle(.seconds(1), latest: false, scheduler: MainScheduler.instance)
             .subscribe(onNext: { [weak self] _ in
-                print("Debug : did tap add chore ")
+                self?.coordinator?.pushToAddChore()
             }).disposed(by: self.disposeBag)
     }
 }

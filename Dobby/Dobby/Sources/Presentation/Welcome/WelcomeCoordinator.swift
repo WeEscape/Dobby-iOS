@@ -35,8 +35,7 @@ final class WelcomeCoordinator: Coordinator {
     
     func presentMainTab() {
         let mainTabBarCoordinator = MainTabBarCoordinator(
-            parentCoordinator: self,
-            childCoordinators: MainTabBarCoordinator.defaultChildCoordinators()
+            parentCoordinator: self
         )
         childCoordinators += [mainTabBarCoordinator]
         guard let mainTabVC = mainTabBarCoordinator.viewController else {return}
