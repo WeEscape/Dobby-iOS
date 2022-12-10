@@ -173,7 +173,7 @@ final class MyPageViewModel {
     func joinGroup(groupId: String?) {
         guard let groupId = groupId else {return}
         self.loadingPublish.accept(true)
-        self.groupUseCase.joinGroup(id: groupId)
+        self.groupUseCase.joinGroup(inviteCode: groupId)
             .subscribe(onNext: { [weak self] group in
                 self?.userUserCase.removeUserInfoInLocalStorate()
                 self?.myGroupIdBehavior.accept(group.groupId)

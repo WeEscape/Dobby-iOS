@@ -11,7 +11,7 @@ import Moya
 struct JoinGroupAPI: BaseAPI {
     typealias Response = GroupDTO
     var path: String {
-        "/groups/\(groupId)/user"
+        "/groups/user"
     }
     var method: Moya.Method {
         .post
@@ -20,11 +20,17 @@ struct JoinGroupAPI: BaseAPI {
         return NetworkServiceImpl.shared.headers
     }
     var task: Moya.Task {
-        .requestPlain
+        return .requestParameters(
+            parameters: [
+                "invite_code": "\(inviteCode)"
+            ],
+            encoding: JSONEncoding.default
+        )
     }
-    let groupId: String
     
-    init(groupId: String) {
-        self.groupId = groupId
+    let inviteCode: String
+    
+    init(inviteCode: String) {
+        self.inviteCode = inviteCode
     }
 }
