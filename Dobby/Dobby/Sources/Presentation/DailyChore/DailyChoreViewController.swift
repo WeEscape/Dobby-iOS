@@ -77,7 +77,8 @@ final class DailyChoreViewController: BaseViewController {
     }()
     
     // MARK: init
-    init(viewModel: DailyChoreViewModel) {
+    init(viewModel: DailyChoreViewModel, coordinator: DailyChoreCoordinator) {
+        self.coordinator = coordinator
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }

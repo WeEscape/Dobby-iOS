@@ -14,11 +14,13 @@ final class DailyChoreCoordinator: Coordinator {
         childCoordinators: [Coordinator] = [ChoreCardCoordinator()]
     ) {
         super.init(parentCoordinator: parentCoordinator, childCoordinators: childCoordinators)
-        let viewMode = DailyChoreViewModel(
+        let viewModel = DailyChoreViewModel(
             choreCardVCFactory: self.choreCardVCFactory(date:)
         )
-        let viewController = DailyChoreViewController(viewModel: viewMode)
-        viewController.coordinator = self
+        let viewController = DailyChoreViewController(
+            viewModel: viewModel,
+            coordinator: self
+        )
         self.viewController = viewController
     }
     
