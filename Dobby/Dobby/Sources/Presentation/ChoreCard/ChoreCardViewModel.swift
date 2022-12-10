@@ -20,7 +20,6 @@ class ChoreCardViewModel: BaseViewModel {
     
     let memberListBehavior: BehaviorRelay<[User]> = .init(value: [])
     let choreListBehavior: BehaviorRelay<[[Chore]]> = .init(value: [])
-    let isChoreListEmptyBehavior: BehaviorRelay<Bool> = .init(value: true)
     let messagePublish: PublishRelay<String>  = .init()
     
     // MARK: initialize
@@ -75,23 +74,14 @@ class ChoreCardViewModel: BaseViewModel {
             }
             Observable.zip(observableList)
                 .subscribe(onNext: { [weak self] choreList in
-                    if choreList.isEmpty {
-                        self?.choreListBehavior.accept([])
-                        self?.isChoreListEmptyBehavior.accept(true)
-                    } else if let firstChore = choreList.first, firstChore.isEmpty {
-                        self?.choreListBehavior.accept([])
-                        self?.isChoreListEmptyBehavior.accept(true)
-                    } else {
-                        self?.choreListBehavior.accept(choreList)
-                        self?.isChoreListEmptyBehavior.accept(false)
-                    }
+                    self?.choreListBehavior.accept(choreList)
                     self?.loadingPublish.accept(false)
                 }, onError: { [weak self] _ in
                     self?.choreListBehavior.accept([])
-                    self?.isChoreListEmptyBehavior.accept(true)
                     self?.loadingPublish.accept(false)
                 }).disposed(by: self.disposBag)
         } else {
+            self.choreListBehavior.accept([])
             self.messagePublish.accept("참여중인 그룹이 없습니다.")
             self.loadingPublish.accept(false)
         }
