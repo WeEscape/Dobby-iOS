@@ -32,6 +32,22 @@ extension Date {
         return lastMonth
     }
     
+    func getNextWeek(from: Date = Date()) -> Date {
+        let calendar = Calendar.current
+        var component = calendar.dateComponents([.year, .month, .day], from: from)
+        component.day! += 7
+        let nextWeek = calendar.date(from: component)
+        return nextWeek!
+    }
+    
+    func getLasttWeek(from: Date = Date()) -> Date {
+        let calendar = Calendar.current
+        var component = calendar.dateComponents([.year, .month, .day], from: from)
+        component.day! -= 7
+        let lastWeek = calendar.date(from: component)
+        return lastWeek!
+    }
+    
     func calculateDiffDate(diff: Int) -> Date? {
         let calendar = Calendar.current
         var component = calendar.dateComponents([.year, .month, .day], from: self)
