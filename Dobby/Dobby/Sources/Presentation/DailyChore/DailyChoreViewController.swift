@@ -39,12 +39,20 @@ final class DailyChoreViewController: BaseViewController {
         return lbl
     }()
     
-    private let monthBtn: UIButton = {
-        let btn = UIButton(configuration: .gray())
-        btn.setTitle("월", for: .normal)
-        btn.setTitleColor(Palette.textBlack1, for: .normal)
-        btn.tintColor = Palette.textGray1
-        return btn
+    private let dateSelectCollectionView: UICollectionView = {
+        let flowLayout = UICollectionViewFlowLayout()
+        flowLayout.itemSize = .init(width: 40, height: 60)
+        flowLayout.minimumInteritemSpacing = 0
+        flowLayout.minimumLineSpacing = 15
+        flowLayout.scrollDirection = .horizontal
+        let collection = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
+        collection.showsVerticalScrollIndicator = false
+        collection.showsHorizontalScrollIndicator = false
+        collection.register(
+            DateSelectCollectionCell.self,
+            forCellWithReuseIdentifier: DateSelectCollectionCell.ID
+        )
+        return collection
     }()
     
     private lazy var pageViewController: UIPageViewController = {
@@ -82,22 +90,6 @@ final class DailyChoreViewController: BaseViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private let dateSelectCollectionView: UICollectionView = {
-        let flowLayout = UICollectionViewFlowLayout()
-        flowLayout.itemSize = .init(width: 40, height: 60)
-        flowLayout.minimumInteritemSpacing = 0
-        flowLayout.minimumLineSpacing = 15
-        flowLayout.scrollDirection = .horizontal
-        let collection = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
-        collection.showsVerticalScrollIndicator = false
-        collection.showsHorizontalScrollIndicator = false
-        collection.register(
-            DateSelectCollectionCell.self,
-            forCellWithReuseIdentifier: DateSelectCollectionCell.ID
-        )
-        return collection
-    }()
-    
     // MARK: Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -115,15 +107,6 @@ final class DailyChoreViewController: BaseViewController {
             $0.left.equalToSuperview().inset(20)
             $0.height.equalTo(30)
         }
-        
-//        self.view.addSubview(monthBtn)
-//        monthBtn.snp.makeConstraints {
-//            $0.width.equalTo(60)
-//            $0.height.equalTo(60)
-//            $0.left.equalToSuperview().inset(20)
-//            $0.top.equalTo(self.titleLabel.snp.bottom).offset(20)
-//        }
-        monthBtn.isHidden = true
         
         self.view.addSubview(dateSelectCollectionView)
         dateSelectCollectionView.snp.makeConstraints {
@@ -149,11 +132,6 @@ final class DailyChoreViewController: BaseViewController {
             $0.right.equalToSuperview().inset(20)
             $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).inset(20)
         }
-    }
-    
-    func setMonthBtnTitle(_ month: Int?) {
-        guard let month = month else {return}
-        monthBtn.setTitle("\(month)월", for: .normal)
     }
     
     func updateSelectedDate(_ selectedIndexList: [Int]) {
@@ -189,12 +167,6 @@ final class DailyChoreViewController: BaseViewController {
             .bind(to: self.dateSelectCollectionView.rx.items(dataSource: collectionDataSource))
             .disposed(by: self.disposeBag)
         
-        viewModel.selectedDatePublish
-            .observe(on: MainScheduler.instance)
-            .subscribe(onNext: { [weak self] dateComponents in
-                self?.setMonthBtnTitle(dateComponents.month)
-            }).disposed(by: self.disposeBag)
-        
         viewModel.selectedCellIndexBehavior
             .filterNil()
             .asDriver(onErrorJustReturn: [0, 0])
@@ -208,12 +180,6 @@ final class DailyChoreViewController: BaseViewController {
             .asDriver()
             .drive(onNext: { [weak self] _ in
                 self?.viewModel.viewDidAppear()
-            }).disposed(by: self.disposeBag)
-        
-        self.monthBtn.rx.tap
-            .throttle(.seconds(1), latest: false, scheduler: MainScheduler.instance)
-            .subscribe(onNext: { [weak self] _ in
-                self?.viewModel.didTapGotoToday()
             }).disposed(by: self.disposeBag)
         
         self.dateSelectCollectionView.rx.itemSelected
