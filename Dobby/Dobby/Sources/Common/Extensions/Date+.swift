@@ -16,33 +16,33 @@ extension Date {
         return dateFormatter.string(from: self)
     }
     
-    func getNextMonth() -> Date? {
+    func getNextMonth() -> Date {
         let calendar = Calendar.current
-        var component = calendar.dateComponents([.year, .month, .day], from: Date())
+        var component = calendar.dateComponents([.year, .month, .day], from: self)
         component.month! += 1
         let nextMonth = calendar.date(from: component)
-        return nextMonth
+        return nextMonth!
     }
     
-    func getLastMonth() -> Date? {
+    func getLastMonth() -> Date {
         let calendar = Calendar.current
-        var component = calendar.dateComponents([.year, .month, .day], from: Date())
+        var component = calendar.dateComponents([.year, .month, .day], from: self)
         component.month! -= 1
         let lastMonth = calendar.date(from: component)
-        return lastMonth
+        return lastMonth!
     }
     
-    func getNextWeek(from: Date = Date()) -> Date {
+    func getNextWeek() -> Date {
         let calendar = Calendar.current
-        var component = calendar.dateComponents([.year, .month, .day], from: from)
+        var component = calendar.dateComponents([.year, .month, .day], from: self)
         component.day! += 7
         let nextWeek = calendar.date(from: component)
         return nextWeek!
     }
     
-    func getLasttWeek(from: Date = Date()) -> Date {
+    func getLastWeek() -> Date {
         let calendar = Calendar.current
-        var component = calendar.dateComponents([.year, .month, .day], from: from)
+        var component = calendar.dateComponents([.year, .month, .day], from: self)
         component.day! -= 7
         let lastWeek = calendar.date(from: component)
         return lastWeek!
@@ -70,6 +70,12 @@ extension Date {
             else if weekday == 7 { ret = "SAT" }
         }
         return ret
+    }
+    
+    func getWeekOfMonth() -> Int {
+        let calendar = Calendar.current
+        let component = calendar.dateComponents([.year, .month, .weekOfMonth], from: self)
+        return component.weekOfMonth ?? 0
     }
     
     func isSame(with date: Date) -> Bool {

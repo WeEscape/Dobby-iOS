@@ -9,6 +9,7 @@ import UIKit
 import SnapKit
 import RxSwift
 import RxCocoa
+import RxOptional
 
 final class WeeklyChoreViewController: BaseViewController {
     
@@ -151,6 +152,46 @@ final class WeeklyChoreViewController: BaseViewController {
         }
     }
     
+    func updateTitle(with date: Date) {
+        let dateStr = date.toStringWithoutTime(dateFormat: "yyyy.MM")
+        let weekOfMonth = date.getWeekOfMonth()
+        switch weekOfMonth {
+        case 0:
+            self.titleLabel.text = dateStr
+        case 1:
+            self.titleLabel.text = dateStr + " \(weekOfMonth)st week"
+        case 2:
+            self.titleLabel.text = dateStr + " \(weekOfMonth)nd week"
+        case 3:
+            self.titleLabel.text = dateStr + " \(weekOfMonth)rd week"
+        default:
+            self.titleLabel.text = dateStr + " \(weekOfMonth)th week"
+        }
+    }
+    
+    func updateWeekRange(with date: Date) {
+        
+    }
+    
+    func updatePageVC(_ viewControllerList: [UIViewController]) {
+        guard let oldSelectedDate = viewModel.selectedDateBehavior.value.first,
+              let curSelectedDate = viewModel.selectedDateBehavior.value.last
+        else {return}
+        let direction: UIPageViewController.NavigationDirection =
+        oldSelectedDate < curSelectedDate ? .forward : .reverse
+        
+        if let selectedVC = viewControllerList[safe: 1] {
+            DispatchQueue.main.async {
+                self.pageViewController.setViewControllers(
+                    [selectedVC],
+                    direction: direction,
+                    animated: false,
+                    completion: nil
+                )
+            }
+        }
+    }
+    
     // MARK: rx bind
     func bind() {
         bindState()
@@ -158,10 +199,43 @@ final class WeeklyChoreViewController: BaseViewController {
     }
     
     func bindState() {
+        viewModel.selectedDateBehavior
+            .distinctUntilChanged()
+            .asDriver(onErrorJustReturn: [])
+            .filterEmpty()
+            .drive(onNext: { [weak self] selectedDates in
+                guard let selectedDate = selectedDates.last else {return}
+                self?.updateTitle(with: selectedDate)
+                self?.updateWeekRange(with: selectedDate)
+                self?.viewModel.didUpdatedSelectedDate()
+            }).disposed(by: self.disposeBag)
         
+        viewModel.pageVCDataSourceBehavior
+            .distinctUntilChanged()
+            .asDriver(onErrorJustReturn: [])
+            .filterEmpty()
+            .drive(onNext: { [weak self] viewControllers in
+                self?.updatePageVC(viewControllers)
+            }).disposed(by: self.disposeBag)
     }
-    
+
     func bindAction() {
+        self.previousWeekBtn.rx.tap
+            .throttle(.seconds(1), latest: false, scheduler: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] _ in
+                guard let curDate = self?.viewModel.selectedDateBehavior.value.last else {return}
+                let previousWeek = curDate.getLastWeek()
+                self?.viewModel.updateSelectedDate(previousWeek)
+            }).disposed(by: self.disposeBag)
+        
+        self.nextWeekBtn.rx.tap
+            .throttle(.seconds(1), latest: false, scheduler: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] _ in
+                guard let curDate = self?.viewModel.selectedDateBehavior.value.last else {return}
+                let nextWeek = curDate.getNextWeek()
+                self?.viewModel.updateSelectedDate(nextWeek)
+            }).disposed(by: self.disposeBag)
+        
         self.addChoreBtn.rx.tap
             .throttle(.seconds(1), latest: false, scheduler: MainScheduler.instance)
             .subscribe(onNext: { [weak self] _ in
@@ -175,16 +249,24 @@ extension WeeklyChoreViewController: UIPageViewControllerDelegate, UIPageViewCon
         _ pageViewController: UIPageViewController,
         viewControllerBefore viewController: UIViewController
     ) -> UIViewController? {
-        
-        return nil
+        let dataSourceVC = viewModel.pageVCDataSourceBehavior.value
+        guard let index = dataSourceVC.firstIndex(of: viewController) else {
+            return nil
+        }
+        let previousIndex = index - 1
+        return dataSourceVC[safe: previousIndex]
     }
     
     func pageViewController(
         _ pageViewController: UIPageViewController,
         viewControllerAfter viewController: UIViewController
     ) -> UIViewController? {
-
-        return nil
+        let dataSourceVC = viewModel.pageVCDataSourceBehavior.value
+        guard let index = dataSourceVC.firstIndex(of: viewController) else {
+            return nil
+        }
+        let nextIndex = index + 1
+        return dataSourceVC[safe: nextIndex]
     }
     
     func pageViewController(
@@ -193,6 +275,12 @@ extension WeeklyChoreViewController: UIPageViewControllerDelegate, UIPageViewCon
         previousViewControllers: [UIViewController],
         transitionCompleted completed: Bool
     ) {
-
+        let dataSourceVC = viewModel.pageVCDataSourceBehavior.value
+        guard let currentVC = pageViewController.viewControllers?.first,
+              let currentIndex = dataSourceVC.firstIndex(of: currentVC)
+        else { return }
+        if let date = viewModel.dateListBehavior.value[safe: currentIndex] {
+            viewModel.updateSelectedDate(date)
+        }
     }
 }
