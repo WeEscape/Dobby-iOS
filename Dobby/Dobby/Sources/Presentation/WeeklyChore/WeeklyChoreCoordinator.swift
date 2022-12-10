@@ -18,4 +18,9 @@ final class WeeklyChoreCoordinator: Coordinator {
         )
         self.viewController = viewController
     }
+    
+    func pushToAddChore() {
+        guard let parent = parentCoordinator as? MainTabBarCoordinator else {return}
+        parent.pushToAddChore()
+    }
 }

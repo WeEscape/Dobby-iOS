@@ -7,6 +7,8 @@
 
 import UIKit
 import SnapKit
+import RxSwift
+import RxCocoa
 
 final class WeeklyChoreViewController: BaseViewController {
     
@@ -160,10 +162,13 @@ final class WeeklyChoreViewController: BaseViewController {
     }
     
     func bindAction() {
-        
+        self.addChoreBtn.rx.tap
+            .throttle(.seconds(1), latest: false, scheduler: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] _ in
+                self?.coordinator?.pushToAddChore()
+            }).disposed(by: self.disposeBag)
     }
 }
-
 
 extension WeeklyChoreViewController: UIPageViewControllerDelegate, UIPageViewControllerDataSource {
     func pageViewController(
