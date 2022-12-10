@@ -44,6 +44,7 @@
 		A13C537B28E97EF600C72215 /* WelcomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13C537A28E97EF600C72215 /* WelcomeCoordinator.swift */; };
 		A13C537D28E98FD500C72215 /* WelcomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13C537C28E98FD500C72215 /* WelcomeViewModel.swift */; };
 		A13C537F28EA9C0000C72215 /* AppKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13C537E28EA9C0000C72215 /* AppKey.swift */; };
+		A14960CF2944909A00691087 /* WeeklyChoreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14960CE2944909A00691087 /* WeeklyChoreViewModel.swift */; };
 		A174B16F28EC6F0300F80112 /* ASAuthorizationController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A174B16E28EC6F0300F80112 /* ASAuthorizationController+.swift */; };
 		A174B17428EF002000F80112 /* BaseAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A174B17328EF002000F80112 /* BaseAPI.swift */; };
 		A174B17628EF007100F80112 /* LoginAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A174B17528EF007100F80112 /* LoginAPI.swift */; };
@@ -213,6 +214,7 @@
 		A13C537A28E97EF600C72215 /* WelcomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeCoordinator.swift; sourceTree = "<group>"; };
 		A13C537C28E98FD500C72215 /* WelcomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewModel.swift; sourceTree = "<group>"; };
 		A13C537E28EA9C0000C72215 /* AppKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppKey.swift; sourceTree = "<group>"; };
+		A14960CE2944909A00691087 /* WeeklyChoreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyChoreViewModel.swift; sourceTree = "<group>"; };
 		A174B16E28EC6F0300F80112 /* ASAuthorizationController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ASAuthorizationController+.swift"; sourceTree = "<group>"; };
 		A174B17328EF002000F80112 /* BaseAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseAPI.swift; sourceTree = "<group>"; };
 		A174B17528EF007100F80112 /* LoginAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAPI.swift; sourceTree = "<group>"; };
@@ -770,6 +772,7 @@
 			children = (
 				A19E97E62904D7E6004A8861 /* WeeklyChoreCoordinator.swift */,
 				A19E97F02904D82F004A8861 /* WeeklyChoreViewController.swift */,
+				A14960CE2944909A00691087 /* WeeklyChoreViewModel.swift */,
 			);
 			path = WeeklyChore;
 			sourceTree = "<group>";
@@ -1332,6 +1335,7 @@
 				A178936E2920C908007893FB /* ChoreCardViewModel.swift in Sources */,
 				A18DF295293F5D690073A01F /* ChoreListDTO.swift in Sources */,
 				A1789359291D2035007893FB /* ResignAPI.swift in Sources */,
+				A14960CF2944909A00691087 /* WeeklyChoreViewModel.swift in Sources */,
 				A17893B4292A2AD0007893FB /* SelectCategoryView.swift in Sources */,
 				A1789357291D17E2007893FB /* DobbyResponse.swift in Sources */,
 				A19E97EB2904D7F7004A8861 /* AddChoreCoordinator.swift in Sources */,

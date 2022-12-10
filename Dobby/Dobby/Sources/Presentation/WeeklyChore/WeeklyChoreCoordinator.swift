@@ -11,6 +11,11 @@ final class WeeklyChoreCoordinator: Coordinator {
 
     override init(parentCoordinator: Coordinator? = nil, childCoordinators: [Coordinator] = []) {
         super.init(parentCoordinator: parentCoordinator, childCoordinators: childCoordinators)
-        self.viewController = WeeklyChoreViewController()
+        let viewModel = WeeklyChoreViewModel()
+        let viewController = WeeklyChoreViewController(
+            viewModel: viewModel,
+            coordinator: self
+        )
+        self.viewController = viewController
     }
 }
