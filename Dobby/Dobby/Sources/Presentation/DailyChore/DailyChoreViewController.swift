@@ -31,11 +31,6 @@ final class DailyChoreViewController: BaseViewController {
     }
     
     // MARK: UI
-    struct Metric {
-        static let titleMargin: CGFloat = 40
-        static let itemSize: CGSize = .init(width: 40, height: 60)
-    }
-    
     private let titleLabel: UILabel = {
         let lbl = UILabel()
         lbl.font = DobbyFont.avenirBlack(size: 24).getFont
@@ -89,9 +84,9 @@ final class DailyChoreViewController: BaseViewController {
     
     private let dateSelectCollectionView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
-        flowLayout.itemSize = Metric.itemSize
+        flowLayout.itemSize = .init(width: 40, height: 60)
         flowLayout.minimumInteritemSpacing = 0
-        flowLayout.minimumLineSpacing = 10
+        flowLayout.minimumLineSpacing = 15
         flowLayout.scrollDirection = .horizontal
         let collection = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
         collection.showsVerticalScrollIndicator = false
@@ -116,8 +111,9 @@ final class DailyChoreViewController: BaseViewController {
         
         self.view.addSubview(titleLabel)
         titleLabel.snp.makeConstraints {
-            $0.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).inset(10)
+            $0.top.equalTo(self.view.safeAreaLayoutGuide.snp.top)
             $0.left.equalToSuperview().inset(20)
+            $0.height.equalTo(30)
         }
         
 //        self.view.addSubview(monthBtn)
@@ -133,14 +129,14 @@ final class DailyChoreViewController: BaseViewController {
         dateSelectCollectionView.snp.makeConstraints {
             $0.left.equalToSuperview().inset(20)
             $0.right.equalToSuperview().inset(20)
-            $0.height.equalTo(60)
-            $0.top.equalTo(self.titleLabel.snp.bottom).offset(20)
+            $0.height.equalTo(70)
+            $0.top.equalTo(self.titleLabel.snp.bottom)
         }
         
         addChild(pageViewController)
         view.addSubview(pageViewController.view)
         pageViewController.view.snp.makeConstraints {
-            $0.top.equalTo(dateSelectCollectionView.snp.bottom).offset(20)
+            $0.top.equalTo(dateSelectCollectionView.snp.bottom)
             $0.left.right.equalToSuperview()
             $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
         }
