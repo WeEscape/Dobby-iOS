@@ -34,7 +34,7 @@ final class MyPageViewController: BaseViewController {
         iv.contentMode = .scaleAspectFill
         iv.clipsToBounds = true
         iv.layer.cornerRadius = 10
-        iv.backgroundColor = .systemGray6
+        iv.backgroundColor = .clear
         return iv
     }()
     

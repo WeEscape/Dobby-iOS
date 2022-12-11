@@ -19,10 +19,10 @@ final class ChoreItemListView: UIView {
     // MARK: UI
     private let userProfile: UIImageView = {
         let iv = UIImageView()
-        iv.contentMode = .scaleAspectFit
+        iv.contentMode = .scaleAspectFill
         iv.layer.cornerRadius = 5
         iv.clipsToBounds = true
-        iv.backgroundColor = .systemGray6
+        iv.backgroundColor = .clear
         return iv
     }()
     
