@@ -58,7 +58,7 @@ extension Date {
     
     func getWeekday() -> String? {
         let calendar = Calendar.current
-        var component = calendar.dateComponents([.year, .month, .day, .weekday], from: self)
+        let component = calendar.dateComponents([.year, .month, .day, .weekday], from: self)
         var ret: String?
         if let weekday = component.weekday {
             if weekday == 1 { ret = "SUN" }
@@ -74,12 +74,12 @@ extension Date {
     
     func getDay() -> Int {
         let calendar = Calendar.current
-        var component = calendar.dateComponents([.year, .month, .day], from: self)
+        let component = calendar.dateComponents([.year, .month, .day], from: self)
         return component.day ?? 0
     }
     func getMonth() -> Int {
         let calendar = Calendar.current
-        var component = calendar.dateComponents([.year, .month, .day], from: self)
+        let component = calendar.dateComponents([.year, .month, .day], from: self)
         return component.month ?? 0
     }
     

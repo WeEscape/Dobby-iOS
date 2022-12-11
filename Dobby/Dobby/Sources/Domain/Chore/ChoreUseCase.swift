@@ -31,7 +31,12 @@ final class ChoreUseCaseImpl: ChoreUseCase {
     func getChores(
         userId: String, groupId: String, date: Date, periodical: ChorePeriodical
     ) -> Observable<[Chore]> {
-        return self.choreRepository.getChores(userId: userId, groupId: groupId, date: date, periodical: periodical)
+        return self.choreRepository.getChores(
+            userId: userId,
+            groupId: groupId,
+            date: date,
+            periodical: periodical
+        )
     }
     
     func finishChore(chore: Chore, userId: String, isEnd: Bool) -> Observable<Void> {
