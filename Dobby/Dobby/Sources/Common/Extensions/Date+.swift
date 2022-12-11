@@ -72,10 +72,27 @@ extension Date {
         return ret
     }
     
+    func getDay() -> Int {
+        let calendar = Calendar.current
+        var component = calendar.dateComponents([.year, .month, .day], from: self)
+        return component.day ?? 0
+    }
+    func getMonth() -> Int {
+        let calendar = Calendar.current
+        var component = calendar.dateComponents([.year, .month, .day], from: self)
+        return component.month ?? 0
+    }
+    
     func getWeekOfMonth() -> Int {
         let calendar = Calendar.current
         let component = calendar.dateComponents([.year, .month, .weekOfMonth], from: self)
         return component.weekOfMonth ?? 0
+    }
+    
+    func getWeekOfYear() -> Int {
+        let calendar = Calendar.current
+        let component = calendar.dateComponents([.year, .month, .weekOfYear], from: self)
+        return component.weekOfYear ?? 0
     }
     
     func isSame(with date: Date) -> Bool {

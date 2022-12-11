@@ -153,24 +153,32 @@ final class WeeklyChoreViewController: BaseViewController {
     }
     
     func updateTitle(with date: Date) {
-        let dateStr = date.toStringWithoutTime(dateFormat: "yyyy.MM")
-        let weekOfMonth = date.getWeekOfMonth()
-        switch weekOfMonth {
+        var dateStr = date.toStringWithoutTime(dateFormat: "yyyy")
+        let weekOfYear = date.getWeekOfYear()
+        switch weekOfYear {
         case 0:
+            dateStr = date.toStringWithoutTime(dateFormat: "yyyy.MM")
             self.titleLabel.text = dateStr
         case 1:
-            self.titleLabel.text = dateStr + " \(weekOfMonth)st week"
+            self.titleLabel.text = dateStr + " \(weekOfYear)st week"
         case 2:
-            self.titleLabel.text = dateStr + " \(weekOfMonth)nd week"
+            self.titleLabel.text = dateStr + " \(weekOfYear)nd week"
         case 3:
-            self.titleLabel.text = dateStr + " \(weekOfMonth)rd week"
+            self.titleLabel.text = dateStr + " \(weekOfYear)rd week"
         default:
-            self.titleLabel.text = dateStr + " \(weekOfMonth)th week"
+            self.titleLabel.text = dateStr + " \(weekOfYear)th week"
         }
     }
     
     func updateWeekRange(with date: Date) {
+        let datesOfSameWeek = date.getDatesOfSameWeek().sorted()
+        guard let first = datesOfSameWeek.first,
+              let last = datesOfSameWeek.last
+        else {return}
         
+        let firstTxt = "\(first.getMonth()).\(first.getDay())." + (first.getWeekday() ?? "")
+        let lastTxt = "\(last.getMonth()).\(last.getDay())." + (last.getWeekday() ?? "")
+        self.weekRangeText.text = firstTxt + " ~ " + lastTxt
     }
     
     func updatePageVC(_ viewControllerList: [UIViewController]) {
