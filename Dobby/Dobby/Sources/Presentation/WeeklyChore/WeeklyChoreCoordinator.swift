@@ -37,7 +37,7 @@ final class WeeklyChoreCoordinator: Coordinator {
             return nil
         }
         let vc = coordinator.createViewController(
-            dateList: [date],
+            dateList: date.getDatesOfSameWeek(),
             choreCardPeriod: .weekly
         )
         return vc

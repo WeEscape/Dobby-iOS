@@ -9,6 +9,7 @@ import UIKit
 import SnapKit
 import RxViewController
 import RxCocoa
+import RxOptional
 import Toast_Swift
 
 final class ChoreCardViewController: BaseViewController {
@@ -33,6 +34,7 @@ final class ChoreCardViewController: BaseViewController {
         let stack = UIStackView()
         stack.axis = .vertical
         stack.alignment = .fill
+        stack.spacing = 20
         return stack
     }()
     
@@ -89,50 +91,29 @@ final class ChoreCardViewController: BaseViewController {
         }
     }
     
-    func reloadCardViews(choreList: [[Chore]]) {
+    func reloadCardViews(choreArr: [Chore]) {
         self.stackContainerView.arrangedSubviews.forEach { subview in
             subview.removeFromSuperview()
         }
         self.view.layoutIfNeeded()
         
-        let dateList = viewModel.dateList
         let memberList = viewModel.memberListBehavior.value
         let choreCardPeriod = viewModel.choreCardPeriod
-        let cardViews = self.cardViewFactory(
-            dateList: dateList,
-            memberList: memberList,
-            choreList: choreList,
-            choreCardPeriod: choreCardPeriod,
-            viewModel: viewModel
-        )
-        cardViews.forEach { [weak self] cardView in
-            self?.stackContainerView.addArrangedSubview(cardView)
+        let choreDict = Dictionary(grouping: choreArr, by: {$0.executeAt})
+        let keyList = choreDict.keys.sorted()
+        keyList.forEach { key in
+            if let choreList = choreDict[key],
+               let keyDate = key.toDate(dateFormat: "yyyy-MM-dd'T'HH:mm:ss.SSSZ") {
+                let cardView = ChoreCardView(
+                    choreCardPeriod: choreCardPeriod,
+                    date: keyDate,
+                    memberList: memberList,
+                    choreArr: choreList,
+                    viewModel: viewModel
+                )
+                self.stackContainerView.addArrangedSubview(cardView)
+            }
         }
-    }
-    
-    func cardViewFactory(
-        dateList: [Date],
-        memberList: [User],
-        choreList: [[Chore]],
-        choreCardPeriod: ChorePeriodical,
-        viewModel: ChoreCardViewModel
-    ) -> [ChoreCardView] {
-        var ret: [ChoreCardView] = []
-        for (dateIdx, date) in dateList.enumerated() {
-            let start = dateIdx * memberList.count
-            let choreList = Array(
-                choreList[start...(start + memberList.count - 1)]
-            )
-            let cardView = ChoreCardView(
-                choreCardPeriod: choreCardPeriod,
-                date: date,
-                memberList: memberList,
-                choreList: choreList,
-                viewModel: viewModel
-            )
-            ret.append(cardView)
-        }
-        return ret
     }
     
     // MARK: rx
@@ -159,23 +140,18 @@ final class ChoreCardViewController: BaseViewController {
             .disposed(by: self.disposeBag)
         
         viewModel.memberListBehavior
+            .filterEmpty()
             .subscribe(onNext: { [weak self] members in
                 self?.viewModel.getChoreList(of: members)
             }).disposed(by: self.disposeBag)
         
-        viewModel.choreListBehavior
+        viewModel.choreArrBehavior
             .asDriver()
-            .drive(onNext: { [weak self] choreList in
-                if choreList.isEmpty {
-                    self?.emptyChoreImageView.isHidden = false
-                    self?.scrollContainerView.isHidden = true
-                } else if let firstChore = choreList.first, firstChore.isEmpty {
-                    self?.emptyChoreImageView.isHidden = false
-                    self?.scrollContainerView.isHidden = true
-                } else {
-                    self?.emptyChoreImageView.isHidden = true
-                    self?.scrollContainerView.isHidden = false
-                    self?.reloadCardViews(choreList: choreList)
+            .drive(onNext: { [weak self] choreArr in
+                self?.emptyChoreImageView.isHidden = !choreArr.isEmpty
+                self?.scrollContainerView.isHidden = choreArr.isEmpty
+                if choreArr.isNotEmpty {
+                    self?.reloadCardViews(choreArr: choreArr)
                 }
             }).disposed(by: self.disposeBag)
         

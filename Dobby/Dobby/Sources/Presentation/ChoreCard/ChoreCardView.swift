@@ -6,7 +6,9 @@
 //
 
 import UIKit
+import RxOptional
 import SnapKit
+import RxCocoa
 
 final class ChoreCardView: UIView {
     
@@ -14,7 +16,7 @@ final class ChoreCardView: UIView {
     let choreCardPeriod: ChorePeriodical
     let date: Date
     let memberList: [User]
-    let choreList: [[Chore]]
+    let choreArr: [Chore]
     weak var viewModel: ChoreCardViewModel?
     
     // MARK: UI
@@ -46,6 +48,7 @@ final class ChoreCardView: UIView {
         let stack = UIStackView()
         stack.axis = .vertical
         stack.alignment = .fill
+        stack.spacing = 10
         return stack
     }()
     
@@ -54,13 +57,13 @@ final class ChoreCardView: UIView {
         choreCardPeriod: ChorePeriodical,
         date: Date,
         memberList: [User],
-        choreList: [[Chore]],
+        choreArr: [Chore],
         viewModel: ChoreCardViewModel
     ) {
         self.choreCardPeriod = choreCardPeriod
         self.date = date
         self.memberList = memberList
-        self.choreList = choreList
+        self.choreArr = choreArr
         self.viewModel = viewModel
         super.init(frame: .zero)
         self.setupUI()
@@ -82,8 +85,7 @@ final class ChoreCardView: UIView {
         
         // height 계산
         self.snp.makeConstraints {
-            let allChoreList = choreList.flatMap { $0 }
-            $0.height.equalTo(40 * allChoreList.count + 80) // 60 =. 라벨 여백
+            $0.height.equalTo(40 * choreArr.count + 80) // 80 =. 라벨 여백
         }
         
         self.addSubview(weekdayLabel)
@@ -114,14 +116,21 @@ final class ChoreCardView: UIView {
             $0.bottom.equalToSuperview().inset(20)
         }
         
-        for (memberIdx, member) in memberList.enumerated() {
-            let choreItemListView = ChoreItemListView(
-                isShowMember: choreCardPeriod == .daily ? false : true,
-                member: member,
-                choreList: choreList[memberIdx],
-                viewModel: viewModel
-            )
-            stackContainerView.addArrangedSubview(choreItemListView)
+        memberList.forEach { member in
+            let chores = choreArr.filter { chore in
+                return chore.ownerList?.contains(where: { choreOwner in
+                    choreOwner.userId == member.userId
+                }) ?? false
+            }
+            if chores.isNotEmpty {
+                let choreItemListView = ChoreItemListView(
+                    isShowMember: choreCardPeriod == .daily ? false : true,
+                    member: member,
+                    choreList: chores,
+                    viewModel: viewModel
+                )
+                stackContainerView.addArrangedSubview(choreItemListView)
+            }
         }
     }
 }

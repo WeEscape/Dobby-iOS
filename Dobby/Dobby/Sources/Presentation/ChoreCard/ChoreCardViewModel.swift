@@ -19,8 +19,9 @@ class ChoreCardViewModel: BaseViewModel {
     let choreUseCase: ChoreUseCase
     
     let memberListBehavior: BehaviorRelay<[User]> = .init(value: [])
-    let choreListBehavior: BehaviorRelay<[[Chore]]> = .init(value: [])
+    let choreArrBehavior: BehaviorRelay<[Chore]> = .init(value: [])
     let messagePublish: PublishRelay<String>  = .init()
+    var groupId: String?
     
     // MARK: initialize
     init(
@@ -41,26 +42,37 @@ class ChoreCardViewModel: BaseViewModel {
         self.userUseCase.getMyInfo()
             .flatMapLatest { [unowned self] myinfo -> Observable<Group> in
                 if choreCardPeriod != .daily {
-                    guard let userId = myinfo.userId else {return .error(CustomError.init())}
-                    return self.groupUseCase.getGroupInfo(id: userId)
+                    guard let groupId = myinfo.groupList?.last?.groupId
+                    else {
+                        self.groupId = nil
+                        return .error(CustomError.init())
+                    }
+                    self.groupId = groupId
+                    return self.groupUseCase.getGroupInfo(id: groupId)
                 } else {
+                    guard let groupId = myinfo.groupList?.last?.groupId
+                    else {
+                        self.groupId = nil
+                        return .error(CustomError.init())
+                    }
+                    self.groupId = groupId
                     self.memberListBehavior.accept([myinfo])
-//                    self.loadingPublish.accept(false)
                     return .empty()
                 }
             }
             .subscribe(onNext: { [weak self] group in
                 guard let members = group.memberList else {return}
                 self?.memberListBehavior.accept(members)
-//                self?.loadingPublish.accept(false)
             }, onError: { [weak self] _ in
+                self?.choreArrBehavior.accept([])
+                self?.messagePublish.accept("참여중인 그룹이 없습니다.")
                 self?.loadingPublish.accept(false)
             }).disposed(by: self.disposBag)
     }
     
     func getChoreList(of members: [User]) {
         var observableList: [Observable<[Chore]>] = .init()
-        if let groupId = members.last?.groupList?.last?.groupId {
+        if let groupId = self.groupId {
             dateList.forEach {  date in
                 members.forEach { member in
                     let observable = self.choreUseCase.getChores(
@@ -74,14 +86,15 @@ class ChoreCardViewModel: BaseViewModel {
             }
             Observable.zip(observableList)
                 .subscribe(onNext: { [weak self] choreList in
-                    self?.choreListBehavior.accept(choreList)
+                    let choreArr = choreList.flatMap {$0}
+                    self?.choreArrBehavior.accept(choreArr)
                     self?.loadingPublish.accept(false)
                 }, onError: { [weak self] _ in
-                    self?.choreListBehavior.accept([])
+                    self?.choreArrBehavior.accept([])
                     self?.loadingPublish.accept(false)
                 }).disposed(by: self.disposBag)
         } else {
-            self.choreListBehavior.accept([])
+            self.choreArrBehavior.accept([])
             self.messagePublish.accept("참여중인 그룹이 없습니다.")
             self.loadingPublish.accept(false)
         }
