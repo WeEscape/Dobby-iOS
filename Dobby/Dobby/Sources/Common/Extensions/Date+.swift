@@ -91,4 +91,25 @@ extension Date {
             return false
         } 
     }
+    
+    func getDatesOfSameWeek() -> [Date] {
+        let calendar = Calendar.current
+        var dateComponent = calendar.dateComponents([.year, .month, .weekOfYear, .day], from: self)
+        let myWeekOfYear = dateComponent.weekOfYear!
+        var ret: [Date] = .init()
+        dateComponent.day! -= 7
+        for _ in 0...15 {
+            
+            let newDate = calendar.date(from: dateComponent)!
+            print("Debug :  newDate -> \(newDate.toStringWithoutTime())")
+            let newDateComponent = calendar.dateComponents([.weekOfYear, .day], from: newDate)
+            if let newWeekOfYear = newDateComponent.weekOfYear,
+               newWeekOfYear == myWeekOfYear {
+                ret.append(newDate)
+            }
+            
+            dateComponent.day! += 1
+        }
+        return ret
+    }
 }
