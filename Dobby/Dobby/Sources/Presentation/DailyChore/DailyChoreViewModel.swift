@@ -18,10 +18,10 @@ class DailyChoreViewModel {
     let selectedDatePublish: PublishRelay<DateComponents> = .init()
     let selectedCellIndexBehavior: BehaviorRelay<[Int]?> = .init(value: nil)
     let pageVCDataSourceBehavior: BehaviorRelay<[UIViewController]> = .init(value: [])
-    let choreCardVCFactory: (Date) -> UIViewController
+    let choreCardVCFactory: (Date) -> UIViewController?
     
     init(
-        choreCardVCFactory: @escaping(Date) -> UIViewController
+        choreCardVCFactory: @escaping(Date) -> UIViewController?
     ) {
         self.choreCardVCFactory = choreCardVCFactory
     }
@@ -69,8 +69,9 @@ class DailyChoreViewModel {
     func createPageVCDataSource(with dateList: [Date]) -> [UIViewController] {
         var ret = [UIViewController]()
         dateList.forEach { date in
-            let vc = choreCardVCFactory(date)
-            ret += [vc]
+            if let vc = choreCardVCFactory(date) {
+                ret += [vc]
+            }
         }
         return ret
     }

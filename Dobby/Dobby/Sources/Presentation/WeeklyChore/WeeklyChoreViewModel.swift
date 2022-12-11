@@ -20,11 +20,11 @@ class WeeklyChoreViewModel {
         Date().getLastWeek(),
         Date()
     ])
-    let choreCardVCFactory: (Date) -> UIViewController
+    let choreCardVCFactory: (Date) -> UIViewController?
     
     // MARK: init
     init(
-        choreCardVCFactory: @escaping(Date) -> UIViewController
+        choreCardVCFactory: @escaping(Date) -> UIViewController?
     ) {
         self.choreCardVCFactory = choreCardVCFactory
     }
@@ -53,8 +53,9 @@ class WeeklyChoreViewModel {
     func createPageVCDataSource(with dateList: [Date]) -> [UIViewController] {
         var ret = [UIViewController]()
         dateList.forEach { date in
-            let vc = choreCardVCFactory(date)
-            ret += [vc]
+            if let vc = choreCardVCFactory(date) {
+                ret += [vc]
+            }
         }
         return ret
     }

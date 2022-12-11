@@ -24,10 +24,13 @@ final class DailyChoreCoordinator: Coordinator {
         self.viewController = viewController
     }
     
-    func choreCardVCFactory(date: Date) -> ChoreCardViewController {
-        let coordinator = self.childCoordinators.filter { child in
+    func choreCardVCFactory(date: Date) -> ChoreCardViewController? {
+        guard let coordinator = self.childCoordinators.filter({ child in
             return child is ChoreCardCoordinator
-        }.first! as! ChoreCardCoordinator
+        }).first as? ChoreCardCoordinator
+        else {
+            return nil
+        }
         let vc = coordinator.createViewController(
             dateList: [date],
             choreCardPeriod: .daily
