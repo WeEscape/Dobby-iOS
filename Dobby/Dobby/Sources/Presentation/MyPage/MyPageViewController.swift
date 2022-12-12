@@ -300,5 +300,12 @@ final class MyPageViewController: BaseViewController {
                 self?.mypageCoordinator?.pushToSetting()
             }).disposed(by: self.disposeBag)
         
+        groupIdLabel.rx.longPressGesture()
+            .when(.recognized)
+            .subscribe(onNext: { [weak self] _ in
+                guard let groupText = self?.groupIdLabel.text else {return}
+                self?.mypageViewModel.didLongPressGroupLabel(text: groupText)
+            }).disposed(by: self.disposeBag)
+        
     }
 }

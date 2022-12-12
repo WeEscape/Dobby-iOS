@@ -91,6 +91,15 @@ final class MyPageViewModel {
         alertPublish.accept(alertVC)
     }
     
+    func didLongPressGroupLabel(text: String) {
+        let components = text.components(separatedBy: "그룹코드: ")
+        if components.count > 1,
+           let inviteCode = components[safe: 1] {
+            UIPasteboard.general.string = inviteCode
+            toastMessagePublish.accept("그룹코드가 클립보드에 복사되었습니다.")
+        }
+    }
+    
     func alertFactory(message: String?, confirmAction: UIAlertAction) -> UIAlertController {
         let alertVC = UIAlertController(
             title: "알림",
