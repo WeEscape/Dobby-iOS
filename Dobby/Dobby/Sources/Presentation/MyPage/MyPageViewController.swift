@@ -190,6 +190,19 @@ final class MyPageViewController: BaseViewController {
         stackContainerView.addArrangedSubview(resignView)
     }
     
+    override func showLoading() {
+        let height = self.navigationController?.navigationBar.frame.size.height ?? 0
+        self.loadingView.isHidden = false
+        self.view.addSubview(self.loadingView)
+        self.loadingView.snp.makeConstraints {
+            $0.width.equalToSuperview()
+            $0.height.equalToSuperview()
+            $0.top.equalToSuperview().inset(-height)
+        }
+        self.view.bringSubviewToFront(self.loadingView)
+        self.view.layoutIfNeeded()
+    }
+    
     // MARK: Rx bind
     func bind() {
         bindState()

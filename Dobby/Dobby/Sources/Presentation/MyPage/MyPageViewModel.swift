@@ -133,21 +133,28 @@ final class MyPageViewModel {
     }
     
     func getMyInfo() {
+        self.loadingPublish.accept(true)
         self.userUserCase.getMyInfo()
             .subscribe(onNext: { [weak self] myinfo in
                 self?.myInfoBehavior.accept(myinfo)
                 self?.myGroupIdBehavior.accept(myinfo.groupList?.last?.groupId)
+            }, onError: { [weak self] _ in
+                self?.loadingPublish.accept(false)
             }).disposed(by: self.disposeBag)
     }
     
     func getGroupInfo(groupId: String?) {
         guard let groupId = groupId else {
             self.inviteCodePublish.accept(nil)
+            self.loadingPublish.accept(false)
             return
         }
         self.groupUseCase.getGroupInfo(id: groupId)
             .subscribe(onNext: { [weak self] group in
                 self?.inviteCodePublish.accept(group.inviteCode)
+                self?.loadingPublish.accept(false)
+            }, onError: { [weak self] _ in
+                self?.loadingPublish.accept(false)
             }).disposed(by: self.disposeBag)
     }
     
