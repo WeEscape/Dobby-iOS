@@ -19,7 +19,7 @@ class ChoreCardViewModel: BaseViewModel {
     let choreUseCase: ChoreUseCase
     
     let memberListBehavior: BehaviorRelay<[User]> = .init(value: [])
-    let choreArrBehavior: BehaviorRelay<[Chore]> = .init(value: [])
+    let choreArrPublish: PublishRelay<[Chore]> = .init()
     let messagePublish: PublishRelay<String>  = .init()
     var groupId: String?
     
@@ -64,7 +64,7 @@ class ChoreCardViewModel: BaseViewModel {
                 guard let members = group.memberList else {return}
                 self?.memberListBehavior.accept(members)
             }, onError: { [weak self] _ in
-                self?.choreArrBehavior.accept([])
+                self?.choreArrPublish.accept([])
                 self?.messagePublish.accept("참여중인 그룹이 없습니다.")
                 self?.loadingPublish.accept(false)
             }).disposed(by: self.disposBag)
@@ -87,14 +87,14 @@ class ChoreCardViewModel: BaseViewModel {
             Observable.zip(observableList)
                 .subscribe(onNext: { [weak self] choreList in
                     let choreArr = choreList.flatMap {$0}
-                    self?.choreArrBehavior.accept(choreArr)
+                    self?.choreArrPublish.accept(choreArr)
                     self?.loadingPublish.accept(false)
                 }, onError: { [weak self] _ in
-                    self?.choreArrBehavior.accept([])
+                    self?.choreArrPublish.accept([])
                     self?.loadingPublish.accept(false)
                 }).disposed(by: self.disposBag)
         } else {
-            self.choreArrBehavior.accept([])
+            self.choreArrPublish.accept([])
             self.messagePublish.accept("참여중인 그룹이 없습니다.")
             self.loadingPublish.accept(false)
         }

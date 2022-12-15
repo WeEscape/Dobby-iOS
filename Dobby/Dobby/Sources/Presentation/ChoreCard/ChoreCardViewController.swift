@@ -43,7 +43,16 @@ final class ChoreCardViewController: BaseViewController {
         iv.contentMode = .scaleAspectFit
         iv.backgroundColor = .clear
         iv.image = UIImage(named: "emptyChore")
+        iv.isHidden = true
         return iv
+    }()
+    
+    private let indicatorView: UIActivityIndicatorView = {
+        let indicator = UIActivityIndicatorView()
+        indicator.style = .large
+        indicator.startAnimating()
+        indicator.isHidden = false
+        return indicator
     }()
     
     // MARK: init
@@ -89,6 +98,11 @@ final class ChoreCardViewController: BaseViewController {
             $0.bottom.equalToSuperview()
             $0.width.equalToSuperview().inset(10)
         }
+        
+        self.view.addSubview(indicatorView)
+        indicatorView.snp.makeConstraints {
+            $0.center.equalToSuperview()
+        }
     }
     
     func reloadCardViews(choreArr: [Chore]) {
@@ -132,6 +146,14 @@ final class ChoreCardViewController: BaseViewController {
             .subscribe(onNext: { [weak self] _ in
                 self?.viewModel.getMemberList()
             }).disposed(by: self.disposeBag)
+        
+        self.rx.viewDidDisappear
+            .subscribe(onNext: { [unowned self] _ in
+                if !self.emptyChoreImageView.isHidden {
+                    self.emptyChoreImageView.isHidden = true
+                    self.indicatorView.isHidden = false
+                }
+            }).disposed(by: self.disposeBag)
     }
     
     func bindState() {
@@ -145,9 +167,10 @@ final class ChoreCardViewController: BaseViewController {
                 self?.viewModel.getChoreList(of: members)
             }).disposed(by: self.disposeBag)
         
-        viewModel.choreArrBehavior
-            .asDriver()
+        viewModel.choreArrPublish
+            .asDriver(onErrorJustReturn: [])
             .drive(onNext: { [weak self] choreArr in
+                self?.indicatorView.isHidden = true
                 self?.emptyChoreImageView.isHidden = !choreArr.isEmpty
                 self?.scrollContainerView.isHidden = choreArr.isEmpty
                 if choreArr.isNotEmpty {
