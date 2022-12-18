@@ -102,11 +102,15 @@ class ChoreCardViewModel: BaseViewModel {
         }
     }
     
+    func refreshChoreList() {
+        let memberlist = self.memberListBehavior.value
+        self.getChoreList(of: memberlist)
+    }
+    
     func toggleChoreIsEnd(_ chore: Chore, userId: String, isEnd: Bool) {
         self.choreUseCase.finishChore(chore: chore, userId: userId, isEnd: isEnd)
             .subscribe(onNext: { [weak self] _ in
-                guard let memberlist = self?.memberListBehavior.value else {return}
-                self?.memberListBehavior.accept(memberlist)
+                self?.refreshChoreList()
             }).disposed(by: self.disposBag)
     }
     
