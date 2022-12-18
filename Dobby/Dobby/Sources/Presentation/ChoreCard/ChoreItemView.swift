@@ -161,7 +161,11 @@ final class ChoreItemView: UIView {
     }
     
     func isMyChore() -> Bool {
-        guard let myInfo = viewModel?.myInfo,
+        guard let viewModel = self.viewModel,
+              viewModel.choreCardPeriod != .daily
+        else {return true}
+        
+        guard let myInfo = viewModel.myInfo,
               let memberId = member.userId,
               let ownerList = chore.ownerList,
               let owner = ownerList.first(where: { owner in
