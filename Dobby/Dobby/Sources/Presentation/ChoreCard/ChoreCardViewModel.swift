@@ -21,6 +21,7 @@ class ChoreCardViewModel: BaseViewModel {
     let memberListBehavior: BehaviorRelay<[User]> = .init(value: [])
     let choreArrPublish: PublishRelay<[Chore]> = .init()
     let messagePublish: PublishRelay<String>  = .init()
+    var myInfo: User?
     var groupId: String?
     
     // MARK: initialize
@@ -48,6 +49,7 @@ class ChoreCardViewModel: BaseViewModel {
                         return .error(CustomError.init())
                     }
                     self.groupId = groupId
+                    self.myInfo = myinfo
                     return self.groupUseCase.getGroupInfo(id: groupId)
                 } else {
                     guard let groupId = myinfo.groupList?.last?.groupId
@@ -106,5 +108,9 @@ class ChoreCardViewModel: BaseViewModel {
                 guard let memberlist = self?.memberListBehavior.value else {return}
                 self?.memberListBehavior.accept(memberlist)
             }).disposed(by: self.disposBag)
+    }
+    
+    func deleteChore() {
+        
     }
 }
