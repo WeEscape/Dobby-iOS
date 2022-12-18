@@ -7,6 +7,8 @@
 
 import UIKit
 import SnapKit
+import RxSwift
+import RxGesture
 
 final class ChoreItemView: UIView {
     
@@ -48,6 +50,29 @@ final class ChoreItemView: UIView {
         return iv
     }()
     
+    lazy var deleteBtn: UIButton = {
+        let btn = UIButton()
+        let img = UIImage(systemName: "trash.fill")?
+            .withTintColor(Palette.textGray1, renderingMode: .alwaysOriginal)
+        btn.setImage(img, for: .normal)
+        btn.imageView?.contentMode = .scaleToFill
+        btn.backgroundColor = .clear
+        btn.isHidden = !self.isMyChore()
+        return btn
+    }()
+    
+    lazy var alarmBtn: UIButton = {
+        let btn = UIButton()
+        let img = UIImage(systemName: "bell.fill")?
+            .withTintColor(Palette.mainThemeBlue1, renderingMode: .alwaysOriginal)
+        btn.setImage(img, for: .normal)
+        btn.imageView?.contentMode = .scaleToFill
+        btn.backgroundColor = .clear
+//        btn.isHidden = self.isMyChore()
+        btn.isHidden = true
+        return btn
+    }()
+    
     // MARK: init
     init(
         member: User,
@@ -59,9 +84,7 @@ final class ChoreItemView: UIView {
         self.viewModel = viewModel
         super.init(frame: .zero)
         self.setupUI()
-        
-        let tap = UITapGestureRecognizer(target: self, action: #selector(didTapChoreItemView))
-        self.addGestureRecognizer(tap)
+        self.bind(viewModel: viewModel)
     }
     
     required init?(coder: NSCoder) {
@@ -87,9 +110,27 @@ final class ChoreItemView: UIView {
             $0.centerY.equalToSuperview()
         }
         
+        self.addSubview(deleteBtn)
+        deleteBtn.snp.makeConstraints {
+            $0.centerY.equalToSuperview()
+            $0.width.equalTo(30)
+            $0.height.equalToSuperview()
+            $0.right.equalToSuperview()
+        }
+        
+        self.addSubview(alarmBtn)
+        alarmBtn.snp.makeConstraints {
+            $0.centerY.equalToSuperview()
+            $0.width.equalTo(30)
+            $0.height.equalToSuperview()
+            $0.right.equalToSuperview()
+        }
+        
         self.addSubview(choreTitle)
         choreTitle.snp.makeConstraints {
             $0.left.equalTo(checkBox.snp.right).offset(16)
+            $0.height.equalToSuperview()
+            $0.right.equalToSuperview().inset(40)
             $0.centerY.equalToSuperview()
         }
     }
@@ -105,14 +146,64 @@ final class ChoreItemView: UIView {
         }
     }
     
-    @objc func didTapChoreItemView() {
+    func didTapChoreItemView() {
         guard let memberId = member.userId,
               let ownerList = chore.ownerList,
               let owner = ownerList.first(where: { owner in
                   owner.userId == memberId
               })
         else {return}
-        let toggleEnd = !(owner.isEnd == 1)
-        viewModel?.toggleChoreIsEnd(chore, userId: memberId, isEnd: toggleEnd)
+        if isMyChore() {
+            let toggleEnd = !(owner.isEnd == 1)
+            viewModel?.toggleChoreIsEnd(chore, userId: memberId, isEnd: toggleEnd)
+        } else {
+            print("not my chore ")
+        }
+    }
+    
+    func isMyChore() -> Bool {
+        guard let viewModel = self.viewModel,
+              viewModel.choreCardPeriod != .daily
+        else {return true}
+        
+        guard let myInfo = viewModel.myInfo,
+              let memberId = member.userId,
+              let ownerList = chore.ownerList,
+              let owner = ownerList.first(where: { owner in
+                  owner.userId == memberId
+              })
+        else {return false}
+        if owner.userId == myInfo.userId {
+            return true
+        }
+        return false
+    }
+    
+    // MARK: RX bind
+    func bind(viewModel: ChoreCardViewModel?) {
+        guard let viewModel = viewModel else {return}
+        bindAction(viewModel: viewModel)
+    }
+    
+    func bindAction(viewModel: ChoreCardViewModel) {
+        
+        self.rx.tapGesture()
+            .when(.recognized)
+            .subscribe(onNext: { [weak self] _ in
+                self?.didTapChoreItemView()
+            }).disposed(by: viewModel.disposBag)
+        
+        deleteBtn.rx.tapGesture()
+            .when(.recognized)
+            .subscribe(onNext: { [weak self] _ in
+                guard let chore = self?.chore else {return}
+                self?.viewModel?.deleteChore(chore: chore)
+            }).disposed(by: viewModel.disposBag)
+        
+        alarmBtn.rx.tapGesture()
+            .when(.recognized)
+            .subscribe(onNext: { [weak self] _ in
+                print("debug : alarmBtn tapGesture()")
+            }).disposed(by: viewModel.disposBag)
     }
 }

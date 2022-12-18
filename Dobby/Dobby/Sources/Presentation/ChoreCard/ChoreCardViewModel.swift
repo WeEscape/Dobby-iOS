@@ -21,6 +21,7 @@ class ChoreCardViewModel: BaseViewModel {
     let memberListBehavior: BehaviorRelay<[User]> = .init(value: [])
     let choreArrPublish: PublishRelay<[Chore]> = .init()
     let messagePublish: PublishRelay<String>  = .init()
+    var myInfo: User?
     var groupId: String?
     
     // MARK: initialize
@@ -48,6 +49,7 @@ class ChoreCardViewModel: BaseViewModel {
                         return .error(CustomError.init())
                     }
                     self.groupId = groupId
+                    self.myInfo = myinfo
                     return self.groupUseCase.getGroupInfo(id: groupId)
                 } else {
                     guard let groupId = myinfo.groupList?.last?.groupId
@@ -100,11 +102,26 @@ class ChoreCardViewModel: BaseViewModel {
         }
     }
     
+    func refreshChoreList() {
+        let memberlist = self.memberListBehavior.value
+        self.getChoreList(of: memberlist)
+    }
+    
     func toggleChoreIsEnd(_ chore: Chore, userId: String, isEnd: Bool) {
         self.choreUseCase.finishChore(chore: chore, userId: userId, isEnd: isEnd)
             .subscribe(onNext: { [weak self] _ in
-                guard let memberlist = self?.memberListBehavior.value else {return}
-                self?.memberListBehavior.accept(memberlist)
+                self?.refreshChoreList()
+            }, onError: { [weak self] _ in
+                self?.refreshChoreList()
+            }).disposed(by: self.disposBag)
+    }
+    
+    func deleteChore(chore: Chore) {
+        self.choreUseCase.deleteChore(chore: chore)
+            .subscribe(onNext: { [weak self] _ in
+                self?.refreshChoreList()
+            }, onError: { [weak self] _ in
+                self?.refreshChoreList()
             }).disposed(by: self.disposBag)
     }
 }

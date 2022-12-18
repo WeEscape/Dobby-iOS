@@ -14,6 +14,7 @@ protocol ChoreUseCase {
     func getChores(
         userId: String, groupId: String, date: Date, periodical: ChorePeriodical
     ) -> Observable<[Chore]>
+    func deleteChore(chore: Chore) -> Observable<Void>
 }
 
 final class ChoreUseCaseImpl: ChoreUseCase {
@@ -41,5 +42,9 @@ final class ChoreUseCaseImpl: ChoreUseCase {
     
     func finishChore(chore: Chore, userId: String, isEnd: Bool) -> Observable<Void> {
         return self.choreRepository.finishChore(chore: chore, userId: userId, isEnd: isEnd)
+    }
+    
+    func deleteChore(chore: Chore) -> Observable<Void> {
+        return self.choreRepository.deleteChore(chore: chore)
     }
 }

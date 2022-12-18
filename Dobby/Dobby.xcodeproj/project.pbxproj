@@ -86,6 +86,7 @@
 		A17893B1292A2AB4007893FB /* SelectUserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17893B0292A2AB4007893FB /* SelectUserCell.swift */; };
 		A17893B4292A2AD0007893FB /* SelectCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17893B3292A2AD0007893FB /* SelectCategoryView.swift */; };
 		A17893B6292A2AD7007893FB /* SelectCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17893B5292A2AD7007893FB /* SelectCategoryCell.swift */; };
+		A17DB77B294F03040025623B /* DeleteChoreAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17DB77A294F03040025623B /* DeleteChoreAPI.swift */; };
 		A18DF276293353B90073A01F /* ChoreRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18DF275293353B90073A01F /* ChoreRepository.swift */; };
 		A18DF278293358770073A01F /* ChoreRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18DF277293358770073A01F /* ChoreRepositoryImpl.swift */; };
 		A18DF27A293358C30073A01F /* ChoreDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18DF279293358C30073A01F /* ChoreDTO.swift */; };
@@ -257,6 +258,7 @@
 		A17893B3292A2AD0007893FB /* SelectCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCategoryView.swift; sourceTree = "<group>"; };
 		A17893B5292A2AD7007893FB /* SelectCategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCategoryCell.swift; sourceTree = "<group>"; };
 		A17A60EDE0B5ABC5EFFC0B11 /* Pods-DobbyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DobbyTests.release.xcconfig"; path = "Target Support Files/Pods-DobbyTests/Pods-DobbyTests.release.xcconfig"; sourceTree = "<group>"; };
+		A17DB77A294F03040025623B /* DeleteChoreAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteChoreAPI.swift; sourceTree = "<group>"; };
 		A18DF275293353B90073A01F /* ChoreRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoreRepository.swift; sourceTree = "<group>"; };
 		A18DF277293358770073A01F /* ChoreRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoreRepositoryImpl.swift; sourceTree = "<group>"; };
 		A18DF279293358C30073A01F /* ChoreDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoreDTO.swift; sourceTree = "<group>"; };
@@ -731,6 +733,7 @@
 				A18DF27C29335C100073A01F /* CreateChoreAPI.swift */,
 				A18DF290293F577F0073A01F /* ChoreListAPI.swift */,
 				A18DF2962940BD250073A01F /* FinishChoreAPI.swift */,
+				A17DB77A294F03040025623B /* DeleteChoreAPI.swift */,
 			);
 			path = Chore;
 			sourceTree = "<group>";
@@ -1330,6 +1333,7 @@
 				A19E987029152F78004A8861 /* ProfileColor.swift in Sources */,
 				A13C536528E91BB800C72215 /* Authentication.swift in Sources */,
 				A19E985D2912A3D0004A8861 /* SelectChoreAttributeViewController.swift in Sources */,
+				A17DB77B294F03040025623B /* DeleteChoreAPI.swift in Sources */,
 				A19E985829128D28004A8861 /* EditProfileColorView.swift in Sources */,
 				A17893A4292A0924007893FB /* CategoryRepositoryImpl.swift in Sources */,
 				A178936E2920C908007893FB /* ChoreCardViewModel.swift in Sources */,
@@ -1521,7 +1525,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Dobby/Dobby.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = YB8GA5MLV5;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1557,7 +1561,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Dobby/Dobby.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = YB8GA5MLV5;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Dobby/Info.plist;

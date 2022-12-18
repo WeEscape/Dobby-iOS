@@ -144,7 +144,7 @@ final class ChoreCardViewController: BaseViewController {
         
         refreshControl.rx.controlEvent(.valueChanged)
             .subscribe(onNext: { [weak self] _ in
-                self?.viewModel.getMemberList()
+                self?.viewModel.refreshChoreList()
             }).disposed(by: self.disposeBag)
         
         self.rx.viewDidDisappear
