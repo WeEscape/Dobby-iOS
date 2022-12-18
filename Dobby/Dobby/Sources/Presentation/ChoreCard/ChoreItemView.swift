@@ -68,7 +68,8 @@ final class ChoreItemView: UIView {
         btn.setImage(img, for: .normal)
         btn.imageView?.contentMode = .scaleToFill
         btn.backgroundColor = .clear
-        btn.isHidden = self.isMyChore()
+//        btn.isHidden = self.isMyChore()
+        btn.isHidden = true
         return btn
     }()
     
