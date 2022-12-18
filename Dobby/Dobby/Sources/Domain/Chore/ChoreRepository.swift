@@ -14,4 +14,5 @@ protocol ChoreRepository {
     func getChores(
         userId: String, groupId: String, date: Date, periodical: ChorePeriodical
     ) -> Observable<[Chore]>
+    func deleteChore(chore: Chore) -> Observable<Void>
 }

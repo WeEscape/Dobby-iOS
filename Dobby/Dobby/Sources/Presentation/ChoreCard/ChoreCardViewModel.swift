@@ -111,10 +111,17 @@ class ChoreCardViewModel: BaseViewModel {
         self.choreUseCase.finishChore(chore: chore, userId: userId, isEnd: isEnd)
             .subscribe(onNext: { [weak self] _ in
                 self?.refreshChoreList()
+            }, onError: { [weak self] _ in
+                self?.refreshChoreList()
             }).disposed(by: self.disposBag)
     }
     
-    func deleteChore() {
-        
+    func deleteChore(chore: Chore) {
+        self.choreUseCase.deleteChore(chore: chore)
+            .subscribe(onNext: { [weak self] _ in
+                self?.refreshChoreList()
+            }, onError: { [weak self] _ in
+                self?.refreshChoreList()
+            }).disposed(by: self.disposBag)
     }
 }

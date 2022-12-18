@@ -191,7 +191,8 @@ final class ChoreItemView: UIView {
         deleteBtn.rx.tapGesture()
             .when(.recognized)
             .subscribe(onNext: { [weak self] _ in
-                print("debug : deleteBtn tapGesture()")
+                guard let chore = self?.chore else {return}
+                self?.viewModel?.deleteChore(chore: chore)
             }).disposed(by: viewModel.disposBag)
         
         alarmBtn.rx.tapGesture()

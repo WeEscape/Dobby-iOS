@@ -46,4 +46,9 @@ final class ChoreRepositoryImpl: ChoreRepository {
         ))
         .compactMap { _ -> Void in () }
     }
+    
+    func deleteChore(chore: Chore) -> Observable<Void> {
+        return self.network.request(api: DeleteChoreAPI(choreId: chore.choreId))
+        .compactMap { _ -> Void in () }
+    }
 }
