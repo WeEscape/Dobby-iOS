@@ -10,6 +10,7 @@ import SwiftyBeaver
 import KakaoSDKCommon
 import KakaoSDKAuth
 import FirebaseCore
+import FirebaseMessaging
 
 let BeaverLog = SwiftyBeaver.self
 
@@ -34,8 +35,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // kakao init
         KakaoSDK.initSDK(appKey: KakaoAppKey.nativeAppKey)
         
+        // remote nofitication
+        UNUserNotificationCenter.current().delegate = self
+        let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+        UNUserNotificationCenter.current().requestAuthorization(
+          options: authOptions,
+          completionHandler: { _, _ in }
+        )
+        application.registerForRemoteNotifications()
+        
         // Firebase
         FirebaseApp.configure()
+        
+        // FCM
+        Messaging.messaging().delegate = self
+        
         
         return true
     }
@@ -60,5 +74,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         didDiscardSceneSessions sceneSessions: Set<UISceneSession>
     ) {
         
+    }
+}
+
+extension AppDelegate: UNUserNotificationCenterDelegate {
+    
+    // APN에 앱이 성공적으로 등록되었음을 딜리게이트로 전달
+    func application(
+        application: UIApplication,
+        didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data
+    ) {
+        // APN 토큰과 등록 토큰을 매핑
+        Messaging.messaging().apnsToken = deviceToken
+    }
+}
+
+extension AppDelegate: MessagingDelegate {
+    
+    // fcmToken이 업데이트 될때마다 호출됨
+    func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
+        // 서버에 내 fcmToken 등록
     }
 }
