@@ -50,7 +50,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // FCM
         Messaging.messaging().delegate = self
         
-        
         return true
     }
 
@@ -93,6 +92,7 @@ extension AppDelegate: MessagingDelegate {
     
     // fcmToken이 업데이트 될때마다 호출됨
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
-        // 서버에 내 fcmToken 등록
+        print("debug : fcmToken -> \(fcmToken ?? "no fcm toekn")")
+        // 유저 fcmToken 등록
     }
 }
