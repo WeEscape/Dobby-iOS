@@ -40,6 +40,7 @@ target 'Dobby' do
   # Firebase
   pod 'FirebaseCrashlytics'
   pod 'FirebaseAnalytics'
+  pod 'FirebaseMessaging'
 
   target 'DobbyTests' do
     inherit! :search_paths
