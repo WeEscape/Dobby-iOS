@@ -86,6 +86,16 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         // APN 토큰과 등록 토큰을 매핑
         Messaging.messaging().apnsToken = deviceToken
     }
+    
+    // 앱이 foreground  상태일 때 Push 받으면
+    func userNotificationCenter(
+        _ center: UNUserNotificationCenter,
+        willPresent notification: UNNotification,
+        withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions
+        ) -> Void) {
+        // alert를 띄우기
+        completionHandler([.banner, .sound])
+    }
 }
 
 extension AppDelegate: MessagingDelegate {
