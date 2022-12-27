@@ -478,7 +478,6 @@
 		A13C534728E7213100C72215 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
-				A18DF28F293F56700073A01F /* New Group */,
 				A1789398292A06B7007893FB /* Category */,
 				A17893832928CC66007893FB /* Group */,
 				A19E98682913F9EA004A8861 /* User */,
@@ -749,13 +748,6 @@
 				A18DF28D293C5CCA0073A01F /* ChoreItemView.swift */,
 			);
 			path = ChoreCard;
-			sourceTree = "<group>";
-		};
-		A18DF28F293F56700073A01F /* New Group */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "New Group";
 			sourceTree = "<group>";
 		};
 		A19E97DF2904D761004A8861 /* DailyChore */ = {
