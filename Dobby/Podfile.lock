@@ -52,6 +52,7 @@ PODS:
     - GoogleUtilities/Reachability (~> 7.7)
     - GoogleUtilities/UserDefaults (~> 7.7)
     - nanopb (< 2.30910.0, >= 2.30908.0)
+  - FSCalendar (2.8.4)
   - GoogleAppMeasurement (9.6.0):
     - GoogleAppMeasurement/AdIdSupport (= 9.6.0)
     - GoogleUtilities/AppDelegateSwizzler (~> 7.7)
@@ -207,6 +208,7 @@ DEPENDENCIES:
   - FirebaseAnalytics
   - FirebaseCrashlytics
   - FirebaseMessaging
+  - FSCalendar
   - Kingfisher
   - lottie-ios
   - Moya/RxSwift
@@ -234,6 +236,7 @@ SPEC REPOS:
     - FirebaseCrashlytics
     - FirebaseInstallations
     - FirebaseMessaging
+    - FSCalendar
     - GoogleAppMeasurement
     - GoogleDataTransport
     - GoogleUtilities
@@ -283,6 +286,7 @@ SPEC CHECKSUMS:
   FirebaseCrashlytics: 3210572ddb77801e5a0bd9d7bc890769f2066a0c
   FirebaseInstallations: 0a115432c4e223c5ab20b0dbbe4cbefa793a0e8e
   FirebaseMessaging: a4d7910e4af663c9cbfc1071c5bef34651690949
+  FSCalendar: 2d1d0d9398f12d439f55c1fe0f01525b151b8260
   GoogleAppMeasurement: 6de2b1a69e4326eb82ee05d138f6a5cb7311bcb1
   GoogleDataTransport: 1c8145da7117bd68bbbed00cf304edb6a24de00f
   GoogleUtilities: 1d20a6ad97ef46f67bbdec158ce00563a671ebb7
@@ -322,6 +326,6 @@ SPEC CHECKSUMS:
   SwiftyBeaver: c8241b4745aa269a78ca5a022532c6915e948536
   Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
 
-PODFILE CHECKSUM: 2f8d74d009e9d5f061b0eb07b2f978052e846c6c
+PODFILE CHECKSUM: acb4a92c561f1f9f47c69b46abe9622454f0375d
 
 COCOAPODS: 1.11.3

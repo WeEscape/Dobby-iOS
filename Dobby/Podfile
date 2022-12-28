@@ -24,6 +24,7 @@ target 'Dobby' do
   pod 'Kingfisher'
   pod 'ProgressHUD'
   pod 'Toast-Swift'
+  pod 'FSCalendar'
   
   # Network
   pod 'Moya/RxSwift'
