@@ -24,7 +24,6 @@ class MonthlyChoreViewModel {
     
     // MARK: methods
     func fetchMonthlyChoreList() {
-
         BeaverLog.verbose(" fetchMonthlyChoreList ")
     }
     
@@ -33,10 +32,18 @@ class MonthlyChoreViewModel {
     }
     
     func checkEventExist(for date: Date) -> Bool {
-        if date.toStringWithoutTime() == "2022-12-25" {
+        let temp = [
+            "2022-12-25",
+            "2022-12-28",
+            "2022-12-29",
+            "2022-12-30",
+            "2023-01-07",
+            "2023-01-14",
+            "2023-01-21",
+        ]
+        if temp.contains(date.toStringWithoutTime()) {
             return true
         }
         return false
     }
-    
 }

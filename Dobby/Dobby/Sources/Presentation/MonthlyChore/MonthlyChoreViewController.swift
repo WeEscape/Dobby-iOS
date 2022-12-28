@@ -17,10 +17,12 @@ final class MonthlyChoreViewController: BaseViewController {
     // MARK: Properties
     struct Metric {
         static let calendarViewHeight: CGFloat = 350
-        static let containerHeaderViewHeight: CGFloat = 50
+        static let containerHeaderViewHeight: CGFloat = 40
     }
     weak var coordinator: MonthlyChoreCoordinator?
     let viewModel: MonthlyChoreViewModel
+    let choreCardVCFactory: (Date) -> UIViewController?
+    weak var choreCardVC: UIViewController?
     
     // MARK: UI
     private lazy var calendarView: FSCalendar = {
@@ -33,8 +35,8 @@ final class MonthlyChoreViewController: BaseViewController {
         calendarView.headerHeight = 60
         calendarView.allowsMultipleSelection = false
         calendarView.swipeToChooseGesture.isEnabled = false
-        calendarView.appearance.todayColor = Palette.mainThemeBlue1
-        calendarView.appearance.selectionColor = Palette.mainThemeBlue1.withAlphaComponent(0.6)
+        calendarView.appearance.todayColor = Palette.mainThemeBlue1.withAlphaComponent(0.4)
+        calendarView.appearance.selectionColor = Palette.mainThemeBlue1
         calendarView.dataSource = self
         calendarView.delegate = self
         return calendarView
@@ -61,14 +63,19 @@ final class MonthlyChoreViewController: BaseViewController {
     
     private let choreCardContainerView: UIView = {
         let view = UIView()
-        view.backgroundColor = .yellow
+//        view.backgroundColor = .yellow
         return view
     }()
     
     // MARK: initialize
-    init(viewModel: MonthlyChoreViewModel, coordinator: MonthlyChoreCoordinator) {
+    init(
+        viewModel: MonthlyChoreViewModel,
+        coordinator: MonthlyChoreCoordinator,
+        choreCardVCFactory: @escaping(Date) -> UIViewController?
+    ) {
         self.coordinator = coordinator
         self.viewModel = viewModel
+        self.choreCardVCFactory = choreCardVCFactory
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -141,6 +148,23 @@ final class MonthlyChoreViewController: BaseViewController {
             })
     }
     
+    func setupChoreCardVC(date: Date) {
+        choreCardContainerView.subviews.forEach { subview in
+            subview.removeFromSuperview()
+        }
+        self.view.layoutIfNeeded()
+        self.choreCardVC?.removeFromParent()
+        
+        guard let viewController = self.choreCardVCFactory(date) else {return}
+        self.choreCardVC = viewController
+        self.addChild(viewController)
+        
+        choreCardContainerView.addSubview(viewController.view)
+        viewController.view.snp.makeConstraints {
+            $0.top.left.right.bottom.equalToSuperview()
+        }
+    }
+    
     // MARK: Rx bind
     func bind() {
         bindAction()
@@ -179,7 +203,7 @@ final class MonthlyChoreViewController: BaseViewController {
             .asDriver()
             .drive(onNext: { [weak self] selectedDate in
                 self?.calendarView.select(selectedDate)
-                // choreCard update
+                self?.setupChoreCardVC(date: selectedDate)
             }).disposed(by: self.disposeBag)
     }
 }
