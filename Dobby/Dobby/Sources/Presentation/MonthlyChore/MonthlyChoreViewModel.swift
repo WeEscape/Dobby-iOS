@@ -25,7 +25,7 @@ class MonthlyChoreViewModel {
     // MARK: methods
     func fetchMonthlyChoreList() {
 
-        print("devug : fetchMonthlyChoreList ")
+        BeaverLog.verbose(" fetchMonthlyChoreList ")
     }
     
     func didSelectDate(_ date: Date) {

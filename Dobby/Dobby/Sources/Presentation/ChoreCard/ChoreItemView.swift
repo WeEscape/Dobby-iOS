@@ -157,7 +157,7 @@ final class ChoreItemView: UIView {
             let toggleEnd = !(owner.isEnd == 1)
             viewModel?.toggleChoreIsEnd(chore, userId: memberId, isEnd: toggleEnd)
         } else {
-            print("not my chore ")
+            BeaverLog.verbose("not my chore")
         }
     }
     
@@ -203,7 +203,7 @@ final class ChoreItemView: UIView {
         alarmBtn.rx.tapGesture()
             .when(.recognized)
             .subscribe(onNext: { [weak self] _ in
-                print("debug : alarmBtn tapGesture()")
+                BeaverLog.verbose("debug : alarmBtn tap !)")
             }).disposed(by: viewModel.disposBag)
     }
 }

@@ -52,6 +52,6 @@ final class EditProfileViewModel {
     }
     
     func setDefaultProfile() {
-        print("Debug : set Default Profile")
+        BeaverLog.verbose("Debug : set Default Profile")
     }
 }

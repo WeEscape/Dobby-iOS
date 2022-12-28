@@ -102,7 +102,7 @@ extension AppDelegate: MessagingDelegate {
     
     // fcmToken이 업데이트 될때마다 호출됨
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
-        print("debug : fcmToken -> \(fcmToken ?? "no fcm toekn")")
+        BeaverLog.debug("debug : fcmToken -> \(fcmToken ?? "no fcm toekn")")
         // 유저 fcmToken 등록
     }
 }
