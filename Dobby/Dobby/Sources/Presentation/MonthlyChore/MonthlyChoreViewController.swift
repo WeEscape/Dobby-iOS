@@ -10,6 +10,7 @@ import SnapKit
 import FSCalendar
 import RxSwift
 import RxGesture
+import RxViewController
 
 final class MonthlyChoreViewController: BaseViewController {
     
@@ -18,6 +19,8 @@ final class MonthlyChoreViewController: BaseViewController {
         static let calendarViewHeight: CGFloat = 350
         static let containerHeaderViewHeight: CGFloat = 50
     }
+    weak var coordinator: MonthlyChoreCoordinator?
+    let viewModel: MonthlyChoreViewModel
     
     // MARK: UI
     private lazy var calendarView: FSCalendar = {
@@ -30,6 +33,8 @@ final class MonthlyChoreViewController: BaseViewController {
         calendarView.headerHeight = 60
         calendarView.allowsMultipleSelection = false
         calendarView.swipeToChooseGesture.isEnabled = false
+        calendarView.appearance.todayColor = Palette.mainThemeBlue1
+        calendarView.appearance.selectionColor = Palette.mainThemeBlue1.withAlphaComponent(0.6)
         calendarView.dataSource = self
         calendarView.delegate = self
         return calendarView
@@ -59,6 +64,17 @@ final class MonthlyChoreViewController: BaseViewController {
         view.backgroundColor = .yellow
         return view
     }()
+    
+    // MARK: initialize
+    init(viewModel: MonthlyChoreViewModel, coordinator: MonthlyChoreCoordinator) {
+        self.coordinator = coordinator
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     // MARK: view lifeCycle
     override func viewDidLoad() {
@@ -107,8 +123,6 @@ final class MonthlyChoreViewController: BaseViewController {
             $0.left.right.equalToSuperview()
             $0.bottom.equalToSuperview()
         }
-        
-        calendarView.select(Date().getFirstDayOfSameMonth())
     }
     
     func extendChoreView(isExtend: Bool) {
@@ -147,10 +161,26 @@ final class MonthlyChoreViewController: BaseViewController {
             .drive(onNext: { [weak self] _ in
                 self?.extendChoreView(isExtend: false)
             }).disposed(by: self.disposeBag)
+        
+        self.rx.viewDidAppear
+            .subscribe(onNext: { [weak self] _ in
+                self?.viewModel.fetchMonthlyChoreList()
+            }).disposed(by: self.disposeBag)
     }
     
     func bindState() {
+        viewModel.calendarReloadPublish
+            .asDriver(onErrorJustReturn: ())
+            .drive(onNext: { [weak self] in
+                self?.calendarView.reloadData()
+            }).disposed(by: self.disposeBag)
         
+        viewModel.selectedDate
+            .asDriver()
+            .drive(onNext: { [weak self] selectedDate in
+                self?.calendarView.select(selectedDate)
+                // choreCard update
+            }).disposed(by: self.disposeBag)
     }
 }
 
@@ -164,7 +194,7 @@ extension MonthlyChoreViewController: FSCalendarDataSource, FSCalendarDelegateAp
     }
     
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
-        return 0
+        return viewModel.checkEventExist(for: date) ? 1 : 0
     }
     
     func calendar(
@@ -172,6 +202,10 @@ extension MonthlyChoreViewController: FSCalendarDataSource, FSCalendarDelegateAp
         didSelect date: Date,
         at monthPosition: FSCalendarMonthPosition
     ) {
-        print(date.toStringWithoutTime() + " selected")
+        self.viewModel.didSelectDate(date)
+    }
+    
+    func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
+        self.viewModel.fetchMonthlyChoreList()
     }
 }

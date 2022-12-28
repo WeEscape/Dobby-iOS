@@ -118,7 +118,6 @@ extension Date {
         for _ in 0...15 {
             
             let newDate = calendar.date(from: dateComponent)!
-            print("Debug :  newDate -> \(newDate.toStringWithoutTime())")
             let newDateComponent = calendar.dateComponents([.weekOfYear, .day], from: newDate)
             if let newWeekOfYear = newDateComponent.weekOfYear,
                newWeekOfYear == myWeekOfYear {

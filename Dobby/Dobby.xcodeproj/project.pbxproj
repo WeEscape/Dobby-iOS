@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5D37CFAC2FFA4B3C846EA3C8 /* Pods_Dobby_DobbyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F56AA76B9FEBCC2098137B1 /* Pods_Dobby_DobbyUITests.framework */; };
 		81D7170A0CB8A71B30D14140 /* Pods_Dobby.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3336AE106AE91D152C06F33D /* Pods_Dobby.framework */; };
+		A11C86A9295C7EAB00D54F5E /* MonthlyChoreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11C86A8295C7EAB00D54F5E /* MonthlyChoreViewModel.swift */; };
 		A12095E928F2A198008CE410 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12095E828F2A198008CE410 /* NetworkError.swift */; };
 		A12095EB28F2E010008CE410 /* RefreshAuthAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12095EA28F2E010008CE410 /* RefreshAuthAPI.swift */; };
 		A12095F328FBDFDC008CE410 /* CustomError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12095F228FBDFDC008CE410 /* CustomError.swift */; };
@@ -175,6 +176,7 @@
 		3F56AA76B9FEBCC2098137B1 /* Pods_Dobby_DobbyUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Dobby_DobbyUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8083386DCEF92A322C58B66A /* Pods-Dobby.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dobby.release.xcconfig"; path = "Target Support Files/Pods-Dobby/Pods-Dobby.release.xcconfig"; sourceTree = "<group>"; };
 		8741B0934360EC4A243B1998 /* Pods-Dobby-DobbyUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dobby-DobbyUITests.release.xcconfig"; path = "Target Support Files/Pods-Dobby-DobbyUITests/Pods-Dobby-DobbyUITests.release.xcconfig"; sourceTree = "<group>"; };
+		A11C86A8295C7EAB00D54F5E /* MonthlyChoreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyChoreViewModel.swift; sourceTree = "<group>"; };
 		A12095E828F2A198008CE410 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		A12095EA28F2E010008CE410 /* RefreshAuthAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshAuthAPI.swift; sourceTree = "<group>"; };
 		A12095EC28F3F1B5008CE410 /* Dobby.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Dobby.entitlements; sourceTree = "<group>"; };
@@ -777,6 +779,7 @@
 			children = (
 				A19E97E82904D7EF004A8861 /* MonthlyChoreCoordinator.swift */,
 				A19E97F22904D837004A8861 /* MonthlyChoreViewController.swift */,
+				A11C86A8295C7EAB00D54F5E /* MonthlyChoreViewModel.swift */,
 			);
 			path = MonthlyChore;
 			sourceTree = "<group>";
@@ -1248,6 +1251,7 @@
 				A19E980529054640004A8861 /* LoadingIndicatorView.swift in Sources */,
 				A174B17928EF010100F80112 /* AuthenticationDTO.swift in Sources */,
 				A19E97F12904D82F004A8861 /* WeeklyChoreViewController.swift in Sources */,
+				A11C86A9295C7EAB00D54F5E /* MonthlyChoreViewModel.swift in Sources */,
 				A17893A6292A0951007893FB /* CategoryDTO.swift in Sources */,
 				A19E9881291941B8004A8861 /* RegisterAPI.swift in Sources */,
 				A19E9831290CECEA004A8861 /* ModalViewController.swift in Sources */,
