@@ -24,7 +24,7 @@ final class ChoreCardViewController: BaseViewController {
         let scroll = UIScrollView()
         scroll.bounces = true
         scroll.alwaysBounceVertical = true
-        scroll.contentInset = .init(top: 20, left: 0, bottom: 0, right: 0)
+        scroll.contentInset = .init(top: 20, left: 0, bottom: 100, right: 0)
         self.refreshControl.endRefreshing()
         scroll.refreshControl = self.refreshControl
         return scroll

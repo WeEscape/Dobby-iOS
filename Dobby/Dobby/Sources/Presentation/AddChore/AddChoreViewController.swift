@@ -125,13 +125,13 @@ final class AddChoreViewController: BaseViewController {
         self.view.endEditing(true)
     }
     
-    func showAddChoreMessage(_ message: AddChoreViewModel.AddChoreMessage) {
-        if message == .SUCCESS_ADD_CHORE {
-            ProgressHUD.showSucceed(message.rawValue, interaction: false)
+    func showAddChoreMessage(_ message: String) {
+        if message == AddChoreMessage.SUCCESS_ADD_CHORE.rawValue {
+            ProgressHUD.showSucceed(message, interaction: false)
         } else {
-            ProgressHUD.showFailed(message.rawValue, interaction: false)
+            ProgressHUD.showFailed(message, interaction: false)
         }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) { [weak self] in
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) { [weak self] in
             self?.addChoreCoordinator?.finishAddChore()
         }
     }
@@ -227,7 +227,7 @@ final class AddChoreViewController: BaseViewController {
                 userView.updateTitle(title: user.name)
             }).disposed(by: self.disposeBag)
         
-        addChoreViewModel.addChoreMsgPublish
+        addChoreViewModel.addChoreMessagePublish
             .subscribe(onNext: { [weak self] message in
                 self?.showAddChoreMessage(message)
             }).disposed(by: self.disposeBag)

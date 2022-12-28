@@ -47,6 +47,7 @@ final class NetworkServiceImpl: NetworkService {
     func request<API>(api: API) -> Observable<DobbyResponse<API.Response>> where API: BaseAPI {
         return self._request(api: api)
             .catch { [weak self] err -> Observable<Response>  in
+                Crashlytics.crashlytics().record(error: err)
                 if let urlErr = err as? URLError,
                    (urlErr.code == .timedOut || urlErr.code == .notConnectedToInternet) {
                     BeaverLog.verbose("unstable internet connection")
@@ -75,8 +76,9 @@ final class NetworkServiceImpl: NetworkService {
                             )
                             return self._request(api: api)
                         }
-                        .catch { _ in
+                        .catch { err in
                             BeaverLog.verbose("invalidate RefreshToken! -> logout")
+                            Crashlytics.crashlytics().record(error: err)
                             self.localStorage.delete(key: .jwtAccessToken)
                             self.localStorage.delete(key: .jwtRefreshToken)
                             let appDelegate = UIApplication.shared.delegate as? AppDelegate
@@ -94,6 +96,7 @@ final class NetworkServiceImpl: NetworkService {
             }
             .catch { err in
                 BeaverLog.error(err.localizedDescription)
+                Crashlytics.crashlytics().record(error: err)
                 return .error(err)
             }
     }

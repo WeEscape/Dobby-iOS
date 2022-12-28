@@ -16,13 +16,3 @@ extension String {
         return dateFormatter.date(from: self)
     }
 }
-
-extension String? {
-    func isNilOrEmpty() -> Bool {
-        guard let self = self else {return true}
-        if self.isEmpty {
-            return true
-        }
-        return false
-    }
-}

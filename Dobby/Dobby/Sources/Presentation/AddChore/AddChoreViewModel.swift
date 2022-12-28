@@ -9,12 +9,18 @@ import Foundation
 import RxSwift
 import RxRelay
 
+enum AddChoreMessage: String {
+    case NO_GROUP = "참여중인 그룹이 없습니다\n더보기에서 그룹 생성 또는 다른 그룹 참여 후 등록 가능합니다."
+    case ERROR_ADD_CHORE = "에러 발생\n잠시후 다시 시도해주세요"
+    case SUCCESS_ADD_CHORE = "집안일이 등록되었습니다."
+}
+
 final class AddChoreViewModel {
     
     var disposeBag: DisposeBag = .init()
     let attributeItems = BehaviorRelay<[ChoreAttribute]>(value: ChoreAttribute.allCases)
     let myinfoBehavior: BehaviorRelay<User?> = .init(value: nil)
-    let addChoreMsgPublish: PublishRelay<AddChoreMessage> = .init()
+    let addChoreMessagePublish: PublishRelay<String> = .init()
     let loadingPublush: PublishRelay<Bool> = .init()
     var saveBtnEnableBehavior: BehaviorRelay<Bool>? = .init(value: false)
     let isHiddenEndDateSelectPublish: PublishRelay<Bool> = .init()
@@ -35,12 +41,6 @@ final class AddChoreViewModel {
     let userUseCase: UserUseCase
     let groupUseCase: GroupUseCase
     let categoryUseCase: CategoryUseCase
-    
-    enum AddChoreMessage: String {
-        case NO_GROUP = "참여중인 그룹이 없습니다\n더보기에서 그룹 생성 또는 다른 그룹 참여 후 등록 가능합니다."
-        case ERROR_ADD_CHORE = "에러 발생\n잠시후 다시 시도해주세요"
-        case SUCCESS_ADD_CHORE = "집안일이 등록되었습니다."
-    }
     
     init(
         choreUseCase: ChoreUseCase,
@@ -84,11 +84,11 @@ final class AddChoreViewModel {
             .subscribe(onNext: { [weak self] _ in
                 self?.loadingPublush.accept(false)
                 self?.saveBtnEnableBehavior = nil
-                self?.addChoreMsgPublish.accept(.SUCCESS_ADD_CHORE)
+                self?.addChoreMessagePublish.accept(AddChoreMessage.SUCCESS_ADD_CHORE.rawValue)
             }, onError: { [weak self] _ in
                 self?.loadingPublush.accept(false)
                 self?.saveBtnEnableBehavior = nil
-                self?.addChoreMsgPublish.accept(.ERROR_ADD_CHORE)
+                self?.addChoreMessagePublish.accept(AddChoreMessage.ERROR_ADD_CHORE.rawValue)
             }).disposed(by: self.disposeBag)
     }
     
@@ -140,7 +140,8 @@ final class AddChoreViewModel {
            selectedStartDateBehavior.value != nil,
            selectedCategoryBehavior.value != nil,
            selectedUserBehavior.value != nil,
-           choreTitle.isNilOrEmpty() == false {
+           let title = choreTitle,
+           title.isEmpty == false {
             self.saveBtnEnableBehavior?.accept(true)
         } else if let cycle = selectedRepeatCycleBehavior.value,
                   cycle != .off,
@@ -148,7 +149,8 @@ final class AddChoreViewModel {
                   selectedEndDateBehavior.value != nil,
                   selectedCategoryBehavior.value != nil,
                   selectedUserBehavior.value != nil,
-                  choreTitle.isNilOrEmpty() == false {
+                  let title = choreTitle,
+                  title.isEmpty == false {
             self.saveBtnEnableBehavior?.accept(true)
         } else {
             self.saveBtnEnableBehavior?.accept(false)
@@ -181,9 +183,7 @@ final class AddChoreViewModel {
                 self?.categoriesBehavior.accept(categoryList)
             }, onError: { [weak self] err in
                 self?.loadingPublush.accept(false)
-                self?.addChoreMsgPublish.accept(
-                    AddChoreMessage(rawValue: err.localizedDescription) ?? .ERROR_ADD_CHORE
-                )
+                self?.addChoreMessagePublish.accept(err.localizedDescription)
                 self?.saveBtnEnableBehavior = nil
             }).disposed(by: self.disposeBag)
     }

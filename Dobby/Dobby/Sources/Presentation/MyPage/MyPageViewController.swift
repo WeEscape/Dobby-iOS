@@ -12,6 +12,7 @@ import RxCocoa
 import RxGesture
 import RxOptional
 import Toast_Swift
+import ProgressHUD
 
 final class MyPageViewController: BaseViewController {
  
@@ -178,7 +179,8 @@ final class MyPageViewController: BaseViewController {
         }
         self.view.layoutIfNeeded()
          
-        if groupId.isNilOrEmpty() { // 그룹 없음
+        if let gid = groupId,
+           gid.isEmpty { // 그룹 없음
             stackContainerView.addArrangedSubview(createHomeView)
             stackContainerView.addArrangedSubview(joinHomeView)
         } else { // 그룹 참여중
@@ -258,6 +260,12 @@ final class MyPageViewController: BaseViewController {
             .debounce(.milliseconds(350), scheduler: MainScheduler.instance)
             .subscribe(onNext: { [weak self] message in
                 self?.view.makeToast(message, duration: 3.0, position: .bottom)
+            }).disposed(by: self.disposeBag)
+        
+        mypageViewModel.errorMessagPublish
+            .asDriver(onErrorJustReturn: "")
+            .drive(onNext: { message in
+                ProgressHUD.showFailed(message, interaction: false)
             }).disposed(by: self.disposeBag)
     }
     

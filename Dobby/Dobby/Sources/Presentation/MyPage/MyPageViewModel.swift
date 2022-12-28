@@ -20,6 +20,7 @@ final class MyPageViewModel {
     let inviteCodePublish: PublishRelay<String?> = .init()
     let loadingPublish: PublishRelay<Bool> = .init()
     let toastMessagePublish: PublishRelay<String> = .init()
+    let errorMessagPublish: PublishRelay<String> = .init()
     let authUseCase: AuthUseCase
     let userUserCase: UserUseCase
     let groupUseCase: GroupUseCase
@@ -116,10 +117,12 @@ final class MyPageViewModel {
     
     func requestLogout() {
         self.authUseCase.logout()
-            .subscribe(onNext: { [weak self] _ in
+            .subscribe(onNext: {  [weak self] _ in
                 self?.userUserCase.removeUserInfoInLocalStorate()
                 self?.authUseCase.removeToken(tokenOption: [.accessToken, .refreshToken])
                 self?.logoutPublish.accept(())
+            }, onError: { [weak self] err in
+                self?.errorMessagPublish.accept(err.localizedDescription)
             }).disposed(by: self.disposeBag)
     }
     
@@ -129,6 +132,8 @@ final class MyPageViewModel {
                 self?.userUserCase.removeUserInfoInLocalStorate()
                 self?.authUseCase.removeToken(tokenOption: [.accessToken, .refreshToken])
                 self?.resignPublish.accept(())
+            }, onError: { [weak self] err in
+                self?.errorMessagPublish.accept(err.localizedDescription)
             }).disposed(by: self.disposeBag)
     }
     
@@ -138,8 +143,9 @@ final class MyPageViewModel {
             .subscribe(onNext: { [weak self] myinfo in
                 self?.myInfoBehavior.accept(myinfo)
                 self?.myGroupIdBehavior.accept(myinfo.groupList?.last?.groupId)
-            }, onError: { [weak self] _ in
+            }, onError: { [weak self] err in
                 self?.loadingPublish.accept(false)
+                self?.errorMessagPublish.accept(err.localizedDescription)
             }).disposed(by: self.disposeBag)
     }
     
@@ -153,8 +159,9 @@ final class MyPageViewModel {
             .subscribe(onNext: { [weak self] group in
                 self?.inviteCodePublish.accept(group.inviteCode)
                 self?.loadingPublish.accept(false)
-            }, onError: { [weak self] _ in
+            }, onError: { [weak self] err in
                 self?.loadingPublish.accept(false)
+                self?.errorMessagPublish.accept(err.localizedDescription)
             }).disposed(by: self.disposeBag)
     }
     
@@ -166,8 +173,9 @@ final class MyPageViewModel {
                 self?.inviteCodePublish.accept(group.inviteCode)
                 self?.myGroupIdBehavior.accept(group.groupId)
                 self?.loadingPublish.accept(false)
-            }, onError: { [weak self] _ in
+            }, onError: { [weak self] err in
                 self?.loadingPublish.accept(false)
+                self?.errorMessagPublish.accept(err.localizedDescription)
             }).disposed(by: self.disposeBag)
     }
     
@@ -181,8 +189,9 @@ final class MyPageViewModel {
                 self?.userUserCase.removeUserInfoInLocalStorate()
                 self?.myGroupIdBehavior.accept(nil)
                 self?.loadingPublish.accept(false)
-            }, onError: { [weak self] _ in
+            }, onError: { [weak self] err in
                 self?.loadingPublish.accept(false)
+                self?.errorMessagPublish.accept(err.localizedDescription)
             }).disposed(by: self.disposeBag)
     }
     
