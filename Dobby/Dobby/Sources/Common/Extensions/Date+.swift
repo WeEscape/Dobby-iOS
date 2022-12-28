@@ -129,4 +129,18 @@ extension Date {
         }
         return ret
     }
+    
+    func getFirstDayOfSameMonth() -> Date {
+        let calendar = Calendar.current
+        var component = calendar.dateComponents([.year, .month, .day], from: self)
+        while component.day! != 1 {
+            component.day! -= 1
+        }
+        let firstDay = calendar.date(from: component)
+        return firstDay!
+    }
+    
+    func getLastDayOfSameMonth() -> Date {
+        return self.getNextMonth().getFirstDayOfSameMonth().calculateDiffDate(diff: -1)!
+    }
 }
