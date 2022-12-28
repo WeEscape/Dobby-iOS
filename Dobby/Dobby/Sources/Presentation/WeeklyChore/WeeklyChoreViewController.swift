@@ -78,6 +78,7 @@ final class WeeklyChoreViewController: BaseViewController {
         btn.backgroundColor = Palette.mainThemeBlue1
         btn.layer.cornerRadius = 30
         btn.layer.makeShadow()
+        btn.isHidden = true
         return btn
     }()
     
