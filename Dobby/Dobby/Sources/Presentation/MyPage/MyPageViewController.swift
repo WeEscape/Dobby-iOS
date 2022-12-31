@@ -180,11 +180,11 @@ final class MyPageViewController: BaseViewController {
         self.view.layoutIfNeeded()
          
         if let gid = groupId,
-           gid.isEmpty { // 그룹 없음
+           !gid.isEmpty { // 그룹 참여중
+            stackContainerView.addArrangedSubview(leaveHomeView)
+        } else { // 그룹 없음
             stackContainerView.addArrangedSubview(createHomeView)
             stackContainerView.addArrangedSubview(joinHomeView)
-        } else { // 그룹 참여중
-            stackContainerView.addArrangedSubview(leaveHomeView)
         }
 //        stackContainerView.addArrangedSubview(profileEditView) // TODO: 프로필수정 개발
         stackContainerView.addArrangedSubview(settingView)
