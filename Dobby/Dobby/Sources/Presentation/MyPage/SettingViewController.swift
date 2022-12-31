@@ -25,8 +25,9 @@ final class SettingViewController: BaseViewController {
         return stack
     }()
     
-    private let termsView = SettingItemView(title: "이용약관")
-    private let privatePolicyView = SettingItemView(title: "개인정보 처리방침")
+    private let makersView = SettingItemView(title: PolicyType.makers.rawValue)
+    private let termsView = SettingItemView(title: PolicyType.terms.rawValue)
+    private let privatePolicyView = SettingItemView(title: PolicyType.privatePolicy.rawValue)
        
     // MARK: init
     init(coordinator: MyPageCoordinator?) {
@@ -76,6 +77,7 @@ final class SettingViewController: BaseViewController {
         
         stackContainerView.addArrangedSubview(termsView)
         stackContainerView.addArrangedSubview(privatePolicyView)
+        stackContainerView.addArrangedSubview(makersView)
     }
     
     func bindAction() {
@@ -89,6 +91,12 @@ final class SettingViewController: BaseViewController {
             .when(.recognized)
             .subscribe(onNext: { [weak self] _ in
                 self?.coordinator?.pushToPolicy(policyType: .privatePolicy)
+            }).disposed(by: self.disposeBag)
+        
+        makersView.rx.tapGesture()
+            .when(.recognized)
+            .subscribe(onNext: { [weak self] _ in
+                self?.coordinator?.pushToPolicy(policyType: .makers)
             }).disposed(by: self.disposeBag)
     }
 }
