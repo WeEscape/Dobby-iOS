@@ -138,8 +138,4 @@ extension Date {
         let firstDay = calendar.date(from: component)
         return firstDay!
     }
-    
-    func getLastDayOfSameMonth() -> Date {
-        return self.getNextMonth().getFirstDayOfSameMonth().calculateDiffDate(diff: -1)!
-    }
 }

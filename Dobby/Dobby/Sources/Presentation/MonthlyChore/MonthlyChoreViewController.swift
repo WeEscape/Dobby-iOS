@@ -210,11 +210,18 @@ final class MonthlyChoreViewController: BaseViewController {
 
 extension MonthlyChoreViewController: FSCalendarDataSource, FSCalendarDelegateAppearance {
     func minimumDate(for calendar: FSCalendar) -> Date {
-        return Date().getLastMonth().getFirstDayOfSameMonth()
+        return Date()
+            .getFirstDayOfSameMonth()
+            .calculateDiffDate(diff: -1)!
+            .getFirstDayOfSameMonth()
     }
     
     func maximumDate(for calendar: FSCalendar) -> Date {
-        return Date().getNextMonth().getLastDayOfSameMonth()
+        return Date()
+            .getFirstDayOfSameMonth()
+            .getNextMonth()
+            .getNextMonth()
+            .calculateDiffDate(diff: -1)!
     }
     
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
