@@ -77,7 +77,7 @@ final class ChoreItemListView: UIView {
         self.addSubview(stackContainerView)
         stackContainerView.snp.makeConstraints {
             $0.top.equalToSuperview()
-            $0.left.equalTo(userProfile.snp.right).offset(isShowMember ? 16 : 0)
+            $0.left.equalTo(userProfile.snp.right).offset(isShowMember ? 10 : 0)
             $0.bottom.equalToSuperview()
             $0.right.equalToSuperview()
         }

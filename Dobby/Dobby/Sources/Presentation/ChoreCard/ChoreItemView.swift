@@ -34,19 +34,41 @@ final class ChoreItemView: UIView {
     lazy var checkBox: UIImageView = {
         let iv = UIImageView()
         iv.contentMode = .scaleAspectFit
+        var img: UIImage?
         if self.isFinished() {
-            iv.image = UIImage(systemName: "checkmark.square.fill")?
-                .withTintColor(
-                    UIColor.systemGray2,
-                    renderingMode: .alwaysOriginal
-                )
+            img = UIImage(systemName: "checkmark.square.fill")
         } else {
-            iv.image = UIImage(systemName: "square")?
-                .withTintColor(
-                    UIColor.systemGray2,
-                    renderingMode: .alwaysOriginal
-                )
+            img = UIImage(systemName: "square")
         }
+        img = img?.withTintColor(
+            UIColor.systemGray2,
+            renderingMode: .alwaysOriginal
+        )
+        iv.image = img
+        iv.isHidden = !self.isMyChore()
+        return iv
+    }()
+    
+    lazy var dotBox: UIImageView = {
+        let iv = UIImageView()
+        iv.contentMode = .scaleAspectFit
+        var img = UIImage(systemName: "circle.fill")
+        if self.isFinished() {
+            img = img?.withTintColor(
+                UIColor.systemGray3,
+                renderingMode: .alwaysOriginal
+            )
+        } else {
+            img = img?.withTintColor(
+                Palette.textBlack1,
+                renderingMode: .alwaysOriginal
+            )
+        }
+        img = img?.withAlignmentRectInsets(
+            .init(top: -6, left: -6, bottom: -6, right: -6)
+        )
+        iv.image = img
+        iv.isHidden = self.isMyChore()
         return iv
     }()
     
@@ -68,7 +90,7 @@ final class ChoreItemView: UIView {
         btn.setImage(img, for: .normal)
         btn.imageView?.contentMode = .scaleToFill
         btn.backgroundColor = .clear
-//        btn.isHidden = self.isMyChore()
+//        btn.isHidden = self.isMyChore() // TODO: DEV remote nofi
         btn.isHidden = true
         return btn
     }()
@@ -110,6 +132,14 @@ final class ChoreItemView: UIView {
             $0.centerY.equalToSuperview()
         }
         
+        self.addSubview(dotBox)
+        dotBox.snp.makeConstraints {
+            $0.height.equalTo(20)
+            $0.width.equalTo(20)
+            $0.left.equalToSuperview()
+            $0.centerY.equalToSuperview()
+        }
+        
         self.addSubview(deleteBtn)
         deleteBtn.snp.makeConstraints {
             $0.centerY.equalToSuperview()
@@ -128,7 +158,7 @@ final class ChoreItemView: UIView {
         
         self.addSubview(choreTitle)
         choreTitle.snp.makeConstraints {
-            $0.left.equalTo(checkBox.snp.right).offset(16)
+            $0.left.equalTo(checkBox.snp.right).offset(6)
             $0.height.equalToSuperview()
             $0.right.equalToSuperview().inset(40)
             $0.centerY.equalToSuperview()
