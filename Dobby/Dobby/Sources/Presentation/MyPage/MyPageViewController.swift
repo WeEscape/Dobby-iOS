@@ -67,6 +67,7 @@ final class MyPageViewController: BaseViewController {
         leftText: "회원탈퇴",
         textColor: Palette.textRed1
     )
+    private let alaramSwtichView = AlarmSwitchItemView(leftText: "매일 알람")
     
     // MARK: init
     init(
@@ -187,6 +188,7 @@ final class MyPageViewController: BaseViewController {
             stackContainerView.addArrangedSubview(joinHomeView)
         }
 //        stackContainerView.addArrangedSubview(profileEditView) // TODO: 프로필수정 개발
+        stackContainerView.addArrangedSubview(alaramSwtichView)
         stackContainerView.addArrangedSubview(settingView)
         stackContainerView.addArrangedSubview(logoutView)
         stackContainerView.addArrangedSubview(resignView)

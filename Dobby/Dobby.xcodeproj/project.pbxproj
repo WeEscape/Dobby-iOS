@@ -10,6 +10,7 @@
 		5D37CFAC2FFA4B3C846EA3C8 /* Pods_Dobby_DobbyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F56AA76B9FEBCC2098137B1 /* Pods_Dobby_DobbyUITests.framework */; };
 		81D7170A0CB8A71B30D14140 /* Pods_Dobby.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3336AE106AE91D152C06F33D /* Pods_Dobby.framework */; };
 		A11C86A9295C7EAB00D54F5E /* MonthlyChoreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11C86A8295C7EAB00D54F5E /* MonthlyChoreViewModel.swift */; };
+		A11C86AB29623ABA00D54F5E /* AlarmSwitchItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11C86AA29623ABA00D54F5E /* AlarmSwitchItemView.swift */; };
 		A12095E928F2A198008CE410 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12095E828F2A198008CE410 /* NetworkError.swift */; };
 		A12095EB28F2E010008CE410 /* RefreshAuthAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12095EA28F2E010008CE410 /* RefreshAuthAPI.swift */; };
 		A12095F328FBDFDC008CE410 /* CustomError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12095F228FBDFDC008CE410 /* CustomError.swift */; };
@@ -177,6 +178,7 @@
 		8083386DCEF92A322C58B66A /* Pods-Dobby.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dobby.release.xcconfig"; path = "Target Support Files/Pods-Dobby/Pods-Dobby.release.xcconfig"; sourceTree = "<group>"; };
 		8741B0934360EC4A243B1998 /* Pods-Dobby-DobbyUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dobby-DobbyUITests.release.xcconfig"; path = "Target Support Files/Pods-Dobby-DobbyUITests/Pods-Dobby-DobbyUITests.release.xcconfig"; sourceTree = "<group>"; };
 		A11C86A8295C7EAB00D54F5E /* MonthlyChoreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyChoreViewModel.swift; sourceTree = "<group>"; };
+		A11C86AA29623ABA00D54F5E /* AlarmSwitchItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmSwitchItemView.swift; sourceTree = "<group>"; };
 		A12095E828F2A198008CE410 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		A12095EA28F2E010008CE410 /* RefreshAuthAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshAuthAPI.swift; sourceTree = "<group>"; };
 		A12095EC28F3F1B5008CE410 /* Dobby.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Dobby.entitlements; sourceTree = "<group>"; };
@@ -803,6 +805,7 @@
 				A19E97F62904D845004A8861 /* MyPageViewController.swift */,
 				A19E9847290FF1A7004A8861 /* MyPageViewModel.swift */,
 				A19E984E291143AF004A8861 /* SettingItemView.swift */,
+				A11C86AA29623ABA00D54F5E /* AlarmSwitchItemView.swift */,
 				A18DF2802934E97F0073A01F /* SettingViewController.swift */,
 				A18DF28229362E9F0073A01F /* PolicyViewController.swift */,
 				A18DF28429362ED10073A01F /* PolicyType.swift */,
@@ -1232,6 +1235,7 @@
 				A19E98162906CE85004A8861 /* ChoreMemoView.swift in Sources */,
 				A19E97ED2904D803004A8861 /* MyPageCoordinator.swift in Sources */,
 				A19E980C2906CB52004A8861 /* ChoreAttributeView.swift in Sources */,
+				A11C86AB29623ABA00D54F5E /* AlarmSwitchItemView.swift in Sources */,
 				A18DF276293353B90073A01F /* ChoreRepository.swift in Sources */,
 				A178938E2928CDCC007893FB /* GroupRepositoryImpl.swift in Sources */,
 				A13C535728E8231100C72215 /* BaseViewController.swift in Sources */,
