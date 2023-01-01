@@ -77,7 +77,7 @@ class MonthlyChoreViewModel {
     
     func checkEventExist(for date: Date) -> Bool {
         let checkExist = self.choreDateListBehavior.value.filter { choreDate in
-            choreDate.contains(date.toStringWithoutTime())
+            choreDate.contains(date.toStringWithFormat())
         }
         return !checkExist.isEmpty
     }

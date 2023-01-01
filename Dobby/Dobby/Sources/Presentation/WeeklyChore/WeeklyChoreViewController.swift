@@ -154,11 +154,11 @@ final class WeeklyChoreViewController: BaseViewController {
     }
     
     func updateTitle(with date: Date) {
-        var dateStr = date.toStringWithoutTime(dateFormat: "yyyy")
+        var dateStr = date.toStringWithFormat("yyyy")
         let weekOfYear = date.getWeekOfYear()
         switch weekOfYear {
         case 0:
-            dateStr = date.toStringWithoutTime(dateFormat: "yyyy.MM")
+            dateStr = date.toStringWithFormat("yyyy.MM")
             self.titleLabel.text = dateStr
         case 1:
             self.titleLabel.text = dateStr + " \(weekOfYear)st week"

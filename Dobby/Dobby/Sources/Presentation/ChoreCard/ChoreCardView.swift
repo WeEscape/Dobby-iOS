@@ -30,7 +30,7 @@ final class ChoreCardView: UIView {
     
     lazy var dateLabel: UILabel = {
         let lbl = UILabel()
-        lbl.text = self.date.toStringWithoutTime()
+        lbl.text = self.date.toStringWithFormat()
         lbl.font = DobbyFont.avenirBlack(size: 16).getFont
         lbl.textColor = Palette.textBlack1
         return lbl

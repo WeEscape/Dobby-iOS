@@ -8,7 +8,7 @@
 import Foundation
 
 extension Date {
-    func toStringWithoutTime(dateFormat: String = "yyyy-MM-dd") -> String {
+    func toStringWithFormat(_ dateFormat: String = "yyyy-MM-dd") -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = dateFormat
         dateFormatter.locale = Locale.current
