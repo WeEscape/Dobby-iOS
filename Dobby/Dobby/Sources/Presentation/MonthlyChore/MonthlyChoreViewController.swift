@@ -29,12 +29,16 @@ final class MonthlyChoreViewController: BaseViewController {
         let calendarView = FSCalendar()
         calendarView.scope = .month
         calendarView.locale = Locale(identifier: "ko_KR")
-        calendarView.appearance.eventDefaultColor = Palette.mainThemeBlue1
         calendarView.appearance.headerTitleFont = DobbyFont.avenirBlack(size: 20).getFont
+        calendarView.appearance.headerTitleColor = Palette.textBlack1
         calendarView.appearance.headerDateFormat = "YYYY년 MM월"
+        calendarView.appearance.weekdayTextColor = Palette.textBlack1
+        calendarView.appearance.weekdayFont = DobbyFont.avenirMedium(size: 15).getFont
+        calendarView.placeholderType = .none
         calendarView.headerHeight = 60
         calendarView.allowsMultipleSelection = false
         calendarView.swipeToChooseGesture.isEnabled = false
+        calendarView.appearance.eventDefaultColor = Palette.mainThemeBlue1
         calendarView.appearance.todayColor = Palette.mainThemeBlue1.withAlphaComponent(0.4)
         calendarView.appearance.selectionColor = Palette.mainThemeBlue1
         calendarView.dataSource = self
@@ -238,5 +242,23 @@ extension MonthlyChoreViewController: FSCalendarDataSource, FSCalendarDelegateAp
     
     func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
         self.viewModel.fetchMonthlyChoreList()
+    }
+    
+    func calendar(
+        _ calendar: FSCalendar,
+        appearance: FSCalendarAppearance,
+        titleDefaultColorFor date: Date
+    ) -> UIColor? {
+        let currentCalendar = Calendar.current
+        let dateComponent = currentCalendar
+            .dateComponents([.year, .month, .day, .weekday], from: date)
+        guard let weekday = dateComponent.weekday else {return .black}
+        if weekday == 1 {
+            return .red
+        } else if weekday == 7 {
+            return .blue
+        } else {
+            return .black
+        }
     }
 }
