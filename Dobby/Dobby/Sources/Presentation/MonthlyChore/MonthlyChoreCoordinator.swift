@@ -19,6 +19,12 @@ final class MonthlyChoreCoordinator: Coordinator {
                 choreRepository: ChoreRepositoryImpl(
                     network: NetworkServiceImpl.shared
                 )
+            ),
+            userUseCase: UserUseCaseImpl(
+                userRepository: UserRepositoryImpl(
+                    network: NetworkServiceImpl.shared,
+                    localStorage: UserDefaults.standard
+                )
             )
         )
         let viewController = MonthlyChoreViewController(

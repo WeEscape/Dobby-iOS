@@ -18,10 +18,15 @@ class MonthlyChoreViewModel {
     let selectedDate: BehaviorRelay<Date> = .init(value: Date())
     
     let choreUseCase: ChoreUseCase
+    let userUseCase: UserUseCase
     
     // MARK: init
-    init(choreUseCase: ChoreUseCase) {
+    init(
+        choreUseCase: ChoreUseCase,
+        userUseCase: UserUseCase
+    ) {
         self.choreUseCase = choreUseCase
+        self.userUseCase = userUseCase
     }
     
     // MARK: methods
