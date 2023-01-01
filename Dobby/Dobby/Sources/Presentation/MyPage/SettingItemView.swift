@@ -11,7 +11,7 @@ import SnapKit
 final class SettingItemView: UIView {
     
     // MARK: UI
-    private let titleLabel: UILabel = {
+    private let leftTitleLabel: UILabel = {
         let lbl = UILabel()
         lbl.font = DobbyFont.avenirMedium(size: 18).getFont
         return lbl
@@ -23,14 +23,23 @@ final class SettingItemView: UIView {
         return line
     }()
     
+    private let rightTitleLable: UILabel = {
+        let lbl = UILabel()
+        lbl.font = DobbyFont.avenirMedium(size: 18).getFont
+        return lbl
+    }()
+    
     // MARK: init
     init(
-        title: String,
-        textColor: UIColor = Palette.textGray1
+        leftText: String,
+        textColor: UIColor = Palette.textGray1,
+        rightText: String = ""
     ) {
         super.init(frame: .zero)
-        self.titleLabel.text = title
-        self.titleLabel.textColor = textColor
+        self.leftTitleLabel.text = leftText
+        self.leftTitleLabel.textColor = textColor
+        self.rightTitleLable.text = rightText
+        self.rightTitleLable.textColor = textColor
         self.setupUI()
     }
     
@@ -49,8 +58,8 @@ final class SettingItemView: UIView {
             $0.height.equalTo(60)
         }
         
-        self.addSubview(titleLabel)
-        titleLabel.snp.makeConstraints {
+        self.addSubview(leftTitleLabel)
+        leftTitleLabel.snp.makeConstraints {
             $0.left.equalToSuperview().inset(39)
             $0.centerY.equalToSuperview()
         }
@@ -60,6 +69,12 @@ final class SettingItemView: UIView {
             $0.width.equalToSuperview()
             $0.height.equalTo(1)
             $0.bottom.equalToSuperview()
+        }
+        
+        self.addSubview(rightTitleLable)
+        rightTitleLable.snp.makeConstraints {
+            $0.right.equalToSuperview().inset(39)
+            $0.centerY.equalToSuperview()
         }
     }
 }

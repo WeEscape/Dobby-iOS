@@ -14,6 +14,12 @@ final class SettingViewController: BaseViewController {
     
     // MARK: property
     weak var coordinator: MyPageCoordinator?
+    var version: String {
+        guard let dictionary = Bundle.main.infoDictionary,
+              let version = dictionary["CFBundleShortVersionString"] as? String
+        else {return ""}
+        return "v" + version
+    }
     
     // MARK: UI
     private let scrollContainerView: UIScrollView = .init()
@@ -25,9 +31,10 @@ final class SettingViewController: BaseViewController {
         return stack
     }()
     
-    private let makersView = SettingItemView(title: PolicyType.makers.rawValue)
-    private let termsView = SettingItemView(title: PolicyType.terms.rawValue)
-    private let privatePolicyView = SettingItemView(title: PolicyType.privatePolicy.rawValue)
+    private let makersView = SettingItemView(leftText: PolicyType.makers.rawValue)
+    private let termsView = SettingItemView(leftText: PolicyType.terms.rawValue)
+    private let privatePolicyView = SettingItemView(leftText: PolicyType.privatePolicy.rawValue)
+    private lazy var appVersionView = SettingItemView(leftText: "앱 버전", rightText: version)
        
     // MARK: init
     init(coordinator: MyPageCoordinator?) {
@@ -78,6 +85,7 @@ final class SettingViewController: BaseViewController {
         stackContainerView.addArrangedSubview(termsView)
         stackContainerView.addArrangedSubview(privatePolicyView)
         stackContainerView.addArrangedSubview(makersView)
+        stackContainerView.addArrangedSubview(appVersionView)
     }
     
     func bindAction() {

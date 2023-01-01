@@ -56,15 +56,15 @@ final class MyPageViewController: BaseViewController {
         return lbl
     }()
     
-    private let tutorialView = SettingItemView(title: "사용방법")
-    private let profileEditView = SettingItemView(title: "프로필 수정")
-    private let leaveHomeView = SettingItemView(title: "연결된 그룹 나가기")
-    private let createHomeView = SettingItemView(title: "그룹 만들기")
-    private let joinHomeView = SettingItemView(title: "다른 그룹 참여하기")
-    private let settingView = SettingItemView(title: "도움말")
-    private let logoutView = SettingItemView(title: "로그아웃")
+    private let tutorialView = SettingItemView(leftText: "사용방법")
+    private let profileEditView = SettingItemView(leftText: "프로필 수정")
+    private let leaveHomeView = SettingItemView(leftText: "연결된 그룹 나가기")
+    private let createHomeView = SettingItemView(leftText: "그룹 만들기")
+    private let joinHomeView = SettingItemView(leftText: "다른 그룹 참여하기")
+    private let settingView = SettingItemView(leftText: "도움말")
+    private let logoutView = SettingItemView(leftText: "로그아웃")
     private let resignView = SettingItemView(
-        title: "회원탈퇴",
+        leftText: "회원탈퇴",
         textColor: Palette.textRed1
     )
     
