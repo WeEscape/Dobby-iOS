@@ -40,14 +40,16 @@ final class AlarmSwitchItemView: UIView {
         let sw = UISwitch()
         sw.onTintColor = Palette.mainThemeBlue1
         sw.preferredStyle = .sliding
+        sw.isOn = false
         return sw
     }()
     
-    private let timePicker: UIDatePicker = {
+    private lazy var timePicker: UIDatePicker = {
         let picker = UIDatePicker()
         picker.preferredDatePickerStyle = .compact
         picker.minuteInterval = 15
         picker.datePickerMode = .time
+        picker.setDate(self.defaultTime, animated: false)
         return picker
     }()
     
@@ -123,7 +125,6 @@ final class AlarmSwitchItemView: UIView {
         self.alarmSwitch.rx.value
             .subscribe(onNext: { [weak self] isOn in
                 guard let self = self else {return}
-                self.timePicker.setDate(self.defaultTime, animated: false)
                 self.timePicker.isHidden = !isOn
             }).disposed(by: self.disposeBag)
     }
