@@ -17,9 +17,11 @@ class MonthlyChoreViewModel {
     let calendarReloadPublish: PublishRelay<Void> = .init()
     let selectedDate: BehaviorRelay<Date> = .init(value: Date())
     
+    let choreUseCase: ChoreUseCase
+    
     // MARK: init
-    init() {
-        
+    init(choreUseCase: ChoreUseCase) {
+        self.choreUseCase = choreUseCase
     }
     
     // MARK: methods

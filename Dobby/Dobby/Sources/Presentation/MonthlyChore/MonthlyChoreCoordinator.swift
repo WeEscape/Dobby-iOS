@@ -14,7 +14,13 @@ final class MonthlyChoreCoordinator: Coordinator {
         childCoordinators: [Coordinator] = [ChoreCardCoordinator()]
     ) {
         super.init(parentCoordinator: parentCoordinator, childCoordinators: childCoordinators)
-        let viewModel = MonthlyChoreViewModel()
+        let viewModel = MonthlyChoreViewModel(
+            choreUseCase: ChoreUseCaseImpl(
+                choreRepository: ChoreRepositoryImpl(
+                    network: NetworkServiceImpl.shared
+                )
+            )
+        )
         let viewController = MonthlyChoreViewController(
             viewModel: viewModel,
             coordinator: self,
