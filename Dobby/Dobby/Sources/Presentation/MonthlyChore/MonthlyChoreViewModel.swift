@@ -20,31 +20,45 @@ class MonthlyChoreViewModel {
     
     let choreUseCase: ChoreUseCase
     let userUseCase: UserUseCase
+    let groupUseCase: GroupUseCase
     
     // MARK: init
     init(
         choreUseCase: ChoreUseCase,
-        userUseCase: UserUseCase
+        userUseCase: UserUseCase,
+        groupUseCase: GroupUseCase
     ) {
         self.choreUseCase = choreUseCase
         self.userUseCase = userUseCase
+        self.groupUseCase = groupUseCase
     }
     
     // MARK: methods
     func fetchMonthlyChoreList(_ date: Date) {
         self.userUseCase.getMyInfo()
-            .flatMapLatest { [unowned self] myinfo -> Observable<[Chore]> in
-                guard let userId = myinfo.userId,
-                      let groupId = myinfo.groupList?.last?.groupId
-                else {return .error(CustomError(memo: "no myinfo"))}
-                return self.choreUseCase.getChores(
-                    userId: userId,
-                    groupId: groupId,
-                    date: date,
-                    periodical: .monthly
-                )
+            .flatMapLatest { [unowned self] myinfo -> Observable<Group> in
+                guard let groupId = myinfo.groupList?.last?.groupId
+                else {return .error(CustomError(memo: "no group"))}
+                return self.groupUseCase.getGroupInfo(id: groupId)
             }
-            .subscribe(onNext: { [weak self] choreList in
+            .flatMapLatest { [unowned self] groupInfo -> Observable<[[Chore]]> in
+                guard let groupId = groupInfo.groupId,
+                      let members = groupInfo.memberList
+                else {return .error(CustomError(memo: "no groupInfo"))}
+                var observableList: [Observable<[Chore]>] = .init()
+                members.forEach { member in
+                    let observable = self.choreUseCase.getChores(
+                        userId: member.userId!,
+                        groupId: groupId,
+                        date: date,
+                        periodical: .monthly
+                    )
+                    observableList.append(observable)
+                }
+                return Observable.zip(observableList)
+            }
+            .subscribe(onNext: { [weak self] chores in
+                let choreList = chores.flatMap {$0}
                 var choreDateList = choreList.map { chore in
                     chore.executeAt
                 }

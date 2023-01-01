@@ -25,6 +25,11 @@ final class MonthlyChoreCoordinator: Coordinator {
                     network: NetworkServiceImpl.shared,
                     localStorage: UserDefaults.standard
                 )
+            ),
+            groupUseCase: GroupUseCaseImpl(
+                groupRepository: GroupRepositoryImpl(
+                    network: NetworkServiceImpl.shared
+                )
             )
         )
         let viewController = MonthlyChoreViewController(
