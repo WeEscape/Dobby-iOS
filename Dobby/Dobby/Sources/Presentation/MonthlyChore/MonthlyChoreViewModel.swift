@@ -15,7 +15,8 @@ class MonthlyChoreViewModel {
     var disposBag: DisposeBag = .init()
     let loadingPublish: PublishRelay<Bool> = .init()
     let calendarReloadPublish: PublishRelay<Void> = .init()
-    let selectedDate: BehaviorRelay<Date> = .init(value: Date())
+    let selectedDateBehavior: BehaviorRelay<Date> = .init(value: Date())
+    let choreDateListBehavior: BehaviorRelay<[String]> = .init(value: [])
     
     let choreUseCase: ChoreUseCase
     let userUseCase: UserUseCase
@@ -30,27 +31,40 @@ class MonthlyChoreViewModel {
     }
     
     // MARK: methods
-    func fetchMonthlyChoreList() {
-        BeaverLog.verbose(" fetchMonthlyChoreList ")
+    func fetchMonthlyChoreList(_ date: Date) {
+        self.userUseCase.getMyInfo()
+            .flatMapLatest { [unowned self] myinfo -> Observable<[Chore]> in
+                guard let userId = myinfo.userId,
+                      let groupId = myinfo.groupList?.last?.groupId
+                else {return .error(CustomError(memo: "no myinfo"))}
+                return self.choreUseCase.getChores(
+                    userId: userId,
+                    groupId: groupId,
+                    date: date,
+                    periodical: .monthly
+                )
+            }
+            .subscribe(onNext: { [weak self] choreList in
+                var choreDateList = choreList.map { chore in
+                    chore.executeAt
+                }
+                choreDateList = Array(Set(choreDateList))
+                self?.choreDateListBehavior.accept(choreDateList)
+                self?.calendarReloadPublish.accept(())
+            }, onError: { [weak self] _ in
+                self?.choreDateListBehavior.accept([])
+                self?.calendarReloadPublish.accept(())
+            }).disposed(by: self.disposBag)
     }
     
     func didSelectDate(_ date: Date) {
-        self.selectedDate.accept(date)
+        self.selectedDateBehavior.accept(date)
     }
     
     func checkEventExist(for date: Date) -> Bool {
-        let temp = [
-            "2022-12-25",
-            "2022-12-28",
-            "2022-12-29",
-            "2022-12-30",
-            "2023-01-07",
-            "2023-01-14",
-            "2023-01-21",
-        ]
-        if temp.contains(date.toStringWithoutTime()) {
-            return true
+        let checkExist = self.choreDateListBehavior.value.filter { choreDate in
+            choreDate.contains(date.toStringWithoutTime())
         }
-        return false
+        return !checkExist.isEmpty
     }
 }

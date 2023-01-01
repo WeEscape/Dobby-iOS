@@ -176,6 +176,12 @@ final class MonthlyChoreViewController: BaseViewController {
     }
     
     func bindAction() {
+        self.rx.viewDidAppear
+            .subscribe(onNext: { [weak self] _ in
+                guard let self = self else {return}
+                self.viewModel.fetchMonthlyChoreList(self.calendarView.currentPage)
+            }).disposed(by: self.disposeBag)
+        
         containerHeaderView.rx.swipeGesture(.up)
             .when(.recognized)
             .asDriver(onErrorJustReturn: .init())
@@ -189,11 +195,6 @@ final class MonthlyChoreViewController: BaseViewController {
             .drive(onNext: { [weak self] _ in
                 self?.extendChoreView(isExtend: false)
             }).disposed(by: self.disposeBag)
-        
-        self.rx.viewDidAppear
-            .subscribe(onNext: { [weak self] _ in
-                self?.viewModel.fetchMonthlyChoreList()
-            }).disposed(by: self.disposeBag)
     }
     
     func bindState() {
@@ -203,7 +204,7 @@ final class MonthlyChoreViewController: BaseViewController {
                 self?.calendarView.reloadData()
             }).disposed(by: self.disposeBag)
         
-        viewModel.selectedDate
+        viewModel.selectedDateBehavior
             .asDriver()
             .drive(onNext: { [weak self] selectedDate in
                 self?.calendarView.select(selectedDate)
@@ -241,7 +242,7 @@ extension MonthlyChoreViewController: FSCalendarDataSource, FSCalendarDelegateAp
     }
     
     func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
-        self.viewModel.fetchMonthlyChoreList()
+        self.viewModel.fetchMonthlyChoreList(calendar.currentPage)
     }
     
     func calendar(
