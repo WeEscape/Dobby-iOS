@@ -122,7 +122,7 @@ final class AlarmSwitchItemView: UIView {
     
     func bindAction() {
         self.timePicker.rx.value
-            .debounce(.milliseconds(200), scheduler: MainScheduler.instance)
+            .debounce(.milliseconds(100), scheduler: MainScheduler.instance)
             .subscribe(onNext: { [weak self] time in
                 guard let self = self else {return}
                 let isOn = self.alarmSwitch.isOn
