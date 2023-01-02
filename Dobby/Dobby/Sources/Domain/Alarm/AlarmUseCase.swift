@@ -9,8 +9,8 @@ import Foundation
 import RxSwift
 
 protocol AlarmUseCase {
-    func setAlarm(isOn: Bool, time: Date)
-    func getAlarm() -> (isOn: Bool, time: Date)
+    func setAlarmInfo(isOn: Bool, time: Date)
+    func getAlarmInfo() -> (isOn: Bool, time: Date)
 }
 
 final class AlarmUseCaseImpl: AlarmUseCase {
@@ -29,15 +29,15 @@ final class AlarmUseCaseImpl: AlarmUseCase {
         self.alarmRepository = alarmRepository
     }
     
-    func setAlarm(isOn: Bool, time: Date) {
-        self.alarmRepository.setAlarm(
+    func setAlarmInfo(isOn: Bool, time: Date) {
+        self.alarmRepository.setAlarmInfo(
             isOn: isOn ? "1" : "0",
             time: time.toStringWithFormat("HH:mm")
         )
     }
     
-    func getAlarm() -> (isOn: Bool, time: Date) {
-        let ret = self.alarmRepository.getAlarm()
+    func getAlarmInfo() -> (isOn: Bool, time: Date) {
+        let ret = self.alarmRepository.getAlarmInfo()
         let retIsOn = ret.isOn ?? "0"
         let retTime = ret.time ?? ""
         

@@ -216,11 +216,11 @@ final class MyPageViewModel {
     }
     
     func getAlarmInfo() {
-        let alarmInfo = self.alarmUseCase.getAlarm()
+        let alarmInfo = self.alarmUseCase.getAlarmInfo()
         self.alarmPulish.accept(alarmInfo)
     }
     
     func setAlarmInfo(isOn: Bool, time: Date) {
-        self.alarmUseCase.setAlarm(isOn: isOn, time: time)
+        self.alarmUseCase.setAlarmInfo(isOn: isOn, time: time)
     }
 }

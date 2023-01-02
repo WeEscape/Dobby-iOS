@@ -15,7 +15,7 @@ final class AlarmRepositoryImpl: AlarmRepository {
         self.fileManager = fileManager
     }
     
-    func setAlarm(isOn: String, time: String) {
+    func setAlarmInfo(isOn: String, time: String) {
         let text = isOn + "/" + time
         if let dir = self.fileManager.urls(for: .documentDirectory, in: .userDomainMask).first {
             let fileURL = dir.appendingPathComponent("alarm.txt")
@@ -23,7 +23,7 @@ final class AlarmRepositoryImpl: AlarmRepository {
         }
     }
     
-    func getAlarm() -> (isOn: String?, time: String?) {
+    func getAlarmInfo() -> (isOn: String?, time: String?) {
         var text: String = "/"
         if let dir = self.fileManager.urls(for: .documentDirectory, in: .userDomainMask).first {
             let fileURL = dir.appendingPathComponent("alarm.txt")

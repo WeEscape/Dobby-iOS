@@ -8,6 +8,6 @@
 import Foundation
 
 protocol AlarmRepository {
-    func setAlarm(isOn: String, time: String)
-    func getAlarm() -> (isOn: String?, time: String?)
+    func setAlarmInfo(isOn: String, time: String)
+    func getAlarmInfo() -> (isOn: String?, time: String?)
 }
