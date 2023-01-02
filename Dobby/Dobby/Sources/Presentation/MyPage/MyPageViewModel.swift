@@ -21,21 +21,26 @@ final class MyPageViewModel {
     let loadingPublish: PublishRelay<Bool> = .init()
     let toastMessagePublish: PublishRelay<String> = .init()
     let errorMessagPublish: PublishRelay<String> = .init()
+    let alarmPulish: PublishRelay<(Bool, Date)> = .init()
+    
     let authUseCase: AuthUseCase
     let userUserCase: UserUseCase
     let groupUseCase: GroupUseCase
     let categoryUseCase: CategoryUseCase
+    let alarmUseCase: AlarmUseCase
     
     init(
         authUseCase: AuthUseCase,
         userUserCase: UserUseCase,
         groupUseCase: GroupUseCase,
-        categoryUseCase: CategoryUseCase
+        categoryUseCase: CategoryUseCase,
+        alarmUseCase: AlarmUseCase
     ) {
         self.authUseCase = authUseCase
         self.userUserCase = userUserCase
         self.groupUseCase = groupUseCase
         self.categoryUseCase = categoryUseCase
+        self.alarmUseCase = alarmUseCase
     }
     
     deinit {
@@ -208,6 +213,14 @@ final class MyPageViewModel {
                 self?.loadingPublish.accept(false)
                 self?.toastMessagePublish.accept("그룹코드를 확인 해주세요")
             }).disposed(by: self.disposeBag)
-        
+    }
+    
+    func getAlarmInfo() {
+        let alarmInfo = self.alarmUseCase.getAlarm()
+        self.alarmPulish.accept(alarmInfo)
+    }
+    
+    func setAlarmInfo(isOn: Bool, time: Date) {
+        self.alarmUseCase.setAlarm(isOn: isOn, time: time)
     }
 }

@@ -14,14 +14,7 @@ final class AlarmSwitchItemView: UIView {
     
     // MARK: properties
     var disposeBag = DisposeBag()
-    var defaultTime: Date {
-        let calendar = Calendar.current
-        var component = calendar.dateComponents([.hour, .minute], from: Date())
-        component.hour = 8
-        component.minute = 0
-        let time = calendar.date(from: component)
-        return time!
-    }
+    weak var viewModel: MyPageViewModel?
     
     // MARK: UI
     private let leftTitleLabel: UILabel = {
@@ -41,24 +34,27 @@ final class AlarmSwitchItemView: UIView {
         sw.onTintColor = Palette.mainThemeBlue1
         sw.preferredStyle = .sliding
         sw.isOn = false
+        sw.isHidden = true
         return sw
     }()
     
-    private lazy var timePicker: UIDatePicker = {
+    private let timePicker: UIDatePicker = {
         let picker = UIDatePicker()
         picker.preferredDatePickerStyle = .compact
         picker.minuteInterval = 15
         picker.datePickerMode = .time
-        picker.setDate(self.defaultTime, animated: false)
+        picker.isHidden = true
         return picker
     }()
     
     // MARK: init
     init(
+        viewModel: MyPageViewModel,
         leftText: String,
         textColor: UIColor = Palette.textGray1
     ) {
         super.init(frame: .zero)
+        self.viewModel = viewModel
         self.leftTitleLabel.text = leftText
         self.leftTitleLabel.textColor = textColor
         self.setupUI()
@@ -113,19 +109,33 @@ final class AlarmSwitchItemView: UIView {
     }
     
     func bindState() {
-        
+        self.viewModel?.alarmPulish
+            .debounce(.milliseconds(200), scheduler: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] isOn, time in
+                guard let self = self else {return}
+                self.timePicker.setDate(time, animated: false)
+                self.timePicker.isHidden = !isOn
+                self.alarmSwitch.isHidden = false
+                self.alarmSwitch.isOn = isOn
+            }).disposed(by: self.disposeBag)
     }
     
     func bindAction() {
         self.timePicker.rx.value
-            .subscribe(onNext: { time in
-                print("Debug : timePicker val -> \(time)")
+            .debounce(.milliseconds(200), scheduler: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] time in
+                guard let self = self else {return}
+                let isOn = self.alarmSwitch.isOn
+                self.viewModel?.setAlarmInfo(isOn: isOn, time: time)
             }).disposed(by: self.disposeBag)
         
         self.alarmSwitch.rx.value
+            .debounce(.milliseconds(100), scheduler: MainScheduler.instance)
             .subscribe(onNext: { [weak self] isOn in
                 guard let self = self else {return}
                 self.timePicker.isHidden = !isOn
+                let time = self.timePicker.date
+                self.viewModel?.setAlarmInfo(isOn: isOn, time: time)
             }).disposed(by: self.disposeBag)
     }
 }

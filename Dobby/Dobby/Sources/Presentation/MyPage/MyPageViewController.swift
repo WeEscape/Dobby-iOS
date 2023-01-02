@@ -67,7 +67,10 @@ final class MyPageViewController: BaseViewController {
         leftText: "회원탈퇴",
         textColor: Palette.textRed1
     )
-    private let alaramSwtichView = AlarmSwitchItemView(leftText: "매일 알람")
+    private lazy var alaramSwtichView = AlarmSwitchItemView(
+        viewModel: self.mypageViewModel,
+        leftText: "매일 알람"
+    )
     
     // MARK: init
     init(
@@ -273,8 +276,9 @@ final class MyPageViewController: BaseViewController {
     
     func bindAction() {
         self.rx.viewDidAppear
-            .subscribe(onNext: { _ in
-                self.mypageViewModel.getMyInfo()
+            .subscribe(onNext: { [weak self] _ in
+                self?.mypageViewModel.getMyInfo()
+                self?.mypageViewModel.getAlarmInfo()
             }).disposed(by: self.disposeBag)
         
         profileEditView.rx.tapGesture()
