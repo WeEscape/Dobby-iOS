@@ -16,7 +16,7 @@ final class MonthlyChoreViewController: BaseViewController {
     
     // MARK: Properties
     struct Metric {
-        static let calendarViewHeight: CGFloat = 350
+        static let calendarViewHeight: CGFloat = 360
         static let containerHeaderViewHeight: CGFloat = 40
     }
     weak var coordinator: MonthlyChoreCoordinator?
@@ -39,6 +39,7 @@ final class MonthlyChoreViewController: BaseViewController {
         calendarView.allowsMultipleSelection = false
         calendarView.swipeToChooseGesture.isEnabled = false
         calendarView.appearance.eventDefaultColor = Palette.mainThemeBlue1
+        calendarView.appearance.eventSelectionColor = Palette.mainThemeBlue1
         calendarView.appearance.todayColor = Palette.mainThemeBlue1.withAlphaComponent(0.4)
         calendarView.appearance.selectionColor = Palette.mainThemeBlue1
         calendarView.dataSource = self
