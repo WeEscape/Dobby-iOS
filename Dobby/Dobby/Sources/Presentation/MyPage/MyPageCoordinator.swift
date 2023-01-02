@@ -25,10 +25,17 @@ final class MyPageCoordinator: Coordinator {
                 )
             ),
             groupUseCase: GroupUseCaseImpl(
-                groupRepository: GroupRepositoryImpl(network: NetworkServiceImpl.shared)
+                groupRepository: GroupRepositoryImpl(
+                    network: NetworkServiceImpl.shared
+                )
             ),
             categoryUseCase: CategoryUseCaseImpl(
-                repository: CategoryRepositoryImpl(network: NetworkServiceImpl.shared)
+                repository: CategoryRepositoryImpl(
+                    network: NetworkServiceImpl.shared
+                )
+            ),
+            alarmUseCase: AlarmUseCaseImpl(
+                alarmRepository: AlarmRepositoryImpl()
             )
         )
         let mypageVC = MyPageViewController(

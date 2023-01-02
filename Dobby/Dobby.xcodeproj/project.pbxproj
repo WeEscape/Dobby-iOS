@@ -11,6 +11,9 @@
 		81D7170A0CB8A71B30D14140 /* Pods_Dobby.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3336AE106AE91D152C06F33D /* Pods_Dobby.framework */; };
 		A11C86A9295C7EAB00D54F5E /* MonthlyChoreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11C86A8295C7EAB00D54F5E /* MonthlyChoreViewModel.swift */; };
 		A11C86AB29623ABA00D54F5E /* AlarmSwitchItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11C86AA29623ABA00D54F5E /* AlarmSwitchItemView.swift */; };
+		A11C86AE2962FC0600D54F5E /* AlarmUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11C86AD2962FC0600D54F5E /* AlarmUseCase.swift */; };
+		A11C86B02962FD6E00D54F5E /* AlarmRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11C86AF2962FD6E00D54F5E /* AlarmRepository.swift */; };
+		A11C86B22962FFB800D54F5E /* AlarmRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11C86B12962FFB800D54F5E /* AlarmRepositoryImpl.swift */; };
 		A12095E928F2A198008CE410 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12095E828F2A198008CE410 /* NetworkError.swift */; };
 		A12095EB28F2E010008CE410 /* RefreshAuthAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12095EA28F2E010008CE410 /* RefreshAuthAPI.swift */; };
 		A12095F328FBDFDC008CE410 /* CustomError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12095F228FBDFDC008CE410 /* CustomError.swift */; };
@@ -179,6 +182,9 @@
 		8741B0934360EC4A243B1998 /* Pods-Dobby-DobbyUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dobby-DobbyUITests.release.xcconfig"; path = "Target Support Files/Pods-Dobby-DobbyUITests/Pods-Dobby-DobbyUITests.release.xcconfig"; sourceTree = "<group>"; };
 		A11C86A8295C7EAB00D54F5E /* MonthlyChoreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyChoreViewModel.swift; sourceTree = "<group>"; };
 		A11C86AA29623ABA00D54F5E /* AlarmSwitchItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmSwitchItemView.swift; sourceTree = "<group>"; };
+		A11C86AD2962FC0600D54F5E /* AlarmUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmUseCase.swift; sourceTree = "<group>"; };
+		A11C86AF2962FD6E00D54F5E /* AlarmRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmRepository.swift; sourceTree = "<group>"; };
+		A11C86B12962FFB800D54F5E /* AlarmRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmRepositoryImpl.swift; sourceTree = "<group>"; };
 		A12095E828F2A198008CE410 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		A12095EA28F2E010008CE410 /* RefreshAuthAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshAuthAPI.swift; sourceTree = "<group>"; };
 		A12095EC28F3F1B5008CE410 /* Dobby.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Dobby.entitlements; sourceTree = "<group>"; };
@@ -373,6 +379,15 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		A11C86AC2962FBB100D54F5E /* Alarm */ = {
+			isa = PBXGroup;
+			children = (
+				A11C86AD2962FC0600D54F5E /* AlarmUseCase.swift */,
+				A11C86AF2962FD6E00D54F5E /* AlarmRepository.swift */,
+			);
+			path = Alarm;
+			sourceTree = "<group>";
+		};
 		A13C530428E7129D00C72215 = {
 			isa = PBXGroup;
 			children = (
@@ -482,6 +497,7 @@
 		A13C534728E7213100C72215 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				A11C86AC2962FBB100D54F5E /* Alarm */,
 				A1789398292A06B7007893FB /* Category */,
 				A17893832928CC66007893FB /* Group */,
 				A19E98682913F9EA004A8861 /* User */,
@@ -550,6 +566,7 @@
 				A178938D2928CDCC007893FB /* GroupRepositoryImpl.swift */,
 				A17893A3292A0924007893FB /* CategoryRepositoryImpl.swift */,
 				A18DF277293358770073A01F /* ChoreRepositoryImpl.swift */,
+				A11C86B12962FFB800D54F5E /* AlarmRepositoryImpl.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -1299,6 +1316,7 @@
 				A17893B6292A2AD7007893FB /* SelectCategoryCell.swift in Sources */,
 				A18DF27A293358C30073A01F /* ChoreDTO.swift in Sources */,
 				A12095EB28F2E010008CE410 /* RefreshAuthAPI.swift in Sources */,
+				A11C86B02962FD6E00D54F5E /* AlarmRepository.swift in Sources */,
 				A19E987E2917D6B0004A8861 /* ChoreRepeatCycle.swift in Sources */,
 				A174B16F28EC6F0300F80112 /* ASAuthorizationController+.swift in Sources */,
 				A178939A292A06F2007893FB /* Category.swift in Sources */,
@@ -1313,6 +1331,7 @@
 				A17893852928CC76007893FB /* Group.swift in Sources */,
 				A19E986A2913FCC6004A8861 /* UserUseCase.swift in Sources */,
 				A13C535A28E8288300C72215 /* SplashCoordinator.swift in Sources */,
+				A11C86B22962FFB800D54F5E /* AlarmRepositoryImpl.swift in Sources */,
 				A12095F328FBDFDC008CE410 /* CustomError.swift in Sources */,
 				A19E987C2917D500004A8861 /* SelectRepeatCycleCell.swift in Sources */,
 				A13C535C28E8288A00C72215 /* SplashViewController.swift in Sources */,
@@ -1350,6 +1369,7 @@
 				A19E97FB29052A2A004A8861 /* CALayer+.swift in Sources */,
 				A18DF291293F577F0073A01F /* ChoreListAPI.swift in Sources */,
 				A13C537928E9789200C72215 /* MainTabBarController.swift in Sources */,
+				A11C86AE2962FC0600D54F5E /* AlarmUseCase.swift in Sources */,
 				A1789353291A912A007893FB /* UserDTO.swift in Sources */,
 				A178935F291E8E2B007893FB /* DateSelectCollectionCell.swift in Sources */,
 				A178938A2928CC94007893FB /* GroupRepository.swift in Sources */,
