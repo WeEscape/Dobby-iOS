@@ -63,9 +63,9 @@ extension Reactive where Base: ASAuthorizationController {
                 }
                 
                 // 첫번째 회원가입 성공이후 부터 애플로그인시에는 빈값으로 넘어옴
-                let givenName = credential.fullName?.givenName ?? ""
+                let givenName = credential.fullName?.givenName ?? "apple user"
                 let userEmail = credential.email ?? ""
-                let defaultProfileImg = "https://raw.githubusercontent.com/WeEscape/resources/main/appleDefaultAvatar.png"
+                let defaultProfileImg = "https://raw.githubusercontent.com/WeEscape/resources/main/appleProfile.jpeg"
                 
                 return .init(
                     accessToken: nil,
