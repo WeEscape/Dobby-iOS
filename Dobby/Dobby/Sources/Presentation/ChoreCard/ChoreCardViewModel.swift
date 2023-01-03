@@ -17,9 +17,10 @@ class ChoreCardViewModel: BaseViewModel {
     let userUseCase: UserUseCase
     let groupUseCase: GroupUseCase
     let choreUseCase: ChoreUseCase
+    let alarmUseCase: AlarmUseCase
     
     let memberListBehavior: BehaviorRelay<[User]> = .init(value: [])
-    let choreArrPublish: PublishRelay<[Chore]> = .init()
+    let choreArrBehavior: BehaviorRelay<[Chore]> = .init(value: [])
     let messagePublish: PublishRelay<String>  = .init()
     var myInfo: User?
     var groupId: String?
@@ -30,13 +31,15 @@ class ChoreCardViewModel: BaseViewModel {
         dateList: [Date],
         userUseCase: UserUseCase,
         groupUseCase: GroupUseCase,
-        choreUseCase: ChoreUseCase
+        choreUseCase: ChoreUseCase,
+        alarmUseCase: AlarmUseCase
     ) {
         self.choreCardPeriod = choreCardPeriod
         self.dateList = dateList
         self.userUseCase = userUseCase
         self.groupUseCase = groupUseCase
         self.choreUseCase = choreUseCase
+        self.alarmUseCase = alarmUseCase
     }
     
     func getMemberList() {
@@ -66,7 +69,7 @@ class ChoreCardViewModel: BaseViewModel {
                 guard let members = group.memberList else {return}
                 self?.memberListBehavior.accept(members)
             }, onError: { [weak self] _ in
-                self?.choreArrPublish.accept([])
+                self?.choreArrBehavior.accept([])
                 self?.messagePublish.accept("참여중인 그룹이 없습니다.")
                 self?.loadingPublish.accept(false)
             }).disposed(by: self.disposBag)
@@ -88,15 +91,19 @@ class ChoreCardViewModel: BaseViewModel {
             }
             Observable.zip(observableList)
                 .subscribe(onNext: { [weak self] choreList in
+                    guard let self = self else {return}
                     let choreArr = choreList.flatMap {$0}
-                    self?.choreArrPublish.accept(choreArr)
-                    self?.loadingPublish.accept(false)
+                    self.choreArrBehavior.accept(choreArr)
+                    self.loadingPublish.accept(false)
+                    if self.choreCardPeriod == .weekly {
+                        self.updateLocalAlarm()
+                    }
                 }, onError: { [weak self] _ in
-                    self?.choreArrPublish.accept([])
+                    self?.choreArrBehavior.accept([])
                     self?.loadingPublish.accept(false)
                 }).disposed(by: self.disposBag)
         } else {
-            self.choreArrPublish.accept([])
+            self.choreArrBehavior.accept([])
             self.messagePublish.accept("참여중인 그룹이 없습니다.")
             self.loadingPublish.accept(false)
         }
@@ -123,5 +130,34 @@ class ChoreCardViewModel: BaseViewModel {
             }, onError: { [weak self] _ in
                 self?.refreshChoreList()
             }).disposed(by: self.disposBag)
+    }
+    
+    func updateLocalAlarm() {
+        
+        var choreList = choreArrBehavior.value
+        choreList = choreList.filter { chore in
+            guard let ownerList = chore.ownerList,
+                  let myId = self.myInfo?.userId
+            else {return false}
+            return ownerList.contains(where: { owner in
+                owner.userId == myId
+            })
+        }
+        var choreDateList = choreList.map { chore in
+            chore.executeAt
+        }
+        choreDateList = Array(Set(choreDateList))
+        guard let tomorrow = Date().calculateDiffDate(diff: 1)?.toStringWithFormat()
+        else {return}
+        let checkExist = choreDateList.filter { choreDate in
+            choreDate.contains(tomorrow)
+        }
+        
+        let alarmInfo = self.alarmUseCase.getAlarmInfo()
+        if !checkExist.isEmpty, alarmInfo.isOn {
+            self.alarmUseCase.registAlarm(at: alarmInfo.time)
+        } else {
+            self.alarmUseCase.removeAlarm()
+        }
     }
 }

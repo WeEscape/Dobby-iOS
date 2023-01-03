@@ -167,7 +167,7 @@ final class ChoreCardViewController: BaseViewController {
                 self?.viewModel.getChoreList(of: members)
             }).disposed(by: self.disposeBag)
         
-        viewModel.choreArrPublish
+        viewModel.choreArrBehavior
             .asDriver(onErrorJustReturn: [])
             .drive(onNext: { [weak self] choreArr in
                 self?.indicatorView.isHidden = true

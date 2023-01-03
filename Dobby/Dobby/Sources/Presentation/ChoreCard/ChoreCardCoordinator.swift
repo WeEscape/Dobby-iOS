@@ -27,6 +27,9 @@ final class ChoreCardCoordinator: Coordinator {
             ),
             choreUseCase: ChoreUseCaseImpl(
                 choreRepository: ChoreRepositoryImpl(network: NetworkServiceImpl.shared)
+            ),
+            alarmUseCase: AlarmUseCaseImpl(
+                alarmRepository: AlarmRepositoryImpl()
             )
         )
         let vc = ChoreCardViewController(viewModel: vm)

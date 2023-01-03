@@ -31,7 +31,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     func sceneDidBecomeActive(_ scene: UIScene) {
-        // Called when the scene has moved from an inactive state to an active state.
+        UIApplication.shared.applicationIconBadgeNumber = 0
     }
     
     func sceneWillResignActive(_ scene: UIScene) {

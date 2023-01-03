@@ -49,7 +49,7 @@ final class MonthlyChoreCoordinator: Coordinator {
         }
         let vc = coordinator.createViewController(
             dateList: [date],
-            choreCardPeriod: .weekly
+            choreCardPeriod: .monthly
         )
         return vc
     }
