@@ -23,6 +23,8 @@
 		A12095FB29016034008CE410 /* splash.json in Resources */ = {isa = PBXBuildFile; fileRef = A12095FA29016034008CE410 /* splash.json */; };
 		A12095FD2901669B008CE410 /* Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12095FC2901669B008CE410 /* Palette.swift */; };
 		A12095FF2901680F008CE410 /* DobbyFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12095FE2901680F008CE410 /* DobbyFont.swift */; };
+		A122FCC22965AD9A0093F58E /* CoreDataCloud.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A122FCC02965AD9A0093F58E /* CoreDataCloud.xcdatamodeld */; };
+		A122FCC42965AE5B0093F58E /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A122FCC32965AE5B0093F58E /* CloudKit.framework */; };
 		A13C531128E7129D00C72215 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13C531028E7129D00C72215 /* AppDelegate.swift */; };
 		A13C531328E7129D00C72215 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13C531228E7129D00C72215 /* SceneDelegate.swift */; };
 		A13C531A28E7129E00C72215 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A13C531928E7129E00C72215 /* Assets.xcassets */; };
@@ -195,6 +197,8 @@
 		A12095FA29016034008CE410 /* splash.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = splash.json; sourceTree = "<group>"; };
 		A12095FC2901669B008CE410 /* Palette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Palette.swift; sourceTree = "<group>"; };
 		A12095FE2901680F008CE410 /* DobbyFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DobbyFont.swift; sourceTree = "<group>"; };
+		A122FCC12965AD9A0093F58E /* CoreDataCloud.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataCloud.xcdatamodel; sourceTree = "<group>"; };
+		A122FCC32965AE5B0093F58E /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		A13C530D28E7129D00C72215 /* Dobby.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dobby.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A13C531028E7129D00C72215 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A13C531228E7129D00C72215 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -344,6 +348,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				81D7170A0CB8A71B30D14140 /* Pods_Dobby.framework in Frameworks */,
+				A122FCC42965AE5B0093F58E /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -587,6 +592,7 @@
 			isa = PBXGroup;
 			children = (
 				A13C536E28E94D0500C72215 /* LocalStorageService.swift */,
+				A122FCC02965AD9A0093F58E /* CoreDataCloud.xcdatamodeld */,
 			);
 			path = LocalStorage;
 			sourceTree = "<group>";
@@ -949,6 +955,7 @@
 		EECB826E23EA5A1E908A6DD1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A122FCC32965AE5B0093F58E /* CloudKit.framework */,
 				3336AE106AE91D152C06F33D /* Pods_Dobby.framework */,
 				3F56AA76B9FEBCC2098137B1 /* Pods_Dobby_DobbyUITests.framework */,
 				E4AD1EDD5CCDD37BD771AC5A /* Pods_DobbyTests.framework */,
@@ -1373,6 +1380,7 @@
 				A1789353291A912A007893FB /* UserDTO.swift in Sources */,
 				A178935F291E8E2B007893FB /* DateSelectCollectionCell.swift in Sources */,
 				A178938A2928CC94007893FB /* GroupRepository.swift in Sources */,
+				A122FCC22965AD9A0093F58E /* CoreDataCloud.xcdatamodeld in Sources */,
 				A1789365291FAF67007893FB /* DateListSection.swift in Sources */,
 				A19E9854291152AB004A8861 /* EditProfileViewController.swift in Sources */,
 				A178939C292A06F9007893FB /* CategoryUseCase.swift in Sources */,
@@ -1732,6 +1740,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		A122FCC02965AD9A0093F58E /* CoreDataCloud.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				A122FCC12965AD9A0093F58E /* CoreDataCloud.xcdatamodel */,
+			);
+			currentVersion = A122FCC12965AD9A0093F58E /* CoreDataCloud.xcdatamodel */;
+			path = CoreDataCloud.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = A13C530528E7129D00C72215 /* Project object */;
 }
