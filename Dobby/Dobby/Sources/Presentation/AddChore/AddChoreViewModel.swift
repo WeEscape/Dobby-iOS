@@ -77,8 +77,8 @@ final class AddChoreViewModel {
         let memo = self.choreMemo ?? ""
         let newChore = Chore(
             choreId: "", title: title, categoryId: categoryId, repeatCycle: repeayCycle.rawValue,
-            noticeEnable: notice, executeAt: excuteAt.toStringWithoutTime(),
-            endAt: endAt.toStringWithoutTime(), ownerList: nil, memo: memo
+            noticeEnable: notice, executeAt: excuteAt.toStringWithFormat(),
+            endAt: endAt.toStringWithFormat(), ownerList: nil, memo: memo
         )
         self.choreUseCase.postChore(chore: newChore, ownerList: [ownerId])
             .subscribe(onNext: { [weak self] _ in

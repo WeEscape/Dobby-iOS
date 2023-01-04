@@ -185,7 +185,7 @@ final class EditProfileViewController: BaseViewController {
         
         viewModel.emojiModalPublishh
             .subscribe(onNext: { [weak self] _ in
-                print("debug : show emoji modal")
+                BeaverLog.verbose("debug : show emoji modal")
             }).disposed(by: self.disposeBag)
     }
     

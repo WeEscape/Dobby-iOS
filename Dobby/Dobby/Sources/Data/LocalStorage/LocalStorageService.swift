@@ -45,7 +45,7 @@ extension UserDefaults: LocalStorageService {
     }
     
     func getUser() -> User? {
-        if let data = UserDefaults.standard.object(forKey: LocalKey.userInfo.rawValue) as? Data {
+        if let data = Self.standard.object(forKey: LocalKey.userInfo.rawValue) as? Data {
             let decoder = JSONDecoder()
             let savedUser = try? decoder.decode(User.self, from: data)
                 return savedUser

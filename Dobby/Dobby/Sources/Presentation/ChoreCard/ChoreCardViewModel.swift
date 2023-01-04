@@ -17,9 +17,10 @@ class ChoreCardViewModel: BaseViewModel {
     let userUseCase: UserUseCase
     let groupUseCase: GroupUseCase
     let choreUseCase: ChoreUseCase
+    let alarmUseCase: AlarmUseCase
     
     let memberListBehavior: BehaviorRelay<[User]> = .init(value: [])
-    let choreArrPublish: PublishRelay<[Chore]> = .init()
+    let choreArrBehavior: BehaviorRelay<[Chore]> = .init(value: [])
     let messagePublish: PublishRelay<String>  = .init()
     var myInfo: User?
     var groupId: String?
@@ -30,13 +31,15 @@ class ChoreCardViewModel: BaseViewModel {
         dateList: [Date],
         userUseCase: UserUseCase,
         groupUseCase: GroupUseCase,
-        choreUseCase: ChoreUseCase
+        choreUseCase: ChoreUseCase,
+        alarmUseCase: AlarmUseCase
     ) {
         self.choreCardPeriod = choreCardPeriod
         self.dateList = dateList
         self.userUseCase = userUseCase
         self.groupUseCase = groupUseCase
         self.choreUseCase = choreUseCase
+        self.alarmUseCase = alarmUseCase
     }
     
     func getMemberList() {
@@ -66,7 +69,7 @@ class ChoreCardViewModel: BaseViewModel {
                 guard let members = group.memberList else {return}
                 self?.memberListBehavior.accept(members)
             }, onError: { [weak self] _ in
-                self?.choreArrPublish.accept([])
+                self?.choreArrBehavior.accept([])
                 self?.messagePublish.accept("참여중인 그룹이 없습니다.")
                 self?.loadingPublish.accept(false)
             }).disposed(by: self.disposBag)
@@ -88,15 +91,19 @@ class ChoreCardViewModel: BaseViewModel {
             }
             Observable.zip(observableList)
                 .subscribe(onNext: { [weak self] choreList in
+                    guard let self = self else {return}
                     let choreArr = choreList.flatMap {$0}
-                    self?.choreArrPublish.accept(choreArr)
-                    self?.loadingPublish.accept(false)
+                    self.choreArrBehavior.accept(choreArr)
+                    self.loadingPublish.accept(false)
+                    if self.choreCardPeriod == .weekly {
+                        self.updateLocalAlarm()
+                    }
                 }, onError: { [weak self] _ in
-                    self?.choreArrPublish.accept([])
+                    self?.choreArrBehavior.accept([])
                     self?.loadingPublish.accept(false)
                 }).disposed(by: self.disposBag)
         } else {
-            self.choreArrPublish.accept([])
+            self.choreArrBehavior.accept([])
             self.messagePublish.accept("참여중인 그룹이 없습니다.")
             self.loadingPublish.accept(false)
         }
@@ -123,5 +130,50 @@ class ChoreCardViewModel: BaseViewModel {
             }, onError: { [weak self] _ in
                 self?.refreshChoreList()
             }).disposed(by: self.disposBag)
+    }
+    
+    func updateLocalAlarm() {
+        let alarmInfo = self.alarmUseCase.getAlarmInfo()
+        if !alarmInfo.isOn {
+            // 알람 off
+            self.alarmUseCase.removeAllAlarm()
+            return
+        }
+        // 전체 집안일중에 나의 집안일 필터
+        var choreList = choreArrBehavior.value
+        choreList = choreList.filter { chore in
+            guard let ownerList = chore.ownerList,
+                  let myId = self.myInfo?.userId
+            else {return false}
+            return ownerList.contains(where: { owner in
+                owner.userId == myId
+            })
+        }
+        var choreDateList = choreList.map { chore in
+            chore.executeAt
+        }
+        choreDateList = Array(Set(choreDateList))
+        // 오늘 또는 내일 집안일이 있는지 체크
+        guard let tomorrow = Date().calculateDiffDate(diff: 1)?.toStringWithFormat()
+        else {return}
+        let tomorrowExist = choreDateList.filter { choreDate in
+            choreDate.contains(tomorrow)
+        }
+        let today = Date().toStringWithFormat()
+        let todayExist = choreDateList.filter { choreDate in
+            choreDate.contains(today)
+        }
+        if tomorrowExist.isEmpty, todayExist.isEmpty {
+            self.alarmUseCase.removeAllAlarm()
+            return
+        }
+        if !tomorrowExist.isEmpty {
+            // 내일 나의 집안일이 있는지 체크
+            self.alarmUseCase.registAlarm(at: alarmInfo.time, isTodayAlarm: false)
+        }
+        if !todayExist.isEmpty {
+            // 오늘 나의 집안일이 있는지 체크
+            self.alarmUseCase.registAlarm(at: alarmInfo.time, isTodayAlarm: true)
+        }
     }
 }

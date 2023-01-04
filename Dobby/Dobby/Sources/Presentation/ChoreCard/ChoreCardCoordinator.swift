@@ -18,7 +18,8 @@ final class ChoreCardCoordinator: Coordinator {
             dateList: dateList,
             userUseCase: UserUseCaseImpl(
                 userRepository: UserRepositoryImpl(
-                    network: NetworkServiceImpl.shared, localStorage: UserDefaults.standard
+                    network: NetworkServiceImpl.shared,
+                    localStorage: UserDefaults.standard
                 )
             ),
             groupUseCase: GroupUseCaseImpl(
@@ -26,6 +27,9 @@ final class ChoreCardCoordinator: Coordinator {
             ),
             choreUseCase: ChoreUseCaseImpl(
                 choreRepository: ChoreRepositoryImpl(network: NetworkServiceImpl.shared)
+            ),
+            alarmUseCase: AlarmUseCaseImpl(
+                alarmRepository: AlarmRepositoryImpl()
             )
         )
         let vc = ChoreCardViewController(viewModel: vm)

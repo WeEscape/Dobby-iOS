@@ -8,7 +8,7 @@
 import Foundation
 
 extension Date {
-    func toStringWithoutTime(dateFormat: String = "yyyy-MM-dd") -> String {
+    func toStringWithFormat(_ dateFormat: String = "yyyy-MM-dd") -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = dateFormat
         dateFormatter.locale = Locale.current
@@ -118,7 +118,6 @@ extension Date {
         for _ in 0...15 {
             
             let newDate = calendar.date(from: dateComponent)!
-            print("Debug :  newDate -> \(newDate.toStringWithoutTime())")
             let newDateComponent = calendar.dateComponents([.weekOfYear, .day], from: newDate)
             if let newWeekOfYear = newDateComponent.weekOfYear,
                newWeekOfYear == myWeekOfYear {
@@ -128,5 +127,15 @@ extension Date {
             dateComponent.day! += 1
         }
         return ret
+    }
+    
+    func getFirstDayOfSameMonth() -> Date {
+        let calendar = Calendar.current
+        var component = calendar.dateComponents([.year, .month, .day], from: self)
+        while component.day! != 1 {
+            component.day! -= 1
+        }
+        let firstDay = calendar.date(from: component)
+        return firstDay!
     }
 }

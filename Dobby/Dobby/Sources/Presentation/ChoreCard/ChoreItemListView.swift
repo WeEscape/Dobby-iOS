@@ -33,6 +33,22 @@ final class ChoreItemListView: UIView {
         return stack
     }()
     
+    private lazy var isMeMark: UIImageView = {
+        let iv = UIImageView()
+        iv.contentMode = .scaleAspectFill
+        let img = UIImage(systemName: "checkmark.circle.fill")?
+            .withTintColor(
+                Palette.mainThemeBlue1,
+                renderingMode: .alwaysOriginal
+            )
+        iv.image = img
+        iv.layer.cornerRadius = 8
+        iv.clipsToBounds = true
+        iv.backgroundColor = .white
+        iv.isHidden = !self.checkShowMark()
+        return iv
+    }()
+    
     // MARK: init
     init(
         isShowMember: Bool,
@@ -74,10 +90,17 @@ final class ChoreItemListView: UIView {
             $0.height.equalTo(isShowMember ? 30 : 0)
         }
         
+        self.addSubview(isMeMark)
+        isMeMark.snp.makeConstraints {
+            $0.width.height.equalTo(16)
+            $0.left.equalTo(userProfile.snp.left).inset(-6)
+            $0.bottom.equalTo(userProfile.snp.bottom).offset(4)
+        }
+        
         self.addSubview(stackContainerView)
         stackContainerView.snp.makeConstraints {
             $0.top.equalToSuperview()
-            $0.left.equalTo(userProfile.snp.right).offset(isShowMember ? 16 : 0)
+            $0.left.equalTo(userProfile.snp.right).offset(isShowMember ? 10 : 0)
             $0.bottom.equalToSuperview()
             $0.right.equalToSuperview()
         }
@@ -90,5 +113,17 @@ final class ChoreItemListView: UIView {
             )
             stackContainerView.addArrangedSubview(choreItemView)
         }
+    }
+    
+    func checkShowMark() -> Bool {
+        guard let viewModel = self.viewModel,
+              viewModel.choreCardPeriod != .daily,
+              let myId = viewModel.myInfo?.userId,
+              let memberId = member.userId
+        else {return false}
+        if myId == memberId {
+            return true
+        }
+        return false
     }
 }

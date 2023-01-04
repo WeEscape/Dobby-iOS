@@ -182,7 +182,7 @@ final class AddChoreViewController: BaseViewController {
             .distinctUntilChanged()
             .drive(onNext: { [weak self] selectedDate in
                 guard let dateView = self?.searchChoreAttributeView(of: .startDate) else {return}
-                let title = selectedDate.toStringWithoutTime() + " 시작"
+                let title = selectedDate.toStringWithFormat() + " 시작"
                 dateView.updateTitle(title: title)
             }).disposed(by: self.disposeBag)
         
@@ -191,7 +191,7 @@ final class AddChoreViewController: BaseViewController {
             .distinctUntilChanged()
             .drive(onNext: { [weak self] selectedDate in
                 guard let dateView = self?.searchChoreAttributeView(of: .endDate) else {return}
-                if let endDateStr = selectedDate?.toStringWithoutTime() {
+                if let endDateStr = selectedDate?.toStringWithFormat() {
                     let title = endDateStr + " 종료"
                     dateView.updateTitle(title: title)
                 } else {
