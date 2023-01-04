@@ -11,8 +11,8 @@ import RxSwift
 protocol AlarmUseCase {
     func setAlarmInfo(isOn: Bool, time: Date)
     func getAlarmInfo() -> (isOn: Bool, time: Date)
-    func registAlarm(at: Date)
-    func removeAlarm()
+    func registAlarm(at: Date, isTodayAlarm: Bool)
+    func removeAllAlarm()
 }
 
 final class AlarmUseCaseImpl: AlarmUseCase {
@@ -49,15 +49,12 @@ final class AlarmUseCaseImpl: AlarmUseCase {
         )
     }
     
-    func registAlarm(at: Date) {
-        UNUserNotificationCenter.current().removeAllDeliveredNotifications()
-        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
-        
+    func registAlarm(at alarmTime: Date, isTodayAlarm: Bool) {
         let nowStr = Date().toStringWithFormat("HH:mm")
         let nowHour = Double(nowStr.split(separator: ":").first!)!
         let nowMin = Double(nowStr.split(separator: ":").last!)!
         let now = (nowHour * 60) + nowMin
-        let targetStr = at.toStringWithFormat("HH:mm")
+        let targetStr = alarmTime.toStringWithFormat("HH:mm")
         let targetHour = Double(targetStr.split(separator: ":").first!)!
         let targetMin = Double(targetStr.split(separator: ":").last!)!
         let target = (targetHour * 60) + targetMin
@@ -65,12 +62,18 @@ final class AlarmUseCaseImpl: AlarmUseCase {
         var notificationInterval: Double = 0
         if target > now {
             notificationInterval = (target - now)
-        } else if target == now {
+        } else if target == now, isTodayAlarm == false {
             notificationInterval = 24 * 60
-        } else { // target < now
+        } else if target < now, isTodayAlarm == false {
             notificationInterval = (target - now) + (24 * 60)
+        } else {
+            return
         }
         notificationInterval *= 60 // 분단위를 초단위로 바꾸기
+        
+        // 기존 알람 초기화
+        UNUserNotificationCenter.current().removeAllDeliveredNotifications()
+        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
         
         // 알람메세지
         let content = UNMutableNotificationContent()
@@ -78,21 +81,21 @@ final class AlarmUseCaseImpl: AlarmUseCase {
         content.body = "오늘 해야할 집안일이 있어요!"
         content.badge = 1
         content.sound = .default
-
-        // 알람 전송
+        
+        // 알람 등록
         let trigger = UNTimeIntervalNotificationTrigger(
             timeInterval: notificationInterval,
             repeats: false
         )
         let req = UNNotificationRequest(
-            identifier: "\(Int(Date().timeIntervalSince1970))",
+            identifier: alarmTime.toStringWithFormat(),
             content: content,
             trigger: trigger
         )
         UNUserNotificationCenter.current().add(req)
     }
     
-    func removeAlarm() {
+    func removeAllAlarm() {
         UNUserNotificationCenter.current().removeAllDeliveredNotifications()
         UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
     }

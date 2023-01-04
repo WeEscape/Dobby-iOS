@@ -133,7 +133,13 @@ class ChoreCardViewModel: BaseViewModel {
     }
     
     func updateLocalAlarm() {
-        
+        let alarmInfo = self.alarmUseCase.getAlarmInfo()
+        if !alarmInfo.isOn {
+            // 알람 off
+            self.alarmUseCase.removeAllAlarm()
+            return
+        }
+        // 전체 집안일중에 나의 집안일 필터
         var choreList = choreArrBehavior.value
         choreList = choreList.filter { chore in
             guard let ownerList = chore.ownerList,
@@ -147,17 +153,27 @@ class ChoreCardViewModel: BaseViewModel {
             chore.executeAt
         }
         choreDateList = Array(Set(choreDateList))
+        // 오늘 또는 내일 집안일이 있는지 체크
         guard let tomorrow = Date().calculateDiffDate(diff: 1)?.toStringWithFormat()
         else {return}
-        let checkExist = choreDateList.filter { choreDate in
+        let tomorrowExist = choreDateList.filter { choreDate in
             choreDate.contains(tomorrow)
         }
-        
-        let alarmInfo = self.alarmUseCase.getAlarmInfo()
-        if !checkExist.isEmpty, alarmInfo.isOn {
-            self.alarmUseCase.registAlarm(at: alarmInfo.time)
-        } else {
-            self.alarmUseCase.removeAlarm()
+        let today = Date().toStringWithFormat()
+        let todayExist = choreDateList.filter { choreDate in
+            choreDate.contains(today)
+        }
+        if tomorrowExist.isEmpty, todayExist.isEmpty {
+            self.alarmUseCase.removeAllAlarm()
+            return
+        }
+        if !tomorrowExist.isEmpty {
+            // 내일 나의 집안일이 있는지 체크
+            self.alarmUseCase.registAlarm(at: alarmInfo.time, isTodayAlarm: false)
+        }
+        if !todayExist.isEmpty {
+            // 오늘 나의 집안일이 있는지 체크
+            self.alarmUseCase.registAlarm(at: alarmInfo.time, isTodayAlarm: true)
         }
     }
 }
