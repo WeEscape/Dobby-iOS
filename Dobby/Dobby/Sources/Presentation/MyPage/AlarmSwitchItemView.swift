@@ -29,21 +29,23 @@ final class AlarmSwitchItemView: UIView {
         return line
     }()
     
-    private let alarmSwitch: UISwitch = {
+    private lazy var alarmSwitch: UISwitch = {
         let sw = UISwitch()
         sw.onTintColor = Palette.mainThemeBlue1
         sw.preferredStyle = .sliding
         sw.isOn = false
         sw.isHidden = true
+        sw.addTarget(self, action: #selector(switchChanged(_:)), for: .valueChanged)
         return sw
     }()
     
-    private let timePicker: UIDatePicker = {
+    private lazy var timePicker: UIDatePicker = {
         let picker = UIDatePicker()
         picker.preferredDatePickerStyle = .compact
         picker.minuteInterval = 15
         picker.datePickerMode = .time
         picker.isHidden = true
+        picker.addTarget(self, action: #selector(timeChanged(_:)), for: .valueChanged)
         return picker
     }()
     
@@ -114,28 +116,21 @@ final class AlarmSwitchItemView: UIView {
             .subscribe(onNext: { [weak self] isOn, time in
                 guard let self = self else {return}
                 self.timePicker.setDate(time, animated: false)
+                self.alarmSwitch.isOn = isOn
                 self.timePicker.isHidden = !isOn
                 self.alarmSwitch.isHidden = false
-                self.alarmSwitch.isOn = isOn
             }).disposed(by: self.disposeBag)
     }
     
     func bindAction() {
-        self.timePicker.rx.value
-            .debounce(.milliseconds(100), scheduler: MainScheduler.instance)
-            .subscribe(onNext: { [weak self] time in
-                guard let self = self else {return}
-                let isOn = self.alarmSwitch.isOn
-                self.viewModel?.setAlarmInfo(isOn: isOn, time: time)
-            }).disposed(by: self.disposeBag)
-        
-        self.alarmSwitch.rx.value
-            .debounce(.milliseconds(100), scheduler: MainScheduler.instance)
-            .subscribe(onNext: { [weak self] isOn in
-                guard let self = self else {return}
-                self.timePicker.isHidden = !isOn
-                let time = self.timePicker.date
-                self.viewModel?.setAlarmInfo(isOn: isOn, time: time)
-            }).disposed(by: self.disposeBag)
+    }
+    
+    @objc func timeChanged(_ sender: UIDatePicker) {
+        self.viewModel?.setAlarmInfo(isOn: alarmSwitch.isOn, time: sender.date)
+    }
+    
+    @objc func switchChanged(_ sender: UISwitch) {
+        self.timePicker.isHidden = !sender.isOn
+        self.viewModel?.setAlarmInfo(isOn: sender.isOn, time: timePicker.date)
     }
 }
