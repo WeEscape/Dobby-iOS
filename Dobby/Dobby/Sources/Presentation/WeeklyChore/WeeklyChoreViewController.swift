@@ -18,23 +18,23 @@ final class WeeklyChoreViewController: BaseViewController {
     let viewModel: WeeklyChoreViewModel
     
     // MARK: UI
-    private let titleLabel: UILabel = {
-        let lbl = UILabel()
-        lbl.font = DobbyFont.avenirBlack(size: 24).getFont
-        lbl.textColor = .black
-        lbl.text = "주간 집안일"
-        return lbl
-    }()
-    
     private let weekRangeText: UITextView = {
         let txtView = UITextView()
         txtView.isScrollEnabled = false
         txtView.isUserInteractionEnabled = false
         txtView.textAlignment = .center
-        txtView.font = DobbyFont.avenirBlack(size: 16).getFont
-        txtView.textColor = Palette.textGray1
+        txtView.font = DobbyFont.avenirBlack(size: 24).getFont
+        txtView.textColor = .black
         txtView.text = ""
         return txtView
+    }()
+    
+    private let subTitleLabel: UILabel = {
+        let lbl = UILabel()
+        lbl.font = DobbyFont.avenirBlack(size: 18).getFont
+        lbl.textColor = Palette.textGray1
+        lbl.text = "주간 집안일"
+        return lbl
     }()
     
     private let previousWeekBtn: UIButton = {
@@ -77,7 +77,8 @@ final class WeeklyChoreViewController: BaseViewController {
         btn.imageView?.contentMode = .scaleToFill
         btn.backgroundColor = Palette.mainThemeBlue1
         btn.layer.cornerRadius = 30
-        btn.layer.makeShadow()
+        btn.layer.makeShadow(offSet: CGSize(width: 2, height: 2))
+        btn.isHidden = true
         return btn
     }()
     
@@ -103,18 +104,18 @@ final class WeeklyChoreViewController: BaseViewController {
     func setupUI() {
         self.view.backgroundColor = .white
         
-        self.view.addSubview(titleLabel)
-        titleLabel.snp.makeConstraints {
-            $0.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).inset(20)
-            $0.centerX.equalToSuperview()
-            $0.height.equalTo(30)
-        }
-        
         self.view.addSubview(weekRangeText)
         weekRangeText.snp.makeConstraints {
             $0.left.equalToSuperview()
             $0.right.equalToSuperview()
-            $0.top.equalTo(titleLabel.snp.bottom)
+            $0.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).inset(10)
+            $0.height.equalTo(40)
+        }
+        
+        self.view.addSubview(subTitleLabel)
+        subTitleLabel.snp.makeConstraints {
+            $0.top.equalTo(weekRangeText.snp.bottom)
+            $0.centerX.equalToSuperview()
             $0.height.equalTo(50)
         }
         
@@ -137,7 +138,7 @@ final class WeeklyChoreViewController: BaseViewController {
         addChild(pageViewController)
         view.addSubview(pageViewController.view)
         pageViewController.view.snp.makeConstraints {
-            $0.top.equalTo(weekRangeText.snp.bottom)
+            $0.top.equalTo(subTitleLabel.snp.bottom)
             $0.left.right.equalToSuperview()
             $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
         }
@@ -153,20 +154,20 @@ final class WeeklyChoreViewController: BaseViewController {
     }
     
     func updateTitle(with date: Date) {
-        var dateStr = date.toStringWithoutTime(dateFormat: "yyyy")
+        var dateStr = date.toStringWithFormat("yyyy")
         let weekOfYear = date.getWeekOfYear()
         switch weekOfYear {
         case 0:
-            dateStr = date.toStringWithoutTime(dateFormat: "yyyy.MM")
-            self.titleLabel.text = dateStr
+            dateStr = date.toStringWithFormat("yyyy.MM")
+            self.subTitleLabel.text = dateStr
         case 1:
-            self.titleLabel.text = dateStr + " \(weekOfYear)st week"
+            self.subTitleLabel.text = dateStr + " \(weekOfYear)st week"
         case 2:
-            self.titleLabel.text = dateStr + " \(weekOfYear)nd week"
+            self.subTitleLabel.text = dateStr + " \(weekOfYear)nd week"
         case 3:
-            self.titleLabel.text = dateStr + " \(weekOfYear)rd week"
+            self.subTitleLabel.text = dateStr + " \(weekOfYear)rd week"
         default:
-            self.titleLabel.text = dateStr + " \(weekOfYear)th week"
+            self.subTitleLabel.text = dateStr + " \(weekOfYear)th week"
         }
     }
     

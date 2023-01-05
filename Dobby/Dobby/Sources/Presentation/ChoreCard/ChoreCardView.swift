@@ -30,7 +30,7 @@ final class ChoreCardView: UIView {
     
     lazy var dateLabel: UILabel = {
         let lbl = UILabel()
-        lbl.text = self.date.toStringWithoutTime()
+        lbl.text = self.date.toStringWithFormat()
         lbl.font = DobbyFont.avenirBlack(size: 16).getFont
         lbl.textColor = Palette.textBlack1
         return lbl
@@ -81,7 +81,7 @@ final class ChoreCardView: UIView {
     func setupUI() {
         self.backgroundColor = .white
         self.layer.cornerRadius = 15
-        self.layer.makeShadow()
+        self.layer.makeShadow(offSet: CGSize(width: 2, height: 2))
         
         // height 계산
         self.snp.makeConstraints {

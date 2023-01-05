@@ -11,7 +11,7 @@ import Moya
 struct ChoreListAPI: BaseAPI {
     typealias Response = ChoreListDTO
     var path: String {
-        "/tasks/user/\(userId)/\(groupId)/\(date.toStringWithoutTime())/\(periodical.rawValue)"
+        "/tasks/user/\(userId)/\(groupId)/\(date.toStringWithFormat())/\(periodical.rawValue)"
     }
     var method: Moya.Method {
         .get
