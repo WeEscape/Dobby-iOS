@@ -132,5 +132,8 @@ final class AlarmSwitchItemView: UIView {
     @objc func switchChanged(_ sender: UISwitch) {
         self.timePicker.isHidden = !sender.isOn
         self.viewModel?.setAlarmInfo(isOn: sender.isOn, time: timePicker.date)
+        if !sender.isOn {
+            self.viewModel?.removeAllAlarm()
+        }
     }
 }

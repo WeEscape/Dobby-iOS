@@ -223,4 +223,8 @@ final class MyPageViewModel {
     func setAlarmInfo(isOn: Bool, time: Date) {
         self.alarmUseCase.setAlarmInfo(isOn: isOn, time: time)
     }
+    
+    func removeAllAlarm() {
+        self.alarmUseCase.removeAllAlarm()
+    }
 }
