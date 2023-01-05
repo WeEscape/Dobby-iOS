@@ -81,7 +81,7 @@ final class ChoreCardView: UIView {
     func setupUI() {
         self.backgroundColor = .white
         self.layer.cornerRadius = 15
-        self.layer.makeShadow()
+        self.layer.makeShadow(offSet: CGSize(width: 2, height: 2))
         
         // height 계산
         self.snp.makeConstraints {

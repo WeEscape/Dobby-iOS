@@ -46,7 +46,7 @@ final class MainTabBarController: UITabBarController {
         view.backgroundColor = .white
         tabBar.tintColor = Palette.mainThemeBlue1
         tabBar.backgroundColor = .white
-        tabBar.layer.makeShadow()
+        tabBar.layer.makeShadow(offSet: CGSize(width: 2, height: 2))
     }
     
     // MARK: Rx bind

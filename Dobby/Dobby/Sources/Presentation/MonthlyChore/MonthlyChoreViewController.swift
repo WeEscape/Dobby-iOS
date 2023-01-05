@@ -68,7 +68,7 @@ final class MonthlyChoreViewController: BaseViewController {
     
     private let choreCardContainerView: UIView = {
         let view = UIView()
-//        view.backgroundColor = .yellow
+        view.clipsToBounds = true
         return view
     }()
     
@@ -141,6 +141,12 @@ final class MonthlyChoreViewController: BaseViewController {
         self.choreContainerView.snp.updateConstraints {
             $0.top.equalTo(self.view.safeAreaLayoutGuide.snp.top)
                 .inset(isExtend ? 0 : Metric.calendarViewHeight)
+        }
+        self.choreContainerView.layer.cornerRadius = isExtend ? 30 : 0
+        if isExtend {
+            choreContainerView.layer.makeShadow(offSet: .zero)
+        } else {
+            choreContainerView.layer.shadowColor = UIColor.clear.cgColor
         }
         UIView.animate(
             withDuration: 0.5,

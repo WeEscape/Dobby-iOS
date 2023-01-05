@@ -7,11 +7,11 @@
 import UIKit
 
 extension CALayer {
-    func makeShadow() {
+    func makeShadow(offSet: CGSize) {
         self.masksToBounds = false
         self.shadowColor = UIColor.black.cgColor
         self.shadowOpacity = 0.2
-        self.shadowOffset = CGSize(width: 2, height: 2)
+        self.shadowOffset = offSet
         self.shadowRadius = 2
     }
 }

@@ -75,7 +75,7 @@ final class DailyChoreViewController: BaseViewController {
         btn.imageView?.contentMode = .scaleToFill
         btn.backgroundColor = Palette.mainThemeBlue1
         btn.layer.cornerRadius = 30
-        btn.layer.makeShadow()
+        btn.layer.makeShadow(offSet: CGSize(width: 2, height: 2))
         btn.isHidden = true
         return btn
     }()
