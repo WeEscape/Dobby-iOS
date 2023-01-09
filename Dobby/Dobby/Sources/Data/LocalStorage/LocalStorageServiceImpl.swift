@@ -7,56 +7,103 @@
 
 import Foundation
 import CoreData
+import FirebaseCrashlytics
 
 class LocalStorageServiceImpl {
     
     // MARK: properties
-    static let shard = LocalStorageServiceImpl()
+    static let shared = LocalStorageServiceImpl()
     
-    private init() {}
-    
-    // MARK: - Core Data stack
-
+    // MARK: Core Data stack
     private lazy var persistentContainer: NSPersistentCloudKitContainer = {
-        /*
-         The persistent container for the application. This implementation
-         creates and returns a container, having loaded the store for the
-         application to it. This property is optional since there are legitimate
-         error conditions that could cause the creation of the store to fail.
-        */
         let container = NSPersistentCloudKitContainer(name: "CoreDataCloud")
-        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+        container.loadPersistentStores(completionHandler: { (_, error) in
             if let error = error as NSError? {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                 
-                /*
-                 Typical reasons for an error here include:
-                 * The parent directory does not exist, cannot be created, or disallows writing.
-                 * The persistent store is not accessible, due to permissions or data protection when the device is locked.
-                 * The device is out of space.
-                 * The store could not be migrated to the current model version.
-                 Check the error message to determine what the actual problem was.
-                 */
+                Crashlytics.crashlytics().record(error: error)
                 fatalError("Unresolved error 1 \(error), \(error.userInfo)")
             }
         })
         return container
     }()
+    
+    private var context: NSManagedObjectContext {
+        return self.persistentContainer.viewContext
+    }
+    
+    // MARK: initialize
+    private init() {}
 
-    // MARK: - Core Data Saving support
-
+    // MARK: Core Data methods
     func saveContext () {
-        let context = persistentContainer.viewContext
-        if context.hasChanges {
+        if self.context.hasChanges {
             do {
-                try context.save()
+                try self.context.save()
             } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nserror = error as NSError
-                fatalError("Unresolved error 2 \(nserror), \(nserror.userInfo)")
+                Crashlytics.crashlytics().record(error: error)
             }
         }
+    }
+    
+    func fetch<T: NSManagedObject>(request: NSFetchRequest<T>) -> [T] {
+        do {
+            let fetchResult = try self.context.fetch(request)
+            return fetchResult
+        } catch {
+            Crashlytics.crashlytics().record(error: error)
+            return []
+        }
+    }
+    
+    func deleteAll<T: NSManagedObject>(request: NSFetchRequest<T>) -> Bool {
+        let request: NSFetchRequest<NSFetchRequestResult> = T.fetchRequest()
+        let delete = NSBatchDeleteRequest(fetchRequest: request)
+        do {
+            try self.context.execute(delete)
+            return true
+        } catch {
+            return false
+        }
+    }
+    
+    // MARK: Handling SettingInfo
+    @discardableResult
+    func saveSettingInfo(_ settingInfo: SettingInfoDTO) -> Bool {
+        let entity = NSEntityDescription.entity(forEntityName: "SettingInfo", in: self.context)
+        if let entity = entity {
+            let managedObject = NSManagedObject(entity: entity, insertInto: self.context)
+            managedObject.setValue(settingInfo.alarmOnOff, forKey: LocalKey.alarmOnOff.rawValue)
+            managedObject.setValue(settingInfo.alarmTime, forKey: LocalKey.alarmTime.rawValue)
+            managedObject.setValue(settingInfo.userInfo, forKey: LocalKey.userInfo.rawValue)
+            managedObject.setValue(
+                settingInfo.accessToken,
+                forKey: LocalKey.accessToken.rawValue
+            )
+            managedObject.setValue(
+                settingInfo.refreshToken,
+                forKey: LocalKey.refreshToken.rawValue
+            )
+            do {
+                try self.context.save()
+                return true
+            } catch {
+                Crashlytics.crashlytics().record(error: error)
+                return false
+            }
+        }
+        return false
+    }
+    
+    func fetchSettingInfo() -> SettingInfoDTO? {
+        let request: NSFetchRequest<SettingInfo> = SettingInfo.fetchRequest()
+        if let fetchResult = self.fetch(request: request).last {
+            return SettingInfoDTO(
+                accessToken: fetchResult.accessToken,
+                refreshToken: fetchResult.refreshToken,
+                alarmOnOff: fetchResult.alarmOnOff,
+                alarmTime: fetchResult.alarmTime,
+                userInfo: fetchResult.userInfo
+            )
+        }
+        return nil
     }
 }
