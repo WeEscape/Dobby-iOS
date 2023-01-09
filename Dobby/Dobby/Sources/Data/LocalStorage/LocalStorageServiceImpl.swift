@@ -32,7 +32,7 @@ class LocalStorageServiceImpl {
     
     // MARK: initialize
     private init() {}
-
+    
     // MARK: Core Data methods
     func saveContext () {
         if self.context.hasChanges {
@@ -103,6 +103,83 @@ class LocalStorageServiceImpl {
                 alarmTime: fetchResult.alarmTime,
                 userInfo: fetchResult.userInfo
             )
+        }
+        return nil
+    }
+}
+
+extension LocalStorageServiceImpl: LocalStorageService {
+    func read(key: LocalKey) -> String? {
+        guard let settingInfo = self.fetchSettingInfo() else {return nil}
+        switch key {
+        case .accessToken:
+            return settingInfo.accessToken
+        case .refreshToken:
+            return settingInfo.refreshToken
+        case .alarmOnOff:
+            return  settingInfo.alarmOnOff
+        case .alarmTime:
+            return settingInfo.alarmTime
+        default:
+            return nil
+        }
+    }
+    
+    func write(key: LocalKey, value: String) {
+        guard let currentInfo = self.fetchSettingInfo() else {return}
+        let newSettingInfo = SettingInfoDTO(
+            accessToken: key == .accessToken ? value : currentInfo.accessToken,
+            refreshToken: key == .refreshToken ? value : currentInfo.refreshToken,
+            alarmOnOff: key == .alarmOnOff ? value : currentInfo.alarmOnOff,
+            alarmTime: key == .alarmTime ? value : currentInfo.alarmTime,
+            userInfo: currentInfo.userInfo
+        )
+        let request = SettingInfo.fetchRequest()
+        if self.deleteAll(request: request) {
+            self.saveSettingInfo(newSettingInfo)
+        }
+    }
+    
+    func delete(key: LocalKey) {
+        guard let currentInfo = self.fetchSettingInfo() else {return}
+        let updateSettingInfo = SettingInfoDTO(
+            accessToken: key == .accessToken ? "" : currentInfo.accessToken,
+            refreshToken: key == .refreshToken ? "" : currentInfo.refreshToken,
+            alarmOnOff: key == .alarmOnOff ? "" : currentInfo.alarmOnOff,
+            alarmTime: key == .alarmTime ? "" : currentInfo.alarmTime,
+            userInfo: currentInfo.userInfo
+        )
+        let request = SettingInfo.fetchRequest()
+        if self.deleteAll(request: request) {
+            self.saveSettingInfo(updateSettingInfo)
+        }
+    }
+    
+    func saveUser(_ user: User) {
+        let encoder = JSONEncoder()
+        guard let currentInfo = self.fetchSettingInfo(),
+              let encodedUser = try? encoder.encode(user)
+        else {return}
+        
+        let updateSettingInfo = SettingInfoDTO(
+            accessToken: currentInfo.accessToken,
+            refreshToken: currentInfo.refreshToken,
+            alarmOnOff: currentInfo.alarmOnOff,
+            alarmTime: currentInfo.alarmTime,
+            userInfo: encodedUser
+        )
+        let request = SettingInfo.fetchRequest()
+        if self.deleteAll(request: request) {
+            self.saveSettingInfo(updateSettingInfo)
+        }
+    }
+    
+    func getUser() -> User? {
+        guard let currentInfo = self.fetchSettingInfo() else {return nil}
+        if let data = currentInfo.userInfo {
+            let decoder = JSONDecoder()
+            let savedUser = try? decoder.decode(User.self, from: data)
+            return savedUser
         }
         return nil
     }
