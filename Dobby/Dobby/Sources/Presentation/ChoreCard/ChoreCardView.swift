@@ -85,7 +85,7 @@ final class ChoreCardView: UIView {
         
         // height 계산
         self.snp.makeConstraints {
-            $0.height.equalTo(40 * choreArr.count + 70 + memberList.count * 10)
+            $0.height.equalTo(45 * choreArr.count + 70 + memberList.count * 10)
         }
         
         self.addSubview(weekdayLabel)

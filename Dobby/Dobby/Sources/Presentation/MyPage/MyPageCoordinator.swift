@@ -54,8 +54,8 @@ final class MyPageCoordinator: Coordinator {
         navigationController.pushViewController(editProfileVC, animated: true)
     }
     
-    func pushToSetting() {
-        let vc = SettingViewController(coordinator: self)
+    func pushToHelpDesk() {
+        let vc = HelpDeskViewController(coordinator: self)
         guard let navigationController = self.viewController?.navigationController
         else {return}
         navigationController.pushViewController(vc, animated: true)

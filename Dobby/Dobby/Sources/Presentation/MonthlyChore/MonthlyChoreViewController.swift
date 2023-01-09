@@ -48,9 +48,12 @@ final class MonthlyChoreViewController: BaseViewController {
     }()
     
     private let choreContainerView: UIView = {
-        let view = UIView()
-        view.backgroundColor = Palette.pageBackground
-        return view
+        let container = UIView()
+        container.backgroundColor = Palette.pageBackground
+        container.layer.makeShadow(offSet: .zero)
+        container.layer.maskedCorners =  [.layerMaxXMinYCorner, .layerMinXMinYCorner]
+        container.layer.cornerRadius = 20
+        return container
     }()
     
     private let containerHatView: UIView = {
@@ -141,12 +144,6 @@ final class MonthlyChoreViewController: BaseViewController {
         self.choreContainerView.snp.updateConstraints {
             $0.top.equalTo(self.view.safeAreaLayoutGuide.snp.top)
                 .inset(isExtend ? 0 : Metric.calendarViewHeight)
-        }
-        self.choreContainerView.layer.cornerRadius = isExtend ? 30 : 0
-        if isExtend {
-            choreContainerView.layer.makeShadow(offSet: .zero)
-        } else {
-            choreContainerView.layer.shadowColor = UIColor.clear.cgColor
         }
         UIView.animate(
             withDuration: 0.5,

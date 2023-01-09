@@ -30,6 +30,7 @@ final class ChoreItemListView: UIView {
         let stack = UIStackView()
         stack.axis = .vertical
         stack.alignment = .fill
+        stack.spacing = 5
         return stack
     }()
     
@@ -76,7 +77,7 @@ final class ChoreItemListView: UIView {
     func setupUI() {
         self.backgroundColor = .white
         self.snp.makeConstraints {
-            $0.height.equalTo(40 * choreList.count)
+            $0.height.equalTo(45 * choreList.count)
         }
         
         if let profileUrl = self.member.profileUrl, isShowMember {

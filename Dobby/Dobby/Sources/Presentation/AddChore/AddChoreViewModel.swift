@@ -74,7 +74,7 @@ final class AddChoreViewModel {
         }
         let endAt = self.selectedEndDateBehavior.value ?? Date().calculateDiffDate(diff: 60)!
         let notice = 1
-        let memo = self.choreMemo ?? ""
+        let memo = self.choreMemo?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
         let newChore = Chore(
             choreId: "", title: title, categoryId: categoryId, repeatCycle: repeayCycle.rawValue,
             noticeEnable: notice, executeAt: excuteAt.toStringWithFormat(),

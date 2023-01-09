@@ -18,7 +18,7 @@ final class ChoreItemView: UIView {
     weak var viewModel: ChoreCardViewModel?
     
     // MARK: UI
-    lazy var choreTitle: UILabel = {
+    private lazy var choreTitle: UILabel = {
         let lbl = UILabel()
         lbl.text = self.chore.title
         if self.isFinished() {
@@ -31,7 +31,15 @@ final class ChoreItemView: UIView {
         return lbl
     }()
     
-    lazy var checkBox: UIImageView = {
+    private lazy var memoTitle: UILabel = {
+        let lbl = UILabel()
+        lbl.text = self.chore.memo
+        lbl.font = DobbyFont.avenirMedium(size: 12).getFont
+        lbl.textColor = UIColor.systemGray3
+        return lbl
+    }()
+    
+    private lazy var checkBox: UIImageView = {
         let iv = UIImageView()
         iv.contentMode = .scaleAspectFit
         var img: UIImage?
@@ -49,7 +57,7 @@ final class ChoreItemView: UIView {
         return iv
     }()
     
-    lazy var dotBox: UIImageView = {
+    private lazy var dotBox: UIImageView = {
         let iv = UIImageView()
         iv.contentMode = .scaleAspectFit
         var img = UIImage(systemName: "circle.fill")
@@ -72,7 +80,7 @@ final class ChoreItemView: UIView {
         return iv
     }()
     
-    lazy var deleteBtn: UIButton = {
+    private lazy var deleteBtn: UIButton = {
         let btn = UIButton()
         let img = UIImage(systemName: "trash.fill")?
             .withTintColor(Palette.textGray1, renderingMode: .alwaysOriginal)
@@ -83,7 +91,7 @@ final class ChoreItemView: UIView {
         return btn
     }()
     
-    lazy var alarmBtn: UIButton = {
+    private lazy var alarmBtn: UIButton = {
         let btn = UIButton()
         let img = UIImage(systemName: "bell.fill")?
             .withTintColor(Palette.mainThemeBlue1, renderingMode: .alwaysOriginal)
@@ -120,6 +128,7 @@ final class ChoreItemView: UIView {
     // MARK: methods
     func setupUI() {
         self.backgroundColor = .white
+        self.clipsToBounds = true
         self.snp.makeConstraints {
             $0.height.equalTo(40)
         }
@@ -159,9 +168,19 @@ final class ChoreItemView: UIView {
         self.addSubview(choreTitle)
         choreTitle.snp.makeConstraints {
             $0.left.equalTo(checkBox.snp.right).offset(6)
-            $0.height.equalToSuperview()
             $0.right.equalToSuperview().inset(40)
-            $0.centerY.equalToSuperview()
+            if self.chore.memo != nil {
+                $0.top.equalToSuperview()
+            } else {
+                $0.centerY.equalToSuperview()
+            }
+        }
+        
+        self.addSubview(memoTitle)
+        memoTitle.snp.makeConstraints {
+            $0.left.equalTo(checkBox.snp.right).offset(6)
+            $0.right.equalToSuperview().inset(40)
+            $0.top.equalTo(choreTitle.snp.bottom)
         }
     }
     

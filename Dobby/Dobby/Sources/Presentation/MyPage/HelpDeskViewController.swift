@@ -1,5 +1,5 @@
 //
-//  SettingViewController.swift
+//  HelpDeskViewController.swift
 //  Dobby
 //
 //  Created by yongmin lee on 11/28/22.
@@ -9,8 +9,9 @@ import UIKit
 import SnapKit
 import RxSwift
 import RxGesture
+import StoreKit
 
-final class SettingViewController: BaseViewController {
+final class HelpDeskViewController: BaseViewController {
     
     // MARK: property
     weak var coordinator: MyPageCoordinator?
@@ -34,7 +35,11 @@ final class SettingViewController: BaseViewController {
     private let makersView = SettingItemView(leftText: PolicyType.makers.rawValue)
     private let termsView = SettingItemView(leftText: PolicyType.terms.rawValue)
     private let privatePolicyView = SettingItemView(leftText: PolicyType.privatePolicy.rawValue)
-    private lazy var appVersionView = SettingItemView(leftText: "앱 버전", rightText: version)
+    private let requestReviewView = SettingItemView(leftText: "리뷰 쓰기")
+    private lazy var appVersionView = SettingItemView(
+        leftText: "앱 버전",
+        rightText: self.version
+    )
        
     // MARK: init
     init(coordinator: MyPageCoordinator?) {
@@ -85,6 +90,7 @@ final class SettingViewController: BaseViewController {
         stackContainerView.addArrangedSubview(termsView)
         stackContainerView.addArrangedSubview(privatePolicyView)
         stackContainerView.addArrangedSubview(makersView)
+        stackContainerView.addArrangedSubview(requestReviewView)
         stackContainerView.addArrangedSubview(appVersionView)
     }
     
@@ -105,6 +111,16 @@ final class SettingViewController: BaseViewController {
             .when(.recognized)
             .subscribe(onNext: { [weak self] _ in
                 self?.coordinator?.pushToPolicy(policyType: .makers)
+            }).disposed(by: self.disposeBag)
+        
+        requestReviewView.rx.tapGesture()
+            .when(.recognized)
+            .subscribe(onNext: { _ in
+                if let scene = UIApplication.shared.connectedScenes.first(
+                    where: {$0.activationState == .foregroundActive}
+                ) as? UIWindowScene {
+                    SKStoreReviewController.requestReview(in: scene)
+                }
             }).disposed(by: self.disposeBag)
     }
 }
