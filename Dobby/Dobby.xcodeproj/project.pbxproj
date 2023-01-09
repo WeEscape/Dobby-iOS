@@ -27,6 +27,19 @@
 		A12095FF2901680F008CE410 /* DobbyFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12095FE2901680F008CE410 /* DobbyFont.swift */; };
 		A122FCC22965AD9A0093F58E /* CoreDataCloud.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A122FCC02965AD9A0093F58E /* CoreDataCloud.xcdatamodeld */; };
 		A122FCC42965AE5B0093F58E /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A122FCC32965AE5B0093F58E /* CloudKit.framework */; };
+		A1373F80296C2D2200DE4354 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1373F7F296C2D2200DE4354 /* Assets.xcassets */; };
+		A1373F86296C2D2200DE4354 /* DobbyMini WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = A1373F85296C2D2200DE4354 /* DobbyMini WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		A1373F8B296C2D2200DE4354 /* DobbyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1373F8A296C2D2200DE4354 /* DobbyApp.swift */; };
+		A1373F8D296C2D2200DE4354 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1373F8C296C2D2200DE4354 /* ContentView.swift */; };
+		A1373F8F296C2D2200DE4354 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1373F8E296C2D2200DE4354 /* NotificationController.swift */; };
+		A1373F91296C2D2200DE4354 /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1373F90296C2D2200DE4354 /* NotificationView.swift */; };
+		A1373F93296C2D2200DE4354 /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1373F92296C2D2200DE4354 /* ComplicationController.swift */; };
+		A1373F95296C2D2300DE4354 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1373F94296C2D2300DE4354 /* Assets.xcassets */; };
+		A1373F98296C2D2400DE4354 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1373F97296C2D2400DE4354 /* Preview Assets.xcassets */; };
+		A1373FA4296C2D2400DE4354 /* DobbyMiniTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1373FA3296C2D2400DE4354 /* DobbyMiniTests.swift */; };
+		A1373FAE296C2D2400DE4354 /* DobbyMiniUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1373FAD296C2D2400DE4354 /* DobbyMiniUITests.swift */; };
+		A1373FB0296C2D2400DE4354 /* DobbyMiniUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1373FAF296C2D2400DE4354 /* DobbyMiniUITestsLaunchTests.swift */; };
+		A1373FB3296C2D2400DE4354 /* DobbyMini.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = A1373F7D296C2D2000DE4354 /* DobbyMini.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		A13C531128E7129D00C72215 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13C531028E7129D00C72215 /* AppDelegate.swift */; };
 		A13C531328E7129D00C72215 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13C531228E7129D00C72215 /* SceneDelegate.swift */; };
 		A13C531A28E7129E00C72215 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A13C531928E7129E00C72215 /* Assets.xcassets */; };
@@ -163,6 +176,34 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		A1373F87296C2D2200DE4354 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A13C530528E7129D00C72215 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A1373F84296C2D2200DE4354;
+			remoteInfo = "DobbyMini WatchKit Extension";
+		};
+		A1373FA0296C2D2400DE4354 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A13C530528E7129D00C72215 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A1373F84296C2D2200DE4354;
+			remoteInfo = "DobbyMini WatchKit Extension";
+		};
+		A1373FAA296C2D2400DE4354 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A13C530528E7129D00C72215 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A1373F7C296C2D2000DE4354;
+			remoteInfo = DobbyMini;
+		};
+		A1373FB1296C2D2400DE4354 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A13C530528E7129D00C72215 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A1373F7C296C2D2000DE4354;
+			remoteInfo = DobbyMini;
+		};
 		A13C532428E7129E00C72215 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A13C530528E7129D00C72215 /* Project object */;
@@ -178,6 +219,31 @@
 			remoteInfo = Dobby;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		A1373FB4296C2D2400DE4354 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				A1373FB3296C2D2400DE4354 /* DobbyMini.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A1373FB7296C2D2400DE4354 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				A1373F86296C2D2200DE4354 /* DobbyMini WatchKit Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		3336AE106AE91D152C06F33D /* Pods_Dobby.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Dobby.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -203,6 +269,23 @@
 		A12095FE2901680F008CE410 /* DobbyFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DobbyFont.swift; sourceTree = "<group>"; };
 		A122FCC12965AD9A0093F58E /* CoreDataCloud.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataCloud.xcdatamodel; sourceTree = "<group>"; };
 		A122FCC32965AE5B0093F58E /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		A1373F7D296C2D2000DE4354 /* DobbyMini.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DobbyMini.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A1373F7F296C2D2200DE4354 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A1373F85296C2D2200DE4354 /* DobbyMini WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "DobbyMini WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A1373F8A296C2D2200DE4354 /* DobbyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DobbyApp.swift; sourceTree = "<group>"; };
+		A1373F8C296C2D2200DE4354 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		A1373F8E296C2D2200DE4354 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
+		A1373F90296C2D2200DE4354 /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
+		A1373F92296C2D2200DE4354 /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
+		A1373F94296C2D2300DE4354 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A1373F97296C2D2400DE4354 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		A1373F99296C2D2400DE4354 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A1373F9A296C2D2400DE4354 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+		A1373F9F296C2D2400DE4354 /* DobbyMiniTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DobbyMiniTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A1373FA3296C2D2400DE4354 /* DobbyMiniTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DobbyMiniTests.swift; sourceTree = "<group>"; };
+		A1373FA9296C2D2400DE4354 /* DobbyMiniUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DobbyMiniUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A1373FAD296C2D2400DE4354 /* DobbyMiniUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DobbyMiniUITests.swift; sourceTree = "<group>"; };
+		A1373FAF296C2D2400DE4354 /* DobbyMiniUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DobbyMiniUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		A13C530D28E7129D00C72215 /* Dobby.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dobby.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A13C531028E7129D00C72215 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A13C531228E7129D00C72215 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -347,6 +430,27 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		A1373F82296C2D2200DE4354 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A1373F9C296C2D2400DE4354 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A1373FA6296C2D2400DE4354 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A13C530A28E7129D00C72215 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -397,6 +501,55 @@
 			path = Alarm;
 			sourceTree = "<group>";
 		};
+		A1373F7E296C2D2000DE4354 /* DobbyMini */ = {
+			isa = PBXGroup;
+			children = (
+				A1373F7F296C2D2200DE4354 /* Assets.xcassets */,
+			);
+			path = DobbyMini;
+			sourceTree = "<group>";
+		};
+		A1373F89296C2D2200DE4354 /* DobbyMini WatchKit Extension */ = {
+			isa = PBXGroup;
+			children = (
+				A1373F8A296C2D2200DE4354 /* DobbyApp.swift */,
+				A1373F8C296C2D2200DE4354 /* ContentView.swift */,
+				A1373F8E296C2D2200DE4354 /* NotificationController.swift */,
+				A1373F90296C2D2200DE4354 /* NotificationView.swift */,
+				A1373F92296C2D2200DE4354 /* ComplicationController.swift */,
+				A1373F94296C2D2300DE4354 /* Assets.xcassets */,
+				A1373F99296C2D2400DE4354 /* Info.plist */,
+				A1373F9A296C2D2400DE4354 /* PushNotificationPayload.apns */,
+				A1373F96296C2D2300DE4354 /* Preview Content */,
+			);
+			path = "DobbyMini WatchKit Extension";
+			sourceTree = "<group>";
+		};
+		A1373F96296C2D2300DE4354 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				A1373F97296C2D2400DE4354 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		A1373FA2296C2D2400DE4354 /* DobbyMiniTests */ = {
+			isa = PBXGroup;
+			children = (
+				A1373FA3296C2D2400DE4354 /* DobbyMiniTests.swift */,
+			);
+			path = DobbyMiniTests;
+			sourceTree = "<group>";
+		};
+		A1373FAC296C2D2400DE4354 /* DobbyMiniUITests */ = {
+			isa = PBXGroup;
+			children = (
+				A1373FAD296C2D2400DE4354 /* DobbyMiniUITests.swift */,
+				A1373FAF296C2D2400DE4354 /* DobbyMiniUITestsLaunchTests.swift */,
+			);
+			path = DobbyMiniUITests;
+			sourceTree = "<group>";
+		};
 		A13C530428E7129D00C72215 = {
 			isa = PBXGroup;
 			children = (
@@ -404,6 +557,10 @@
 				A13C530F28E7129D00C72215 /* Dobby */,
 				A13C532628E7129E00C72215 /* DobbyTests */,
 				A13C533028E7129F00C72215 /* DobbyUITests */,
+				A1373F7E296C2D2000DE4354 /* DobbyMini */,
+				A1373F89296C2D2200DE4354 /* DobbyMini WatchKit Extension */,
+				A1373FA2296C2D2400DE4354 /* DobbyMiniTests */,
+				A1373FAC296C2D2400DE4354 /* DobbyMiniUITests */,
 				A13C530E28E7129D00C72215 /* Products */,
 				59B4FB3B3674F69DBEF32677 /* Pods */,
 				EECB826E23EA5A1E908A6DD1 /* Frameworks */,
@@ -416,6 +573,10 @@
 				A13C530D28E7129D00C72215 /* Dobby.app */,
 				A13C532328E7129E00C72215 /* DobbyTests.xctest */,
 				A13C532D28E7129F00C72215 /* DobbyUITests.xctest */,
+				A1373F7D296C2D2000DE4354 /* DobbyMini.app */,
+				A1373F85296C2D2200DE4354 /* DobbyMini WatchKit Extension.appex */,
+				A1373F9F296C2D2400DE4354 /* DobbyMiniTests.xctest */,
+				A1373FA9296C2D2400DE4354 /* DobbyMiniUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -972,6 +1133,76 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		A1373F7C296C2D2000DE4354 /* DobbyMini */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A1373FBF296C2D2400DE4354 /* Build configuration list for PBXNativeTarget "DobbyMini" */;
+			buildPhases = (
+				A1373F7B296C2D2000DE4354 /* Resources */,
+				A1373FB7296C2D2400DE4354 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A1373F88296C2D2200DE4354 /* PBXTargetDependency */,
+			);
+			name = DobbyMini;
+			productName = DobbyMini;
+			productReference = A1373F7D296C2D2000DE4354 /* DobbyMini.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		A1373F84296C2D2200DE4354 /* DobbyMini WatchKit Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A1373FBE296C2D2400DE4354 /* Build configuration list for PBXNativeTarget "DobbyMini WatchKit Extension" */;
+			buildPhases = (
+				A1373F81296C2D2200DE4354 /* Sources */,
+				A1373F82296C2D2200DE4354 /* Frameworks */,
+				A1373F83296C2D2200DE4354 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "DobbyMini WatchKit Extension";
+			productName = "DobbyMini WatchKit Extension";
+			productReference = A1373F85296C2D2200DE4354 /* DobbyMini WatchKit Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
+		};
+		A1373F9E296C2D2400DE4354 /* DobbyMiniTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A1373FC0296C2D2400DE4354 /* Build configuration list for PBXNativeTarget "DobbyMiniTests" */;
+			buildPhases = (
+				A1373F9B296C2D2400DE4354 /* Sources */,
+				A1373F9C296C2D2400DE4354 /* Frameworks */,
+				A1373F9D296C2D2400DE4354 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A1373FA1296C2D2400DE4354 /* PBXTargetDependency */,
+			);
+			name = DobbyMiniTests;
+			productName = DobbyMiniTests;
+			productReference = A1373F9F296C2D2400DE4354 /* DobbyMiniTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		A1373FA8296C2D2400DE4354 /* DobbyMiniUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A1373FC1296C2D2400DE4354 /* Build configuration list for PBXNativeTarget "DobbyMiniUITests" */;
+			buildPhases = (
+				A1373FA5296C2D2400DE4354 /* Sources */,
+				A1373FA6296C2D2400DE4354 /* Frameworks */,
+				A1373FA7296C2D2400DE4354 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A1373FAB296C2D2400DE4354 /* PBXTargetDependency */,
+			);
+			name = DobbyMiniUITests;
+			productName = DobbyMiniUITests;
+			productReference = A1373FA9296C2D2400DE4354 /* DobbyMiniUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		A13C530C28E7129D00C72215 /* Dobby */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = A13C533728E7129F00C72215 /* Build configuration list for PBXNativeTarget "Dobby" */;
@@ -983,10 +1214,12 @@
 				A13C534228E71AED00C72215 /* ShellScript */,
 				A12095EF28F3FFAC008CE410 /* ShellScript */,
 				D17067F7F1EFEA84311475AB /* [CP] Embed Pods Frameworks */,
+				A1373FB4296C2D2400DE4354 /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				A1373FB2296C2D2400DE4354 /* PBXTargetDependency */,
 			);
 			name = Dobby;
 			packageProductDependencies = (
@@ -1041,9 +1274,23 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1400;
+				LastSwiftUpdateCheck = 1340;
 				LastUpgradeCheck = 1400;
 				TargetAttributes = {
+					A1373F7C296C2D2000DE4354 = {
+						CreatedOnToolsVersion = 13.4.1;
+					};
+					A1373F84296C2D2200DE4354 = {
+						CreatedOnToolsVersion = 13.4.1;
+					};
+					A1373F9E296C2D2400DE4354 = {
+						CreatedOnToolsVersion = 13.4.1;
+						TestTargetID = A1373F84296C2D2200DE4354;
+					};
+					A1373FA8296C2D2400DE4354 = {
+						CreatedOnToolsVersion = 13.4.1;
+						TestTargetID = A1373F7C296C2D2000DE4354;
+					};
 					A13C530C28E7129D00C72215 = {
 						CreatedOnToolsVersion = 14.0;
 					};
@@ -1075,11 +1322,46 @@
 				A13C530C28E7129D00C72215 /* Dobby */,
 				A13C532228E7129E00C72215 /* DobbyTests */,
 				A13C532C28E7129F00C72215 /* DobbyUITests */,
+				A1373F7C296C2D2000DE4354 /* DobbyMini */,
+				A1373F84296C2D2200DE4354 /* DobbyMini WatchKit Extension */,
+				A1373F9E296C2D2400DE4354 /* DobbyMiniTests */,
+				A1373FA8296C2D2400DE4354 /* DobbyMiniUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		A1373F7B296C2D2000DE4354 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A1373F80296C2D2200DE4354 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A1373F83296C2D2200DE4354 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A1373F98296C2D2400DE4354 /* Preview Assets.xcassets in Resources */,
+				A1373F95296C2D2300DE4354 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A1373F9D296C2D2400DE4354 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A1373FA7296C2D2400DE4354 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A13C530B28E7129D00C72215 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1248,6 +1530,35 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		A1373F81296C2D2200DE4354 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A1373F8F296C2D2200DE4354 /* NotificationController.swift in Sources */,
+				A1373F8D296C2D2200DE4354 /* ContentView.swift in Sources */,
+				A1373F93296C2D2200DE4354 /* ComplicationController.swift in Sources */,
+				A1373F8B296C2D2200DE4354 /* DobbyApp.swift in Sources */,
+				A1373F91296C2D2200DE4354 /* NotificationView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A1373F9B296C2D2400DE4354 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A1373FA4296C2D2400DE4354 /* DobbyMiniTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A1373FA5296C2D2400DE4354 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A1373FB0296C2D2400DE4354 /* DobbyMiniUITestsLaunchTests.swift in Sources */,
+				A1373FAE296C2D2400DE4354 /* DobbyMiniUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A13C530928E7129D00C72215 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1415,6 +1726,26 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		A1373F88296C2D2200DE4354 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A1373F84296C2D2200DE4354 /* DobbyMini WatchKit Extension */;
+			targetProxy = A1373F87296C2D2200DE4354 /* PBXContainerItemProxy */;
+		};
+		A1373FA1296C2D2400DE4354 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A1373F84296C2D2200DE4354 /* DobbyMini WatchKit Extension */;
+			targetProxy = A1373FA0296C2D2400DE4354 /* PBXContainerItemProxy */;
+		};
+		A1373FAB296C2D2400DE4354 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A1373F7C296C2D2000DE4354 /* DobbyMini */;
+			targetProxy = A1373FAA296C2D2400DE4354 /* PBXContainerItemProxy */;
+		};
+		A1373FB2296C2D2400DE4354 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A1373F7C296C2D2000DE4354 /* DobbyMini */;
+			targetProxy = A1373FB1296C2D2400DE4354 /* PBXContainerItemProxy */;
+		};
 		A13C532528E7129E00C72215 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = A13C530C28E7129D00C72215 /* Dobby */;
@@ -1439,6 +1770,208 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		A1373FB5296C2D2400DE4354 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = YB8GA5MLV5;
+				GENERATE_INFOPLIST_FILE = YES;
+				IBSC_MODULE = DobbyMini_WatchKit_Extension;
+				INFOPLIST_KEY_CFBundleDisplayName = DobbyMini;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = yongmin.Dobby;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = yongmin.Dobby.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 8.5;
+			};
+			name = Debug;
+		};
+		A1373FB6296C2D2400DE4354 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = YB8GA5MLV5;
+				GENERATE_INFOPLIST_FILE = YES;
+				IBSC_MODULE = DobbyMini_WatchKit_Extension;
+				INFOPLIST_KEY_CFBundleDisplayName = DobbyMini;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = yongmin.Dobby;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = yongmin.Dobby.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 8.5;
+			};
+			name = Release;
+		};
+		A1373FB8296C2D2400DE4354 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"DobbyMini WatchKit Extension/Preview Content\"";
+				DEVELOPMENT_TEAM = YB8GA5MLV5;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "DobbyMini WatchKit Extension/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "DobbyMini WatchKit Extension";
+				INFOPLIST_KEY_CLKComplicationPrincipalClass = "$(PRODUCT_MODULE_NAME).ComplicationController";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = yongmin.Dobby.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 8.5;
+			};
+			name = Debug;
+		};
+		A1373FB9296C2D2400DE4354 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"DobbyMini WatchKit Extension/Preview Content\"";
+				DEVELOPMENT_TEAM = YB8GA5MLV5;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "DobbyMini WatchKit Extension/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "DobbyMini WatchKit Extension";
+				INFOPLIST_KEY_CLKComplicationPrincipalClass = "$(PRODUCT_MODULE_NAME).ComplicationController";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = yongmin.Dobby.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 8.5;
+			};
+			name = Release;
+		};
+		A1373FBA296C2D2400DE4354 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = YB8GA5MLV5;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = yongmin.Dobby.DobbyMiniTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DobbyMini WatchKit Extension.appex/DobbyMini WatchKit Extension";
+				WATCHOS_DEPLOYMENT_TARGET = 8.5;
+			};
+			name = Debug;
+		};
+		A1373FBB296C2D2400DE4354 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = YB8GA5MLV5;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = yongmin.Dobby.DobbyMiniTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DobbyMini WatchKit Extension.appex/DobbyMini WatchKit Extension";
+				WATCHOS_DEPLOYMENT_TARGET = 8.5;
+			};
+			name = Release;
+		};
+		A1373FBC296C2D2400DE4354 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = YB8GA5MLV5;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = yongmin.Dobby.DobbyMiniUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_TARGET_NAME = DobbyMini;
+				WATCHOS_DEPLOYMENT_TARGET = 8.5;
+			};
+			name = Debug;
+		};
+		A1373FBD296C2D2400DE4354 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = YB8GA5MLV5;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = yongmin.Dobby.DobbyMiniUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_TARGET_NAME = DobbyMini;
+				WATCHOS_DEPLOYMENT_TARGET = 8.5;
+			};
+			name = Release;
+		};
 		A13C533528E7129F00C72215 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1711,6 +2244,42 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		A1373FBE296C2D2400DE4354 /* Build configuration list for PBXNativeTarget "DobbyMini WatchKit Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A1373FB8296C2D2400DE4354 /* Debug */,
+				A1373FB9296C2D2400DE4354 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A1373FBF296C2D2400DE4354 /* Build configuration list for PBXNativeTarget "DobbyMini" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A1373FB5296C2D2400DE4354 /* Debug */,
+				A1373FB6296C2D2400DE4354 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A1373FC0296C2D2400DE4354 /* Build configuration list for PBXNativeTarget "DobbyMiniTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A1373FBA296C2D2400DE4354 /* Debug */,
+				A1373FBB296C2D2400DE4354 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A1373FC1296C2D2400DE4354 /* Build configuration list for PBXNativeTarget "DobbyMiniUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A1373FBC296C2D2400DE4354 /* Debug */,
+				A1373FBD296C2D2400DE4354 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		A13C530828E7129D00C72215 /* Build configuration list for PBXProject "Dobby" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
