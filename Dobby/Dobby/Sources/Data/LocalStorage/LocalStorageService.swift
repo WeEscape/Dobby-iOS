@@ -9,9 +9,11 @@ import Foundation
 import RxSwift
 
 enum LocalKey: String {
-    case jwtAccessToken = "jwtAccessToken"
-    case jwtRefreshToken = "jwtRefreshToken"
-    case userInfo = "userInfo"
+    case accessToken
+    case refreshToken
+    case userInfo
+    case alarmOnOff
+    case alarmTime
 }
 
 protocol LocalStorageService: AnyObject {
