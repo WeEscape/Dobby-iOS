@@ -30,7 +30,7 @@ final class NetworkServiceImpl: NetworkService {
     
     private init() {
         self.provider = Self.createProvider()
-        self.localStorage = UserDefaults.standard
+        self.localStorage = LocalStorageServiceImpl.shared
     }
     
     private static func createProvider() -> MoyaProvider<MultiTarget> {

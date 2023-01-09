@@ -15,13 +15,13 @@ final class MyPageCoordinator: Coordinator {
             authUseCase: AuthUseCaseImpl(
                 authenticationRepository: AuthenticationRepositoryImpl(
                     network: NetworkServiceImpl.shared,
-                    localStorage: UserDefaults.standard
+                    localStorage: LocalStorageServiceImpl.shared
                 )
             ),
             userUserCase: UserUseCaseImpl(
                 userRepository: UserRepositoryImpl(
                     network: NetworkServiceImpl.shared,
-                    localStorage: UserDefaults.standard
+                    localStorage: LocalStorageServiceImpl.shared
                 )
             ),
             groupUseCase: GroupUseCaseImpl(
@@ -35,7 +35,9 @@ final class MyPageCoordinator: Coordinator {
                 )
             ),
             alarmUseCase: AlarmUseCaseImpl(
-                alarmRepository: AlarmRepositoryImpl()
+                alarmRepository: AlarmRepositoryImpl(
+                    localStorage: LocalStorageServiceImpl.shared
+                )
             )
         )
         let mypageVC = MyPageViewController(
