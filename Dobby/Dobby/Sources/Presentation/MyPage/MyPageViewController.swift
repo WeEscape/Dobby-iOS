@@ -61,7 +61,7 @@ final class MyPageViewController: BaseViewController {
     private let leaveHomeView = SettingItemView(leftText: "연결된 그룹 나가기")
     private let createHomeView = SettingItemView(leftText: "그룹 만들기")
     private let joinHomeView = SettingItemView(leftText: "다른 그룹 참여하기")
-    private let settingView = SettingItemView(leftText: "도움말")
+    private let helpDeskView = SettingItemView(leftText: "도움말")
     private let logoutView = SettingItemView(leftText: "로그아웃")
     private let resignView = SettingItemView(
         leftText: "회원탈퇴",
@@ -192,7 +192,7 @@ final class MyPageViewController: BaseViewController {
         }
 //        stackContainerView.addArrangedSubview(profileEditView) // TODO: 프로필수정 개발
         stackContainerView.addArrangedSubview(alaramSwtichView)
-        stackContainerView.addArrangedSubview(settingView)
+        stackContainerView.addArrangedSubview(helpDeskView)
         stackContainerView.addArrangedSubview(logoutView)
         stackContainerView.addArrangedSubview(resignView)
     }
@@ -320,11 +320,11 @@ final class MyPageViewController: BaseViewController {
                 self?.mypageViewModel.didTapJoinGroup()
             }).disposed(by: self.disposeBag)
         
-        settingView.rx.tapGesture()
+        helpDeskView.rx.tapGesture()
             .when(.recognized)
             .throttle(.seconds(1), latest: false, scheduler: MainScheduler.instance)
             .subscribe(onNext: { [weak self] _ in
-                self?.mypageCoordinator?.pushToSetting()
+                self?.mypageCoordinator?.pushToHelpDesk()
             }).disposed(by: self.disposeBag)
         
         groupIdLabel.rx.longPressGesture()

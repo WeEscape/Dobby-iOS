@@ -1,5 +1,5 @@
 //
-//  SettingViewController.swift
+//  HelpDeskViewController.swift
 //  Dobby
 //
 //  Created by yongmin lee on 11/28/22.
@@ -11,7 +11,7 @@ import RxSwift
 import RxGesture
 import StoreKit
 
-final class SettingViewController: BaseViewController {
+final class HelpDeskViewController: BaseViewController {
     
     // MARK: property
     weak var coordinator: MyPageCoordinator?

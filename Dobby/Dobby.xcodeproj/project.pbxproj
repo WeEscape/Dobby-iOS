@@ -97,7 +97,7 @@
 		A18DF27A293358C30073A01F /* ChoreDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18DF279293358C30073A01F /* ChoreDTO.swift */; };
 		A18DF27D29335C100073A01F /* CreateChoreAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18DF27C29335C100073A01F /* CreateChoreAPI.swift */; };
 		A18DF27F293361000073A01F /* ChoreOwner.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18DF27E293361000073A01F /* ChoreOwner.swift */; };
-		A18DF2812934E97F0073A01F /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18DF2802934E97F0073A01F /* SettingViewController.swift */; };
+		A18DF2812934E97F0073A01F /* HelpDeskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18DF2802934E97F0073A01F /* HelpDeskViewController.swift */; };
 		A18DF28329362E9F0073A01F /* PolicyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18DF28229362E9F0073A01F /* PolicyViewController.swift */; };
 		A18DF28529362ED10073A01F /* PolicyType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18DF28429362ED10073A01F /* PolicyType.swift */; };
 		A18DF288293B1E250073A01F /* ChoreCardCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18DF287293B1E250073A01F /* ChoreCardCoordinator.swift */; };
@@ -274,7 +274,7 @@
 		A18DF279293358C30073A01F /* ChoreDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoreDTO.swift; sourceTree = "<group>"; };
 		A18DF27C29335C100073A01F /* CreateChoreAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateChoreAPI.swift; sourceTree = "<group>"; };
 		A18DF27E293361000073A01F /* ChoreOwner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoreOwner.swift; sourceTree = "<group>"; };
-		A18DF2802934E97F0073A01F /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		A18DF2802934E97F0073A01F /* HelpDeskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpDeskViewController.swift; sourceTree = "<group>"; };
 		A18DF28229362E9F0073A01F /* PolicyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolicyViewController.swift; sourceTree = "<group>"; };
 		A18DF28429362ED10073A01F /* PolicyType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolicyType.swift; sourceTree = "<group>"; };
 		A18DF287293B1E250073A01F /* ChoreCardCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoreCardCoordinator.swift; sourceTree = "<group>"; };
@@ -823,7 +823,7 @@
 				A19E9847290FF1A7004A8861 /* MyPageViewModel.swift */,
 				A19E984E291143AF004A8861 /* SettingItemView.swift */,
 				A11C86AA29623ABA00D54F5E /* AlarmSwitchItemView.swift */,
-				A18DF2802934E97F0073A01F /* SettingViewController.swift */,
+				A18DF2802934E97F0073A01F /* HelpDeskViewController.swift */,
 				A18DF28229362E9F0073A01F /* PolicyViewController.swift */,
 				A18DF28429362ED10073A01F /* PolicyType.swift */,
 			);
@@ -1277,7 +1277,7 @@
 				A19E9881291941B8004A8861 /* RegisterAPI.swift in Sources */,
 				A19E9831290CECEA004A8861 /* ModalViewController.swift in Sources */,
 				A17893952929452A007893FB /* LeaveGroupAPI.swift in Sources */,
-				A18DF2812934E97F0073A01F /* SettingViewController.swift in Sources */,
+				A18DF2812934E97F0073A01F /* HelpDeskViewController.swift in Sources */,
 				A18DF28A293B2E620073A01F /* ChoreCardView.swift in Sources */,
 				A19E9846290E76AE004A8861 /* Date+.swift in Sources */,
 				A12095F728FD9532008CE410 /* MainTab.swift in Sources */,
