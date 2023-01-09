@@ -72,7 +72,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         _ application: UIApplication,
         didDiscardSceneSessions sceneSessions: Set<UISceneSession>
     ) {
-        
     }
 }
 
@@ -92,7 +91,8 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         _ center: UNUserNotificationCenter,
         willPresent notification: UNNotification,
         withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions
-        ) -> Void) {
+        ) -> Void
+    ) {
         // alert를 띄우기
         completionHandler([.banner, .list, .sound])
     }
