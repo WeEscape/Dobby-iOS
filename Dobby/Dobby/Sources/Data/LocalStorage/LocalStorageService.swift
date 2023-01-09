@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import RxSwift
 
 enum LocalKey: String {
     case accessToken
@@ -22,4 +21,5 @@ protocol LocalStorageService: AnyObject {
     func delete(key: LocalKey)
     func saveUser(_ user: User)
     func getUser() -> User?
+    func clear()
 }

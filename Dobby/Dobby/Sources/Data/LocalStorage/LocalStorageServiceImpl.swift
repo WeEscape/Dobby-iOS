@@ -54,6 +54,7 @@ class LocalStorageServiceImpl {
         }
     }
     
+    @discardableResult
     func deleteAll<T: NSManagedObject>(request: NSFetchRequest<T>) -> Bool {
         let request: NSFetchRequest<NSFetchRequestResult> = T.fetchRequest()
         let delete = NSBatchDeleteRequest(fetchRequest: request)
@@ -182,5 +183,10 @@ extension LocalStorageServiceImpl: LocalStorageService {
             return savedUser
         }
         return nil
+    }
+    
+    func clear() {
+        let request = SettingInfo.fetchRequest()
+        self.deleteAll(request: request)
     }
 }

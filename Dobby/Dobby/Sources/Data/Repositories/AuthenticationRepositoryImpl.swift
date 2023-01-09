@@ -132,15 +132,19 @@ final class AuthenticationRepositoryImpl: AuthenticationRepository {
     }
     
     func logout() -> Observable<Void> {
-        self.localStorage.delete(key: .userInfo)
         return self.network.request(api: LogoutAPI())
-            .map { _ -> Void in () }
+            .map { [weak self] _ -> Void in
+                self?.localStorage.clear()
+                return ()
+            }
     }
     
     func resign() -> Observable<Void> {
-        self.localStorage.delete(key: .userInfo)
         return self.network.request(api: ResignAPI())
-            .map { _ -> Void in () }
+            .map { [weak self] _ -> Void in
+                self?.localStorage.clear()
+                return ()
+            }
     }
     
     func readToken(tokenOption: TokenOption) -> Observable<Authentication> {
