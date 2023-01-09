@@ -22,7 +22,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
         let appDelegate = UIApplication.shared.delegate as? AppDelegate
-//        appDelegate?.rootCoordinator?.start(window: window, viewController: nil)
         appDelegate?.rootCoordinator?.startSplash(window: window)
     }
     
@@ -46,7 +45,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     func sceneDidEnterBackground(_ scene: UIScene) {
         // Called as the scene transitions from the foreground to the background.
-        (UIApplication.shared.delegate as? AppDelegate)?.saveContext()
+        LocalStorageServiceImpl.shard.saveContext()
     }
     
     func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {

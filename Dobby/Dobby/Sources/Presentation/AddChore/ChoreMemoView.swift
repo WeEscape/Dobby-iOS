@@ -42,6 +42,7 @@ final class ChoreMemoView: ChoreAttributeView {
         )
         textView.isScrollEnabled = false
         textView.delegate = self
+        textView.returnKeyType = .done
         return textView
     }()
     
