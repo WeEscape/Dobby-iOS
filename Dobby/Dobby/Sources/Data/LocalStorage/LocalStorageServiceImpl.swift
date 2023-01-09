@@ -126,13 +126,13 @@ extension LocalStorageServiceImpl: LocalStorageService {
     }
     
     func write(key: LocalKey, value: String) {
-        guard let currentInfo = self.fetchSettingInfo() else {return}
+        let currentInfo = self.fetchSettingInfo()
         let newSettingInfo = SettingInfoDTO(
-            accessToken: key == .accessToken ? value : currentInfo.accessToken,
-            refreshToken: key == .refreshToken ? value : currentInfo.refreshToken,
-            alarmOnOff: key == .alarmOnOff ? value : currentInfo.alarmOnOff,
-            alarmTime: key == .alarmTime ? value : currentInfo.alarmTime,
-            userInfo: currentInfo.userInfo
+            accessToken: key == .accessToken ? value : currentInfo?.accessToken,
+            refreshToken: key == .refreshToken ? value : currentInfo?.refreshToken,
+            alarmOnOff: key == .alarmOnOff ? value : currentInfo?.alarmOnOff,
+            alarmTime: key == .alarmTime ? value : currentInfo?.alarmTime,
+            userInfo: currentInfo?.userInfo
         )
         let request = SettingInfo.fetchRequest()
         if self.deleteAll(request: request) {
