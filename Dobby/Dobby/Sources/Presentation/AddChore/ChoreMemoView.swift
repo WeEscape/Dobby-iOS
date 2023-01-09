@@ -106,8 +106,11 @@ extension ChoreMemoView: UITextViewDelegate {
         shouldChangeTextIn range: NSRange,
         replacementText text: String
     ) -> Bool {
-        // 글자수 100자 제한
-        return textView.text.count + (text.count - range.length) <= 100
+        if text == "\n" {
+            textView.resignFirstResponder()
+            return false
+        }
+        return textView.text.count + (text.count - range.length) <= 100 // 글자수 100자 제한
     }
     
     func textViewDidChange(_ textView: UITextView) {
