@@ -67,6 +67,8 @@
 		A13C537D28E98FD500C72215 /* WelcomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13C537C28E98FD500C72215 /* WelcomeViewModel.swift */; };
 		A13C537F28EA9C0000C72215 /* AppKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13C537E28EA9C0000C72215 /* AppKey.swift */; };
 		A14960CF2944909A00691087 /* WeeklyChoreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14960CE2944909A00691087 /* WeeklyChoreViewModel.swift */; };
+		A15CAC572970325100705CAB /* SessionDelegator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15CAC562970325100705CAB /* SessionDelegator.swift */; };
+		A15CAC582970325100705CAB /* SessionDelegator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15CAC562970325100705CAB /* SessionDelegator.swift */; };
 		A174B16F28EC6F0300F80112 /* ASAuthorizationController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A174B16E28EC6F0300F80112 /* ASAuthorizationController+.swift */; };
 		A174B17428EF002000F80112 /* BaseAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A174B17328EF002000F80112 /* BaseAPI.swift */; };
 		A174B17628EF007100F80112 /* LoginAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A174B17528EF007100F80112 /* LoginAPI.swift */; };
@@ -317,6 +319,7 @@
 		A13C537C28E98FD500C72215 /* WelcomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewModel.swift; sourceTree = "<group>"; };
 		A13C537E28EA9C0000C72215 /* AppKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppKey.swift; sourceTree = "<group>"; };
 		A14960CE2944909A00691087 /* WeeklyChoreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyChoreViewModel.swift; sourceTree = "<group>"; };
+		A15CAC562970325100705CAB /* SessionDelegator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDelegator.swift; sourceTree = "<group>"; };
 		A174B16E28EC6F0300F80112 /* ASAuthorizationController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ASAuthorizationController+.swift"; sourceTree = "<group>"; };
 		A174B17328EF002000F80112 /* BaseAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseAPI.swift; sourceTree = "<group>"; };
 		A174B17528EF007100F80112 /* LoginAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAPI.swift; sourceTree = "<group>"; };
@@ -613,6 +616,7 @@
 		A13C534028E7175000C72215 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				A15CAC552970324200705CAB /* Shared */,
 				A13C537028E958CD00C72215 /* Common */,
 				A13C534528E720BA00C72215 /* App */,
 				A13C534828E7213B00C72215 /* Data */,
@@ -808,6 +812,14 @@
 				A13C537C28E98FD500C72215 /* WelcomeViewModel.swift */,
 			);
 			path = Welcome;
+			sourceTree = "<group>";
+		};
+		A15CAC552970324200705CAB /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				A15CAC562970325100705CAB /* SessionDelegator.swift */,
+			);
+			path = Shared;
 			sourceTree = "<group>";
 		};
 		A174B16D28EC6ECE00F80112 /* Rx */ = {
@@ -1536,6 +1548,7 @@
 			files = (
 				A1373F8F296C2D2200DE4354 /* NotificationController.swift in Sources */,
 				A1373F8D296C2D2200DE4354 /* ContentView.swift in Sources */,
+				A15CAC582970325100705CAB /* SessionDelegator.swift in Sources */,
 				A1373F93296C2D2200DE4354 /* ComplicationController.swift in Sources */,
 				A1373F8B296C2D2200DE4354 /* DobbyApp.swift in Sources */,
 				A1373F91296C2D2200DE4354 /* NotificationView.swift in Sources */,
@@ -1667,6 +1680,7 @@
 				A19E98092906B22B004A8861 /* ChoreAttribute.swift in Sources */,
 				A19E983B290D06C7004A8861 /* ModalCoordinator.swift in Sources */,
 				A178939729299E52007893FB /* JoinGroupAPI.swift in Sources */,
+				A15CAC572970325100705CAB /* SessionDelegator.swift in Sources */,
 				A1789355291D115D007893FB /* LogoutAPI.swift in Sources */,
 				A18DF28529362ED10073A01F /* PolicyType.swift in Sources */,
 				A17893AC292A18DD007893FB /* CategoryListAPI.swift in Sources */,
