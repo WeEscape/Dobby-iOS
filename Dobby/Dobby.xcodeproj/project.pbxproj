@@ -328,6 +328,7 @@
 		A14960CE2944909A00691087 /* WeeklyChoreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyChoreViewModel.swift; sourceTree = "<group>"; };
 		A15CAC562970325100705CAB /* SessionDelegator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDelegator.swift; sourceTree = "<group>"; };
 		A15CAC592970336E00705CAB /* WKExtensionDelegator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WKExtensionDelegator.swift; sourceTree = "<group>"; };
+		A15CAC612970434E00705CAB /* DobbyMini WatchKit Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "DobbyMini WatchKit Extension.entitlements"; sourceTree = "<group>"; };
 		A174B16E28EC6F0300F80112 /* ASAuthorizationController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ASAuthorizationController+.swift"; sourceTree = "<group>"; };
 		A174B17328EF002000F80112 /* BaseAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseAPI.swift; sourceTree = "<group>"; };
 		A174B17528EF007100F80112 /* LoginAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAPI.swift; sourceTree = "<group>"; };
@@ -523,6 +524,7 @@
 		A1373F89296C2D2200DE4354 /* DobbyMini WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
+				A15CAC612970434E00705CAB /* DobbyMini WatchKit Extension.entitlements */,
 				A1373F8A296C2D2200DE4354 /* DobbyApp.swift */,
 				A15CAC592970336E00705CAB /* WKExtensionDelegator.swift */,
 				A1373F8C296C2D2200DE4354 /* ContentView.swift */,
@@ -1859,6 +1861,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_ENTITLEMENTS = "DobbyMini WatchKit Extension/DobbyMini WatchKit Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DobbyMini WatchKit Extension/Preview Content\"";
@@ -1891,6 +1894,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_ENTITLEMENTS = "DobbyMini WatchKit Extension/DobbyMini WatchKit Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DobbyMini WatchKit Extension/Preview Content\"";

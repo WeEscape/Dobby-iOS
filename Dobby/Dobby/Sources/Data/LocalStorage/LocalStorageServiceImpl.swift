@@ -18,8 +18,7 @@ class LocalStorageServiceImpl {
         let container = NSPersistentCloudKitContainer(name: "CoreDataCloud")
         container.loadPersistentStores(completionHandler: { (_, error) in
             if let error = error as NSError? {
-                BeaverLog.error(error)
-                fatalError("Unresolved error 1 \(error), \(error.userInfo)")
+                fatalError("loadPersistentStores error \(error), \(error.userInfo)")
             }
         })
         return container
@@ -38,7 +37,7 @@ class LocalStorageServiceImpl {
             do {
                 try self.context.save()
             } catch {
-                BeaverLog.error(error)
+                print("saveContext error  \(error)")
             }
         }
     }
@@ -48,7 +47,6 @@ class LocalStorageServiceImpl {
             let fetchResult = try self.context.fetch(request)
             return fetchResult
         } catch {
-            BeaverLog.error(error)
             return []
         }
     }
@@ -86,7 +84,6 @@ class LocalStorageServiceImpl {
                 try self.context.save()
                 return true
             } catch {
-                BeaverLog.error(error)
                 return false
             }
         }
