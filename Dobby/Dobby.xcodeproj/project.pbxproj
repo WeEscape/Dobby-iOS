@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		5D37CFAC2FFA4B3C846EA3C8 /* Pods_Dobby_DobbyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F56AA76B9FEBCC2098137B1 /* Pods_Dobby_DobbyUITests.framework */; };
 		81D7170A0CB8A71B30D14140 /* Pods_Dobby.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3336AE106AE91D152C06F33D /* Pods_Dobby.framework */; };
+		A10664A7296BCA2A004466A5 /* LocalStorageServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10664A6296BCA2A004466A5 /* LocalStorageServiceImpl.swift */; };
+		A10664A9296BDE87004466A5 /* SettingInfoDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10664A8296BDE87004466A5 /* SettingInfoDTO.swift */; };
 		A11C86A9295C7EAB00D54F5E /* MonthlyChoreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11C86A8295C7EAB00D54F5E /* MonthlyChoreViewModel.swift */; };
 		A11C86AB29623ABA00D54F5E /* AlarmSwitchItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11C86AA29623ABA00D54F5E /* AlarmSwitchItemView.swift */; };
 		A11C86AE2962FC0600D54F5E /* AlarmUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11C86AD2962FC0600D54F5E /* AlarmUseCase.swift */; };
@@ -23,6 +25,8 @@
 		A12095FB29016034008CE410 /* splash.json in Resources */ = {isa = PBXBuildFile; fileRef = A12095FA29016034008CE410 /* splash.json */; };
 		A12095FD2901669B008CE410 /* Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12095FC2901669B008CE410 /* Palette.swift */; };
 		A12095FF2901680F008CE410 /* DobbyFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12095FE2901680F008CE410 /* DobbyFont.swift */; };
+		A122FCC22965AD9A0093F58E /* CoreDataCloud.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A122FCC02965AD9A0093F58E /* CoreDataCloud.xcdatamodeld */; };
+		A122FCC42965AE5B0093F58E /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A122FCC32965AE5B0093F58E /* CloudKit.framework */; };
 		A13C531128E7129D00C72215 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13C531028E7129D00C72215 /* AppDelegate.swift */; };
 		A13C531328E7129D00C72215 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13C531228E7129D00C72215 /* SceneDelegate.swift */; };
 		A13C531A28E7129E00C72215 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A13C531928E7129E00C72215 /* Assets.xcassets */; };
@@ -180,6 +184,8 @@
 		3F56AA76B9FEBCC2098137B1 /* Pods_Dobby_DobbyUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Dobby_DobbyUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8083386DCEF92A322C58B66A /* Pods-Dobby.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dobby.release.xcconfig"; path = "Target Support Files/Pods-Dobby/Pods-Dobby.release.xcconfig"; sourceTree = "<group>"; };
 		8741B0934360EC4A243B1998 /* Pods-Dobby-DobbyUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dobby-DobbyUITests.release.xcconfig"; path = "Target Support Files/Pods-Dobby-DobbyUITests/Pods-Dobby-DobbyUITests.release.xcconfig"; sourceTree = "<group>"; };
+		A10664A6296BCA2A004466A5 /* LocalStorageServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorageServiceImpl.swift; sourceTree = "<group>"; };
+		A10664A8296BDE87004466A5 /* SettingInfoDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingInfoDTO.swift; sourceTree = "<group>"; };
 		A11C86A8295C7EAB00D54F5E /* MonthlyChoreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyChoreViewModel.swift; sourceTree = "<group>"; };
 		A11C86AA29623ABA00D54F5E /* AlarmSwitchItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmSwitchItemView.swift; sourceTree = "<group>"; };
 		A11C86AD2962FC0600D54F5E /* AlarmUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmUseCase.swift; sourceTree = "<group>"; };
@@ -195,6 +201,8 @@
 		A12095FA29016034008CE410 /* splash.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = splash.json; sourceTree = "<group>"; };
 		A12095FC2901669B008CE410 /* Palette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Palette.swift; sourceTree = "<group>"; };
 		A12095FE2901680F008CE410 /* DobbyFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DobbyFont.swift; sourceTree = "<group>"; };
+		A122FCC12965AD9A0093F58E /* CoreDataCloud.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataCloud.xcdatamodel; sourceTree = "<group>"; };
+		A122FCC32965AE5B0093F58E /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		A13C530D28E7129D00C72215 /* Dobby.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dobby.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A13C531028E7129D00C72215 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A13C531228E7129D00C72215 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -344,6 +352,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				81D7170A0CB8A71B30D14140 /* Pods_Dobby.framework in Frameworks */,
+				A122FCC42965AE5B0093F58E /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -587,6 +596,8 @@
 			isa = PBXGroup;
 			children = (
 				A13C536E28E94D0500C72215 /* LocalStorageService.swift */,
+				A122FCC02965AD9A0093F58E /* CoreDataCloud.xcdatamodeld */,
+				A10664A6296BCA2A004466A5 /* LocalStorageServiceImpl.swift */,
 			);
 			path = LocalStorage;
 			sourceTree = "<group>";
@@ -669,6 +680,7 @@
 				A17893A9292A1867007893FB /* CategoryListDTO.swift */,
 				A18DF279293358C30073A01F /* ChoreDTO.swift */,
 				A18DF294293F5D690073A01F /* ChoreListDTO.swift */,
+				A10664A8296BDE87004466A5 /* SettingInfoDTO.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -949,6 +961,7 @@
 		EECB826E23EA5A1E908A6DD1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A122FCC32965AE5B0093F58E /* CloudKit.framework */,
 				3336AE106AE91D152C06F33D /* Pods_Dobby.framework */,
 				3F56AA76B9FEBCC2098137B1 /* Pods_Dobby_DobbyUITests.framework */,
 				E4AD1EDD5CCDD37BD771AC5A /* Pods_DobbyTests.framework */,
@@ -1355,6 +1368,7 @@
 				A17DB77B294F03040025623B /* DeleteChoreAPI.swift in Sources */,
 				A19E985829128D28004A8861 /* EditProfileColorView.swift in Sources */,
 				A17893A4292A0924007893FB /* CategoryRepositoryImpl.swift in Sources */,
+				A10664A7296BCA2A004466A5 /* LocalStorageServiceImpl.swift in Sources */,
 				A178936E2920C908007893FB /* ChoreCardViewModel.swift in Sources */,
 				A18DF295293F5D690073A01F /* ChoreListDTO.swift in Sources */,
 				A1789359291D2035007893FB /* ResignAPI.swift in Sources */,
@@ -1370,9 +1384,11 @@
 				A18DF291293F577F0073A01F /* ChoreListAPI.swift in Sources */,
 				A13C537928E9789200C72215 /* MainTabBarController.swift in Sources */,
 				A11C86AE2962FC0600D54F5E /* AlarmUseCase.swift in Sources */,
+				A10664A9296BDE87004466A5 /* SettingInfoDTO.swift in Sources */,
 				A1789353291A912A007893FB /* UserDTO.swift in Sources */,
 				A178935F291E8E2B007893FB /* DateSelectCollectionCell.swift in Sources */,
 				A178938A2928CC94007893FB /* GroupRepository.swift in Sources */,
+				A122FCC22965AD9A0093F58E /* CoreDataCloud.xcdatamodeld in Sources */,
 				A1789365291FAF67007893FB /* DateListSection.swift in Sources */,
 				A19E9854291152AB004A8861 /* EditProfileViewController.swift in Sources */,
 				A178939C292A06F9007893FB /* CategoryUseCase.swift in Sources */,
@@ -1732,6 +1748,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		A122FCC02965AD9A0093F58E /* CoreDataCloud.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				A122FCC12965AD9A0093F58E /* CoreDataCloud.xcdatamodel */,
+			);
+			currentVersion = A122FCC12965AD9A0093F58E /* CoreDataCloud.xcdatamodel */;
+			path = CoreDataCloud.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = A13C530528E7129D00C72215 /* Project object */;
 }

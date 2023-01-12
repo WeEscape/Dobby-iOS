@@ -9,29 +9,20 @@ import Foundation
 
 final class AlarmRepositoryImpl: AlarmRepository {
     
-    let fileManager: FileManager
+    let localStorage: LocalStorageService
     
-    init(fileManager: FileManager = .default) {
-        self.fileManager = fileManager
+    init(localStorage: LocalStorageService) {
+        self.localStorage = localStorage
     }
     
     func setAlarmInfo(isOn: String, time: String) {
-        let text = isOn + "/" + time
-        if let dir = self.fileManager.urls(for: .documentDirectory, in: .userDomainMask).first {
-            let fileURL = dir.appendingPathComponent("alarm.txt")
-            try? text.write(to: fileURL, atomically: true, encoding: .utf8)
-        }
+        self.localStorage.write(key: .alarmOnOff, value: isOn)
+        self.localStorage.write(key: .alarmTime, value: time)
     }
     
-    func getAlarmInfo() -> (isOn: String?, time: String?) {
-        var text: String = "/"
-        if let dir = self.fileManager.urls(for: .documentDirectory, in: .userDomainMask).first {
-            let fileURL = dir.appendingPathComponent("alarm.txt")
-            text = (try? String(contentsOf: fileURL, encoding: .utf8)) ?? "/"
-        }
-        let alarmInfo = text.components(separatedBy: "/")
-        let isOn = alarmInfo[safe: 0]
-        let time = alarmInfo[safe: 1]
+    func getAlarmInfo() -> (isOn: String?, time: String?) {        
+        let isOn = self.localStorage.read(key: .alarmOnOff)
+        let time = self.localStorage.read(key: .alarmTime)
         return (isOn, time)
     }
 }

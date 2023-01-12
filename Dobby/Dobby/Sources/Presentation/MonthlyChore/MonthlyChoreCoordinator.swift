@@ -23,7 +23,7 @@ final class MonthlyChoreCoordinator: Coordinator {
             userUseCase: UserUseCaseImpl(
                 userRepository: UserRepositoryImpl(
                     network: NetworkServiceImpl.shared,
-                    localStorage: UserDefaults.standard
+                    localStorage: LocalStorageServiceImpl.shared
                 )
             ),
             groupUseCase: GroupUseCaseImpl(

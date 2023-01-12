@@ -22,7 +22,7 @@ final class NetworkServiceImpl: NetworkService {
     var headers: [String: String] {
         var headers = ["content-type": "application/json;charset=UTF-8"]
         guard let accessToken = self.localStorage.read(
-            key: .jwtAccessToken
+            key: .accessToken
         ) else { return headers }
         headers["authorization"] = "Bearer \(accessToken)"
         return headers
@@ -30,7 +30,7 @@ final class NetworkServiceImpl: NetworkService {
     
     private init() {
         self.provider = Self.createProvider()
-        self.localStorage = UserDefaults.standard
+        self.localStorage = LocalStorageServiceImpl.shared
     }
     
     private static func createProvider() -> MoyaProvider<MultiTarget> {
@@ -69,18 +69,18 @@ final class NetworkServiceImpl: NetworkService {
                             BeaverLog.verbose("refreshed access token : \(newAccessToken)")
                             BeaverLog.verbose("refreshed refresh token : \(newRefreshToken)")
                             self.localStorage.write(
-                                key: .jwtAccessToken, value: newAccessToken
+                                key: .accessToken, value: newAccessToken
                             )
                             self.localStorage.write(
-                                key: .jwtRefreshToken, value: newRefreshToken
+                                key: .refreshToken, value: newRefreshToken
                             )
                             return self._request(api: api)
                         }
                         .catch { err in
                             BeaverLog.verbose("invalidate RefreshToken! -> logout")
                             Crashlytics.crashlytics().record(error: err)
-                            self.localStorage.delete(key: .jwtAccessToken)
-                            self.localStorage.delete(key: .jwtRefreshToken)
+                            self.localStorage.delete(key: .accessToken)
+                            self.localStorage.delete(key: .refreshToken)
                             let appDelegate = UIApplication.shared.delegate as? AppDelegate
                             appDelegate?.rootCoordinator?.startSplash()
                             return .error(NetworkError.invalidateRefreshToken)
@@ -125,7 +125,7 @@ final class NetworkServiceImpl: NetworkService {
     
     private func refreshAccessToken() -> Observable<Authentication> {
         BeaverLog.verbose("start refresh AccessToken")
-        guard let refreshToken = self.localStorage.read(key: .jwtRefreshToken) else {
+        guard let refreshToken = self.localStorage.read(key: .refreshToken) else {
             BeaverLog.verbose("device doesn't have refreshToken")
             return .error(NetworkError.invalidateRefreshToken)
         }
