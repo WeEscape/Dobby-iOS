@@ -9,6 +9,9 @@ import SwiftUI
 
 @main
 struct DobbyApp: App {
+    
+    @WKExtensionDelegateAdaptor private var extensionDelegate: WKExtensionDelegator
+    
     @SceneBuilder var body: some Scene {
         WindowGroup {
             NavigationView {

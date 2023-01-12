@@ -69,6 +69,13 @@
 		A14960CF2944909A00691087 /* WeeklyChoreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14960CE2944909A00691087 /* WeeklyChoreViewModel.swift */; };
 		A15CAC572970325100705CAB /* SessionDelegator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15CAC562970325100705CAB /* SessionDelegator.swift */; };
 		A15CAC582970325100705CAB /* SessionDelegator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15CAC562970325100705CAB /* SessionDelegator.swift */; };
+		A15CAC5A2970336E00705CAB /* WKExtensionDelegator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15CAC592970336E00705CAB /* WKExtensionDelegator.swift */; };
+		A15CAC5B2970349B00705CAB /* LocalStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13C536E28E94D0500C72215 /* LocalStorageService.swift */; };
+		A15CAC5C297034A200705CAB /* CoreDataCloud.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A122FCC02965AD9A0093F58E /* CoreDataCloud.xcdatamodeld */; };
+		A15CAC5D297034A500705CAB /* LocalStorageServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10664A6296BCA2A004466A5 /* LocalStorageServiceImpl.swift */; };
+		A15CAC5E297034AC00705CAB /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E986B2913FDC1004A8861 /* User.swift */; };
+		A15CAC5F297034AF00705CAB /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17893842928CC76007893FB /* Group.swift */; };
+		A15CAC60297034B500705CAB /* SettingInfoDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10664A8296BDE87004466A5 /* SettingInfoDTO.swift */; };
 		A174B16F28EC6F0300F80112 /* ASAuthorizationController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A174B16E28EC6F0300F80112 /* ASAuthorizationController+.swift */; };
 		A174B17428EF002000F80112 /* BaseAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A174B17328EF002000F80112 /* BaseAPI.swift */; };
 		A174B17628EF007100F80112 /* LoginAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A174B17528EF007100F80112 /* LoginAPI.swift */; };
@@ -320,6 +327,7 @@
 		A13C537E28EA9C0000C72215 /* AppKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppKey.swift; sourceTree = "<group>"; };
 		A14960CE2944909A00691087 /* WeeklyChoreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyChoreViewModel.swift; sourceTree = "<group>"; };
 		A15CAC562970325100705CAB /* SessionDelegator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDelegator.swift; sourceTree = "<group>"; };
+		A15CAC592970336E00705CAB /* WKExtensionDelegator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WKExtensionDelegator.swift; sourceTree = "<group>"; };
 		A174B16E28EC6F0300F80112 /* ASAuthorizationController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ASAuthorizationController+.swift"; sourceTree = "<group>"; };
 		A174B17328EF002000F80112 /* BaseAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseAPI.swift; sourceTree = "<group>"; };
 		A174B17528EF007100F80112 /* LoginAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAPI.swift; sourceTree = "<group>"; };
@@ -516,6 +524,7 @@
 			isa = PBXGroup;
 			children = (
 				A1373F8A296C2D2200DE4354 /* DobbyApp.swift */,
+				A15CAC592970336E00705CAB /* WKExtensionDelegator.swift */,
 				A1373F8C296C2D2200DE4354 /* ContentView.swift */,
 				A1373F8E296C2D2200DE4354 /* NotificationController.swift */,
 				A1373F90296C2D2200DE4354 /* NotificationView.swift */,
@@ -1549,9 +1558,16 @@
 				A1373F8F296C2D2200DE4354 /* NotificationController.swift in Sources */,
 				A1373F8D296C2D2200DE4354 /* ContentView.swift in Sources */,
 				A15CAC582970325100705CAB /* SessionDelegator.swift in Sources */,
+				A15CAC5F297034AF00705CAB /* Group.swift in Sources */,
+				A15CAC60297034B500705CAB /* SettingInfoDTO.swift in Sources */,
 				A1373F93296C2D2200DE4354 /* ComplicationController.swift in Sources */,
 				A1373F8B296C2D2200DE4354 /* DobbyApp.swift in Sources */,
+				A15CAC5D297034A500705CAB /* LocalStorageServiceImpl.swift in Sources */,
+				A15CAC5B2970349B00705CAB /* LocalStorageService.swift in Sources */,
 				A1373F91296C2D2200DE4354 /* NotificationView.swift in Sources */,
+				A15CAC5A2970336E00705CAB /* WKExtensionDelegator.swift in Sources */,
+				A15CAC5C297034A200705CAB /* CoreDataCloud.xcdatamodeld in Sources */,
+				A15CAC5E297034AC00705CAB /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

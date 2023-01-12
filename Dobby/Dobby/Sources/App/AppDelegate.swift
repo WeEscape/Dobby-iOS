@@ -11,6 +11,7 @@ import KakaoSDKCommon
 import KakaoSDKAuth
 import FirebaseCore
 import FirebaseMessaging
+import WatchConnectivity
 
 let BeaverLog = SwiftyBeaver.self
 
@@ -18,6 +19,9 @@ let BeaverLog = SwiftyBeaver.self
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var rootCoordinator: RootCoordinator?
+    let sessionDelegator = SessionDelegator(
+        localStorage: LocalStorageServiceImpl.shared
+    )
     
     func application(
         _ application: UIApplication,
@@ -49,6 +53,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // FCM
         Messaging.messaging().delegate = self
+        
+        // WatchConnectivity
+        WCSession.default.delegate = self.sessionDelegator
+        WCSession.default.activate()
         
         return true
     }

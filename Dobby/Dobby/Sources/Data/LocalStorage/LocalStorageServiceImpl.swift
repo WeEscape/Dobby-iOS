@@ -7,7 +7,6 @@
 
 import Foundation
 import CoreData
-import FirebaseCrashlytics
 
 class LocalStorageServiceImpl {
     
@@ -19,7 +18,7 @@ class LocalStorageServiceImpl {
         let container = NSPersistentCloudKitContainer(name: "CoreDataCloud")
         container.loadPersistentStores(completionHandler: { (_, error) in
             if let error = error as NSError? {
-                Crashlytics.crashlytics().record(error: error)
+                BeaverLog.error(error)
                 fatalError("Unresolved error 1 \(error), \(error.userInfo)")
             }
         })
@@ -39,7 +38,7 @@ class LocalStorageServiceImpl {
             do {
                 try self.context.save()
             } catch {
-                Crashlytics.crashlytics().record(error: error)
+                BeaverLog.error(error)
             }
         }
     }
@@ -49,7 +48,7 @@ class LocalStorageServiceImpl {
             let fetchResult = try self.context.fetch(request)
             return fetchResult
         } catch {
-            Crashlytics.crashlytics().record(error: error)
+            BeaverLog.error(error)
             return []
         }
     }
@@ -87,7 +86,7 @@ class LocalStorageServiceImpl {
                 try self.context.save()
                 return true
             } catch {
-                Crashlytics.crashlytics().record(error: error)
+                BeaverLog.error(error)
                 return false
             }
         }

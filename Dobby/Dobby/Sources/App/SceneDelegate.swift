@@ -7,6 +7,7 @@
 
 import UIKit
 import KakaoSDKAuth
+import WatchConnectivity
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
@@ -31,6 +32,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     func sceneDidBecomeActive(_ scene: UIScene) {
         UIApplication.shared.applicationIconBadgeNumber = 0
+        
+        let receiveData = WCSession.default.receivedApplicationContext
+        if receiveData.isEmpty == false {
+            
+        } else {
+            
+        }
     }
     
     func sceneWillResignActive(_ scene: UIScene) {
