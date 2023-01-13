@@ -19,9 +19,6 @@ let BeaverLog = SwiftyBeaver.self
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var rootCoordinator: RootCoordinator?
-    let sessionDelegator = SessionDelegator(
-        localStorage: LocalStorageServiceImpl.shared
-    )
     
     func application(
         _ application: UIApplication,
@@ -55,7 +52,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Messaging.messaging().delegate = self
         
         // WatchConnectivity
-        WCSession.default.delegate = self.sessionDelegator
+        WCSession.default.delegate = self
         WCSession.default.activate()
         
         return true
@@ -112,5 +109,29 @@ extension AppDelegate: MessagingDelegate {
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
         BeaverLog.debug("debug : fcmToken -> \(fcmToken ?? "no fcm toekn")")
         // 유저 fcmToken 등록
+    }
+}
+
+extension AppDelegate: WCSessionDelegate {
+    func sessionDidBecomeInactive(_ session: WCSession) {
+    }
+    
+    func sessionDidDeactivate(_ session: WCSession) {
+        // Activate the new session after having switched to a new watch.
+        session.activate()
+    }
+    
+    func session(
+        _ session: WCSession,
+        activationDidCompleteWith activationState: WCSessionActivationState,
+        error: Error?
+    ) {
+    }
+    
+    func session(
+        _ session: WCSession,
+        didReceiveApplicationContext applicationContext: [String : Any]
+    ) {
+        // token update
     }
 }
