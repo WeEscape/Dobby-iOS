@@ -25,7 +25,6 @@
 		A12095FB29016034008CE410 /* splash.json in Resources */ = {isa = PBXBuildFile; fileRef = A12095FA29016034008CE410 /* splash.json */; };
 		A12095FD2901669B008CE410 /* Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12095FC2901669B008CE410 /* Palette.swift */; };
 		A12095FF2901680F008CE410 /* DobbyFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12095FE2901680F008CE410 /* DobbyFont.swift */; };
-		A122FCC22965AD9A0093F58E /* CoreDataCloud.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A122FCC02965AD9A0093F58E /* CoreDataCloud.xcdatamodeld */; };
 		A122FCC42965AE5B0093F58E /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A122FCC32965AE5B0093F58E /* CloudKit.framework */; };
 		A1373F80296C2D2200DE4354 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1373F7F296C2D2200DE4354 /* Assets.xcassets */; };
 		A1373F86296C2D2200DE4354 /* DobbyMini WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = A1373F85296C2D2200DE4354 /* DobbyMini WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -69,12 +68,13 @@
 		A14960CF2944909A00691087 /* WeeklyChoreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14960CE2944909A00691087 /* WeeklyChoreViewModel.swift */; };
 		A15CAC5A2970336E00705CAB /* WKExtensionDelegator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15CAC592970336E00705CAB /* WKExtensionDelegator.swift */; };
 		A15CAC5B2970349B00705CAB /* LocalStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13C536E28E94D0500C72215 /* LocalStorageService.swift */; };
-		A15CAC5C297034A200705CAB /* CoreDataCloud.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A122FCC02965AD9A0093F58E /* CoreDataCloud.xcdatamodeld */; };
 		A15CAC5D297034A500705CAB /* LocalStorageServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10664A6296BCA2A004466A5 /* LocalStorageServiceImpl.swift */; };
 		A15CAC5E297034AC00705CAB /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E986B2913FDC1004A8861 /* User.swift */; };
 		A15CAC5F297034AF00705CAB /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17893842928CC76007893FB /* Group.swift */; };
 		A15CAC60297034B500705CAB /* SettingInfoDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10664A8296BDE87004466A5 /* SettingInfoDTO.swift */; };
 		A15CAC62297190D600705CAB /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E9845290E76AE004A8861 /* Date+.swift */; };
+		A15CAC652971941300705CAB /* DobbyCoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A15CAC632971941300705CAB /* DobbyCoreData.xcdatamodeld */; };
+		A15CAC662971941300705CAB /* DobbyCoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A15CAC632971941300705CAB /* DobbyCoreData.xcdatamodeld */; };
 		A174B16F28EC6F0300F80112 /* ASAuthorizationController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A174B16E28EC6F0300F80112 /* ASAuthorizationController+.swift */; };
 		A174B17428EF002000F80112 /* BaseAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A174B17328EF002000F80112 /* BaseAPI.swift */; };
 		A174B17628EF007100F80112 /* LoginAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A174B17528EF007100F80112 /* LoginAPI.swift */; };
@@ -275,7 +275,6 @@
 		A12095FA29016034008CE410 /* splash.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = splash.json; sourceTree = "<group>"; };
 		A12095FC2901669B008CE410 /* Palette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Palette.swift; sourceTree = "<group>"; };
 		A12095FE2901680F008CE410 /* DobbyFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DobbyFont.swift; sourceTree = "<group>"; };
-		A122FCC12965AD9A0093F58E /* CoreDataCloud.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataCloud.xcdatamodel; sourceTree = "<group>"; };
 		A122FCC32965AE5B0093F58E /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		A1373F7D296C2D2000DE4354 /* DobbyMini.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DobbyMini.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1373F7F296C2D2200DE4354 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -327,6 +326,7 @@
 		A14960CE2944909A00691087 /* WeeklyChoreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyChoreViewModel.swift; sourceTree = "<group>"; };
 		A15CAC592970336E00705CAB /* WKExtensionDelegator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WKExtensionDelegator.swift; sourceTree = "<group>"; };
 		A15CAC612970434E00705CAB /* DobbyMini WatchKit Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "DobbyMini WatchKit Extension.entitlements"; sourceTree = "<group>"; };
+		A15CAC642971941300705CAB /* DobbyCoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DobbyCoreData.xcdatamodel; sourceTree = "<group>"; };
 		A174B16E28EC6F0300F80112 /* ASAuthorizationController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ASAuthorizationController+.swift"; sourceTree = "<group>"; };
 		A174B17328EF002000F80112 /* BaseAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseAPI.swift; sourceTree = "<group>"; };
 		A174B17528EF007100F80112 /* LoginAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAPI.swift; sourceTree = "<group>"; };
@@ -769,8 +769,8 @@
 			isa = PBXGroup;
 			children = (
 				A13C536E28E94D0500C72215 /* LocalStorageService.swift */,
-				A122FCC02965AD9A0093F58E /* CoreDataCloud.xcdatamodeld */,
 				A10664A6296BCA2A004466A5 /* LocalStorageServiceImpl.swift */,
+				A15CAC632971941300705CAB /* DobbyCoreData.xcdatamodeld */,
 			);
 			path = LocalStorage;
 			sourceTree = "<group>";
@@ -1555,9 +1555,9 @@
 				A15CAC62297190D600705CAB /* Date+.swift in Sources */,
 				A15CAC5D297034A500705CAB /* LocalStorageServiceImpl.swift in Sources */,
 				A15CAC5B2970349B00705CAB /* LocalStorageService.swift in Sources */,
+				A15CAC662971941300705CAB /* DobbyCoreData.xcdatamodeld in Sources */,
 				A1373F91296C2D2200DE4354 /* NotificationView.swift in Sources */,
 				A15CAC5A2970336E00705CAB /* WKExtensionDelegator.swift in Sources */,
-				A15CAC5C297034A200705CAB /* CoreDataCloud.xcdatamodeld in Sources */,
 				A15CAC5E297034AC00705CAB /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1658,6 +1658,7 @@
 				A18DF278293358770073A01F /* ChoreRepositoryImpl.swift in Sources */,
 				A12095F528FD9427008CE410 /* MainTabBarCoordinator.swift in Sources */,
 				A17893B6292A2AD7007893FB /* SelectCategoryCell.swift in Sources */,
+				A15CAC652971941300705CAB /* DobbyCoreData.xcdatamodeld in Sources */,
 				A18DF27A293358C30073A01F /* ChoreDTO.swift in Sources */,
 				A12095EB28F2E010008CE410 /* RefreshAuthAPI.swift in Sources */,
 				A11C86B02962FD6E00D54F5E /* AlarmRepository.swift in Sources */,
@@ -1719,7 +1720,6 @@
 				A1789353291A912A007893FB /* UserDTO.swift in Sources */,
 				A178935F291E8E2B007893FB /* DateSelectCollectionCell.swift in Sources */,
 				A178938A2928CC94007893FB /* GroupRepository.swift in Sources */,
-				A122FCC22965AD9A0093F58E /* CoreDataCloud.xcdatamodeld in Sources */,
 				A1789365291FAF67007893FB /* DateListSection.swift in Sources */,
 				A19E9854291152AB004A8861 /* EditProfileViewController.swift in Sources */,
 				A178939C292A06F9007893FB /* CategoryUseCase.swift in Sources */,
@@ -2341,13 +2341,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		A122FCC02965AD9A0093F58E /* CoreDataCloud.xcdatamodeld */ = {
+		A15CAC632971941300705CAB /* DobbyCoreData.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				A122FCC12965AD9A0093F58E /* CoreDataCloud.xcdatamodel */,
+				A15CAC642971941300705CAB /* DobbyCoreData.xcdatamodel */,
 			);
-			currentVersion = A122FCC12965AD9A0093F58E /* CoreDataCloud.xcdatamodel */;
-			path = CoreDataCloud.xcdatamodeld;
+			currentVersion = A15CAC642971941300705CAB /* DobbyCoreData.xcdatamodel */;
+			path = DobbyCoreData.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

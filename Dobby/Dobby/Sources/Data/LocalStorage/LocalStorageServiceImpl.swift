@@ -14,8 +14,8 @@ class LocalStorageServiceImpl {
     static let shared = LocalStorageServiceImpl()
     
     // MARK: Core Data stack
-    private lazy var persistentContainer: NSPersistentCloudKitContainer = {
-        let container = NSPersistentCloudKitContainer(name: "CoreDataCloud")
+    private lazy var persistentContainer: NSPersistentContainer = {
+        let container = NSPersistentContainer(name: "DobbyCoreData")
         container.loadPersistentStores(completionHandler: { (_, error) in
             if let error = error as NSError? {
                 fatalError("loadPersistentStores error \(error), \(error.userInfo)")
@@ -66,7 +66,10 @@ class LocalStorageServiceImpl {
     // MARK: Handling SettingInfo
     @discardableResult
     func saveSettingInfo(_ settingInfo: SettingInfoDTO) -> Bool {
-        let entity = NSEntityDescription.entity(forEntityName: "SettingInfo", in: self.context)
+        let entity = NSEntityDescription.entity(
+            forEntityName: "Settings",
+            in: self.context
+        )
         if let entity = entity {
             let managedObject = NSManagedObject(entity: entity, insertInto: self.context)
             managedObject.setValue(settingInfo.alarmOnOff, forKey: LocalKey.alarmOnOff.rawValue)
@@ -91,7 +94,7 @@ class LocalStorageServiceImpl {
     }
     
     func fetchSettingInfo() -> SettingInfoDTO? {
-        let request: NSFetchRequest<SettingInfo> = SettingInfo.fetchRequest()
+        let request: NSFetchRequest<Settings> = Settings.fetchRequest()
         if let fetchResult = self.fetch(request: request).last {
             return SettingInfoDTO(
                 accessToken: fetchResult.accessToken,
@@ -131,7 +134,7 @@ extension LocalStorageServiceImpl: LocalStorageService {
             alarmTime: key == .alarmTime ? value : currentInfo?.alarmTime,
             userInfo: currentInfo?.userInfo
         )
-        let request = SettingInfo.fetchRequest()
+        let request = Settings.fetchRequest()
         if self.deleteAll(request: request) {
             self.saveSettingInfo(newSettingInfo)
         }
@@ -146,7 +149,7 @@ extension LocalStorageServiceImpl: LocalStorageService {
             alarmTime: key == .alarmTime ? "" : currentInfo.alarmTime,
             userInfo: currentInfo.userInfo
         )
-        let request = SettingInfo.fetchRequest()
+        let request = Settings.fetchRequest()
         if self.deleteAll(request: request) {
             self.saveSettingInfo(updateSettingInfo)
         }
@@ -165,7 +168,7 @@ extension LocalStorageServiceImpl: LocalStorageService {
             alarmTime: currentInfo.alarmTime,
             userInfo: encodedUser
         )
-        let request = SettingInfo.fetchRequest()
+        let request = Settings.fetchRequest()
         if self.deleteAll(request: request) {
             self.saveSettingInfo(updateSettingInfo)
         }
@@ -182,7 +185,7 @@ extension LocalStorageServiceImpl: LocalStorageService {
     }
     
     func clear() {
-        let request = SettingInfo.fetchRequest()
+        let request = Settings.fetchRequest()
         self.deleteAll(request: request)
     }
 }

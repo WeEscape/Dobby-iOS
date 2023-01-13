@@ -18,8 +18,15 @@ class WKExtensionDelegator: NSObject, WKExtensionDelegate {
     
     func applicationDidBecomeActive() {
         let receiveData = WCSession.default.receivedApplicationContext
+        print("debug : applicationDidBecomeActive")
         if receiveData.isEmpty == false {
-            
+            print(receiveData)
+            if let access = receiveData[LocalKey.accessToken.rawValue] as? String {
+                print("debug : write access -> \(access)")
+                self.localStorage.write(key: .accessToken, value: access)
+            }
+        } else {
+            print("debug : no receiveData")
         }
     }
 }
