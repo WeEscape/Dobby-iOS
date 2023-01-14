@@ -19,13 +19,19 @@ struct DailyChoreView: View {
         VStack {
             DailyChoreHeaderView(viewModel: viewModel)
             
-            ScrollView(.vertical) {
-                VStack(alignment: .leading, spacing: 5) {
-                    ForEach(viewModel.currentChoreList, id: \.choreId) { chore in
-                        DailyChoreRowView(
-                            chore: chore,
-                            viewModel: viewModel
-                        )
+            if viewModel.currentChoreList.isEmpty {
+                Text("집안일이 없습니다.")
+                    .foregroundColor(.white)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+            } else {
+                ScrollView(.vertical) {
+                    VStack(alignment: .leading, spacing: 5) {
+                        ForEach(viewModel.currentChoreList, id: \.choreId) { chore in
+                            DailyChoreRowView(
+                                chore: chore,
+                                viewModel: viewModel
+                            )
+                        }
                     }
                 }
             }
@@ -33,7 +39,7 @@ struct DailyChoreView: View {
         .navigationBarTitleDisplayMode(.inline)
         .navigationTitle("집안일 현황")
         .onAppear(perform: {
-            viewModel.getChoreList(of: Date())
+            viewModel.getChoreList()
         })
     }
 }

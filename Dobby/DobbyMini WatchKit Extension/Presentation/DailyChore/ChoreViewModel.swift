@@ -25,8 +25,7 @@ class ChoreViewModel: ObservableObject {
         self.userUseCase = userUseCase
     }
     
-    func getChoreList(of date: Date) {
-        currentDate = date
+    func getChoreList() {
         self.userUseCase.getMyInfo()
             .flatMap { [weak self] myinfo -> Observable<[Chore]> in
                 guard let self = self,
@@ -43,7 +42,7 @@ class ChoreViewModel: ObservableObject {
             .subscribe(onNext: { [weak self] choreList in
                 guard let self = self else {return}
                 self.currentChoreList = choreList
-            }, onError: { err in
+            }, onError: { _ in
                 // 앱 재로그인 안내
             }).disposed(by: self.disposeBag)
     }
