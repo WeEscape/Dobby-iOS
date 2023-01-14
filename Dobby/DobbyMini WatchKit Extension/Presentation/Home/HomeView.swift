@@ -35,7 +35,9 @@ struct HomeView: View {
                         .buttonStyle(.plain)
                         
                         NavigationLink(
-                            destination: MyPageView(),
+                            destination: MyPageView(
+                                viewModel: DIContainer.shared.resolve(MyPageViewModel.self)
+                            ),
                             label: {
                                 NavButton(
                                     image: "profile",

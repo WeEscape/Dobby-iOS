@@ -101,6 +101,7 @@
 		A14D5B142972E1E100C72F35 /* Notification+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14D5B132972E1E100C72F35 /* Notification+.swift */; };
 		A14D5B152972E20B00C72F35 /* Notification+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14D5B132972E1E100C72F35 /* Notification+.swift */; };
 		A14D5B192972E82A00C72F35 /* ShouldReLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14D5B182972E82A00C72F35 /* ShouldReLoginView.swift */; };
+		A14D5B1B2972F92700C72F35 /* MyPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14D5B1A2972F92700C72F35 /* MyPageViewModel.swift */; };
 		A15CAC5A2970336E00705CAB /* WKExtensionDelegator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15CAC592970336E00705CAB /* WKExtensionDelegator.swift */; };
 		A15CAC5B2970349B00705CAB /* LocalStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13C536E28E94D0500C72215 /* LocalStorageService.swift */; };
 		A15CAC5D297034A500705CAB /* LocalStorageServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10664A6296BCA2A004466A5 /* LocalStorageServiceImpl.swift */; };
@@ -382,6 +383,7 @@
 		A14D5AF52972A3FD00C72F35 /* DailyChoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyChoreView.swift; sourceTree = "<group>"; };
 		A14D5B132972E1E100C72F35 /* Notification+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+.swift"; sourceTree = "<group>"; };
 		A14D5B182972E82A00C72F35 /* ShouldReLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShouldReLoginView.swift; sourceTree = "<group>"; };
+		A14D5B1A2972F92700C72F35 /* MyPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewModel.swift; sourceTree = "<group>"; };
 		A15CAC592970336E00705CAB /* WKExtensionDelegator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WKExtensionDelegator.swift; sourceTree = "<group>"; };
 		A15CAC612970434E00705CAB /* DobbyMini WatchKit Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "DobbyMini WatchKit Extension.entitlements"; sourceTree = "<group>"; };
 		A15CAC642971941300705CAB /* DobbyCoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DobbyCoreData.xcdatamodel; sourceTree = "<group>"; };
@@ -952,6 +954,7 @@
 			isa = PBXGroup;
 			children = (
 				A15CAC7429729CCB00705CAB /* MyPageView.swift */,
+				A14D5B1A2972F92700C72F35 /* MyPageViewModel.swift */,
 			);
 			path = MyPage;
 			sourceTree = "<group>";
@@ -1838,6 +1841,7 @@
 				A14D5B112972DC4800C72F35 /* CustomError.swift in Sources */,
 				A14D5AEE2972A39400C72F35 /* ChoreViewModel.swift in Sources */,
 				A15CAC702972980D00705CAB /* HomeView.swift in Sources */,
+				A14D5B1B2972F92700C72F35 /* MyPageViewModel.swift in Sources */,
 				A14D5B142972E1E100C72F35 /* Notification+.swift in Sources */,
 				A14D5B022972A55900C72F35 /* ChoreListDTO.swift in Sources */,
 				A14D5AFE2972A52B00C72F35 /* ChoreDTO.swift in Sources */,

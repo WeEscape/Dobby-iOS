@@ -37,7 +37,6 @@ class DIContainer {
             )
         }.inObjectScope(.container)
         
-        
         // MARK: register UseCase
         container.register(ChoreUseCase.self) { resolver in
             return ChoreUseCaseImpl(
@@ -55,6 +54,12 @@ class DIContainer {
         container.register(ChoreViewModel.self) { resolver in
             return ChoreViewModel(
                 choreUseCase: resolver.resolve(ChoreUseCase.self)!,
+                userUseCase: resolver.resolve(UserUseCase.self)!
+            )
+        }.inObjectScope(.container)
+        
+        container.register(MyPageViewModel.self) { resolver in
+            return MyPageViewModel(
                 userUseCase: resolver.resolve(UserUseCase.self)!
             )
         }.inObjectScope(.container)

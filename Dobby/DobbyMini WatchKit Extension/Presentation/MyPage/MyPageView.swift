@@ -10,11 +10,18 @@ import SwiftUI
 struct MyPageView: View {
     
     @Environment(\.presentationMode) var presentationMode
+    @ObservedObject var viewModel: MyPageViewModel
     
     var body: some View {
         VStack {
             Text("MyPageView")
                 .foregroundColor(.green)
+            
+            // profile Imge
+            
+            // name
+            
+            // groupCode
         }
         .navigationBarTitleDisplayMode(.inline)
         .navigationTitle("마이페이지")
@@ -29,6 +36,6 @@ struct MyPageView: View {
 
 struct MyPageView_Previews: PreviewProvider {
     static var previews: some View {
-        MyPageView()
+        HomeView()
     }
 }
