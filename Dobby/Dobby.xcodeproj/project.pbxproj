@@ -39,7 +39,7 @@
 		A1373FA4296C2D2400DE4354 /* DobbyMiniTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1373FA3296C2D2400DE4354 /* DobbyMiniTests.swift */; };
 		A1373FAE296C2D2400DE4354 /* DobbyMiniUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1373FAD296C2D2400DE4354 /* DobbyMiniUITests.swift */; };
 		A1373FB0296C2D2400DE4354 /* DobbyMiniUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1373FAF296C2D2400DE4354 /* DobbyMiniUITestsLaunchTests.swift */; };
-		A1373FB3296C2D2400DE4354 /* DobbyMini.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = A1373F7D296C2D2000DE4354 /* DobbyMini.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		A1373FB3296C2D2400DE4354 /* DOBBY.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = A1373F7D296C2D2000DE4354 /* DOBBY.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		A13C531128E7129D00C72215 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13C531028E7129D00C72215 /* AppDelegate.swift */; };
 		A13C531328E7129D00C72215 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13C531228E7129D00C72215 /* SceneDelegate.swift */; };
 		A13C531A28E7129E00C72215 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A13C531928E7129E00C72215 /* Assets.xcassets */; };
@@ -287,7 +287,7 @@
 			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
 			dstSubfolderSpec = 16;
 			files = (
-				A1373FB3296C2D2400DE4354 /* DobbyMini.app in Embed Watch Content */,
+				A1373FB3296C2D2400DE4354 /* DOBBY.app in Embed Watch Content */,
 			);
 			name = "Embed Watch Content";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -337,7 +337,7 @@
 		A12095FC2901669B008CE410 /* Palette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Palette.swift; sourceTree = "<group>"; };
 		A12095FE2901680F008CE410 /* DobbyFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DobbyFont.swift; sourceTree = "<group>"; };
 		A122FCC32965AE5B0093F58E /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
-		A1373F7D296C2D2000DE4354 /* DobbyMini.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DobbyMini.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A1373F7D296C2D2000DE4354 /* DOBBY.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DOBBY.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1373F7F296C2D2200DE4354 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A1373F85296C2D2200DE4354 /* DobbyMini WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "DobbyMini WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1373F8A296C2D2200DE4354 /* DobbyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DobbyApp.swift; sourceTree = "<group>"; };
@@ -682,7 +682,7 @@
 				A13C530D28E7129D00C72215 /* Dobby.app */,
 				A13C532328E7129E00C72215 /* DobbyTests.xctest */,
 				A13C532D28E7129F00C72215 /* DobbyUITests.xctest */,
-				A1373F7D296C2D2000DE4354 /* DobbyMini.app */,
+				A1373F7D296C2D2000DE4354 /* DOBBY.app */,
 				A1373F85296C2D2200DE4354 /* DobbyMini WatchKit Extension.appex */,
 				A1373F9F296C2D2400DE4354 /* DobbyMiniTests.xctest */,
 				A1373FA9296C2D2400DE4354 /* DobbyMiniUITests.xctest */,
@@ -1318,7 +1318,7 @@
 			);
 			name = DobbyMini;
 			productName = DobbyMini;
-			productReference = A1373F7D296C2D2000DE4354 /* DobbyMini.app */;
+			productReference = A1373F7D296C2D2000DE4354 /* DOBBY.app */;
 			productType = "com.apple.product-type.application.watchapp2";
 		};
 		A1373F84296C2D2200DE4354 /* DobbyMini WatchKit Extension */ = {
@@ -2115,18 +2115,17 @@
 				DEVELOPMENT_TEAM = YB8GA5MLV5;
 				GENERATE_INFOPLIST_FILE = YES;
 				IBSC_MODULE = DobbyMini_WatchKit_Extension;
-				INFOPLIST_KEY_CFBundleDisplayName = DobbyMini;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = yongmin.Dobby;
 				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = yongmin.Dobby.watchkitapp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = DOBBY;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 9.0;
+				WATCHOS_DEPLOYMENT_TARGET = 9.1;
 			};
 			name = Debug;
 		};
@@ -2143,18 +2142,17 @@
 				DEVELOPMENT_TEAM = YB8GA5MLV5;
 				GENERATE_INFOPLIST_FILE = YES;
 				IBSC_MODULE = DobbyMini_WatchKit_Extension;
-				INFOPLIST_KEY_CFBundleDisplayName = DobbyMini;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = yongmin.Dobby;
 				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = yongmin.Dobby.watchkitapp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = DOBBY;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 9.0;
+				WATCHOS_DEPLOYMENT_TARGET = 9.1;
 			};
 			name = Release;
 		};
@@ -2188,7 +2186,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 9.0;
+				WATCHOS_DEPLOYMENT_TARGET = 9.1;
 			};
 			name = Debug;
 		};
@@ -2222,7 +2220,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 9.0;
+				WATCHOS_DEPLOYMENT_TARGET = 9.1;
 			};
 			name = Release;
 		};
@@ -2245,7 +2243,7 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DobbyMini WatchKit Extension.appex/DobbyMini WatchKit Extension";
-				WATCHOS_DEPLOYMENT_TARGET = 9.0;
+				WATCHOS_DEPLOYMENT_TARGET = 9.1;
 			};
 			name = Debug;
 		};
@@ -2268,7 +2266,7 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DobbyMini WatchKit Extension.appex/DobbyMini WatchKit Extension";
-				WATCHOS_DEPLOYMENT_TARGET = 9.0;
+				WATCHOS_DEPLOYMENT_TARGET = 9.1;
 			};
 			name = Release;
 		};
@@ -2289,7 +2287,7 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				TEST_TARGET_NAME = DobbyMini;
-				WATCHOS_DEPLOYMENT_TARGET = 9.0;
+				WATCHOS_DEPLOYMENT_TARGET = 9.1;
 			};
 			name = Debug;
 		};
@@ -2310,7 +2308,7 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				TEST_TARGET_NAME = DobbyMini;
-				WATCHOS_DEPLOYMENT_TARGET = 9.0;
+				WATCHOS_DEPLOYMENT_TARGET = 9.1;
 			};
 			name = Release;
 		};
