@@ -21,7 +21,7 @@ protocol AuthenticationRepository {
     func resign() -> Observable<Void>
     
     // authToken
-    func readToken(tokenOption: TokenOption) -> Observable<Authentication>
+    func readToken() -> [String]
     func writeToken(authentication: Authentication)
     func removeToken(tokenOption: TokenOption)
 }
