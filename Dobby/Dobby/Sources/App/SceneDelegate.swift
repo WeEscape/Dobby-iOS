@@ -41,7 +41,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
            let lastUpdateTime = self.localStorage.read(key: .lastUpdateAt)?
             .toDate(dateFormat: "yyyy-MM-dd HH:mm:ss") {
             
-            if receiveTime > lastUpdateTime  {
+            if receiveTime > lastUpdateTime {
                 // watch app 토큰이 더 최신인경우 -> ios 토큰 갱신
                 if let access = receiveData[LocalKey.accessToken.rawValue] as? String {
                     self.localStorage.write(key: .accessToken, value: access)
@@ -57,7 +57,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 let context: [String: String] = [
                     LocalKey.accessToken.rawValue: access,
                     LocalKey.refreshToken.rawValue: refresh,
-                    LocalKey.lastUpdateAt.rawValue: Date().toStringWithFormat("yyyy-MM-dd HH:mm:ss")
+                    LocalKey.lastUpdateAt.rawValue: Date()
+                        .toStringWithFormat("yyyy-MM-dd HH:mm:ss")
                 ]
                 try? WCSession.default.updateApplicationContext(context)
             }

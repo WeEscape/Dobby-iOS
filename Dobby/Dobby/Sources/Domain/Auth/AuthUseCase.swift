@@ -81,12 +81,12 @@ final class AuthUseCaseImpl: AuthUseCase {
     
     func writeToken(authentication: Authentication) {
         self.authenticationRepository.writeToken(authentication: authentication)
+        self.updateWatchToken()
     }
     
     func removeToken(tokenOption: TokenOption) {
         self.authenticationRepository.removeToken(tokenOption: tokenOption)
-        let context = self.createTokenContext()
-        try? WCSession.default.updateApplicationContext(context)
+        self.updateWatchToken()
     }
     
     func createTokenContext() -> [String: String] {
@@ -97,5 +97,10 @@ final class AuthUseCaseImpl: AuthUseCase {
             LocalKey.lastUpdateAt.rawValue: Date().toStringWithFormat("yyyy-MM-dd HH:mm:ss")
         ]
         return ret
+    }
+    
+    func updateWatchToken() {
+        let context = self.createTokenContext()
+        try? WCSession.default.updateApplicationContext(context)
     }
 }

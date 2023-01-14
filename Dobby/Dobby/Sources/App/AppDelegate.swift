@@ -139,7 +139,7 @@ extension AppDelegate: WCSessionDelegate {
            let lastUpdateTime = self.localStorage.read(key: .lastUpdateAt)?
             .toDate(dateFormat: "yyyy-MM-dd HH:mm:ss") {
             
-            if receiveTime > lastUpdateTime  {
+            if receiveTime > lastUpdateTime {
                 // watch app 토큰이 더 최신인경우 -> ios 토큰 갱신
                 if let access = applicationContext[LocalKey.accessToken.rawValue] as? String {
                     self.localStorage.write(key: .accessToken, value: access)
