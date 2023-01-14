@@ -25,9 +25,9 @@ struct MyPageView: View {
         }
         .navigationBarTitleDisplayMode(.inline)
         .navigationTitle("마이페이지")
-        .onAppear(perform: {
-            print("onAppear MyPageView ")
-        })
+        .task {
+            viewModel.getMyInfo()
+        }
         .onReceive(NotificationCenter.default.publisher(for: .shouldReLogin)) { _ in
             self.presentationMode.wrappedValue.dismiss()
         }

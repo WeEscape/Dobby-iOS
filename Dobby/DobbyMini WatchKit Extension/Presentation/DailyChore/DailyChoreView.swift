@@ -39,9 +39,9 @@ struct DailyChoreView: View {
         }
         .navigationBarTitleDisplayMode(.inline)
         .navigationTitle("집안일 현황")
-        .onAppear(perform: {
+        .task {
             viewModel.getChoreList()
-        })
+        }
         .onReceive(NotificationCenter.default.publisher(for: .shouldReLogin)) { _ in
             self.presentationMode.wrappedValue.dismiss()
         }
