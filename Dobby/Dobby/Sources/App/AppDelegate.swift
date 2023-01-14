@@ -19,6 +19,7 @@ let BeaverLog = SwiftyBeaver.self
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var rootCoordinator: RootCoordinator?
+    let localStorage = LocalStorageServiceImpl.shared
     
     func application(
         _ application: UIApplication,
@@ -130,8 +131,23 @@ extension AppDelegate: WCSessionDelegate {
     
     func session(
         _ session: WCSession,
-        didReceiveApplicationContext applicationContext: [String : Any]
+        didReceiveApplicationContext applicationContext: [String: Any]
     ) {
-        // token update
+        if applicationContext.isEmpty == false,
+           let receiveTimeStr = applicationContext[LocalKey.lastUpdateAt.rawValue] as? String,
+           let receiveTime = receiveTimeStr.toDate(dateFormat: "yyyy-MM-dd HH:mm:ss"),
+           let lastUpdateTime = self.localStorage.read(key: .lastUpdateAt)?
+            .toDate(dateFormat: "yyyy-MM-dd HH:mm:ss") {
+            
+            if receiveTime > lastUpdateTime  {
+                // watch app 토큰이 더 최신인경우 -> ios 토큰 갱신
+                if let access = applicationContext[LocalKey.accessToken.rawValue] as? String {
+                    self.localStorage.write(key: .accessToken, value: access)
+                }
+                if let refresh = applicationContext[LocalKey.refreshToken.rawValue] as? String {
+                    self.localStorage.write(key: .refreshToken, value: refresh)
+                }
+            }
+        }
     }
 }

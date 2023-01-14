@@ -12,6 +12,7 @@ import WatchConnectivity
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     var window: UIWindow?
+    let localStorage = LocalStorageServiceImpl.shared
     
     func scene(
         _ scene: UIScene,
@@ -34,10 +35,32 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         UIApplication.shared.applicationIconBadgeNumber = 0
         
         let receiveData = WCSession.default.receivedApplicationContext
-        if receiveData.isEmpty == false {
+        if receiveData.isEmpty == false,
+           let receiveTimeStr = receiveData[LocalKey.lastUpdateAt.rawValue] as? String,
+           let receiveTime = receiveTimeStr.toDate(dateFormat: "yyyy-MM-dd HH:mm:ss"),
+           let lastUpdateTime = self.localStorage.read(key: .lastUpdateAt)?
+            .toDate(dateFormat: "yyyy-MM-dd HH:mm:ss") {
             
-        } else {
-            
+            if receiveTime > lastUpdateTime  {
+                // watch app 토큰이 더 최신인경우 -> ios 토큰 갱신
+                if let access = receiveData[LocalKey.accessToken.rawValue] as? String {
+                    self.localStorage.write(key: .accessToken, value: access)
+                }
+                if let refresh = receiveData[LocalKey.refreshToken.rawValue] as? String {
+                    self.localStorage.write(key: .refreshToken, value: refresh)
+                }
+            } else {
+                // ios 토큰이 더 최신인경우 -> watch 토큰 갱신
+                guard let access = self.localStorage.read(key: .accessToken),
+                      let refresh = self.localStorage.read(key: .refreshToken)
+                else {return}
+                let context: [String: String] = [
+                    LocalKey.accessToken.rawValue: access,
+                    LocalKey.refreshToken.rawValue: refresh,
+                    LocalKey.lastUpdateAt.rawValue: Date().toStringWithFormat("yyyy-MM-dd HH:mm:ss")
+                ]
+                try? WCSession.default.updateApplicationContext(context)
+            }
         }
     }
     
