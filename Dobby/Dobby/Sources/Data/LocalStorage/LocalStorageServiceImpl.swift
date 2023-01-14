@@ -147,7 +147,7 @@ extension LocalStorageServiceImpl: LocalStorageService {
             refreshToken: key == .refreshToken ? "" : currentInfo.refreshToken,
             alarmOnOff: key == .alarmOnOff ? "" : currentInfo.alarmOnOff,
             alarmTime: key == .alarmTime ? "" : currentInfo.alarmTime,
-            userInfo: currentInfo.userInfo
+            userInfo: key == .userInfo ? nil : currentInfo.userInfo
         )
         let request = Settings.fetchRequest()
         if self.deleteAll(request: request) {
