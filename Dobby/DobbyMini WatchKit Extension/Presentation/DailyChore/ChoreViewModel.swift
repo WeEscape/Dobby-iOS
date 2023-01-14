@@ -27,11 +27,12 @@ class ChoreViewModel: ObservableObject {
     
     func getChoreList() {
         self.userUseCase.getMyInfo()
-            .flatMap { [weak self] myinfo -> Observable<[Chore]> in
+            .flatMapLatest { [weak self] myinfo -> Observable<[Chore]> in
                 guard let self = self,
                       let userId = myinfo.userId,
                       let groupId = myinfo.groupList?.last?.groupId
                 else {return .error(CustomError.init())}
+                self.userUseCase.saveUserInfoInLocalStorage(user: myinfo)
                 return self.choreUseCase.getChores(
                     userId: userId,
                     groupId: groupId,
@@ -42,7 +43,8 @@ class ChoreViewModel: ObservableObject {
             .subscribe(onNext: { [weak self] choreList in
                 guard let self = self else {return}
                 self.currentChoreList = choreList
-            }, onError: { _ in
+            }, onError: { [weak self] _ in
+                self?.userUseCase.removeUserInfoInLocalStorage()
                 DispatchQueue.main.async {
                     NotificationCenter.default.post(name: .shouldReLogin, object: nil)
                 }
@@ -50,10 +52,38 @@ class ChoreViewModel: ObservableObject {
     }
     
     func didTapEndToggle(_ chore: Chore) {
-        print("debug : didTapEndToggle -> \(chore.title)")
+        self.userUseCase.getMyInfo()
+            .flatMapLatest { [weak self] myinfo -> Observable<Void> in
+                guard let self = self,
+                      let userId = myinfo.userId,
+                      let isEnd = chore.ownerList?.filter({ owner in
+                          owner.userId == userId
+                      }).last?.isEnd
+                else {return .error(CustomError.init())}
+                return self.choreUseCase.finishChore(
+                    chore: chore,
+                    userId: userId,
+                    isEnd: !(isEnd == 1)
+                )
+            }
+            .subscribe(onNext: { [weak self] _ in
+                self?.getChoreList()
+            }, onError: { [weak self] _ in
+                self?.userUseCase.removeUserInfoInLocalStorage()
+                DispatchQueue.main.async {
+                    NotificationCenter.default.post(name: .shouldReLogin, object: nil)
+                }
+            }).disposed(by: self.disposeBag)
     }
     
     func didTapDelete(_ chore: Chore) {
-        print("debug : didTapDelete -> \(chore.title)")
+        self.choreUseCase.deleteChore(chore: chore)
+            .subscribe(onNext: { [weak self] _ in
+                self?.getChoreList()
+            }, onError: { _ in
+                DispatchQueue.main.async {
+                    NotificationCenter.default.post(name: .shouldReLogin, object: nil)
+                }
+            }).disposed(by: self.disposeBag)
     }
 }

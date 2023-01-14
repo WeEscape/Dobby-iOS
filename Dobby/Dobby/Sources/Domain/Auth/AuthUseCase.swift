@@ -100,7 +100,9 @@ final class AuthUseCaseImpl: AuthUseCase {
     }
     
     func updateWatchToken() {
+#if os(iOS)
         let context = self.createTokenContext()
         try? WCSession.default.updateApplicationContext(context)
+#endif
     }
 }
