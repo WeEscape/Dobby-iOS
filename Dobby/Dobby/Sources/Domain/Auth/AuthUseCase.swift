@@ -7,6 +7,7 @@
 
 import Foundation
 import RxSwift
+import WatchConnectivity
 
 protocol AuthUseCase {
     // oauth
@@ -79,14 +80,16 @@ final class AuthUseCaseImpl: AuthUseCase {
     }
     
     func writeToken(authentication: Authentication) {
-        return self.authenticationRepository.writeToken(authentication: authentication)
+        self.authenticationRepository.writeToken(authentication: authentication)
     }
     
     func removeToken(tokenOption: TokenOption) {
-        return self.authenticationRepository.removeToken(tokenOption: tokenOption)
+        self.authenticationRepository.removeToken(tokenOption: tokenOption)
+        let context = self.createTokenContext()
+        try? WCSession.default.updateApplicationContext(context)
     }
     
-    func createTokenContext() -> [String : String] {
+    func createTokenContext() -> [String: String] {
         let tokenList = self.authenticationRepository.readToken()
         let ret: [String: String] = [
             LocalKey.accessToken.rawValue: tokenList.first ?? "",
