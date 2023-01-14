@@ -23,6 +23,7 @@ protocol AuthUseCase {
     func readToken() -> Observable<Authentication>
     func writeToken(authentication: Authentication)
     func removeToken(tokenOption: TokenOption)
+    func createTokenContext() -> [String: String]
 }
 
 final class AuthUseCaseImpl: AuthUseCase {
@@ -83,5 +84,15 @@ final class AuthUseCaseImpl: AuthUseCase {
     
     func removeToken(tokenOption: TokenOption) {
         return self.authenticationRepository.removeToken(tokenOption: tokenOption)
+    }
+    
+    func createTokenContext() -> [String : String] {
+        let tokenList = self.authenticationRepository.readToken()
+        let ret: [String: String] = [
+            LocalKey.accessToken.rawValue: tokenList.first ?? "",
+            LocalKey.refreshToken.rawValue: tokenList.last ?? "",
+            LocalKey.lastUpdateAt.rawValue: Date().toStringWithFormat("yyyy-MM-dd HH:mm:ss")
+        ]
+        return ret
     }
 }
