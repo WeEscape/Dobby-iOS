@@ -10,7 +10,9 @@ target 'Dobby' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
 
-  # Reactive X
+  # Pods for Dobby
+
+  # RX
   pod 'RxCocoa'
   pod 'RxDataSources'
   pod 'RxOptional'
@@ -28,6 +30,7 @@ target 'Dobby' do
   
   # Network
   pod 'Moya/RxSwift'
+  pod 'Moya/Combine'
   
   # Logging
   pod 'SwiftyBeaver'
@@ -51,5 +54,43 @@ target 'Dobby' do
   target 'DobbyUITests' do
     # Pods for testing
   end
+
+end
+
+target 'DobbyMini' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for DobbyMini
+
+  target 'DobbyMiniTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+  target 'DobbyMiniUITests' do
+    # Pods for testing
+  end
+
+end
+
+target 'DobbyMini WatchKit Extension' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for DobbyMini WatchKit Extension
+
+  # Dependency Injection
+  pod 'Swinject'
+
+  # RX
+  pod 'RxSwift'
+
+  # Network
+  pod 'Moya/RxSwift'
+  pod 'Moya/Combine'
+  
+  # Logging
+  pod 'SwiftyBeaver'
 
 end
