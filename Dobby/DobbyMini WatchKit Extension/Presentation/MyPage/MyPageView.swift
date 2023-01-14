@@ -14,14 +14,39 @@ struct MyPageView: View {
     
     var body: some View {
         VStack {
-            Text("MyPageView")
-                .foregroundColor(.green)
-            
-            // profile Imge
-            
-            // name
-            
-            // groupCode
+            ScrollView(.vertical) {
+                VStack(spacing: 8) {
+                    // profile Imge
+                    HStack(alignment: .center) {
+                        AsyncImage(url: URL(string: viewModel.profileUrl)) { img in
+                            img.resizable()
+                        } placeholder: {
+                            Rectangle()
+                                .foregroundColor(.gray)
+                        }
+                        .cornerRadius(10)
+                        .frame(width: 50, height: 50)
+
+                    }
+                    .frame(height: 50)
+                    .frame(maxWidth: .infinity)
+                    
+                    // name
+                    Text(viewModel.userName)
+                        .font(.title2)
+                        .fontWeight(.bold)
+                        .foregroundColor(.white)
+                        .frame(maxWidth: .infinity)
+                    
+                    // groupCode
+                    Text(viewModel.groupCode)
+                        .font(.body)
+                        .fontWeight(.medium)
+                        .foregroundColor(.gray)
+                        .frame(maxWidth: .infinity)
+                }
+                .padding(.top, 20)
+            }
         }
         .navigationBarTitleDisplayMode(.inline)
         .navigationTitle("마이페이지")

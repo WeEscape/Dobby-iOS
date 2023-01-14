@@ -37,6 +37,12 @@ class DIContainer {
             )
         }.inObjectScope(.container)
         
+        container.register(GroupRepository.self) { _ in
+            return GroupRepositoryImpl(
+                network: NetworkServiceImpl.shared
+            )
+        }.inObjectScope(.container)
+        
         // MARK: register UseCase
         container.register(ChoreUseCase.self) { resolver in
             return ChoreUseCaseImpl(
@@ -50,6 +56,12 @@ class DIContainer {
             )
         }.inObjectScope(.container)
         
+        container.register(GroupUseCase.self) { resolver in
+            return GroupUseCaseImpl(
+                groupRepository: resolver.resolve(GroupRepository.self)!
+            )
+        }.inObjectScope(.container)
+        
         // MARK: register viewModel
         container.register(ChoreViewModel.self) { resolver in
             return ChoreViewModel(
@@ -60,7 +72,8 @@ class DIContainer {
         
         container.register(MyPageViewModel.self) { resolver in
             return MyPageViewModel(
-                userUseCase: resolver.resolve(UserUseCase.self)!
+                userUseCase: resolver.resolve(UserUseCase.self)!,
+                groupUseCase: resolver.resolve(GroupUseCase.self)!
             )
         }.inObjectScope(.container)
         

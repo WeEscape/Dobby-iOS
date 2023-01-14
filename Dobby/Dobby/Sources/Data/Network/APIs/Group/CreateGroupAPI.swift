@@ -21,7 +21,7 @@ struct CreateGroupAPI: BaseAPI {
     var task: Moya.Task {
         return .requestParameters(
             parameters: [
-                "group_title": Date().toString()
+                "group_title": "\(Int(Date().timeIntervalSince1970))"
             ],
             encoding: JSONEncoding.default
         )

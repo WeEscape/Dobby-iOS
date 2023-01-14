@@ -102,6 +102,14 @@
 		A14D5B152972E20B00C72F35 /* Notification+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14D5B132972E1E100C72F35 /* Notification+.swift */; };
 		A14D5B192972E82A00C72F35 /* ShouldReLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14D5B182972E82A00C72F35 /* ShouldReLoginView.swift */; };
 		A14D5B1B2972F92700C72F35 /* MyPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14D5B1A2972F92700C72F35 /* MyPageViewModel.swift */; };
+		A14D5B1C2973068600C72F35 /* GroupUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17893872928CC87007893FB /* GroupUseCase.swift */; };
+		A14D5B1D2973068E00C72F35 /* GroupRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17893892928CC94007893FB /* GroupRepository.swift */; };
+		A14D5B1E297306A900C72F35 /* GroupRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A178938D2928CDCC007893FB /* GroupRepositoryImpl.swift */; };
+		A14D5B1F297306B400C72F35 /* GroupInfoAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17893902928CE95007893FB /* GroupInfoAPI.swift */; };
+		A14D5B20297306B700C72F35 /* GroupDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = A178938B2928CD3F007893FB /* GroupDTO.swift */; };
+		A14D5B21297306C500C72F35 /* CreateGroupAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17893922928D34E007893FB /* CreateGroupAPI.swift */; };
+		A14D5B22297306D300C72F35 /* LeaveGroupAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17893942929452A007893FB /* LeaveGroupAPI.swift */; };
+		A14D5B23297306DD00C72F35 /* JoinGroupAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A178939629299E52007893FB /* JoinGroupAPI.swift */; };
 		A15CAC5A2970336E00705CAB /* WKExtensionDelegator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15CAC592970336E00705CAB /* WKExtensionDelegator.swift */; };
 		A15CAC5B2970349B00705CAB /* LocalStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13C536E28E94D0500C72215 /* LocalStorageService.swift */; };
 		A15CAC5D297034A500705CAB /* LocalStorageServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10664A6296BCA2A004466A5 /* LocalStorageServiceImpl.swift */; };
@@ -1804,8 +1812,12 @@
 			files = (
 				A14D5B032972A56800C72F35 /* FinishChoreAPI.swift in Sources */,
 				A1373F8F296C2D2200DE4354 /* NotificationController.swift in Sources */,
+				A14D5B1C2973068600C72F35 /* GroupUseCase.swift in Sources */,
+				A14D5B1E297306A900C72F35 /* GroupRepositoryImpl.swift in Sources */,
 				A1373F8D296C2D2200DE4354 /* ContentView.swift in Sources */,
 				A14D5B192972E82A00C72F35 /* ShouldReLoginView.swift in Sources */,
+				A14D5B22297306D300C72F35 /* LeaveGroupAPI.swift in Sources */,
+				A14D5B21297306C500C72F35 /* CreateGroupAPI.swift in Sources */,
 				A15CAC5F297034AF00705CAB /* Group.swift in Sources */,
 				A15CAC60297034B500705CAB /* SettingInfoDTO.swift in Sources */,
 				A14D5B062972A5A400C72F35 /* NetworkLoggerPlugin.swift in Sources */,
@@ -1834,19 +1846,23 @@
 				A15CAC662971941300705CAB /* DobbyCoreData.xcdatamodeld in Sources */,
 				A14D5B0F2972D98900C72F35 /* MyInfoAPI.swift in Sources */,
 				A14D5B102972D98D00C72F35 /* UserDTO.swift in Sources */,
+				A14D5B1D2973068E00C72F35 /* GroupRepository.swift in Sources */,
 				A14D5AF22972A3CA00C72F35 /* DailyChoreRowView.swift in Sources */,
 				A1373F91296C2D2200DE4354 /* NotificationView.swift in Sources */,
 				A14D5AF92972A46200C72F35 /* ChoreUseCase.swift in Sources */,
 				A15CAC5A2970336E00705CAB /* WKExtensionDelegator.swift in Sources */,
 				A14D5B112972DC4800C72F35 /* CustomError.swift in Sources */,
 				A14D5AEE2972A39400C72F35 /* ChoreViewModel.swift in Sources */,
+				A14D5B20297306B700C72F35 /* GroupDTO.swift in Sources */,
 				A15CAC702972980D00705CAB /* HomeView.swift in Sources */,
 				A14D5B1B2972F92700C72F35 /* MyPageViewModel.swift in Sources */,
 				A14D5B142972E1E100C72F35 /* Notification+.swift in Sources */,
 				A14D5B022972A55900C72F35 /* ChoreListDTO.swift in Sources */,
+				A14D5B23297306DD00C72F35 /* JoinGroupAPI.swift in Sources */,
 				A14D5AFE2972A52B00C72F35 /* ChoreDTO.swift in Sources */,
 				A15CAC672972755300705CAB /* String+.swift in Sources */,
 				A14D5B0D2972D97400C72F35 /* UserRepository.swift in Sources */,
+				A14D5B1F297306B400C72F35 /* GroupInfoAPI.swift in Sources */,
 				A14D5B002972A53D00C72F35 /* BaseAPI.swift in Sources */,
 				A14D5AFF2972A53100C72F35 /* ChoreRepeatCycle.swift in Sources */,
 				A14D5B0C2972D95600C72F35 /* UserUseCase.swift in Sources */,
