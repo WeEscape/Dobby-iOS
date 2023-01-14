@@ -4,6 +4,7 @@
         <attribute name="accessToken" optional="YES" attributeType="String" defaultValueString=""/>
         <attribute name="alarmOnOff" optional="YES" attributeType="String" defaultValueString="0"/>
         <attribute name="alarmTime" optional="YES" attributeType="String" defaultValueString=""/>
+        <attribute name="lastUpdateAt" optional="YES" attributeType="String" defaultValueString=""/>
         <attribute name="refreshToken" optional="YES" attributeType="String" defaultValueString=""/>
         <attribute name="userInfo" optional="YES" attributeType="Binary"/>
     </entity>

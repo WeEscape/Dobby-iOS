@@ -13,6 +13,7 @@ enum LocalKey: String {
     case userInfo
     case alarmOnOff
     case alarmTime
+    case lastUpdateAt
 }
 
 protocol LocalStorageService: AnyObject {

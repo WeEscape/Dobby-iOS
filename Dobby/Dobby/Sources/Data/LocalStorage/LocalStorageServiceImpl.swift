@@ -83,6 +83,10 @@ class LocalStorageServiceImpl {
                 settingInfo.refreshToken,
                 forKey: LocalKey.refreshToken.rawValue
             )
+            managedObject.setValue(
+                settingInfo.lastUpdateAt,
+                forKey: LocalKey.lastUpdateAt.rawValue
+            )
             do {
                 try self.context.save()
                 return true
@@ -101,7 +105,8 @@ class LocalStorageServiceImpl {
                 refreshToken: fetchResult.refreshToken,
                 alarmOnOff: fetchResult.alarmOnOff,
                 alarmTime: fetchResult.alarmTime,
-                userInfo: fetchResult.userInfo
+                userInfo: fetchResult.userInfo,
+                lastUpdateAt: fetchResult.lastUpdateAt
             )
         }
         return nil
@@ -120,6 +125,8 @@ extension LocalStorageServiceImpl: LocalStorageService {
             return  settingInfo.alarmOnOff
         case .alarmTime:
             return settingInfo.alarmTime
+        case .lastUpdateAt:
+            return settingInfo.lastUpdateAt
         default:
             return nil
         }
@@ -132,7 +139,8 @@ extension LocalStorageServiceImpl: LocalStorageService {
             refreshToken: key == .refreshToken ? value : currentInfo?.refreshToken,
             alarmOnOff: key == .alarmOnOff ? value : currentInfo?.alarmOnOff,
             alarmTime: key == .alarmTime ? value : currentInfo?.alarmTime,
-            userInfo: currentInfo?.userInfo
+            userInfo: currentInfo?.userInfo,
+            lastUpdateAt: Date().toStringWithFormat("yyyy-MM-dd HH:mm:ss")
         )
         let request = Settings.fetchRequest()
         if self.deleteAll(request: request) {
@@ -147,7 +155,8 @@ extension LocalStorageServiceImpl: LocalStorageService {
             refreshToken: key == .refreshToken ? "" : currentInfo.refreshToken,
             alarmOnOff: key == .alarmOnOff ? "" : currentInfo.alarmOnOff,
             alarmTime: key == .alarmTime ? "" : currentInfo.alarmTime,
-            userInfo: key == .userInfo ? nil : currentInfo.userInfo
+            userInfo: key == .userInfo ? nil : currentInfo.userInfo,
+            lastUpdateAt: Date().toStringWithFormat("yyyy-MM-dd HH:mm:ss")
         )
         let request = Settings.fetchRequest()
         if self.deleteAll(request: request) {
@@ -166,7 +175,8 @@ extension LocalStorageServiceImpl: LocalStorageService {
             refreshToken: currentInfo.refreshToken,
             alarmOnOff: currentInfo.alarmOnOff,
             alarmTime: currentInfo.alarmTime,
-            userInfo: encodedUser
+            userInfo: encodedUser,
+            lastUpdateAt: Date().toStringWithFormat("yyyy-MM-dd HH:mm:ss")
         )
         let request = Settings.fetchRequest()
         if self.deleteAll(request: request) {
