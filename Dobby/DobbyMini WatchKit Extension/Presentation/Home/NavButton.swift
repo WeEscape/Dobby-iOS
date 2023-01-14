@@ -12,8 +12,8 @@ struct NavButton: View {
     var title: String
     var rect: CGRect
     
-    var body: some View{
-        VStack(spacing: 8){
+    var body: some View {
+        VStack(spacing: 8) {
             Image(image)
                 .aspectRatio(contentMode: .fit)
                 .frame(
@@ -22,7 +22,6 @@ struct NavButton: View {
                     alignment: .center
                 )
                 .background(
-//                    Color(image + "Color")
                     Color("navBtnBackground")
                 )
                 .clipShape(Circle())

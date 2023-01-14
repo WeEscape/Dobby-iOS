@@ -83,6 +83,10 @@ final class NetworkServiceImpl: NetworkService {
 #if os(iOS)
                             let appDelegate = UIApplication.shared.delegate as? AppDelegate
                             appDelegate?.rootCoordinator?.startSplash()
+#elseif os(watchOS)
+                            DispatchQueue.main.async {
+                                NotificationCenter.default.post(name: .shouldReLogin, object: nil)
+                            }
 #endif
                             return .error(NetworkError.invalidateRefreshToken)
                         }

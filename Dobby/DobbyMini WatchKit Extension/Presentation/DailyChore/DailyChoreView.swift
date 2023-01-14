@@ -10,6 +10,7 @@ import SwiftUI
 struct DailyChoreView: View {
     
     @ObservedObject var viewModel: ChoreViewModel
+    @Environment(\.presentationMode) var presentationMode
     
     init(viewModel: ChoreViewModel) {
         self.viewModel = viewModel
@@ -41,6 +42,9 @@ struct DailyChoreView: View {
         .onAppear(perform: {
             viewModel.getChoreList()
         })
+        .onReceive(NotificationCenter.default.publisher(for: .shouldReLogin)) { _ in
+            self.presentationMode.wrappedValue.dismiss()
+        }
     }
 }
 

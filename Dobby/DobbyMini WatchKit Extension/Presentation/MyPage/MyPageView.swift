@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct MyPageView: View {
+    
+    @Environment(\.presentationMode) var presentationMode
+    
     var body: some View {
         VStack {
             Text("MyPageView")
@@ -18,6 +21,9 @@ struct MyPageView: View {
         .onAppear(perform: {
             print("onAppear MyPageView ")
         })
+        .onReceive(NotificationCenter.default.publisher(for: .shouldReLogin)) { _ in
+            self.presentationMode.wrappedValue.dismiss()
+        }
     }
 }
 

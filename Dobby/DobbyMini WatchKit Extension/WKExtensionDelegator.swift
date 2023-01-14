@@ -32,25 +32,21 @@ class WKExtensionDelegator: NSObject, WKExtensionDelegate {
         if receiveData.isEmpty == false,
            let receiveTimeStr = receiveData[LocalKey.lastUpdateAt.rawValue] as? String,
            let receiveTime = receiveTimeStr.toDate(dateFormat: "yyyy-MM-dd HH:mm:ss") {
-            
             if let lastUpdateTime = self.localStorage.read(key: .lastUpdateAt)?
                 .toDate(dateFormat: "yyyy-MM-dd HH:mm:ss"),
-               receiveTime > lastUpdateTime {
-                // ios app 토큰이 더 최신인경우 -> watch 토큰 갱신
-                if let access = receiveData[LocalKey.accessToken.rawValue] as? String {
-                    self.localStorage.write(key: .accessToken, value: access)
-                }
-                if let refresh = receiveData[LocalKey.refreshToken.rawValue] as? String {
-                    self.localStorage.write(key: .refreshToken, value: refresh)
-                }
-            } else {
-                // watch 토큰 없는 경우
-                if let access = receiveData[LocalKey.accessToken.rawValue] as? String {
-                    self.localStorage.write(key: .accessToken, value: access)
-                }
-                if let refresh = receiveData[LocalKey.refreshToken.rawValue] as? String {
-                    self.localStorage.write(key: .refreshToken, value: refresh)
-                }
+               receiveTime < lastUpdateTime {
+                // watch app 토큰이 더 최신
+                return
+            }
+            // watch app token 갱신
+            if let access = receiveData[LocalKey.accessToken.rawValue] as? String {
+                self.localStorage.write(key: .accessToken, value: access)
+            }
+            if let refresh = receiveData[LocalKey.refreshToken.rawValue] as? String {
+                self.localStorage.write(key: .refreshToken, value: refresh)
+            }
+            DispatchQueue.main.async {
+                NotificationCenter.default.post(name: .didReLogin, object: nil)
             }
         }
     }
@@ -71,25 +67,21 @@ extension WKExtensionDelegator: WCSessionDelegate {
         if applicationContext.isEmpty == false,
            let receiveTimeStr = applicationContext[LocalKey.lastUpdateAt.rawValue] as? String,
            let receiveTime = receiveTimeStr.toDate(dateFormat: "yyyy-MM-dd HH:mm:ss") {
-            
             if let lastUpdateTime = self.localStorage.read(key: .lastUpdateAt)?
                 .toDate(dateFormat: "yyyy-MM-dd HH:mm:ss"),
-               receiveTime > lastUpdateTime {
-                // ios app 토큰이 더 최신인경우 -> watch 토큰 갱신
-                if let access = applicationContext[LocalKey.accessToken.rawValue] as? String {
-                    self.localStorage.write(key: .accessToken, value: access)
-                }
-                if let refresh = applicationContext[LocalKey.refreshToken.rawValue] as? String {
-                    self.localStorage.write(key: .refreshToken, value: refresh)
-                }
-            } else {
-                // watch 토큰 없는 경우
-                if let access = applicationContext[LocalKey.accessToken.rawValue] as? String {
-                    self.localStorage.write(key: .accessToken, value: access)
-                }
-                if let refresh = applicationContext[LocalKey.refreshToken.rawValue] as? String {
-                    self.localStorage.write(key: .refreshToken, value: refresh)
-                }
+               receiveTime < lastUpdateTime {
+                // watch app 토큰이 더 최신
+                return
+            }
+            // watch app token 갱신
+            if let access = applicationContext[LocalKey.accessToken.rawValue] as? String {
+                self.localStorage.write(key: .accessToken, value: access)
+            }
+            if let refresh = applicationContext[LocalKey.refreshToken.rawValue] as? String {
+                self.localStorage.write(key: .refreshToken, value: refresh)
+            }
+            DispatchQueue.main.async {
+                NotificationCenter.default.post(name: .didReLogin, object: nil)
             }
         }
     }

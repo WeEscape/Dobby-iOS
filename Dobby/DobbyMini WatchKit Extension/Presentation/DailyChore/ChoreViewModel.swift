@@ -43,7 +43,9 @@ class ChoreViewModel: ObservableObject {
                 guard let self = self else {return}
                 self.currentChoreList = choreList
             }, onError: { _ in
-                // 앱 재로그인 안내
+                DispatchQueue.main.async {
+                    NotificationCenter.default.post(name: .shouldReLogin, object: nil)
+                }
             }).disposed(by: self.disposeBag)
     }
     

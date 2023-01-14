@@ -98,6 +98,9 @@
 		A14D5B0F2972D98900C72F35 /* MyInfoAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A178937F2928B4A0007893FB /* MyInfoAPI.swift */; };
 		A14D5B102972D98D00C72F35 /* UserDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1789352291A912A007893FB /* UserDTO.swift */; };
 		A14D5B112972DC4800C72F35 /* CustomError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12095F228FBDFDC008CE410 /* CustomError.swift */; };
+		A14D5B142972E1E100C72F35 /* Notification+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14D5B132972E1E100C72F35 /* Notification+.swift */; };
+		A14D5B152972E20B00C72F35 /* Notification+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14D5B132972E1E100C72F35 /* Notification+.swift */; };
+		A14D5B192972E82A00C72F35 /* ShouldReLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14D5B182972E82A00C72F35 /* ShouldReLoginView.swift */; };
 		A15CAC5A2970336E00705CAB /* WKExtensionDelegator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15CAC592970336E00705CAB /* WKExtensionDelegator.swift */; };
 		A15CAC5B2970349B00705CAB /* LocalStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13C536E28E94D0500C72215 /* LocalStorageService.swift */; };
 		A15CAC5D297034A500705CAB /* LocalStorageServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10664A6296BCA2A004466A5 /* LocalStorageServiceImpl.swift */; };
@@ -377,6 +380,8 @@
 		A14D5AF12972A3CA00C72F35 /* DailyChoreRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyChoreRowView.swift; sourceTree = "<group>"; };
 		A14D5AF32972A3E700C72F35 /* DailyChoreHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyChoreHeaderView.swift; sourceTree = "<group>"; };
 		A14D5AF52972A3FD00C72F35 /* DailyChoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyChoreView.swift; sourceTree = "<group>"; };
+		A14D5B132972E1E100C72F35 /* Notification+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+.swift"; sourceTree = "<group>"; };
+		A14D5B182972E82A00C72F35 /* ShouldReLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShouldReLoginView.swift; sourceTree = "<group>"; };
 		A15CAC592970336E00705CAB /* WKExtensionDelegator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WKExtensionDelegator.swift; sourceTree = "<group>"; };
 		A15CAC612970434E00705CAB /* DobbyMini WatchKit Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "DobbyMini WatchKit Extension.entitlements"; sourceTree = "<group>"; };
 		A15CAC642971941300705CAB /* DobbyCoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DobbyCoreData.xcdatamodel; sourceTree = "<group>"; };
@@ -601,6 +606,7 @@
 		A1373F89296C2D2200DE4354 /* DobbyMini WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
+				A14D5B122972E1B300C72F35 /* Common */,
 				A15CAC712972981F00705CAB /* DI */,
 				A15CAC68297297AD00705CAB /* Presentation */,
 				A15CAC612970434E00705CAB /* DobbyMini WatchKit Extension.entitlements */,
@@ -903,6 +909,14 @@
 			path = Welcome;
 			sourceTree = "<group>";
 		};
+		A14D5B122972E1B300C72F35 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				A14D5B132972E1E100C72F35 /* Notification+.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
 		A15CAC68297297AD00705CAB /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
@@ -918,6 +932,7 @@
 			children = (
 				A15CAC6C297297F600705CAB /* NavButton.swift */,
 				A15CAC6F2972980D00705CAB /* HomeView.swift */,
+				A14D5B182972E82A00C72F35 /* ShouldReLoginView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -1787,6 +1802,7 @@
 				A14D5B032972A56800C72F35 /* FinishChoreAPI.swift in Sources */,
 				A1373F8F296C2D2200DE4354 /* NotificationController.swift in Sources */,
 				A1373F8D296C2D2200DE4354 /* ContentView.swift in Sources */,
+				A14D5B192972E82A00C72F35 /* ShouldReLoginView.swift in Sources */,
 				A15CAC5F297034AF00705CAB /* Group.swift in Sources */,
 				A15CAC60297034B500705CAB /* SettingInfoDTO.swift in Sources */,
 				A14D5B062972A5A400C72F35 /* NetworkLoggerPlugin.swift in Sources */,
@@ -1822,6 +1838,7 @@
 				A14D5B112972DC4800C72F35 /* CustomError.swift in Sources */,
 				A14D5AEE2972A39400C72F35 /* ChoreViewModel.swift in Sources */,
 				A15CAC702972980D00705CAB /* HomeView.swift in Sources */,
+				A14D5B142972E1E100C72F35 /* Notification+.swift in Sources */,
 				A14D5B022972A55900C72F35 /* ChoreListDTO.swift in Sources */,
 				A14D5AFE2972A52B00C72F35 /* ChoreDTO.swift in Sources */,
 				A15CAC672972755300705CAB /* String+.swift in Sources */,
@@ -1883,6 +1900,7 @@
 				A12095E928F2A198008CE410 /* NetworkError.swift in Sources */,
 				A18DF28C293B5AD20073A01F /* ChoreItemListView.swift in Sources */,
 				A19E9848290FF1A7004A8861 /* MyPageViewModel.swift in Sources */,
+				A14D5B152972E20B00C72F35 /* Notification+.swift in Sources */,
 				A19E97FD29053621004A8861 /* AddChoreViewModel.swift in Sources */,
 				A1789361291FA8C4007893FB /* DailyChoreViewModel.swift in Sources */,
 				A13C536028E8942900C72215 /* AuthenticationRepository.swift in Sources */,
