@@ -52,7 +52,7 @@ class WelcomeViewModel {
             }
             .subscribe(onNext: { [weak self] user in
                 // 로그인 성공
-                self?.userUseCase.saveUserInfoInLocalStorate(user: user)
+                self?.userUseCase.saveUserInfoInLocalStorage(user: user)
                 self?.loginResultPublish.accept(true)
                 self?.loadingPublish.accept(false)
             }, onError: { [weak self] err in
@@ -88,7 +88,7 @@ class WelcomeViewModel {
     }
     
     func loginFail() {
-        self.userUseCase.removeUserInfoInLocalStorate()
+        self.userUseCase.removeUserInfoInLocalStorage()
         self.authUseCase.removeToken(tokenOption: [.accessToken, .refreshToken])
         self.loginResultPublish.accept(false)
         self.loadingPublish.accept(false)
