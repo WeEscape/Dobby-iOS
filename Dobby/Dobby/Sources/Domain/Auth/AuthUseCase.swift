@@ -20,7 +20,7 @@ protocol AuthUseCase {
     func resign() -> Observable<Void>
     
     // authToken
-    func readToken(tokenOption: TokenOption) -> Observable<Authentication>
+    func readToken() -> Observable<Authentication>
     func writeToken(authentication: Authentication)
     func removeToken(tokenOption: TokenOption)
 }
@@ -69,8 +69,12 @@ final class AuthUseCaseImpl: AuthUseCase {
         return self.authenticationRepository.resign()
     }
     
-    func readToken(tokenOption: TokenOption) -> Observable<Authentication> {
-        return self.authenticationRepository.readToken(tokenOption: tokenOption)
+    func readToken() -> Observable<Authentication> {
+        let tokenList = self.authenticationRepository.readToken()
+        return Observable.just(Authentication(
+            accessToken: tokenList[safe: 0],
+            refreshToken: tokenList[safe: 1]
+        ))
     }
     
     func writeToken(authentication: Authentication) {
