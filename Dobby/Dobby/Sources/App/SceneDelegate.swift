@@ -61,6 +61,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 ]
                 try? WCSession.default.updateApplicationContext(context)
             }
+        } else {
+            // watch 토큰 갱신
+            guard let access = self.localStorage.read(key: .accessToken),
+                  let refresh = self.localStorage.read(key: .refreshToken)
+            else {return}
+            let context: [String: String] = [
+                LocalKey.accessToken.rawValue: access,
+                LocalKey.refreshToken.rawValue: refresh,
+                LocalKey.lastUpdateAt.rawValue: Date().toStringWithFormat("yyyy-MM-dd HH:mm:ss")
+            ]
+            try? WCSession.default.updateApplicationContext(context)
         }
     }
     
