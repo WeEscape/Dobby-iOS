@@ -6,25 +6,46 @@
 //
 
 import Foundation
+import RxSwift
 
 class ChoreViewModel: ObservableObject {
     
     @Published var currentDate: Date = Date()
-    @Published var choreList: [Chore] = [
-        Chore(choreId: "1", title: "mock1", categoryId: "", noticeEnable:0, executeAt: "", endAt: "", ownerList: [.init(userId: "1", isEnd: 0)]),
-        Chore(choreId: "2", title: "mock2", categoryId: "", noticeEnable:0, executeAt: "", endAt: "", ownerList: [.init(userId: "2", isEnd: 1)]),
-        Chore(choreId: "3", title: "mock3", categoryId: "", noticeEnable:0, executeAt: "", endAt: "", ownerList: [.init(userId: "3", isEnd: 1)]),
-        Chore(choreId: "4", title: "mock4", categoryId: "", noticeEnable:0, executeAt: "", endAt: "", ownerList: [.init(userId: "4", isEnd: 0)])
-    ]
-    let choreUseCase: ChoreUseCase
+    @Published var currentChoreList: [Chore] = []
     
-    init(choreUseCase: ChoreUseCase) {
+    var disposeBag = DisposeBag()
+    let choreUseCase: ChoreUseCase
+    let userUseCase: UserUseCase
+    
+    init(
+        choreUseCase: ChoreUseCase,
+        userUseCase: UserUseCase
+    ) {
         self.choreUseCase = choreUseCase
+        self.userUseCase = userUseCase
     }
     
     func getChoreList(of date: Date) {
         currentDate = date
-        print("debug : getChoreList")
+        self.userUseCase.getMyInfo()
+            .flatMap { [weak self] myinfo -> Observable<[Chore]> in
+                guard let self = self,
+                      let userId = myinfo.userId,
+                      let groupId = myinfo.groupList?.last?.groupId
+                else {return .error(CustomError.init())}
+                return self.choreUseCase.getChores(
+                    userId: userId,
+                    groupId: groupId,
+                    date: self.currentDate,
+                    periodical: .daily
+                )
+            }
+            .subscribe(onNext: { [weak self] choreList in
+                guard let self = self else {return}
+                self.currentChoreList = choreList
+            }, onError: { err in
+                // 앱 재로그인 안내
+            }).disposed(by: self.disposeBag)
     }
     
     func didTapEndToggle(_ chore: Chore) {

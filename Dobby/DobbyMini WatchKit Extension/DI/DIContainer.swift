@@ -30,6 +30,14 @@ class DIContainer {
             )
         }.inObjectScope(.container)
         
+        container.register(UserRepository.self) { _ in
+            return UserRepositoryImpl(
+                network: NetworkServiceImpl.shared,
+                localStorage: LocalStorageServiceImpl.shared
+            )
+        }.inObjectScope(.container)
+        
+        
         // MARK: register UseCase
         container.register(ChoreUseCase.self) { resolver in
             return ChoreUseCaseImpl(
@@ -37,10 +45,17 @@ class DIContainer {
             )
         }.inObjectScope(.container)
         
+        container.register(UserUseCase.self) { resolver in
+            return UserUseCaseImpl(
+                userRepository: resolver.resolve(UserRepository.self)!
+            )
+        }.inObjectScope(.container)
+        
         // MARK: register viewModel
         container.register(ChoreViewModel.self) { resolver in
             return ChoreViewModel(
-                choreUseCase: resolver.resolve(ChoreUseCase.self)!
+                choreUseCase: resolver.resolve(ChoreUseCase.self)!,
+                userUseCase: resolver.resolve(UserUseCase.self)!
             )
         }.inObjectScope(.container)
         

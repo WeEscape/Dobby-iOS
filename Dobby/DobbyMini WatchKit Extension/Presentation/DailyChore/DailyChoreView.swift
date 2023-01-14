@@ -21,7 +21,7 @@ struct DailyChoreView: View {
             
             ScrollView(.vertical) {
                 VStack(alignment: .leading, spacing: 5) {
-                    ForEach(viewModel.choreList, id: \.choreId) { chore in
+                    ForEach(viewModel.currentChoreList, id: \.choreId) { chore in
                         DailyChoreRowView(
                             chore: chore,
                             viewModel: viewModel
