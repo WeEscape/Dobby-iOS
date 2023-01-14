@@ -11,35 +11,35 @@ struct HomeView: View {
     var body: some View {
         GeometryReader { reader in
             let rect = reader.frame(in: .global)
-            NavigationStack {
-                VStack(alignment: .center) {
-                    HStack(spacing: 25) {
-                        NavigationLink(
-                            destination: DailyChoreView(
-                                viewModel: DIContainer.shared.resolve(ChoreViewModel.self)
-                            ),
-                            label: {
-                                NavButton(
-                                    image: "dailyChore",
-                                    title: "집안일",
-                                    rect: rect
-                                )
-                            })
-                        .buttonStyle(.plain)
-                        
-                        NavigationLink(
-                            destination: MyPageView(),
-                            label: {
-                                NavButton(
-                                    image: "profile",
-                                    title: "설정",
-                                    rect: rect
-                                )
-                            })
-                        .buttonStyle(.plain)
-                    }
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+            VStack(alignment: .center) {
+                HStack(spacing: 25) {
+                    NavigationLink(
+                        destination: DailyChoreView(
+                            viewModel: DIContainer.shared.resolve(ChoreViewModel.self)
+                        ),
+                        label: {
+                            NavButton(
+                                image: "dailyChore",
+                                title: "집안일",
+                                rect: rect
+                            )
+                        }
+                    )
+                    .buttonStyle(.plain)
+                    
+                    NavigationLink(
+                        destination: MyPageView(),
+                        label: {
+                            NavButton(
+                                image: "profile",
+                                title: "마이페이지",
+                                rect: rect
+                            )
+                        }
+                    )
+                    .buttonStyle(.plain)
                 }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
         }
     }

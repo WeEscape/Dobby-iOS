@@ -45,7 +45,7 @@ struct DailyChoreHeaderView: View {
     }
     
     func updateDate(diffDate: Int) {
-        guard let newDate = viewModel.currentDate.calculateDiffDate(diff: diffDate) else{ return}
+        guard let newDate = viewModel.currentDate.calculateDiffDate(diff: diffDate) else {return}
         viewModel.getChoreList(of: newDate)
     }
 }

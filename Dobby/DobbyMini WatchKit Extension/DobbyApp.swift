@@ -14,11 +14,10 @@ struct DobbyApp: App {
     
     @SceneBuilder var body: some Scene {
         WindowGroup {
-            NavigationView {
+            NavigationStack {
                 ContentView()
             }
         }
-
-//        WKNotificationScene(controller: NotificationController.self, category: "myCategory")
+        WKNotificationScene(controller: NotificationController.self, category: "myCategory")
     }
 }

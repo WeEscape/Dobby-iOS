@@ -13,6 +13,11 @@ struct MyPageView: View {
             Text("MyPageView")
                 .foregroundColor(.green)
         }
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationTitle("마이페이지")
+        .onAppear(perform: {
+            print("onAppear MyPageView ")
+        })
     }
 }
 
