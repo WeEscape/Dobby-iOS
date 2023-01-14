@@ -37,7 +37,7 @@ class LocalStorageServiceImpl {
             do {
                 try self.context.save()
             } catch {
-                print("saveContext error  \(error)")
+                BeaverLog.error("saveContext error  \(error)")
             }
         }
     }
@@ -47,6 +47,7 @@ class LocalStorageServiceImpl {
             let fetchResult = try self.context.fetch(request)
             return fetchResult
         } catch {
+            BeaverLog.error("fetch error  \(error)")
             return []
         }
     }
@@ -59,6 +60,7 @@ class LocalStorageServiceImpl {
             try self.context.execute(delete)
             return true
         } catch {
+            BeaverLog.error("deleteAll error  \(error)")
             return false
         }
     }
@@ -91,6 +93,7 @@ class LocalStorageServiceImpl {
                 try self.context.save()
                 return true
             } catch {
+                BeaverLog.error("saveSettingInfo error  \(error)")
                 return false
             }
         }

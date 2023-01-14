@@ -7,27 +7,25 @@
 
 import WatchKit
 import WatchConnectivity
+import SwiftyBeaver
+
+let BeaverLog = SwiftyBeaver.self
 
 class WKExtensionDelegator: NSObject, WKExtensionDelegate {
     let localStorage = LocalStorageServiceImpl.shared
     
     func applicationDidFinishLaunching() {
+        // WatchConnectivity
         WCSession.default.delegate = self
         WCSession.default.activate()
     }
     
+    func applicationWillEnterForeground() {
+        print("applicationWillEnterForeground")
+    }
+    
     func applicationDidBecomeActive() {
-        let receiveData = WCSession.default.receivedApplicationContext
-        print("debug : applicationDidBecomeActive")
-        if receiveData.isEmpty == false {
-            print(receiveData)
-            if let access = receiveData[LocalKey.accessToken.rawValue] as? String {
-                print("debug : write access -> \(access)")
-                self.localStorage.write(key: .accessToken, value: access)
-            }
-        } else {
-            print("debug : no receiveData")
-        }
+        print("applicationDidBecomeActive ##")
     }
 }
 
@@ -41,8 +39,8 @@ extension WKExtensionDelegator: WCSessionDelegate {
     
     func session(
         _ session: WCSession,
-        didReceiveApplicationContext applicationContext: [String : Any]
+        didReceiveApplicationContext applicationContext: [String: Any]
     ) {
-        //
+
     }
 }

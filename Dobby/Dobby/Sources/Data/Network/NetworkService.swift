@@ -8,7 +8,6 @@
 import Foundation
 import RxSwift
 import Moya
-import FirebaseCrashlytics
 
 protocol NetworkService {
     func request<API>(api: API) -> Observable<DobbyResponse<API.Response>> where API: BaseAPI
@@ -47,7 +46,7 @@ final class NetworkServiceImpl: NetworkService {
     func request<API>(api: API) -> Observable<DobbyResponse<API.Response>> where API: BaseAPI {
         return self._request(api: api)
             .catch { [weak self] err -> Observable<Response>  in
-                Crashlytics.crashlytics().record(error: err)
+                BeaverLog.error(err)
                 if let urlErr = err as? URLError,
                    (urlErr.code == .timedOut || urlErr.code == .notConnectedToInternet) {
                     BeaverLog.verbose("unstable internet connection")
@@ -78,11 +77,13 @@ final class NetworkServiceImpl: NetworkService {
                         }
                         .catch { err in
                             BeaverLog.verbose("invalidate RefreshToken! -> logout")
-                            Crashlytics.crashlytics().record(error: err)
+                            BeaverLog.error(err)
                             self.localStorage.delete(key: .accessToken)
                             self.localStorage.delete(key: .refreshToken)
+#if os(iOS)
                             let appDelegate = UIApplication.shared.delegate as? AppDelegate
                             appDelegate?.rootCoordinator?.startSplash()
+#endif
                             return .error(NetworkError.invalidateRefreshToken)
                         }
                 }
@@ -96,7 +97,6 @@ final class NetworkServiceImpl: NetworkService {
             }
             .catch { err in
                 BeaverLog.error(err.localizedDescription)
-                Crashlytics.crashlytics().record(error: err)
                 return .error(err)
             }
     }
