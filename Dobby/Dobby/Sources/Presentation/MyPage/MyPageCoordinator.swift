@@ -18,7 +18,7 @@ final class MyPageCoordinator: Coordinator {
                     localStorage: LocalStorageServiceImpl.shared
                 )
             ),
-            userUserCase: UserUseCaseImpl(
+            userUseCase: UserUseCaseImpl(
                 userRepository: UserRepositoryImpl(
                     network: NetworkServiceImpl.shared,
                     localStorage: LocalStorageServiceImpl.shared

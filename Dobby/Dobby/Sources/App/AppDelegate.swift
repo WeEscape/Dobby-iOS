@@ -11,6 +11,7 @@ import KakaoSDKCommon
 import KakaoSDKAuth
 import FirebaseCore
 import FirebaseMessaging
+import WatchConnectivity
 
 let BeaverLog = SwiftyBeaver.self
 
@@ -18,6 +19,7 @@ let BeaverLog = SwiftyBeaver.self
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var rootCoordinator: RootCoordinator?
+    let localStorage = LocalStorageServiceImpl.shared
     
     func application(
         _ application: UIApplication,
@@ -49,6 +51,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // FCM
         Messaging.messaging().delegate = self
+        
+        // WatchConnectivity
+        WCSession.default.delegate = self
+        WCSession.default.activate()
         
         return true
     }
@@ -104,5 +110,44 @@ extension AppDelegate: MessagingDelegate {
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
         BeaverLog.debug("debug : fcmToken -> \(fcmToken ?? "no fcm toekn")")
         // 유저 fcmToken 등록
+    }
+}
+
+extension AppDelegate: WCSessionDelegate {
+    func sessionDidBecomeInactive(_ session: WCSession) {
+    }
+    
+    func sessionDidDeactivate(_ session: WCSession) {
+        // Activate the new session after having switched to a new watch.
+        session.activate()
+    }
+    
+    func session(
+        _ session: WCSession,
+        activationDidCompleteWith activationState: WCSessionActivationState,
+        error: Error?
+    ) {
+    }
+    
+    func session(
+        _ session: WCSession,
+        didReceiveApplicationContext applicationContext: [String: Any]
+    ) {
+        if applicationContext.isEmpty == false,
+           let receiveTimeStr = applicationContext[LocalKey.lastUpdateAt.rawValue] as? String,
+           let receiveTime = receiveTimeStr.toDate(dateFormat: "yyyy-MM-dd HH:mm:ss"),
+           let lastUpdateTime = self.localStorage.read(key: .lastUpdateAt)?
+            .toDate(dateFormat: "yyyy-MM-dd HH:mm:ss") {
+            
+            if receiveTime > lastUpdateTime {
+                // watch app 토큰이 더 최신인경우 -> ios 토큰 갱신
+                if let access = applicationContext[LocalKey.accessToken.rawValue] as? String {
+                    self.localStorage.write(key: .accessToken, value: access)
+                }
+                if let refresh = applicationContext[LocalKey.refreshToken.rawValue] as? String {
+                    self.localStorage.write(key: .refreshToken, value: refresh)
+                }
+            }
+        }
     }
 }

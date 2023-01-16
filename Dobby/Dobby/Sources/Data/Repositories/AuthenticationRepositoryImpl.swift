@@ -147,18 +147,13 @@ final class AuthenticationRepositoryImpl: AuthenticationRepository {
             }
     }
     
-    func readToken(tokenOption: TokenOption) -> Observable<Authentication> {
-        var tokenList: [String?] = []
-        if tokenOption.contains(.accessToken) {
-            tokenList.append(self.localStorage.read(key: .accessToken))
-        }
-        if tokenOption.contains(.refreshToken) {
-            tokenList.append(self.localStorage.read(key: .refreshToken))
-        }
-        return Observable.just(Authentication(
-            accessToken: tokenList[safe: 0] ?? nil,
-            refreshToken: tokenList[safe: 1] ?? nil
-        ))
+    func readToken() -> [String] {
+        var tokenList: [String] = []
+        let access = self.localStorage.read(key: .accessToken) ?? ""
+        let refresh = self.localStorage.read(key: .refreshToken) ?? ""
+        tokenList.append(access)
+        tokenList.append(refresh)
+        return tokenList
     }
     
     func writeToken(authentication: Authentication) {

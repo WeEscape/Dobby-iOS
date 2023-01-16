@@ -13,18 +13,21 @@ struct SettingInfoDTO {
     var alarmOnOff: String
     var alarmTime: String
     var userInfo: Data?
+    var lastUpdateAt: String?
     
     init(
         accessToken: String?,
         refreshToken: String?,
         alarmOnOff: String?,
         alarmTime: String?,
-        userInfo: Data?
+        userInfo: Data?,
+        lastUpdateAt: String?
     ) {
         self.accessToken = accessToken ?? ""
         self.refreshToken = refreshToken ?? ""
         self.alarmOnOff = alarmOnOff ?? "0"
         self.alarmTime = alarmTime ?? ""
         self.userInfo = userInfo
+        self.lastUpdateAt = lastUpdateAt
     }
 }

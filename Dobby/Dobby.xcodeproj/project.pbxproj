@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5D37CFAC2FFA4B3C846EA3C8 /* Pods_Dobby_DobbyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F56AA76B9FEBCC2098137B1 /* Pods_Dobby_DobbyUITests.framework */; };
-		81D7170A0CB8A71B30D14140 /* Pods_Dobby.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3336AE106AE91D152C06F33D /* Pods_Dobby.framework */; };
+		41FE751D69713D85DCFD2E1C /* Pods_Dobby_DobbyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D86F90FF4AE3D84A7A10BD60 /* Pods_Dobby_DobbyUITests.framework */; };
+		4A383F0462B8648FA8D53791 /* Pods_DobbyMini_WatchKit_Extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD1314BD8455ECA702DE6DAE /* Pods_DobbyMini_WatchKit_Extension.framework */; };
+		5D2CE629E93138B6227BE811 /* Pods_Dobby.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14E37F0B96544B24D7FF37A7 /* Pods_Dobby.framework */; };
 		A10664A7296BCA2A004466A5 /* LocalStorageServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10664A6296BCA2A004466A5 /* LocalStorageServiceImpl.swift */; };
 		A10664A9296BDE87004466A5 /* SettingInfoDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10664A8296BDE87004466A5 /* SettingInfoDTO.swift */; };
 		A11C86A9295C7EAB00D54F5E /* MonthlyChoreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11C86A8295C7EAB00D54F5E /* MonthlyChoreViewModel.swift */; };
@@ -25,8 +26,20 @@
 		A12095FB29016034008CE410 /* splash.json in Resources */ = {isa = PBXBuildFile; fileRef = A12095FA29016034008CE410 /* splash.json */; };
 		A12095FD2901669B008CE410 /* Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12095FC2901669B008CE410 /* Palette.swift */; };
 		A12095FF2901680F008CE410 /* DobbyFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12095FE2901680F008CE410 /* DobbyFont.swift */; };
-		A122FCC22965AD9A0093F58E /* CoreDataCloud.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A122FCC02965AD9A0093F58E /* CoreDataCloud.xcdatamodeld */; };
 		A122FCC42965AE5B0093F58E /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A122FCC32965AE5B0093F58E /* CloudKit.framework */; };
+		A1373F80296C2D2200DE4354 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1373F7F296C2D2200DE4354 /* Assets.xcassets */; };
+		A1373F86296C2D2200DE4354 /* DobbyMini WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = A1373F85296C2D2200DE4354 /* DobbyMini WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		A1373F8B296C2D2200DE4354 /* DobbyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1373F8A296C2D2200DE4354 /* DobbyApp.swift */; };
+		A1373F8D296C2D2200DE4354 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1373F8C296C2D2200DE4354 /* ContentView.swift */; };
+		A1373F8F296C2D2200DE4354 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1373F8E296C2D2200DE4354 /* NotificationController.swift */; };
+		A1373F91296C2D2200DE4354 /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1373F90296C2D2200DE4354 /* NotificationView.swift */; };
+		A1373F93296C2D2200DE4354 /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1373F92296C2D2200DE4354 /* ComplicationController.swift */; };
+		A1373F95296C2D2300DE4354 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1373F94296C2D2300DE4354 /* Assets.xcassets */; };
+		A1373F98296C2D2400DE4354 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1373F97296C2D2400DE4354 /* Preview Assets.xcassets */; };
+		A1373FA4296C2D2400DE4354 /* DobbyMiniTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1373FA3296C2D2400DE4354 /* DobbyMiniTests.swift */; };
+		A1373FAE296C2D2400DE4354 /* DobbyMiniUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1373FAD296C2D2400DE4354 /* DobbyMiniUITests.swift */; };
+		A1373FB0296C2D2400DE4354 /* DobbyMiniUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1373FAF296C2D2400DE4354 /* DobbyMiniUITestsLaunchTests.swift */; };
+		A1373FB3296C2D2400DE4354 /* DOBBY.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = A1373F7D296C2D2000DE4354 /* DOBBY.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		A13C531128E7129D00C72215 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13C531028E7129D00C72215 /* AppDelegate.swift */; };
 		A13C531328E7129D00C72215 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13C531228E7129D00C72215 /* SceneDelegate.swift */; };
 		A13C531A28E7129E00C72215 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A13C531928E7129E00C72215 /* Assets.xcassets */; };
@@ -54,6 +67,63 @@
 		A13C537D28E98FD500C72215 /* WelcomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13C537C28E98FD500C72215 /* WelcomeViewModel.swift */; };
 		A13C537F28EA9C0000C72215 /* AppKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13C537E28EA9C0000C72215 /* AppKey.swift */; };
 		A14960CF2944909A00691087 /* WeeklyChoreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14960CE2944909A00691087 /* WeeklyChoreViewModel.swift */; };
+		A14D5AEE2972A39400C72F35 /* ChoreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14D5AED2972A39400C72F35 /* ChoreViewModel.swift */; };
+		A14D5AEF2972A3B000C72F35 /* Chore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E980129053B60004A8861 /* Chore.swift */; };
+		A14D5AF02972A3B700C72F35 /* ChoreOwner.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18DF27E293361000073A01F /* ChoreOwner.swift */; };
+		A14D5AF22972A3CA00C72F35 /* DailyChoreRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14D5AF12972A3CA00C72F35 /* DailyChoreRowView.swift */; };
+		A14D5AF42972A3E700C72F35 /* DailyChoreHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14D5AF32972A3E700C72F35 /* DailyChoreHeaderView.swift */; };
+		A14D5AF62972A3FD00C72F35 /* DailyChoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14D5AF52972A3FD00C72F35 /* DailyChoreView.swift */; };
+		A14D5AF92972A46200C72F35 /* ChoreUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E97FF29053B32004A8861 /* ChoreUseCase.swift */; };
+		A14D5AFA2972A46800C72F35 /* ChorePeriodical.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18DF292293F587F0073A01F /* ChorePeriodical.swift */; };
+		A14D5AFB2972A4F100C72F35 /* ChoreRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18DF275293353B90073A01F /* ChoreRepository.swift */; };
+		A14D5AFC2972A51400C72F35 /* ChoreRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18DF277293358770073A01F /* ChoreRepositoryImpl.swift */; };
+		A14D5AFD2972A52400C72F35 /* CreateChoreAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18DF27C29335C100073A01F /* CreateChoreAPI.swift */; };
+		A14D5AFE2972A52B00C72F35 /* ChoreDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18DF279293358C30073A01F /* ChoreDTO.swift */; };
+		A14D5AFF2972A53100C72F35 /* ChoreRepeatCycle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E987D2917D6B0004A8861 /* ChoreRepeatCycle.swift */; };
+		A14D5B002972A53D00C72F35 /* BaseAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A174B17328EF002000F80112 /* BaseAPI.swift */; };
+		A14D5B012972A55400C72F35 /* ChoreListAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18DF290293F577F0073A01F /* ChoreListAPI.swift */; };
+		A14D5B022972A55900C72F35 /* ChoreListDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18DF294293F5D690073A01F /* ChoreListDTO.swift */; };
+		A14D5B032972A56800C72F35 /* FinishChoreAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18DF2962940BD250073A01F /* FinishChoreAPI.swift */; };
+		A14D5B042972A57D00C72F35 /* DeleteChoreAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17DB77A294F03040025623B /* DeleteChoreAPI.swift */; };
+		A14D5B052972A58200C72F35 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13C536C28E94CA200C72215 /* NetworkService.swift */; };
+		A14D5B062972A5A400C72F35 /* NetworkLoggerPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = A174B17B28EF034100F80112 /* NetworkLoggerPlugin.swift */; };
+		A14D5B072972A5AF00C72F35 /* DobbyResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1789356291D17E2007893FB /* DobbyResponse.swift */; };
+		A14D5B082972A5B900C72F35 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12095E828F2A198008CE410 /* NetworkError.swift */; };
+		A14D5B092972A5F000C72F35 /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13C536428E91BB700C72215 /* Authentication.swift */; };
+		A14D5B0A2972A60700C72F35 /* RefreshAuthAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12095EA28F2E010008CE410 /* RefreshAuthAPI.swift */; };
+		A14D5B0B2972A60C00C72F35 /* AuthenticationDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = A174B17828EF010100F80112 /* AuthenticationDTO.swift */; };
+		A14D5B0C2972D95600C72F35 /* UserUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E98692913FCC6004A8861 /* UserUseCase.swift */; };
+		A14D5B0D2972D97400C72F35 /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A178937A2928B254007893FB /* UserRepository.swift */; };
+		A14D5B0E2972D97F00C72F35 /* UserRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A178937C2928B3FD007893FB /* UserRepositoryImpl.swift */; };
+		A14D5B0F2972D98900C72F35 /* MyInfoAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A178937F2928B4A0007893FB /* MyInfoAPI.swift */; };
+		A14D5B102972D98D00C72F35 /* UserDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1789352291A912A007893FB /* UserDTO.swift */; };
+		A14D5B112972DC4800C72F35 /* CustomError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12095F228FBDFDC008CE410 /* CustomError.swift */; };
+		A14D5B142972E1E100C72F35 /* Notification+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14D5B132972E1E100C72F35 /* Notification+.swift */; };
+		A14D5B152972E20B00C72F35 /* Notification+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14D5B132972E1E100C72F35 /* Notification+.swift */; };
+		A14D5B192972E82A00C72F35 /* ShouldReLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14D5B182972E82A00C72F35 /* ShouldReLoginView.swift */; };
+		A14D5B1B2972F92700C72F35 /* MyPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14D5B1A2972F92700C72F35 /* MyPageViewModel.swift */; };
+		A14D5B1C2973068600C72F35 /* GroupUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17893872928CC87007893FB /* GroupUseCase.swift */; };
+		A14D5B1D2973068E00C72F35 /* GroupRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17893892928CC94007893FB /* GroupRepository.swift */; };
+		A14D5B1E297306A900C72F35 /* GroupRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A178938D2928CDCC007893FB /* GroupRepositoryImpl.swift */; };
+		A14D5B1F297306B400C72F35 /* GroupInfoAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17893902928CE95007893FB /* GroupInfoAPI.swift */; };
+		A14D5B20297306B700C72F35 /* GroupDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = A178938B2928CD3F007893FB /* GroupDTO.swift */; };
+		A14D5B21297306C500C72F35 /* CreateGroupAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17893922928D34E007893FB /* CreateGroupAPI.swift */; };
+		A14D5B22297306D300C72F35 /* LeaveGroupAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17893942929452A007893FB /* LeaveGroupAPI.swift */; };
+		A14D5B23297306DD00C72F35 /* JoinGroupAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A178939629299E52007893FB /* JoinGroupAPI.swift */; };
+		A15CAC5A2970336E00705CAB /* WKExtensionDelegator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15CAC592970336E00705CAB /* WKExtensionDelegator.swift */; };
+		A15CAC5B2970349B00705CAB /* LocalStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13C536E28E94D0500C72215 /* LocalStorageService.swift */; };
+		A15CAC5D297034A500705CAB /* LocalStorageServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10664A6296BCA2A004466A5 /* LocalStorageServiceImpl.swift */; };
+		A15CAC5E297034AC00705CAB /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E986B2913FDC1004A8861 /* User.swift */; };
+		A15CAC5F297034AF00705CAB /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17893842928CC76007893FB /* Group.swift */; };
+		A15CAC60297034B500705CAB /* SettingInfoDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10664A8296BDE87004466A5 /* SettingInfoDTO.swift */; };
+		A15CAC62297190D600705CAB /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E9845290E76AE004A8861 /* Date+.swift */; };
+		A15CAC652971941300705CAB /* DobbyCoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A15CAC632971941300705CAB /* DobbyCoreData.xcdatamodeld */; };
+		A15CAC662971941300705CAB /* DobbyCoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A15CAC632971941300705CAB /* DobbyCoreData.xcdatamodeld */; };
+		A15CAC672972755300705CAB /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E9841290E6CED004A8861 /* String+.swift */; };
+		A15CAC6E297297F600705CAB /* NavButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15CAC6C297297F600705CAB /* NavButton.swift */; };
+		A15CAC702972980D00705CAB /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15CAC6F2972980D00705CAB /* HomeView.swift */; };
+		A15CAC732972983300705CAB /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15CAC722972983300705CAB /* DIContainer.swift */; };
+		A15CAC7529729CCB00705CAB /* MyPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15CAC7429729CCB00705CAB /* MyPageView.swift */; };
 		A174B16F28EC6F0300F80112 /* ASAuthorizationController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A174B16E28EC6F0300F80112 /* ASAuthorizationController+.swift */; };
 		A174B17428EF002000F80112 /* BaseAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A174B17328EF002000F80112 /* BaseAPI.swift */; };
 		A174B17628EF007100F80112 /* LoginAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A174B17528EF007100F80112 /* LoginAPI.swift */; };
@@ -159,10 +229,41 @@
 		A19E987C2917D500004A8861 /* SelectRepeatCycleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E987B2917D500004A8861 /* SelectRepeatCycleCell.swift */; };
 		A19E987E2917D6B0004A8861 /* ChoreRepeatCycle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E987D2917D6B0004A8861 /* ChoreRepeatCycle.swift */; };
 		A19E9881291941B8004A8861 /* RegisterAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19E9880291941B8004A8861 /* RegisterAPI.swift */; };
-		C2781E59171273E0B07E799D /* Pods_DobbyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4AD1EDD5CCDD37BD771AC5A /* Pods_DobbyTests.framework */; };
+		AB89819C7CEF2944A172ADA7 /* Pods_DobbyMiniTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 301F257E7CC901AEEB33AFA3 /* Pods_DobbyMiniTests.framework */; };
+		CD4A9E53608A64BE18F0F715 /* Pods_DobbyMini.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D838BBBD35C07719BA5C859 /* Pods_DobbyMini.framework */; };
+		EE8648B83EF53BD1CDE66414 /* Pods_DobbyMini_DobbyMiniUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F91AAEBD643514C14D154970 /* Pods_DobbyMini_DobbyMiniUITests.framework */; };
+		FE8CAE34B25B92ABA9548D41 /* Pods_DobbyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 082346D34C450313E84750E4 /* Pods_DobbyTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		A1373F87296C2D2200DE4354 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A13C530528E7129D00C72215 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A1373F84296C2D2200DE4354;
+			remoteInfo = "DobbyMini WatchKit Extension";
+		};
+		A1373FA0296C2D2400DE4354 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A13C530528E7129D00C72215 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A1373F84296C2D2200DE4354;
+			remoteInfo = "DobbyMini WatchKit Extension";
+		};
+		A1373FAA296C2D2400DE4354 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A13C530528E7129D00C72215 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A1373F7C296C2D2000DE4354;
+			remoteInfo = DobbyMini;
+		};
+		A1373FB1296C2D2400DE4354 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A13C530528E7129D00C72215 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A1373F7C296C2D2000DE4354;
+			remoteInfo = DobbyMini;
+		};
 		A13C532428E7129E00C72215 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A13C530528E7129D00C72215 /* Project object */;
@@ -179,11 +280,45 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		A1373FB4296C2D2400DE4354 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				A1373FB3296C2D2400DE4354 /* DOBBY.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A1373FB7296C2D2400DE4354 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				A1373F86296C2D2200DE4354 /* DobbyMini WatchKit Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
-		3336AE106AE91D152C06F33D /* Pods_Dobby.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Dobby.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3F56AA76B9FEBCC2098137B1 /* Pods_Dobby_DobbyUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Dobby_DobbyUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		8083386DCEF92A322C58B66A /* Pods-Dobby.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dobby.release.xcconfig"; path = "Target Support Files/Pods-Dobby/Pods-Dobby.release.xcconfig"; sourceTree = "<group>"; };
-		8741B0934360EC4A243B1998 /* Pods-Dobby-DobbyUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dobby-DobbyUITests.release.xcconfig"; path = "Target Support Files/Pods-Dobby-DobbyUITests/Pods-Dobby-DobbyUITests.release.xcconfig"; sourceTree = "<group>"; };
+		082346D34C450313E84750E4 /* Pods_DobbyTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DobbyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		08EC9C8996A79A6D2DA48B99 /* Pods-DobbyMini.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DobbyMini.release.xcconfig"; path = "Target Support Files/Pods-DobbyMini/Pods-DobbyMini.release.xcconfig"; sourceTree = "<group>"; };
+		0FF25DE67E9617D557788E48 /* Pods-Dobby.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dobby.release.xcconfig"; path = "Target Support Files/Pods-Dobby/Pods-Dobby.release.xcconfig"; sourceTree = "<group>"; };
+		14E37F0B96544B24D7FF37A7 /* Pods_Dobby.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Dobby.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1A6E705E425EA6352A8AA5A9 /* Pods-DobbyMini-DobbyMiniUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DobbyMini-DobbyMiniUITests.debug.xcconfig"; path = "Target Support Files/Pods-DobbyMini-DobbyMiniUITests/Pods-DobbyMini-DobbyMiniUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		1D838BBBD35C07719BA5C859 /* Pods_DobbyMini.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DobbyMini.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		235BDE9C157E83704EDA36C1 /* Pods-DobbyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DobbyTests.release.xcconfig"; path = "Target Support Files/Pods-DobbyTests/Pods-DobbyTests.release.xcconfig"; sourceTree = "<group>"; };
+		24C8B75F5868AE5D682694A6 /* Pods-DobbyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DobbyTests.debug.xcconfig"; path = "Target Support Files/Pods-DobbyTests/Pods-DobbyTests.debug.xcconfig"; sourceTree = "<group>"; };
+		301F257E7CC901AEEB33AFA3 /* Pods_DobbyMiniTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DobbyMiniTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		351EE06E413D57F2208BC40D /* Pods-Dobby-DobbyUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dobby-DobbyUITests.debug.xcconfig"; path = "Target Support Files/Pods-Dobby-DobbyUITests/Pods-Dobby-DobbyUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		4A2CC3CCC6B61CC76FA51425 /* Pods-Dobby-DobbyUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dobby-DobbyUITests.release.xcconfig"; path = "Target Support Files/Pods-Dobby-DobbyUITests/Pods-Dobby-DobbyUITests.release.xcconfig"; sourceTree = "<group>"; };
+		52B8567BEC660980820655F9 /* Pods-DobbyMini.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DobbyMini.debug.xcconfig"; path = "Target Support Files/Pods-DobbyMini/Pods-DobbyMini.debug.xcconfig"; sourceTree = "<group>"; };
+		76E3691E9820B7826B8525BF /* Pods-DobbyMiniTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DobbyMiniTests.debug.xcconfig"; path = "Target Support Files/Pods-DobbyMiniTests/Pods-DobbyMiniTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A10664A6296BCA2A004466A5 /* LocalStorageServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorageServiceImpl.swift; sourceTree = "<group>"; };
 		A10664A8296BDE87004466A5 /* SettingInfoDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingInfoDTO.swift; sourceTree = "<group>"; };
 		A11C86A8295C7EAB00D54F5E /* MonthlyChoreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyChoreViewModel.swift; sourceTree = "<group>"; };
@@ -201,8 +336,24 @@
 		A12095FA29016034008CE410 /* splash.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = splash.json; sourceTree = "<group>"; };
 		A12095FC2901669B008CE410 /* Palette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Palette.swift; sourceTree = "<group>"; };
 		A12095FE2901680F008CE410 /* DobbyFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DobbyFont.swift; sourceTree = "<group>"; };
-		A122FCC12965AD9A0093F58E /* CoreDataCloud.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataCloud.xcdatamodel; sourceTree = "<group>"; };
 		A122FCC32965AE5B0093F58E /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		A1373F7D296C2D2000DE4354 /* DOBBY.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DOBBY.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A1373F7F296C2D2200DE4354 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A1373F85296C2D2200DE4354 /* DobbyMini WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "DobbyMini WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A1373F8A296C2D2200DE4354 /* DobbyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DobbyApp.swift; sourceTree = "<group>"; };
+		A1373F8C296C2D2200DE4354 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		A1373F8E296C2D2200DE4354 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
+		A1373F90296C2D2200DE4354 /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
+		A1373F92296C2D2200DE4354 /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
+		A1373F94296C2D2300DE4354 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A1373F97296C2D2400DE4354 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		A1373F99296C2D2400DE4354 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A1373F9A296C2D2400DE4354 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+		A1373F9F296C2D2400DE4354 /* DobbyMiniTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DobbyMiniTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A1373FA3296C2D2400DE4354 /* DobbyMiniTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DobbyMiniTests.swift; sourceTree = "<group>"; };
+		A1373FA9296C2D2400DE4354 /* DobbyMiniUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DobbyMiniUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A1373FAD296C2D2400DE4354 /* DobbyMiniUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DobbyMiniUITests.swift; sourceTree = "<group>"; };
+		A1373FAF296C2D2400DE4354 /* DobbyMiniUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DobbyMiniUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		A13C530D28E7129D00C72215 /* Dobby.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dobby.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A13C531028E7129D00C72215 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A13C531228E7129D00C72215 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -234,6 +385,21 @@
 		A13C537C28E98FD500C72215 /* WelcomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewModel.swift; sourceTree = "<group>"; };
 		A13C537E28EA9C0000C72215 /* AppKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppKey.swift; sourceTree = "<group>"; };
 		A14960CE2944909A00691087 /* WeeklyChoreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyChoreViewModel.swift; sourceTree = "<group>"; };
+		A14D5AED2972A39400C72F35 /* ChoreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoreViewModel.swift; sourceTree = "<group>"; };
+		A14D5AF12972A3CA00C72F35 /* DailyChoreRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyChoreRowView.swift; sourceTree = "<group>"; };
+		A14D5AF32972A3E700C72F35 /* DailyChoreHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyChoreHeaderView.swift; sourceTree = "<group>"; };
+		A14D5AF52972A3FD00C72F35 /* DailyChoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyChoreView.swift; sourceTree = "<group>"; };
+		A14D5B132972E1E100C72F35 /* Notification+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+.swift"; sourceTree = "<group>"; };
+		A14D5B182972E82A00C72F35 /* ShouldReLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShouldReLoginView.swift; sourceTree = "<group>"; };
+		A14D5B1A2972F92700C72F35 /* MyPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewModel.swift; sourceTree = "<group>"; };
+		A15CAC592970336E00705CAB /* WKExtensionDelegator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WKExtensionDelegator.swift; sourceTree = "<group>"; };
+		A15CAC612970434E00705CAB /* DobbyMini WatchKit Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "DobbyMini WatchKit Extension.entitlements"; sourceTree = "<group>"; };
+		A15CAC642971941300705CAB /* DobbyCoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DobbyCoreData.xcdatamodel; sourceTree = "<group>"; };
+		A15CAC6C297297F600705CAB /* NavButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavButton.swift; sourceTree = "<group>"; };
+		A15CAC6F2972980D00705CAB /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		A15CAC722972983300705CAB /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
+		A15CAC7429729CCB00705CAB /* MyPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageView.swift; sourceTree = "<group>"; };
+		A16D036B7F2EC30E5F3A0C37 /* Pods-DobbyMini WatchKit Extension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DobbyMini WatchKit Extension.release.xcconfig"; path = "Target Support Files/Pods-DobbyMini WatchKit Extension/Pods-DobbyMini WatchKit Extension.release.xcconfig"; sourceTree = "<group>"; };
 		A174B16E28EC6F0300F80112 /* ASAuthorizationController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ASAuthorizationController+.swift"; sourceTree = "<group>"; };
 		A174B17328EF002000F80112 /* BaseAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseAPI.swift; sourceTree = "<group>"; };
 		A174B17528EF007100F80112 /* LoginAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAPI.swift; sourceTree = "<group>"; };
@@ -275,7 +441,6 @@
 		A17893B0292A2AB4007893FB /* SelectUserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectUserCell.swift; sourceTree = "<group>"; };
 		A17893B3292A2AD0007893FB /* SelectCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCategoryView.swift; sourceTree = "<group>"; };
 		A17893B5292A2AD7007893FB /* SelectCategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCategoryCell.swift; sourceTree = "<group>"; };
-		A17A60EDE0B5ABC5EFFC0B11 /* Pods-DobbyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DobbyTests.release.xcconfig"; path = "Target Support Files/Pods-DobbyTests/Pods-DobbyTests.release.xcconfig"; sourceTree = "<group>"; };
 		A17DB77A294F03040025623B /* DeleteChoreAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteChoreAPI.swift; sourceTree = "<group>"; };
 		A18DF275293353B90073A01F /* ChoreRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoreRepository.swift; sourceTree = "<group>"; };
 		A18DF277293358770073A01F /* ChoreRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoreRepositoryImpl.swift; sourceTree = "<group>"; };
@@ -340,19 +505,54 @@
 		A19E987B2917D500004A8861 /* SelectRepeatCycleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectRepeatCycleCell.swift; sourceTree = "<group>"; };
 		A19E987D2917D6B0004A8861 /* ChoreRepeatCycle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoreRepeatCycle.swift; sourceTree = "<group>"; };
 		A19E9880291941B8004A8861 /* RegisterAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterAPI.swift; sourceTree = "<group>"; };
-		A5AC03B947483404E600E584 /* Pods-DobbyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DobbyTests.debug.xcconfig"; path = "Target Support Files/Pods-DobbyTests/Pods-DobbyTests.debug.xcconfig"; sourceTree = "<group>"; };
-		DB5AA1FAC158301AE70B684B /* Pods-Dobby.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dobby.debug.xcconfig"; path = "Target Support Files/Pods-Dobby/Pods-Dobby.debug.xcconfig"; sourceTree = "<group>"; };
-		E4AD1EDD5CCDD37BD771AC5A /* Pods_DobbyTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DobbyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		F6AFAAA971B1B1A2BF1DDCE2 /* Pods-Dobby-DobbyUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dobby-DobbyUITests.debug.xcconfig"; path = "Target Support Files/Pods-Dobby-DobbyUITests/Pods-Dobby-DobbyUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		AD1314BD8455ECA702DE6DAE /* Pods_DobbyMini_WatchKit_Extension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DobbyMini_WatchKit_Extension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AEB5E88A0B8E41657A92F592 /* Pods-Dobby.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dobby.debug.xcconfig"; path = "Target Support Files/Pods-Dobby/Pods-Dobby.debug.xcconfig"; sourceTree = "<group>"; };
+		B43F43FCB5BCCEEE095FDFAB /* Pods-DobbyMini-DobbyMiniUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DobbyMini-DobbyMiniUITests.release.xcconfig"; path = "Target Support Files/Pods-DobbyMini-DobbyMiniUITests/Pods-DobbyMini-DobbyMiniUITests.release.xcconfig"; sourceTree = "<group>"; };
+		D86F90FF4AE3D84A7A10BD60 /* Pods_Dobby_DobbyUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Dobby_DobbyUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F176949965AB7D424C60046C /* Pods-DobbyMiniTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DobbyMiniTests.release.xcconfig"; path = "Target Support Files/Pods-DobbyMiniTests/Pods-DobbyMiniTests.release.xcconfig"; sourceTree = "<group>"; };
+		F91AAEBD643514C14D154970 /* Pods_DobbyMini_DobbyMiniUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DobbyMini_DobbyMiniUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA77030CE664016431DF1FFC /* Pods-DobbyMini WatchKit Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DobbyMini WatchKit Extension.debug.xcconfig"; path = "Target Support Files/Pods-DobbyMini WatchKit Extension/Pods-DobbyMini WatchKit Extension.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		37C080328042714C7B6B2DE0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD4A9E53608A64BE18F0F715 /* Pods_DobbyMini.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A1373F82296C2D2200DE4354 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4A383F0462B8648FA8D53791 /* Pods_DobbyMini_WatchKit_Extension.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A1373F9C296C2D2400DE4354 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AB89819C7CEF2944A172ADA7 /* Pods_DobbyMiniTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A1373FA6296C2D2400DE4354 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EE8648B83EF53BD1CDE66414 /* Pods_DobbyMini_DobbyMiniUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A13C530A28E7129D00C72215 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				81D7170A0CB8A71B30D14140 /* Pods_Dobby.framework in Frameworks */,
 				A122FCC42965AE5B0093F58E /* CloudKit.framework in Frameworks */,
+				5D2CE629E93138B6227BE811 /* Pods_Dobby.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -360,7 +560,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C2781E59171273E0B07E799D /* Pods_DobbyTests.framework in Frameworks */,
+				FE8CAE34B25B92ABA9548D41 /* Pods_DobbyTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -368,7 +568,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5D37CFAC2FFA4B3C846EA3C8 /* Pods_Dobby_DobbyUITests.framework in Frameworks */,
+				41FE751D69713D85DCFD2E1C /* Pods_Dobby_DobbyUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -378,12 +578,20 @@
 		59B4FB3B3674F69DBEF32677 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				DB5AA1FAC158301AE70B684B /* Pods-Dobby.debug.xcconfig */,
-				8083386DCEF92A322C58B66A /* Pods-Dobby.release.xcconfig */,
-				F6AFAAA971B1B1A2BF1DDCE2 /* Pods-Dobby-DobbyUITests.debug.xcconfig */,
-				8741B0934360EC4A243B1998 /* Pods-Dobby-DobbyUITests.release.xcconfig */,
-				A5AC03B947483404E600E584 /* Pods-DobbyTests.debug.xcconfig */,
-				A17A60EDE0B5ABC5EFFC0B11 /* Pods-DobbyTests.release.xcconfig */,
+				AEB5E88A0B8E41657A92F592 /* Pods-Dobby.debug.xcconfig */,
+				0FF25DE67E9617D557788E48 /* Pods-Dobby.release.xcconfig */,
+				351EE06E413D57F2208BC40D /* Pods-Dobby-DobbyUITests.debug.xcconfig */,
+				4A2CC3CCC6B61CC76FA51425 /* Pods-Dobby-DobbyUITests.release.xcconfig */,
+				52B8567BEC660980820655F9 /* Pods-DobbyMini.debug.xcconfig */,
+				08EC9C8996A79A6D2DA48B99 /* Pods-DobbyMini.release.xcconfig */,
+				FA77030CE664016431DF1FFC /* Pods-DobbyMini WatchKit Extension.debug.xcconfig */,
+				A16D036B7F2EC30E5F3A0C37 /* Pods-DobbyMini WatchKit Extension.release.xcconfig */,
+				1A6E705E425EA6352A8AA5A9 /* Pods-DobbyMini-DobbyMiniUITests.debug.xcconfig */,
+				B43F43FCB5BCCEEE095FDFAB /* Pods-DobbyMini-DobbyMiniUITests.release.xcconfig */,
+				76E3691E9820B7826B8525BF /* Pods-DobbyMiniTests.debug.xcconfig */,
+				F176949965AB7D424C60046C /* Pods-DobbyMiniTests.release.xcconfig */,
+				24C8B75F5868AE5D682694A6 /* Pods-DobbyTests.debug.xcconfig */,
+				235BDE9C157E83704EDA36C1 /* Pods-DobbyTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -397,6 +605,60 @@
 			path = Alarm;
 			sourceTree = "<group>";
 		};
+		A1373F7E296C2D2000DE4354 /* DobbyMini */ = {
+			isa = PBXGroup;
+			children = (
+				A1373F7F296C2D2200DE4354 /* Assets.xcassets */,
+			);
+			path = DobbyMini;
+			sourceTree = "<group>";
+		};
+		A1373F89296C2D2200DE4354 /* DobbyMini WatchKit Extension */ = {
+			isa = PBXGroup;
+			children = (
+				A14D5B122972E1B300C72F35 /* Common */,
+				A15CAC712972981F00705CAB /* DI */,
+				A15CAC68297297AD00705CAB /* Presentation */,
+				A15CAC612970434E00705CAB /* DobbyMini WatchKit Extension.entitlements */,
+				A1373F8A296C2D2200DE4354 /* DobbyApp.swift */,
+				A15CAC592970336E00705CAB /* WKExtensionDelegator.swift */,
+				A1373F8C296C2D2200DE4354 /* ContentView.swift */,
+				A1373F8E296C2D2200DE4354 /* NotificationController.swift */,
+				A1373F90296C2D2200DE4354 /* NotificationView.swift */,
+				A1373F92296C2D2200DE4354 /* ComplicationController.swift */,
+				A1373F94296C2D2300DE4354 /* Assets.xcassets */,
+				A1373F99296C2D2400DE4354 /* Info.plist */,
+				A1373F9A296C2D2400DE4354 /* PushNotificationPayload.apns */,
+				A1373F96296C2D2300DE4354 /* Preview Content */,
+			);
+			path = "DobbyMini WatchKit Extension";
+			sourceTree = "<group>";
+		};
+		A1373F96296C2D2300DE4354 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				A1373F97296C2D2400DE4354 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		A1373FA2296C2D2400DE4354 /* DobbyMiniTests */ = {
+			isa = PBXGroup;
+			children = (
+				A1373FA3296C2D2400DE4354 /* DobbyMiniTests.swift */,
+			);
+			path = DobbyMiniTests;
+			sourceTree = "<group>";
+		};
+		A1373FAC296C2D2400DE4354 /* DobbyMiniUITests */ = {
+			isa = PBXGroup;
+			children = (
+				A1373FAD296C2D2400DE4354 /* DobbyMiniUITests.swift */,
+				A1373FAF296C2D2400DE4354 /* DobbyMiniUITestsLaunchTests.swift */,
+			);
+			path = DobbyMiniUITests;
+			sourceTree = "<group>";
+		};
 		A13C530428E7129D00C72215 = {
 			isa = PBXGroup;
 			children = (
@@ -404,6 +666,10 @@
 				A13C530F28E7129D00C72215 /* Dobby */,
 				A13C532628E7129E00C72215 /* DobbyTests */,
 				A13C533028E7129F00C72215 /* DobbyUITests */,
+				A1373F7E296C2D2000DE4354 /* DobbyMini */,
+				A1373F89296C2D2200DE4354 /* DobbyMini WatchKit Extension */,
+				A1373FA2296C2D2400DE4354 /* DobbyMiniTests */,
+				A1373FAC296C2D2400DE4354 /* DobbyMiniUITests */,
 				A13C530E28E7129D00C72215 /* Products */,
 				59B4FB3B3674F69DBEF32677 /* Pods */,
 				EECB826E23EA5A1E908A6DD1 /* Frameworks */,
@@ -416,6 +682,10 @@
 				A13C530D28E7129D00C72215 /* Dobby.app */,
 				A13C532328E7129E00C72215 /* DobbyTests.xctest */,
 				A13C532D28E7129F00C72215 /* DobbyUITests.xctest */,
+				A1373F7D296C2D2000DE4354 /* DOBBY.app */,
+				A1373F85296C2D2200DE4354 /* DobbyMini WatchKit Extension.appex */,
+				A1373F9F296C2D2400DE4354 /* DobbyMiniTests.xctest */,
+				A1373FA9296C2D2400DE4354 /* DobbyMiniUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -596,8 +866,8 @@
 			isa = PBXGroup;
 			children = (
 				A13C536E28E94D0500C72215 /* LocalStorageService.swift */,
-				A122FCC02965AD9A0093F58E /* CoreDataCloud.xcdatamodeld */,
 				A10664A6296BCA2A004466A5 /* LocalStorageServiceImpl.swift */,
+				A15CAC632971941300705CAB /* DobbyCoreData.xcdatamodeld */,
 			);
 			path = LocalStorage;
 			sourceTree = "<group>";
@@ -647,6 +917,62 @@
 				A13C537C28E98FD500C72215 /* WelcomeViewModel.swift */,
 			);
 			path = Welcome;
+			sourceTree = "<group>";
+		};
+		A14D5B122972E1B300C72F35 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				A14D5B132972E1E100C72F35 /* Notification+.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		A15CAC68297297AD00705CAB /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				A15CAC6B297297D300705CAB /* MyPage */,
+				A15CAC6A297297CA00705CAB /* DailyChore */,
+				A15CAC69297297C100705CAB /* Home */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		A15CAC69297297C100705CAB /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				A15CAC6C297297F600705CAB /* NavButton.swift */,
+				A15CAC6F2972980D00705CAB /* HomeView.swift */,
+				A14D5B182972E82A00C72F35 /* ShouldReLoginView.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		A15CAC6A297297CA00705CAB /* DailyChore */ = {
+			isa = PBXGroup;
+			children = (
+				A14D5AED2972A39400C72F35 /* ChoreViewModel.swift */,
+				A14D5AF12972A3CA00C72F35 /* DailyChoreRowView.swift */,
+				A14D5AF32972A3E700C72F35 /* DailyChoreHeaderView.swift */,
+				A14D5AF52972A3FD00C72F35 /* DailyChoreView.swift */,
+			);
+			path = DailyChore;
+			sourceTree = "<group>";
+		};
+		A15CAC6B297297D300705CAB /* MyPage */ = {
+			isa = PBXGroup;
+			children = (
+				A15CAC7429729CCB00705CAB /* MyPageView.swift */,
+				A14D5B1A2972F92700C72F35 /* MyPageViewModel.swift */,
+			);
+			path = MyPage;
+			sourceTree = "<group>";
+		};
+		A15CAC712972981F00705CAB /* DI */ = {
+			isa = PBXGroup;
+			children = (
+				A15CAC722972983300705CAB /* DIContainer.swift */,
+			);
+			path = DI;
 			sourceTree = "<group>";
 		};
 		A174B16D28EC6ECE00F80112 /* Rx */ = {
@@ -962,9 +1288,13 @@
 			isa = PBXGroup;
 			children = (
 				A122FCC32965AE5B0093F58E /* CloudKit.framework */,
-				3336AE106AE91D152C06F33D /* Pods_Dobby.framework */,
-				3F56AA76B9FEBCC2098137B1 /* Pods_Dobby_DobbyUITests.framework */,
-				E4AD1EDD5CCDD37BD771AC5A /* Pods_DobbyTests.framework */,
+				14E37F0B96544B24D7FF37A7 /* Pods_Dobby.framework */,
+				D86F90FF4AE3D84A7A10BD60 /* Pods_Dobby_DobbyUITests.framework */,
+				1D838BBBD35C07719BA5C859 /* Pods_DobbyMini.framework */,
+				AD1314BD8455ECA702DE6DAE /* Pods_DobbyMini_WatchKit_Extension.framework */,
+				F91AAEBD643514C14D154970 /* Pods_DobbyMini_DobbyMiniUITests.framework */,
+				301F257E7CC901AEEB33AFA3 /* Pods_DobbyMiniTests.framework */,
+				082346D34C450313E84750E4 /* Pods_DobbyTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -972,25 +1302,101 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		A13C530C28E7129D00C72215 /* Dobby */ = {
+		A1373F7C296C2D2000DE4354 /* DobbyMini */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A13C533728E7129F00C72215 /* Build configuration list for PBXNativeTarget "Dobby" */;
+			buildConfigurationList = A1373FBF296C2D2400DE4354 /* Build configuration list for PBXNativeTarget "DobbyMini" */;
 			buildPhases = (
-				053B6A25A73E9B3DF81E39AA /* [CP] Check Pods Manifest.lock */,
-				A13C530928E7129D00C72215 /* Sources */,
-				A13C530A28E7129D00C72215 /* Frameworks */,
-				A13C530B28E7129D00C72215 /* Resources */,
-				A13C534228E71AED00C72215 /* ShellScript */,
-				A12095EF28F3FFAC008CE410 /* ShellScript */,
-				D17067F7F1EFEA84311475AB /* [CP] Embed Pods Frameworks */,
+				1C7A0F32404FB2104CC480F7 /* [CP] Check Pods Manifest.lock */,
+				A1373F7B296C2D2000DE4354 /* Resources */,
+				A1373FB7296C2D2400DE4354 /* Embed App Extensions */,
+				37C080328042714C7B6B2DE0 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A1373F88296C2D2200DE4354 /* PBXTargetDependency */,
+			);
+			name = DobbyMini;
+			productName = DobbyMini;
+			productReference = A1373F7D296C2D2000DE4354 /* DOBBY.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		A1373F84296C2D2200DE4354 /* DobbyMini WatchKit Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A1373FBE296C2D2400DE4354 /* Build configuration list for PBXNativeTarget "DobbyMini WatchKit Extension" */;
+			buildPhases = (
+				3DAFE3B3832038C9002ACAF7 /* [CP] Check Pods Manifest.lock */,
+				A1373F81296C2D2200DE4354 /* Sources */,
+				A1373F82296C2D2200DE4354 /* Frameworks */,
+				A1373F83296C2D2200DE4354 /* Resources */,
+				51B6E5ACCC4605FBD2DAC3E2 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = Dobby;
-			packageProductDependencies = (
+			name = "DobbyMini WatchKit Extension";
+			productName = "DobbyMini WatchKit Extension";
+			productReference = A1373F85296C2D2200DE4354 /* DobbyMini WatchKit Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
+		};
+		A1373F9E296C2D2400DE4354 /* DobbyMiniTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A1373FC0296C2D2400DE4354 /* Build configuration list for PBXNativeTarget "DobbyMiniTests" */;
+			buildPhases = (
+				AC440C8B679996447E7A0541 /* [CP] Check Pods Manifest.lock */,
+				A1373F9B296C2D2400DE4354 /* Sources */,
+				A1373F9C296C2D2400DE4354 /* Frameworks */,
+				A1373F9D296C2D2400DE4354 /* Resources */,
 			);
+			buildRules = (
+			);
+			dependencies = (
+				A1373FA1296C2D2400DE4354 /* PBXTargetDependency */,
+			);
+			name = DobbyMiniTests;
+			productName = DobbyMiniTests;
+			productReference = A1373F9F296C2D2400DE4354 /* DobbyMiniTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		A1373FA8296C2D2400DE4354 /* DobbyMiniUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A1373FC1296C2D2400DE4354 /* Build configuration list for PBXNativeTarget "DobbyMiniUITests" */;
+			buildPhases = (
+				C9432896BE1FBEEA68C0427F /* [CP] Check Pods Manifest.lock */,
+				A1373FA5296C2D2400DE4354 /* Sources */,
+				A1373FA6296C2D2400DE4354 /* Frameworks */,
+				A1373FA7296C2D2400DE4354 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A1373FAB296C2D2400DE4354 /* PBXTargetDependency */,
+			);
+			name = DobbyMiniUITests;
+			productName = DobbyMiniUITests;
+			productReference = A1373FA9296C2D2400DE4354 /* DobbyMiniUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		A13C530C28E7129D00C72215 /* Dobby */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A13C533728E7129F00C72215 /* Build configuration list for PBXNativeTarget "Dobby" */;
+			buildPhases = (
+				FFB7D151561B49CC0F501E4B /* [CP] Check Pods Manifest.lock */,
+				A13C530928E7129D00C72215 /* Sources */,
+				A13C530A28E7129D00C72215 /* Frameworks */,
+				A13C530B28E7129D00C72215 /* Resources */,
+				A13C534228E71AED00C72215 /* ShellScript */,
+				A12095EF28F3FFAC008CE410 /* ShellScript */,
+				A1373FB4296C2D2400DE4354 /* Embed Watch Content */,
+				39BF83AFFF4F958CF62AB5A6 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A1373FB2296C2D2400DE4354 /* PBXTargetDependency */,
+			);
+			name = Dobby;
 			productName = Dobby;
 			productReference = A13C530D28E7129D00C72215 /* Dobby.app */;
 			productType = "com.apple.product-type.application";
@@ -999,7 +1405,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A13C533A28E7129F00C72215 /* Build configuration list for PBXNativeTarget "DobbyTests" */;
 			buildPhases = (
-				A84F43FB6E012266EB18F083 /* [CP] Check Pods Manifest.lock */,
+				1723D84CD2309BAEED259C59 /* [CP] Check Pods Manifest.lock */,
 				A13C531F28E7129E00C72215 /* Sources */,
 				A13C532028E7129E00C72215 /* Frameworks */,
 				A13C532128E7129E00C72215 /* Resources */,
@@ -1018,11 +1424,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A13C533D28E7129F00C72215 /* Build configuration list for PBXNativeTarget "DobbyUITests" */;
 			buildPhases = (
-				62986E861344FCC98C504970 /* [CP] Check Pods Manifest.lock */,
+				4B69FFE1FBB14822044A944F /* [CP] Check Pods Manifest.lock */,
 				A13C532928E7129F00C72215 /* Sources */,
 				A13C532A28E7129F00C72215 /* Frameworks */,
 				A13C532B28E7129F00C72215 /* Resources */,
-				426E9E02BF6A642655E083B3 /* [CP] Embed Pods Frameworks */,
+				CC5F27EA23B696EF6A366BDE /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1041,9 +1447,23 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1400;
+				LastSwiftUpdateCheck = 1340;
 				LastUpgradeCheck = 1400;
 				TargetAttributes = {
+					A1373F7C296C2D2000DE4354 = {
+						CreatedOnToolsVersion = 13.4.1;
+					};
+					A1373F84296C2D2200DE4354 = {
+						CreatedOnToolsVersion = 13.4.1;
+					};
+					A1373F9E296C2D2400DE4354 = {
+						CreatedOnToolsVersion = 13.4.1;
+						TestTargetID = A1373F84296C2D2200DE4354;
+					};
+					A1373FA8296C2D2400DE4354 = {
+						CreatedOnToolsVersion = 13.4.1;
+						TestTargetID = A1373F7C296C2D2000DE4354;
+					};
 					A13C530C28E7129D00C72215 = {
 						CreatedOnToolsVersion = 14.0;
 					};
@@ -1066,8 +1486,6 @@
 				Base,
 			);
 			mainGroup = A13C530428E7129D00C72215;
-			packageReferences = (
-			);
 			productRefGroup = A13C530E28E7129D00C72215 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -1075,11 +1493,46 @@
 				A13C530C28E7129D00C72215 /* Dobby */,
 				A13C532228E7129E00C72215 /* DobbyTests */,
 				A13C532C28E7129F00C72215 /* DobbyUITests */,
+				A1373F7C296C2D2000DE4354 /* DobbyMini */,
+				A1373F84296C2D2200DE4354 /* DobbyMini WatchKit Extension */,
+				A1373F9E296C2D2400DE4354 /* DobbyMiniTests */,
+				A1373FA8296C2D2400DE4354 /* DobbyMiniUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		A1373F7B296C2D2000DE4354 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A1373F80296C2D2200DE4354 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A1373F83296C2D2200DE4354 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A1373F98296C2D2400DE4354 /* Preview Assets.xcassets in Resources */,
+				A1373F95296C2D2300DE4354 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A1373F9D296C2D2400DE4354 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A1373FA7296C2D2400DE4354 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A13C530B28E7129D00C72215 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1110,7 +1563,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		053B6A25A73E9B3DF81E39AA /* [CP] Check Pods Manifest.lock */ = {
+		1723D84CD2309BAEED259C59 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1125,31 +1578,75 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Dobby-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-DobbyTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		426E9E02BF6A642655E083B3 /* [CP] Embed Pods Frameworks */ = {
+		1C7A0F32404FB2104CC480F7 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Dobby-DobbyUITests/Pods-Dobby-DobbyUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			name = "[CP] Embed Pods Frameworks";
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Dobby-DobbyUITests/Pods-Dobby-DobbyUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DobbyMini-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Dobby-DobbyUITests/Pods-Dobby-DobbyUITests-frameworks.sh\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		62986E861344FCC98C504970 /* [CP] Check Pods Manifest.lock */ = {
+		39BF83AFFF4F958CF62AB5A6 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Dobby/Pods-Dobby-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Dobby/Pods-Dobby-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Dobby/Pods-Dobby-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3DAFE3B3832038C9002ACAF7 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DobbyMini WatchKit Extension-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4B69FFE1FBB14822044A944F /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1169,6 +1666,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		51B6E5ACCC4605FBD2DAC3E2 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DobbyMini WatchKit Extension/Pods-DobbyMini WatchKit Extension-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DobbyMini WatchKit Extension/Pods-DobbyMini WatchKit Extension-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DobbyMini WatchKit Extension/Pods-DobbyMini WatchKit Extension-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		A12095EF28F3FFAC008CE410 /* ShellScript */ = {
@@ -1206,7 +1720,7 @@
 			shellPath = /bin/sh;
 			shellScript = "${PODS_ROOT}/SwiftLint/swiftlint\n\n";
 		};
-		A84F43FB6E012266EB18F083 /* [CP] Check Pods Manifest.lock */ = {
+		AC440C8B679996447E7A0541 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1221,33 +1735,161 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-DobbyTests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-DobbyMiniTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		D17067F7F1EFEA84311475AB /* [CP] Embed Pods Frameworks */ = {
+		C9432896BE1FBEEA68C0427F /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Dobby/Pods-Dobby-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			name = "[CP] Embed Pods Frameworks";
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Dobby/Pods-Dobby-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DobbyMini-DobbyMiniUITests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Dobby/Pods-Dobby-frameworks.sh\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CC5F27EA23B696EF6A366BDE /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Dobby-DobbyUITests/Pods-Dobby-DobbyUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Dobby-DobbyUITests/Pods-Dobby-DobbyUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Dobby-DobbyUITests/Pods-Dobby-DobbyUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FFB7D151561B49CC0F501E4B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Dobby-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		A1373F81296C2D2200DE4354 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A14D5B032972A56800C72F35 /* FinishChoreAPI.swift in Sources */,
+				A1373F8F296C2D2200DE4354 /* NotificationController.swift in Sources */,
+				A14D5B1C2973068600C72F35 /* GroupUseCase.swift in Sources */,
+				A14D5B1E297306A900C72F35 /* GroupRepositoryImpl.swift in Sources */,
+				A1373F8D296C2D2200DE4354 /* ContentView.swift in Sources */,
+				A14D5B192972E82A00C72F35 /* ShouldReLoginView.swift in Sources */,
+				A14D5B22297306D300C72F35 /* LeaveGroupAPI.swift in Sources */,
+				A14D5B21297306C500C72F35 /* CreateGroupAPI.swift in Sources */,
+				A15CAC5F297034AF00705CAB /* Group.swift in Sources */,
+				A15CAC60297034B500705CAB /* SettingInfoDTO.swift in Sources */,
+				A14D5B062972A5A400C72F35 /* NetworkLoggerPlugin.swift in Sources */,
+				A1373F93296C2D2200DE4354 /* ComplicationController.swift in Sources */,
+				A14D5AFA2972A46800C72F35 /* ChorePeriodical.swift in Sources */,
+				A15CAC7529729CCB00705CAB /* MyPageView.swift in Sources */,
+				A14D5B082972A5B900C72F35 /* NetworkError.swift in Sources */,
+				A14D5AF42972A3E700C72F35 /* DailyChoreHeaderView.swift in Sources */,
+				A14D5B0B2972A60C00C72F35 /* AuthenticationDTO.swift in Sources */,
+				A15CAC732972983300705CAB /* DIContainer.swift in Sources */,
+				A14D5AEF2972A3B000C72F35 /* Chore.swift in Sources */,
+				A14D5B092972A5F000C72F35 /* Authentication.swift in Sources */,
+				A1373F8B296C2D2200DE4354 /* DobbyApp.swift in Sources */,
+				A15CAC62297190D600705CAB /* Date+.swift in Sources */,
+				A14D5B052972A58200C72F35 /* NetworkService.swift in Sources */,
+				A14D5B042972A57D00C72F35 /* DeleteChoreAPI.swift in Sources */,
+				A14D5AFB2972A4F100C72F35 /* ChoreRepository.swift in Sources */,
+				A14D5AF02972A3B700C72F35 /* ChoreOwner.swift in Sources */,
+				A15CAC5D297034A500705CAB /* LocalStorageServiceImpl.swift in Sources */,
+				A14D5AFC2972A51400C72F35 /* ChoreRepositoryImpl.swift in Sources */,
+				A14D5B0A2972A60700C72F35 /* RefreshAuthAPI.swift in Sources */,
+				A15CAC5B2970349B00705CAB /* LocalStorageService.swift in Sources */,
+				A14D5AF62972A3FD00C72F35 /* DailyChoreView.swift in Sources */,
+				A14D5AFD2972A52400C72F35 /* CreateChoreAPI.swift in Sources */,
+				A15CAC6E297297F600705CAB /* NavButton.swift in Sources */,
+				A15CAC662971941300705CAB /* DobbyCoreData.xcdatamodeld in Sources */,
+				A14D5B0F2972D98900C72F35 /* MyInfoAPI.swift in Sources */,
+				A14D5B102972D98D00C72F35 /* UserDTO.swift in Sources */,
+				A14D5B1D2973068E00C72F35 /* GroupRepository.swift in Sources */,
+				A14D5AF22972A3CA00C72F35 /* DailyChoreRowView.swift in Sources */,
+				A1373F91296C2D2200DE4354 /* NotificationView.swift in Sources */,
+				A14D5AF92972A46200C72F35 /* ChoreUseCase.swift in Sources */,
+				A15CAC5A2970336E00705CAB /* WKExtensionDelegator.swift in Sources */,
+				A14D5B112972DC4800C72F35 /* CustomError.swift in Sources */,
+				A14D5AEE2972A39400C72F35 /* ChoreViewModel.swift in Sources */,
+				A14D5B20297306B700C72F35 /* GroupDTO.swift in Sources */,
+				A15CAC702972980D00705CAB /* HomeView.swift in Sources */,
+				A14D5B1B2972F92700C72F35 /* MyPageViewModel.swift in Sources */,
+				A14D5B142972E1E100C72F35 /* Notification+.swift in Sources */,
+				A14D5B022972A55900C72F35 /* ChoreListDTO.swift in Sources */,
+				A14D5B23297306DD00C72F35 /* JoinGroupAPI.swift in Sources */,
+				A14D5AFE2972A52B00C72F35 /* ChoreDTO.swift in Sources */,
+				A15CAC672972755300705CAB /* String+.swift in Sources */,
+				A14D5B0D2972D97400C72F35 /* UserRepository.swift in Sources */,
+				A14D5B1F297306B400C72F35 /* GroupInfoAPI.swift in Sources */,
+				A14D5B002972A53D00C72F35 /* BaseAPI.swift in Sources */,
+				A14D5AFF2972A53100C72F35 /* ChoreRepeatCycle.swift in Sources */,
+				A14D5B0C2972D95600C72F35 /* UserUseCase.swift in Sources */,
+				A15CAC5E297034AC00705CAB /* User.swift in Sources */,
+				A14D5B072972A5AF00C72F35 /* DobbyResponse.swift in Sources */,
+				A14D5B0E2972D97F00C72F35 /* UserRepositoryImpl.swift in Sources */,
+				A14D5B012972A55400C72F35 /* ChoreListAPI.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A1373F9B296C2D2400DE4354 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A1373FA4296C2D2400DE4354 /* DobbyMiniTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A1373FA5296C2D2400DE4354 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A1373FB0296C2D2400DE4354 /* DobbyMiniUITestsLaunchTests.swift in Sources */,
+				A1373FAE296C2D2400DE4354 /* DobbyMiniUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A13C530928E7129D00C72215 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1278,6 +1920,7 @@
 				A12095E928F2A198008CE410 /* NetworkError.swift in Sources */,
 				A18DF28C293B5AD20073A01F /* ChoreItemListView.swift in Sources */,
 				A19E9848290FF1A7004A8861 /* MyPageViewModel.swift in Sources */,
+				A14D5B152972E20B00C72F35 /* Notification+.swift in Sources */,
 				A19E97FD29053621004A8861 /* AddChoreViewModel.swift in Sources */,
 				A1789361291FA8C4007893FB /* DailyChoreViewModel.swift in Sources */,
 				A13C536028E8942900C72215 /* AuthenticationRepository.swift in Sources */,
@@ -1327,6 +1970,7 @@
 				A18DF278293358770073A01F /* ChoreRepositoryImpl.swift in Sources */,
 				A12095F528FD9427008CE410 /* MainTabBarCoordinator.swift in Sources */,
 				A17893B6292A2AD7007893FB /* SelectCategoryCell.swift in Sources */,
+				A15CAC652971941300705CAB /* DobbyCoreData.xcdatamodeld in Sources */,
 				A18DF27A293358C30073A01F /* ChoreDTO.swift in Sources */,
 				A12095EB28F2E010008CE410 /* RefreshAuthAPI.swift in Sources */,
 				A11C86B02962FD6E00D54F5E /* AlarmRepository.swift in Sources */,
@@ -1388,7 +2032,6 @@
 				A1789353291A912A007893FB /* UserDTO.swift in Sources */,
 				A178935F291E8E2B007893FB /* DateSelectCollectionCell.swift in Sources */,
 				A178938A2928CC94007893FB /* GroupRepository.swift in Sources */,
-				A122FCC22965AD9A0093F58E /* CoreDataCloud.xcdatamodeld in Sources */,
 				A1789365291FAF67007893FB /* DateListSection.swift in Sources */,
 				A19E9854291152AB004A8861 /* EditProfileViewController.swift in Sources */,
 				A178939C292A06F9007893FB /* CategoryUseCase.swift in Sources */,
@@ -1415,6 +2058,26 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		A1373F88296C2D2200DE4354 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A1373F84296C2D2200DE4354 /* DobbyMini WatchKit Extension */;
+			targetProxy = A1373F87296C2D2200DE4354 /* PBXContainerItemProxy */;
+		};
+		A1373FA1296C2D2400DE4354 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A1373F84296C2D2200DE4354 /* DobbyMini WatchKit Extension */;
+			targetProxy = A1373FA0296C2D2400DE4354 /* PBXContainerItemProxy */;
+		};
+		A1373FAB296C2D2400DE4354 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A1373F7C296C2D2000DE4354 /* DobbyMini */;
+			targetProxy = A1373FAA296C2D2400DE4354 /* PBXContainerItemProxy */;
+		};
+		A1373FB2296C2D2400DE4354 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A1373F7C296C2D2000DE4354 /* DobbyMini */;
+			targetProxy = A1373FB1296C2D2400DE4354 /* PBXContainerItemProxy */;
+		};
 		A13C532528E7129E00C72215 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = A13C530C28E7129D00C72215 /* Dobby */;
@@ -1439,6 +2102,216 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		A1373FB5296C2D2400DE4354 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 52B8567BEC660980820655F9 /* Pods-DobbyMini.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = YB8GA5MLV5;
+				GENERATE_INFOPLIST_FILE = YES;
+				IBSC_MODULE = DobbyMini_WatchKit_Extension;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = yongmin.Dobby;
+				MARKETING_VERSION = 1.0.1;
+				PRODUCT_BUNDLE_IDENTIFIER = yongmin.Dobby.watchkitapp;
+				PRODUCT_NAME = DOBBY;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 9.1;
+			};
+			name = Debug;
+		};
+		A1373FB6296C2D2400DE4354 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 08EC9C8996A79A6D2DA48B99 /* Pods-DobbyMini.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = YB8GA5MLV5;
+				GENERATE_INFOPLIST_FILE = YES;
+				IBSC_MODULE = DobbyMini_WatchKit_Extension;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = yongmin.Dobby;
+				MARKETING_VERSION = 1.0.1;
+				PRODUCT_BUNDLE_IDENTIFIER = yongmin.Dobby.watchkitapp;
+				PRODUCT_NAME = DOBBY;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 9.1;
+			};
+			name = Release;
+		};
+		A1373FB8296C2D2400DE4354 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FA77030CE664016431DF1FFC /* Pods-DobbyMini WatchKit Extension.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_ENTITLEMENTS = "DobbyMini WatchKit Extension/DobbyMini WatchKit Extension.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"DobbyMini WatchKit Extension/Preview Content\"";
+				DEVELOPMENT_TEAM = YB8GA5MLV5;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "DobbyMini WatchKit Extension/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "DobbyMini WatchKit Extension";
+				INFOPLIST_KEY_CLKComplicationPrincipalClass = DobbyMini_WatchKit_Extension.ComplicationController;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0.1;
+				PRODUCT_BUNDLE_IDENTIFIER = yongmin.Dobby.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 9.1;
+			};
+			name = Debug;
+		};
+		A1373FB9296C2D2400DE4354 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A16D036B7F2EC30E5F3A0C37 /* Pods-DobbyMini WatchKit Extension.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_ENTITLEMENTS = "DobbyMini WatchKit Extension/DobbyMini WatchKit Extension.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"DobbyMini WatchKit Extension/Preview Content\"";
+				DEVELOPMENT_TEAM = YB8GA5MLV5;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "DobbyMini WatchKit Extension/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "DobbyMini WatchKit Extension";
+				INFOPLIST_KEY_CLKComplicationPrincipalClass = DobbyMini_WatchKit_Extension.ComplicationController;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0.1;
+				PRODUCT_BUNDLE_IDENTIFIER = yongmin.Dobby.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 9.1;
+			};
+			name = Release;
+		};
+		A1373FBA296C2D2400DE4354 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 76E3691E9820B7826B8525BF /* Pods-DobbyMiniTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = YB8GA5MLV5;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = yongmin.Dobby.DobbyMiniTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DobbyMini WatchKit Extension.appex/DobbyMini WatchKit Extension";
+				WATCHOS_DEPLOYMENT_TARGET = 9.1;
+			};
+			name = Debug;
+		};
+		A1373FBB296C2D2400DE4354 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F176949965AB7D424C60046C /* Pods-DobbyMiniTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = YB8GA5MLV5;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = yongmin.Dobby.DobbyMiniTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DobbyMini WatchKit Extension.appex/DobbyMini WatchKit Extension";
+				WATCHOS_DEPLOYMENT_TARGET = 9.1;
+			};
+			name = Release;
+		};
+		A1373FBC296C2D2400DE4354 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1A6E705E425EA6352A8AA5A9 /* Pods-DobbyMini-DobbyMiniUITests.debug.xcconfig */;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = YB8GA5MLV5;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = yongmin.Dobby.DobbyMiniUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_TARGET_NAME = DobbyMini;
+				WATCHOS_DEPLOYMENT_TARGET = 9.1;
+			};
+			name = Debug;
+		};
+		A1373FBD296C2D2400DE4354 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B43F43FCB5BCCEEE095FDFAB /* Pods-DobbyMini-DobbyMiniUITests.release.xcconfig */;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = YB8GA5MLV5;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = yongmin.Dobby.DobbyMiniUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_TARGET_NAME = DobbyMini;
+				WATCHOS_DEPLOYMENT_TARGET = 9.1;
+			};
+			name = Release;
+		};
 		A13C533528E7129F00C72215 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1555,7 +2428,7 @@
 		};
 		A13C533828E7129F00C72215 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DB5AA1FAC158301AE70B684B /* Pods-Dobby.debug.xcconfig */;
+			baseConfigurationReference = AEB5E88A0B8E41657A92F592 /* Pods-Dobby.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1579,7 +2452,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.9.2;
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = yongmin.Dobby;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1593,7 +2466,7 @@
 		};
 		A13C533928E7129F00C72215 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8083386DCEF92A322C58B66A /* Pods-Dobby.release.xcconfig */;
+			baseConfigurationReference = 0FF25DE67E9617D557788E48 /* Pods-Dobby.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1616,7 +2489,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.9.2;
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = yongmin.Dobby;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1630,7 +2503,7 @@
 		};
 		A13C533B28E7129F00C72215 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A5AC03B947483404E600E584 /* Pods-DobbyTests.debug.xcconfig */;
+			baseConfigurationReference = 24C8B75F5868AE5D682694A6 /* Pods-DobbyTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1651,7 +2524,7 @@
 		};
 		A13C533C28E7129F00C72215 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A17A60EDE0B5ABC5EFFC0B11 /* Pods-DobbyTests.release.xcconfig */;
+			baseConfigurationReference = 235BDE9C157E83704EDA36C1 /* Pods-DobbyTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1672,7 +2545,7 @@
 		};
 		A13C533E28E7129F00C72215 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F6AFAAA971B1B1A2BF1DDCE2 /* Pods-Dobby-DobbyUITests.debug.xcconfig */;
+			baseConfigurationReference = 351EE06E413D57F2208BC40D /* Pods-Dobby-DobbyUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -1691,7 +2564,7 @@
 		};
 		A13C533F28E7129F00C72215 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8741B0934360EC4A243B1998 /* Pods-Dobby-DobbyUITests.release.xcconfig */;
+			baseConfigurationReference = 4A2CC3CCC6B61CC76FA51425 /* Pods-Dobby-DobbyUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -1711,6 +2584,42 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		A1373FBE296C2D2400DE4354 /* Build configuration list for PBXNativeTarget "DobbyMini WatchKit Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A1373FB8296C2D2400DE4354 /* Debug */,
+				A1373FB9296C2D2400DE4354 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A1373FBF296C2D2400DE4354 /* Build configuration list for PBXNativeTarget "DobbyMini" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A1373FB5296C2D2400DE4354 /* Debug */,
+				A1373FB6296C2D2400DE4354 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A1373FC0296C2D2400DE4354 /* Build configuration list for PBXNativeTarget "DobbyMiniTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A1373FBA296C2D2400DE4354 /* Debug */,
+				A1373FBB296C2D2400DE4354 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A1373FC1296C2D2400DE4354 /* Build configuration list for PBXNativeTarget "DobbyMiniUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A1373FBC296C2D2400DE4354 /* Debug */,
+				A1373FBD296C2D2400DE4354 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		A13C530828E7129D00C72215 /* Build configuration list for PBXProject "Dobby" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1750,13 +2659,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		A122FCC02965AD9A0093F58E /* CoreDataCloud.xcdatamodeld */ = {
+		A15CAC632971941300705CAB /* DobbyCoreData.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				A122FCC12965AD9A0093F58E /* CoreDataCloud.xcdatamodel */,
+				A15CAC642971941300705CAB /* DobbyCoreData.xcdatamodel */,
 			);
-			currentVersion = A122FCC12965AD9A0093F58E /* CoreDataCloud.xcdatamodel */;
-			path = CoreDataCloud.xcdatamodeld;
+			currentVersion = A15CAC642971941300705CAB /* DobbyCoreData.xcdatamodel */;
+			path = DobbyCoreData.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

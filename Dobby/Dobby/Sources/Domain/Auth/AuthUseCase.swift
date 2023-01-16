@@ -7,6 +7,7 @@
 
 import Foundation
 import RxSwift
+import WatchConnectivity
 
 protocol AuthUseCase {
     // oauth
@@ -20,9 +21,10 @@ protocol AuthUseCase {
     func resign() -> Observable<Void>
     
     // authToken
-    func readToken(tokenOption: TokenOption) -> Observable<Authentication>
+    func readToken() -> Observable<Authentication>
     func writeToken(authentication: Authentication)
     func removeToken(tokenOption: TokenOption)
+    func createTokenContext() -> [String: String]
 }
 
 final class AuthUseCaseImpl: AuthUseCase {
@@ -69,15 +71,38 @@ final class AuthUseCaseImpl: AuthUseCase {
         return self.authenticationRepository.resign()
     }
     
-    func readToken(tokenOption: TokenOption) -> Observable<Authentication> {
-        return self.authenticationRepository.readToken(tokenOption: tokenOption)
+    func readToken() -> Observable<Authentication> {
+        let tokenList = self.authenticationRepository.readToken()
+        return Observable.just(Authentication(
+            accessToken: tokenList[safe: 0],
+            refreshToken: tokenList[safe: 1]
+        ))
     }
     
     func writeToken(authentication: Authentication) {
-        return self.authenticationRepository.writeToken(authentication: authentication)
+        self.authenticationRepository.writeToken(authentication: authentication)
+        self.updateWatchToken()
     }
     
     func removeToken(tokenOption: TokenOption) {
-        return self.authenticationRepository.removeToken(tokenOption: tokenOption)
+        self.authenticationRepository.removeToken(tokenOption: tokenOption)
+        self.updateWatchToken()
+    }
+    
+    func createTokenContext() -> [String: String] {
+        let tokenList = self.authenticationRepository.readToken()
+        let ret: [String: String] = [
+            LocalKey.accessToken.rawValue: tokenList.first ?? "",
+            LocalKey.refreshToken.rawValue: tokenList.last ?? "",
+            LocalKey.lastUpdateAt.rawValue: Date().toStringWithFormat("yyyy-MM-dd HH:mm:ss")
+        ]
+        return ret
+    }
+    
+    func updateWatchToken() {
+#if os(iOS)
+        let context = self.createTokenContext()
+        try? WCSession.default.updateApplicationContext(context)
+#endif
     }
 }

@@ -28,11 +28,11 @@ final class UserRepositoryImpl: UserRepository {
             }
     }
     
-    func saveUserInfoInLocalStorate(user: User) {
+    func saveUserInfoInLocalStorage(user: User) {
         self.localStorage.saveUser(user)
     }
     
-    func removeUserInfoInLocalStorate() {
+    func removeUserInfoInLocalStorage() {
         self.localStorage.delete(key: .userInfo)
     }
     

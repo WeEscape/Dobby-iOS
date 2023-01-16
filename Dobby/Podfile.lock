@@ -123,6 +123,8 @@ PODS:
     - KakaoSDKAuth (= 2.11.1)
   - Kingfisher (7.3.2)
   - lottie-ios (3.4.3)
+  - Moya/Combine (15.0.0):
+    - Moya/Core
   - Moya/Core (15.0.0):
     - Alamofire (~> 5.0)
   - Moya/RxSwift (15.0.0):
@@ -202,6 +204,7 @@ PODS:
   - SnapKit (5.6.0)
   - SwiftLint (0.49.1)
   - SwiftyBeaver (1.9.6)
+  - Swinject (2.8.2)
   - Toast-Swift (5.0.1)
 
 DEPENDENCIES:
@@ -211,6 +214,7 @@ DEPENDENCIES:
   - FSCalendar
   - Kingfisher
   - lottie-ios
+  - Moya/Combine
   - Moya/RxSwift
   - ProgressHUD
   - RxCocoa
@@ -223,6 +227,7 @@ DEPENDENCIES:
   - SnapKit
   - SwiftLint
   - SwiftyBeaver
+  - Swinject
   - Toast-Swift
 
 SPEC REPOS:
@@ -274,6 +279,7 @@ SPEC REPOS:
     - SnapKit
     - SwiftLint
     - SwiftyBeaver
+    - Swinject
     - Toast-Swift
 
 SPEC CHECKSUMS:
@@ -324,8 +330,9 @@ SPEC CHECKSUMS:
   SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
   SwiftLint: 32ee33ded0636d0905ef6911b2b67bbaeeedafa5
   SwiftyBeaver: c8241b4745aa269a78ca5a022532c6915e948536
+  Swinject: b4a11b31992e8668308dc594ba1cb9b3164a37ab
   Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
 
-PODFILE CHECKSUM: acb4a92c561f1f9f47c69b46abe9622454f0375d
+PODFILE CHECKSUM: cbbbe6649fb68b04d86ed72216d74bef22840bec
 
 COCOAPODS: 1.11.3

@@ -24,20 +24,20 @@ final class MyPageViewModel {
     let alarmPulish: PublishRelay<(Bool, Date)> = .init()
     
     let authUseCase: AuthUseCase
-    let userUserCase: UserUseCase
+    let userUseCase: UserUseCase
     let groupUseCase: GroupUseCase
     let categoryUseCase: CategoryUseCase
     let alarmUseCase: AlarmUseCase
     
     init(
         authUseCase: AuthUseCase,
-        userUserCase: UserUseCase,
+        userUseCase: UserUseCase,
         groupUseCase: GroupUseCase,
         categoryUseCase: CategoryUseCase,
         alarmUseCase: AlarmUseCase
     ) {
         self.authUseCase = authUseCase
-        self.userUserCase = userUserCase
+        self.userUseCase = userUseCase
         self.groupUseCase = groupUseCase
         self.categoryUseCase = categoryUseCase
         self.alarmUseCase = alarmUseCase
@@ -123,7 +123,7 @@ final class MyPageViewModel {
     func requestLogout() {
         self.authUseCase.logout()
             .subscribe(onNext: {  [weak self] _ in
-                self?.userUserCase.removeUserInfoInLocalStorate()
+                self?.userUseCase.removeUserInfoInLocalStorage()
                 self?.authUseCase.removeToken(tokenOption: [.accessToken, .refreshToken])
                 self?.logoutPublish.accept(())
             }, onError: { [weak self] err in
@@ -134,7 +134,7 @@ final class MyPageViewModel {
     func requestResign() {
         self.authUseCase.resign()
             .subscribe(onNext: { [weak self] _ in
-                self?.userUserCase.removeUserInfoInLocalStorate()
+                self?.userUseCase.removeUserInfoInLocalStorage()
                 self?.authUseCase.removeToken(tokenOption: [.accessToken, .refreshToken])
                 self?.resignPublish.accept(())
             }, onError: { [weak self] err in
@@ -144,8 +144,10 @@ final class MyPageViewModel {
     
     func getMyInfo() {
         self.loadingPublish.accept(true)
-        self.userUserCase.getMyInfo()
+        self.userUseCase.removeUserInfoInLocalStorage()
+        self.userUseCase.getMyInfo()
             .subscribe(onNext: { [weak self] myinfo in
+                self?.userUseCase.saveUserInfoInLocalStorage(user: myinfo)
                 self?.myInfoBehavior.accept(myinfo)
                 self?.myGroupIdBehavior.accept(myinfo.groupList?.last?.groupId)
             }, onError: { [weak self] err in
@@ -174,7 +176,7 @@ final class MyPageViewModel {
         self.loadingPublish.accept(true)
         self.groupUseCase.createGroup()
             .subscribe(onNext: { [weak self] group in
-                self?.userUserCase.removeUserInfoInLocalStorate()
+                self?.userUseCase.removeUserInfoInLocalStorage()
                 self?.inviteCodePublish.accept(group.inviteCode)
                 self?.myGroupIdBehavior.accept(group.groupId)
                 self?.loadingPublish.accept(false)
@@ -191,7 +193,7 @@ final class MyPageViewModel {
         self.loadingPublish.accept(true)
         self.groupUseCase.leaveGroup(id: myGroupId)
             .subscribe(onNext: { [weak self] _ in
-                self?.userUserCase.removeUserInfoInLocalStorate()
+                self?.userUseCase.removeUserInfoInLocalStorage()
                 self?.myGroupIdBehavior.accept(nil)
                 self?.loadingPublish.accept(false)
             }, onError: { [weak self] err in
@@ -205,7 +207,7 @@ final class MyPageViewModel {
         self.loadingPublish.accept(true)
         self.groupUseCase.joinGroup(inviteCode: groupId)
             .subscribe(onNext: { [weak self] group in
-                self?.userUserCase.removeUserInfoInLocalStorate()
+                self?.userUseCase.removeUserInfoInLocalStorage()
                 self?.myGroupIdBehavior.accept(group.groupId)
                 self?.inviteCodePublish.accept(group.inviteCode)
                 self?.loadingPublish.accept(false)
