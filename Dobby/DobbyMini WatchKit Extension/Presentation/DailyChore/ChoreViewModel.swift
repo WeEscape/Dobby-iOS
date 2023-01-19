@@ -25,7 +25,7 @@ class ChoreViewModel: ObservableObject {
         self.userUseCase = userUseCase
     }
     
-    func getChoreList() {
+    func getChoreList(of date: Date = Date()) {
         self.userUseCase.getMyInfo()
             .flatMapLatest { [weak self] myinfo -> Observable<[Chore]> in
                 guard let self = self,
@@ -36,13 +36,14 @@ class ChoreViewModel: ObservableObject {
                 return self.choreUseCase.getChores(
                     userId: userId,
                     groupId: groupId,
-                    date: self.currentDate,
+                    date: date,
                     periodical: .daily
                 )
             }
             .subscribe(onNext: { [weak self] choreList in
                 guard let self = self else {return}
                 self.currentChoreList = choreList
+                self.currentDate = date
             }, onError: { [weak self] _ in
                 self?.userUseCase.removeUserInfoInLocalStorage()
                 DispatchQueue.main.async {
