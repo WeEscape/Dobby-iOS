@@ -8,6 +8,7 @@
 import Foundation
 import RxSwift
 import Moya
+import WatchConnectivity
 
 protocol NetworkService {
     func request<API>(api: API) -> Observable<DobbyResponse<API.Response>> where API: BaseAPI
@@ -67,12 +68,7 @@ final class NetworkServiceImpl: NetworkService {
                             }
                             BeaverLog.verbose("refreshed access token : \(newAccessToken)")
                             BeaverLog.verbose("refreshed refresh token : \(newRefreshToken)")
-                            self.localStorage.write(
-                                key: .accessToken, value: newAccessToken
-                            )
-                            self.localStorage.write(
-                                key: .refreshToken, value: newRefreshToken
-                            )
+                            self.saveNewTokens(accessToken: newAccessToken, refreshToken: newRefreshToken)
                             return self._request(api: api)
                         }
                         .catch { err in
@@ -148,5 +144,20 @@ final class NetworkServiceImpl: NetworkService {
                     refreshToken: resData.data?.refreshToken
                 )
             }
+    }
+    
+    private func saveNewTokens(accessToken: String, refreshToken: String) {
+        self.localStorage.write(
+            key: .accessToken, value: accessToken
+        )
+        self.localStorage.write(
+            key: .refreshToken, value: refreshToken
+        )
+        let context: [String: String] = [
+            LocalKey.accessToken.rawValue: accessToken,
+            LocalKey.refreshToken.rawValue: refreshToken,
+            LocalKey.lastUpdateAt.rawValue: Date().toStringWithFormat("yyyy-MM-dd HH:mm:ss")
+        ]
+        try? WCSession.default.updateApplicationContext(context)
     }
 }
