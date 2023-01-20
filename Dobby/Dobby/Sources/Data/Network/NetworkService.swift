@@ -8,6 +8,7 @@
 import Foundation
 import RxSwift
 import Moya
+import WatchConnectivity
 
 protocol NetworkService {
     func request<API>(api: API) -> Observable<DobbyResponse<API.Response>> where API: BaseAPI
@@ -60,34 +61,20 @@ final class NetworkServiceImpl: NetworkService {
                     }
                     return self.refreshAccessToken()
                         .flatMap { auth -> Observable<Response> in
-                            guard let newAccessToken = auth.accessToken,
-                                  let newRefreshToken = auth.refreshToken
+                            guard let newAccess = auth.accessToken,
+                                  let newRefresh = auth.refreshToken
                             else {
                                 return .error(NetworkError.invalidateRefreshToken)
                             }
-                            BeaverLog.verbose("refreshed access token : \(newAccessToken)")
-                            BeaverLog.verbose("refreshed refresh token : \(newRefreshToken)")
-                            self.localStorage.write(
-                                key: .accessToken, value: newAccessToken
-                            )
-                            self.localStorage.write(
-                                key: .refreshToken, value: newRefreshToken
-                            )
+                            BeaverLog.verbose("refreshed access token : \(newAccess)")
+                            BeaverLog.verbose("refreshed refresh token : \(newRefresh)")
+                            self.saveNewTokens(accessToken: newAccess, refreshToken: newRefresh)
                             return self._request(api: api)
                         }
                         .catch { err in
                             BeaverLog.verbose("invalidate RefreshToken! -> logout")
                             BeaverLog.error(err)
-                            self.localStorage.delete(key: .accessToken)
-                            self.localStorage.delete(key: .refreshToken)
-#if os(iOS)
-                            let appDelegate = UIApplication.shared.delegate as? AppDelegate
-                            appDelegate?.rootCoordinator?.startSplash()
-#elseif os(watchOS)
-                            DispatchQueue.main.async {
-                                NotificationCenter.default.post(name: .shouldReLogin, object: nil)
-                            }
-#endif
+                            self.resetTokens()
                             return .error(NetworkError.invalidateRefreshToken)
                         }
                 }
@@ -148,5 +135,33 @@ final class NetworkServiceImpl: NetworkService {
                     refreshToken: resData.data?.refreshToken
                 )
             }
+    }
+    
+    private func saveNewTokens(accessToken: String, refreshToken: String) {
+        self.localStorage.write(
+            key: .accessToken, value: accessToken
+        )
+        self.localStorage.write(
+            key: .refreshToken, value: refreshToken
+        )
+        let context: [String: String] = [
+            LocalKey.accessToken.rawValue: accessToken,
+            LocalKey.refreshToken.rawValue: refreshToken,
+            LocalKey.lastUpdateAt.rawValue: Date().toStringWithFormat("yyyy-MM-dd HH:mm:ss")
+        ]
+        try? WCSession.default.updateApplicationContext(context)
+    }
+    
+    private func resetTokens() {
+        self.localStorage.delete(key: .accessToken)
+        self.localStorage.delete(key: .refreshToken)
+#if os(iOS)
+        let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        appDelegate?.rootCoordinator?.startSplash()
+#elseif os(watchOS)
+        DispatchQueue.main.async {
+            NotificationCenter.default.post(name: .shouldReLogin, object: nil)
+        }
+#endif
     }
 }
