@@ -5,10 +5,6 @@
 ## Updates
 - v1.0.2 : 버그 픽스 및 UI 수정
 - v1.0.1 : 도비 WatchOS 출시
-- v0.9.2 : 버그 픽스 및 UI 수정
-- v0.9.1 : 월간 집안일 조회 기능 및 매일 알람 기능 추가
-- v0.8.2 : 버그 픽스 및 UI 수정
-- v0.8.1 : 도비 iOS 출시
 
 ## Developments
 - Clean Architecture로 설계된 도비 iOS App의 도메인 모듈, 데이터 모듈 재사용
