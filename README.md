@@ -4,11 +4,11 @@
 
 ## Updates
 - v1.0.2 : 버그 픽스 및 UI 수정
-- v1.0.1 : 도비 WatchOS 출시
+- v1.0.1 : 🌟 도비 WatchOS App 출시
 - v0.9.2 : 버그 픽스 및 UI 수정
 - v0.9.1 : 월간 집안일 조회 기능 및 매일 알람 기능 추가
 - v0.8.2 : 버그 픽스 및 UI 수정
-- v0.8.1 : 도비 iOS 출시
+- v0.8.1 : 🌟 도비 iOS App 출시
 
 ## Developments
 - Coordinator 패턴을 적용하여 ViewController로 부터 화면전환 로직 및 ViewController간의 의존성 분리
